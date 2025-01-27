@@ -44,7 +44,7 @@ class LoginView extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
-                  onTap: () => context.go(Routes.forgotPassword),
+                  onTap: () => context.push(Routes.forgotPassword),
                   child: Text(
                     'Forgot Password?',
                     style: Styles.font14W400.copyWith(
@@ -70,7 +70,7 @@ class LoginView extends StatelessWidget {
               Align(
                 alignment: Alignment.center,
                 child: GestureDetector(
-                  onTap: () => context.go(Routes.creatAccount),
+                  onTap: () => context.push(Routes.creatAccount),
                   child: Text(
                     'Create an account',
                     style: Styles.font20W600,
