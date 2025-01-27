@@ -75,7 +75,7 @@ class LoginView extends StatelessWidget {
                     style: Styles.font20W600,
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

@@ -22,7 +22,7 @@ class CustomAuthWelcomeWidget extends StatelessWidget {
         verticalSpace(80),
         Text(
           title,
-          style: Styles.font43W700,
+          style: Styles.font35W700,
         ),
         verticalSpace(16),
         Text(
