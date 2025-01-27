@@ -43,11 +43,16 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      
       onTapOutside: onTapOutside,
       onTap: onTap,
       controller: controller,
+
+      
       maxLines: maxLines,
       decoration: InputDecoration(
+        
+        
         isDense: true,
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
@@ -82,7 +87,7 @@ class AppTextFormField extends StatelessWidget {
           ),
         ),
       ),
-      obscureText: isObscureText ?? false,
+      obscureText: hintText.contains("password"),
       style: Styles.font20W400.copyWith(
         color: ColorManager.gray63,
       ),

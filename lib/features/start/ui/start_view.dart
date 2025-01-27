@@ -15,7 +15,7 @@ class StartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration:const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
               Assets.imagesStart,
@@ -58,7 +58,7 @@ class StartView extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () => context.go(Routes.creatAccount),
                       child: Text(
                         'Create now',
                         style: Styles.font14W500.copyWith(

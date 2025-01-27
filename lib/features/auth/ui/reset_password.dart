@@ -9,8 +9,8 @@ import 'package:nile_brand/core/widgets/app_text_button.dart';
 import 'package:nile_brand/core/widgets/app_text_form_field.dart';
 import 'package:nile_brand/features/auth/ui/widgets/custom_auth_bar_widget.dart';
 
-class ForgotPasswordView extends StatelessWidget {
-  const ForgotPasswordView({super.key});
+class ResetPasswordView extends StatelessWidget {
+  const ResetPasswordView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,42 +18,57 @@ class ForgotPasswordView extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: SingleChildScrollView(
+        child:  SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CustomAuthWelcomeWidget(
-                title: 'Forgot Password?',
-                subTitle:
-                    'Enter your email address to get the password reset link.',
-              ),
-              verticalSpace(54),
-              AppTextFormField(
-                labelText: 'E-mail',
-                hintText: 'email',
+             const CustomAuthWelcomeWidget(
+                title: "Reset Password", 
+                subTitle: "Enter your new password twice below to reset a new password."
+                ),
+                
+               verticalSpace(92),
+               AppTextFormField(
+                labelText: 'Enter new password',
+                hintText: 'new password',
                 validator: (p0) {},
               ),
-              verticalSpace(76),
+
+              verticalSpace(35),
+              AppTextFormField(
+                labelText: 'Re-enter new password',
+                hintText: 're-enter new password',
+                validator: (p0) {},
+              ),
+
+              verticalSpace(57),
+
               AppTextButton(
-                text: 'Password Reset',
-                onPressed: () =>  context.go(Routes.resetPassword),
+                text: 'Reser Password',
+                onPressed: () {},
                 backgroundColor: ColorManager.mainColor,
               ),
-              verticalSpace(230),
+
+              verticalSpace(160),
+
               Align(
                 alignment: Alignment.center,
                 child: GestureDetector(
-                  onTap:() => context.go(Routes.creatAccount),
+                  onTap: () => context.go(Routes.creatAccount),
                   child: Text(
                     'Create an account',
                     style: Styles.font20W600,
                   ),
                 ),
               ),
+
+              
             ],
-          ),
+            ),
+
         ),
-      ),
+        ),
+
     );
   }
 }

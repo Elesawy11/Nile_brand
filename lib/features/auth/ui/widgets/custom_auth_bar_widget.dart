@@ -28,9 +28,7 @@ class CustomAuthWelcomeWidget extends StatelessWidget {
         Text(
           subTitle,
           style: Styles.font20W400.copyWith(
-            color: Colors.black.withValues(
-              alpha: 0.6,
-            ),
+            color: Colors.black,
           ),
         )
       ],
