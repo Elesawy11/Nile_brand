@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nile_brand/core/routing/routes.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/spacer.dart';
 import 'package:nile_brand/core/utils/styles.dart';
@@ -40,10 +42,13 @@ class LoginView extends StatelessWidget {
               verticalSpace(10),
               Align(
                 alignment: Alignment.centerRight,
-                child: Text(
-                  'Forgot Password?',
-                  style: Styles.font14W400.copyWith(
-                    color: ColorManager.red76,
+                child: GestureDetector(
+                  onTap: () => context.go(Routes.forgotPassword),
+                  child: Text(
+                    'Forgot Password?',
+                    style: Styles.font14W400.copyWith(
+                      color: ColorManager.red76,
+                    ),
                   ),
                 ),
               ),
