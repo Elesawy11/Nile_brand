@@ -12,6 +12,12 @@ class NileBrandBody extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp.router(
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.purple,
+            surface: Colors.white,
+          ),
+        ),
         debugShowCheckedModeBanner: false,
         routerConfig: AppRouter.router,
       ),
