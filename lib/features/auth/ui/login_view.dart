@@ -56,7 +56,7 @@ class LoginView extends StatelessWidget {
               verticalSpace(47),
               AppTextButton(
                 text: 'Login',
-                onPressed: () {},
+                onPressed: () => context.push(Routes.home),
                 backgroundColor: ColorManager.mainColor,
               ),
               verticalSpace(35),

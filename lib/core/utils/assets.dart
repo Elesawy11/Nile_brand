@@ -2,11 +2,43 @@
 class Assets {
   Assets._();
   
+  static const String imagesActiveCategoryIcon = "assets/images/activeCategoryIcon.png";
+
+  static const String imagesActiveHomeIcon = "assets/images/activeHomeIcon.png";
+
+  static const String imagesActiveOrderIcon = "assets/images/activeOrderIcon.png";
+
+  static const String imagesActiveProfileIcon = "assets/images/activeProfileIcon.png";
+
+  static const String imagesActiveWishlistIcon = "assets/images/activeWishlistIcon.png";
+
+  static const String imagesAdv1 = "assets/images/adv1.png";
+
+  static const String imagesAdv2 = "assets/images/adv2.png";
+
+  static const String imagesCartIcon = "assets/images/cartIcon.png";
+
+  static const String imagesCategoryIcon = "assets/images/categoryIcon.png";
+
+  static const String imagesClothes = "assets/images/clothes.png";
+
+  static const String imagesFilter = "assets/images/filter.png";
+
   static const String imagesGoogle = "assets/images/google.png";
+
+  static const String imagesHomeIcon = "assets/images/homeIcon.png";
 
   static const String imagesLogo = "assets/images/logo.png";
 
+  static const String imagesOrderIcon = "assets/images/orderIcon.png";
+
+  static const String imagesProfileIcon = "assets/images/profileIcon.png";
+
+  static const String imagesSearch = "assets/images/search.png";
+
   static const String imagesStart = "assets/images/start.png";
+
+  static const String imagesWishlistIcon = "assets/images/wishlistIcon.png";
 
   static const String svgImagesLogo = "assets/svgImages/logo.svg";
 }
