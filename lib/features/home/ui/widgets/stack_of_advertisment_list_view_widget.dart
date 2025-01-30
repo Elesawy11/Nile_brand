@@ -13,33 +13,36 @@ class StackOfAdvertismentListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: 275.h,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: advImage.length,
-            itemBuilder: (context, index) {
-              return Image.asset(
-                advImage[index],
-                fit: BoxFit.cover,
-              );
-            },
+    return SizedBox(
+      height: 275.h,
+      child: Stack(
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: 275.h,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: advImage.length,
+              itemBuilder: (context, index) {
+                return Image.asset(
+                  advImage[index],
+                  fit: BoxFit.cover,
+                );
+              },
+            ),
           ),
-        ),
-        Positioned(
-          top: 42.h,
-          child: Column(
-            children: [
-              const NotificationAndSearchWidget(),
-              verticalSpace(28),
-              const CategoriesAndFilterWidget(),
-            ],
+          Positioned(
+            top: 42.h,
+            child: Column(
+              children: [
+                const NotificationAndSearchWidget(),
+                verticalSpace(28),
+                const CategoriesAndFilterWidget(),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
