@@ -19,7 +19,9 @@ class AppTextFormField extends StatelessWidget {
   final int? maxLines;
   final void Function()? onTap;
   final void Function(PointerDownEvent)? onTapOutside;
-  final String labelText;
+  final String? labelText;
+  final double? raduis;
+  final bool isLabled;
   const AppTextFormField({
     super.key,
     this.contentPadding,
@@ -37,22 +39,19 @@ class AppTextFormField extends StatelessWidget {
     this.maxLines = 1,
     this.onTap,
     this.onTapOutside,
-    required this.labelText,
+    this.labelText,
+    this.raduis,
+    this.isLabled = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      
       onTapOutside: onTapOutside,
       onTap: onTap,
       controller: controller,
-
-      
       maxLines: maxLines,
       decoration: InputDecoration(
-        
-        
         isDense: true,
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
@@ -80,12 +79,12 @@ class AppTextFormField extends StatelessWidget {
         filled: true,
         prefixIcon: prefixIcon,
         // labelText: ,
-        label: Text(
-          labelText,
+        label:isLabled? Text(
+          labelText ?? '',
           style: Styles.font20W400.copyWith(
             color: Colors.black,
           ),
-        ),
+        ):null,
       ),
       obscureText: hintText.contains("password"),
       style: Styles.font20W400.copyWith(
@@ -104,7 +103,7 @@ class AppTextFormField extends StatelessWidget {
         width: 1.3,
       ),
       borderRadius: BorderRadius.circular(
-        12.0.r,
+        raduis ?? 12.0.r,
       ),
     );
   }
