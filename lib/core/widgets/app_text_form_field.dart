@@ -22,6 +22,8 @@ class AppTextFormField extends StatelessWidget {
   final String? labelText;
   final double? raduis;
   final bool isLabled;
+  final double? cursorHeight;
+
   const AppTextFormField({
     super.key,
     this.contentPadding,
@@ -42,11 +44,13 @@ class AppTextFormField extends StatelessWidget {
     this.labelText,
     this.raduis,
     this.isLabled = true,
+    this.cursorHeight,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      cursorHeight: cursorHeight,
       onTapOutside: onTapOutside,
       onTap: onTap,
       controller: controller,
@@ -75,16 +79,18 @@ class AppTextFormField extends StatelessWidget {
             ),
         hintText: hintText,
         suffixIcon: suffixIcon,
-        fillColor: Colors.white,
+        fillColor: backgroundColor ?? Colors.white,
         filled: true,
         prefixIcon: prefixIcon,
         // labelText: ,
-        label:isLabled? Text(
-          labelText ?? '',
-          style: Styles.font20W400.copyWith(
-            color: Colors.black,
-          ),
-        ):null,
+        label: isLabled
+            ? Text(
+                labelText ?? '',
+                style: Styles.font20W400.copyWith(
+                  color: Colors.black,
+                ),
+              )
+            : null,
       ),
       obscureText: hintText.contains("password"),
       style: Styles.font20W400.copyWith(

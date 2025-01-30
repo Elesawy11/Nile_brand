@@ -25,8 +25,11 @@ class NotificationAndSearchWidget extends StatelessWidget {
           width: 293.w,
           height: 36.h,
           child: AppTextFormField(
+            contentPadding: EdgeInsets.symmetric(horizontal: 20.w),
+            cursorHeight: 22.h,
             isLabled: false,
             hintText: 'what are you looking for ?',
+            backgroundColor: Colors.white.withValues(alpha: 0.4),
             validator: (p0) {},
             prefixIcon: const Icon(
               FontAwesomeIcons.magnifyingGlass,
