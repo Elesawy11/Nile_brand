@@ -7,7 +7,7 @@ import 'package:nile_brand/core/utils/spacer.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/core/widgets/app_text_button.dart';
 import 'package:nile_brand/core/widgets/app_text_form_field.dart';
-import 'package:nile_brand/features/auth/ui/widgets/custom_auth_bar_widget.dart';
+import 'package:nile_brand/features/auth/ui/views/widgets/custom_auth_bar_widget.dart';
 
 class ResetPasswordView extends StatelessWidget {
   const ResetPasswordView({super.key});
