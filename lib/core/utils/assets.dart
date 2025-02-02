@@ -52,6 +52,8 @@ class Assets {
 
   static const String imagesStart = "assets/images/start.png";
 
+  static const String imagesTestCartImage = "assets/images/testCartImage.png";
+
   static const String imagesTestItem = "assets/images/test_item.png";
 
   static const String imagesUnreadMessageIcon = "assets/images/unreadMessageIcon.png";
