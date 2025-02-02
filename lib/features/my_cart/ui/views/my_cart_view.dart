@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets/top_view_bar_widget.dart';
 
 class MyCartView extends StatelessWidget {
   const MyCartView({super.key});
@@ -6,8 +7,17 @@ class MyCartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: Text('My Cart View'),
+      body: SafeArea(
+        bottom: false,
+        left: false,
+        right: false,
+        child: Column(
+          children: [
+            TopViewBarWidget(
+              tiltel: 'My Cart',
+            )
+          ],
+        ),
       ),
     );
   }
