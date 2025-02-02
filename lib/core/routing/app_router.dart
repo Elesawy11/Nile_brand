@@ -1,15 +1,15 @@
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/app_navigation_bar.dart';
 import 'package:nile_brand/core/routing/routes.dart';
-import 'package:nile_brand/features/auth/ui/create_account.dart';
-import 'package:nile_brand/features/auth/ui/forgot_password_view.dart';
-import 'package:nile_brand/features/auth/ui/login_view.dart';
-import 'package:nile_brand/features/auth/ui/reset_password.dart';
-import 'package:nile_brand/features/category/ui/category_view.dart';
-import 'package:nile_brand/features/home/ui/home_view.dart';
-import 'package:nile_brand/features/my_cart/ui/my_cart_view.dart';
+import 'package:nile_brand/features/auth/ui/views/create_account.dart';
+import 'package:nile_brand/features/auth/ui/views/forgot_password_view.dart';
+import 'package:nile_brand/features/auth/ui/views/login_view.dart';
+import 'package:nile_brand/features/auth/ui/views/reset_password.dart';
+import 'package:nile_brand/features/category/ui/views/category_view.dart';
+import 'package:nile_brand/features/home/ui/views/home_view.dart';
+import 'package:nile_brand/features/my_cart/ui/views/my_cart_view.dart';
 import 'package:nile_brand/features/profile/ui/profile_view.dart';
-import 'package:nile_brand/features/start/ui/start_view.dart';
+import 'package:nile_brand/features/start/ui/views/start_view.dart';
 import 'package:nile_brand/features/track_order/ui/teack_order_view.dart';
 import 'package:nile_brand/features/wish_list/ui/wish_list_view.dart';
 

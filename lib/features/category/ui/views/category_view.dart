@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nile_brand/core/utils/app_strings.dart';
-import 'package:nile_brand/features/category/ui/widgets/category_details.dart';
-import 'package:nile_brand/features/category/ui/widgets/custom_appbar.dart';
+import 'package:nile_brand/features/category/ui/views/widgets/category_details.dart';
+import 'package:nile_brand/features/category/ui/views/widgets/custom_appbar.dart';
 
 class CategoryView extends StatefulWidget {
   const CategoryView({super.key});

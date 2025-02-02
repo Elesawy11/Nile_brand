@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nile_brand/features/category/ui/widgets/custome_item.dart';
-import 'package:nile_brand/features/category/ui/widgets/subcategoriy_bar.dart';
+import 'package:nile_brand/features/category/ui/views/widgets/custome_item.dart';
+import 'package:nile_brand/features/category/ui/views/widgets/subcategoriy_bar.dart';
 
 class CategoryDetails extends StatelessWidget {
   final String category;
