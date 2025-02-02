@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/features/category/ui/widgets/custom_tabBar.dart';
-import 'package:nile_brand/notification_and_search_widget.dart';
+import 'package:nile_brand/features/home/ui/widgets/notification_and_search_widget.dart';
 
 class CustomeAppbar extends StatefulWidget implements PreferredSizeWidget {
   final TabController tabController;

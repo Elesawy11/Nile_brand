@@ -14,19 +14,17 @@ class NotificationAndSearchWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
       children: [
         GestureDetector(
-        
           child: Image.asset(
-            Assets.unreadMessageIcon,
+            Assets.imagesUnreadMessageIcon,
             width: 23.w,
             height: 23.h,
             color: Colors.black,
           ),
         ),
         Container(
-          margin: EdgeInsets.only(right: 5.w,left: 5.w),
+          margin: EdgeInsets.only(right: 5.w, left: 5.w),
           width: 293.w,
           height: 36.h,
           child: AppTextFormField(
@@ -45,7 +43,7 @@ class NotificationAndSearchWidget extends StatelessWidget {
         ),
         GestureDetector(
           child: Image.asset(
-            Assets.unreadNotificationIcon,
+            Assets.imagesUnreadNotificationIcon,
             width: 23,
             height: 23,
             color: Colors.black,
