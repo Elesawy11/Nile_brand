@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nile_brand/core/utils/assets.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/core/widgets/app_text_form_field.dart';
 
@@ -12,16 +13,20 @@ class NotificationAndSearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
       children: [
-        IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.mark_email_unread_outlined,
+        GestureDetector(
+        
+          child: Image.asset(
+            Assets.unreadMessageIcon,
+            width: 23.w,
+            height: 23.h,
             color: Colors.black,
-            size: 20.r,
           ),
         ),
-        SizedBox(
+        Container(
+          margin: EdgeInsets.only(right: 5.w,left: 5.w),
           width: 293.w,
           height: 36.h,
           child: AppTextFormField(
@@ -29,7 +34,7 @@ class NotificationAndSearchWidget extends StatelessWidget {
             cursorHeight: 22.h,
             isLabled: false,
             hintText: 'what are you looking for ?',
-            backgroundColor: Colors.white.withValues(alpha: 0.4),
+            backgroundColor: Colors.white,
             validator: (p0) {},
             prefixIcon: const Icon(
               FontAwesomeIcons.magnifyingGlass,
@@ -38,12 +43,12 @@ class NotificationAndSearchWidget extends StatelessWidget {
             hintStyle: Styles.font17W300,
           ),
         ),
-        IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.notifications_outlined,
+        GestureDetector(
+          child: Image.asset(
+            Assets.unreadNotificationIcon,
+            width: 23,
+            height: 23,
             color: Colors.black,
-            size: 20.r,
           ),
         ),
       ],

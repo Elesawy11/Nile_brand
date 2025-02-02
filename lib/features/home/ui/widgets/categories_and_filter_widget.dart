@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nile_brand/core/utils/app_strings.dart';
 import 'package:nile_brand/core/utils/assets.dart';
 import 'package:nile_brand/core/utils/spacer.dart';
 import 'package:nile_brand/core/utils/styles.dart';
@@ -20,12 +21,12 @@ class CategoriesAndFilterWidget extends StatelessWidget {
             height: 32.h,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: categories.length,
+              itemCount:AppStrings.mainCategories.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.only(right: 24.w),
                   child: Text(
-                    categories[index],
+                    AppStrings.mainCategories[index],
                     style: Styles.font17W400,
                   ),
                 );
@@ -44,12 +45,4 @@ class CategoriesAndFilterWidget extends StatelessWidget {
   }
 }
 
-const List<String> categories = [
-  'All',
-  'Fashion',
-  'Handicrafts',
-  'Electronics',
-  'Furniture',
-  'Beauty',
-  'Sports',
-];
+

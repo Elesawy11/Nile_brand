@@ -4,7 +4,7 @@ import 'package:nile_brand/core/utils/assets.dart';
 import 'package:nile_brand/core/utils/spacer.dart';
 
 import 'categories_and_filter_widget.dart';
-import 'notification_and_search_widget.dart';
+import '../../../../notification_and_search_widget.dart';
 
 class StackOfAdvertismentListViewWidget extends StatelessWidget {
   const StackOfAdvertismentListViewWidget({

@@ -1,16 +1,20 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-  
-  static const String imagesActiveCategoryIcon = "assets/images/activeCategoryIcon.png";
+
+  static const String imagesActiveCategoryIcon =
+      "assets/images/activeCategoryIcon.png";
 
   static const String imagesActiveHomeIcon = "assets/images/activeHomeIcon.png";
 
-  static const String imagesActiveOrderIcon = "assets/images/activeOrderIcon.png";
+  static const String imagesActiveOrderIcon =
+      "assets/images/activeOrderIcon.png";
 
-  static const String imagesActiveProfileIcon = "assets/images/activeProfileIcon.png";
+  static const String imagesActiveProfileIcon =
+      "assets/images/activeProfileIcon.png";
 
-  static const String imagesActiveWishlistIcon = "assets/images/activeWishlistIcon.png";
+  static const String imagesActiveWishlistIcon =
+      "assets/images/activeWishlistIcon.png";
 
   static const String imagesAdv1 = "assets/images/adv1.png";
 
@@ -41,5 +45,9 @@ class Assets {
   static const String imagesWishlistIcon = "assets/images/wishlistIcon.png";
 
   static const String svgImagesLogo = "assets/svgImages/logo.svg";
-}
 
+  static const String unreadMessageIcon = "assets/images/message_icon.png";
+ 
+  static const String unreadNotificationIcon = "assets/images/notification_icon.png";
+
+}
