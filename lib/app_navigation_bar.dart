@@ -14,7 +14,7 @@ class AppNavigationBar extends StatelessWidget {
         onPressed: () {
           // context.go(Routes.chatBoot);
         },
-        backgroundColor: Colors.white.withValues(alpha: 0),
+        backgroundColor: Colors.white,
         elevation: 0,
         child: Image.asset(
           Assets.imagesChatboot,
@@ -35,7 +35,7 @@ class AppNavigationBar extends StatelessWidget {
               width: 24.r,
               height: 24.r,
             ),
-            label: 'Home',
+            label: '',
             activeIcon: Image.asset(
               Assets.imagesActiveHomeIcon,
               width: 24.r,
@@ -48,7 +48,7 @@ class AppNavigationBar extends StatelessWidget {
               width: 24.r,
               height: 24.r,
             ),
-            label: 'Gategories',
+            label: '',
             activeIcon: Image.asset(
               Assets.imagesActiveCategoryIcon,
               width: 24.r,
@@ -61,7 +61,7 @@ class AppNavigationBar extends StatelessWidget {
               width: 24.r,
               height: 24.r,
             ),
-            label: 'Track Order',
+            label: '',
             activeIcon: Image.asset(
               Assets.imagesActiveOrderIcon,
               width: 24.r,
@@ -74,7 +74,7 @@ class AppNavigationBar extends StatelessWidget {
               width: 24.r,
               height: 24.r,
             ),
-            label: 'Wish List',
+            label: '',
             activeIcon: Image.asset(
               Assets.imagesActiveWishlistIcon,
               width: 24.r,
@@ -87,7 +87,7 @@ class AppNavigationBar extends StatelessWidget {
               width: 24.r,
               height: 24.r,
             ),
-            label: 'My Cart',
+            label: '',
             activeIcon: Image.asset(
               // ActiveCartIcon
               Assets.imagesActiveCartIcon,
@@ -101,7 +101,7 @@ class AppNavigationBar extends StatelessWidget {
               width: 24.r,
               height: 24.r,
             ),
-            label: 'Profile',
+            label: '',
             activeIcon: Image.asset(
               Assets.imagesActiveProfileIcon,
               width: 24.r,
