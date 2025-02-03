@@ -14,7 +14,7 @@ class AppNavigationBar extends StatelessWidget {
         onPressed: () {
           // context.go(Routes.chatBoot);
         },
-        backgroundColor: Colors.white.withValues(alpha: 0),
+        backgroundColor: Colors.white,
         elevation: 0,
         child: Image.asset(
           Assets.imagesChatboot,
