@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/app_navigation_bar.dart';
 import 'package:nile_brand/core/routing/routes.dart';
@@ -14,7 +15,10 @@ import 'package:nile_brand/features/track_order/ui/teack_order_view.dart';
 import 'package:nile_brand/features/wish_list/ui/wish_list_view.dart';
 
 abstract class AppRouter {
+  static final rootNavigatotKey = GlobalKey<NavigatorState>();
+
   static final router = GoRouter(
+    navigatorKey: rootNavigatotKey,
     routes: [
       GoRoute(
         path: Routes.start,

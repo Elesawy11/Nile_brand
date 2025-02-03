@@ -8,5 +8,7 @@ abstract class ColorManager {
   static const Color gray8C = Color(0xFF8C8A8A);
   static const Color grayE4 = Color(0xFFE4E7EB);
   static const Color grayD9 = Color(0xFFD9D9D9);
+  static const Color grayCA = Color(0xFFCAD3DA);
+
   static const Color red76 = Color(0xFF760D0D);
 }
