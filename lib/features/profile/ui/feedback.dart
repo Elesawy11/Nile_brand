@@ -10,8 +10,8 @@ import 'package:nile_brand/core/widgets/app_text_button.dart';
 import 'package:nile_brand/core/widgets/app_text_form_field.dart';
 import 'package:nile_brand/features/profile/ui/widgets/profile_image.dart';
 
-class Feedback extends StatelessWidget {
-  const Feedback({super.key});
+class FeedbackView extends StatelessWidget {
+  const FeedbackView({super.key});
 
   @override
   Widget build(BuildContext context) {

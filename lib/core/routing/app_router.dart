@@ -5,6 +5,7 @@ import 'package:nile_brand/core/routing/routes.dart';
 
 import 'package:nile_brand/features/profile/ui/edit_profile.dart';
 import 'package:nile_brand/features/profile/ui/feedback.dart';
+// import 'package:nile_brand/features/profile/ui/feedback.dart';
 import 'package:nile_brand/features/profile/ui/payment_methods.dart';
 
 import 'package:nile_brand/features/auth/ui/views/create_account.dart';
@@ -56,8 +57,12 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: Routes.addFeedback,
-        builder: (context, state) => const Feedback(),
+        builder: (context, state) => const FeedbackView(),
       ),
+      // GoRoute(
+      //   path: Routes.addFeedback,
+      //   // builder: (context, state) => Feedback(),
+      // ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
             AppNavigationBar(navigationShell: navigationShell),
