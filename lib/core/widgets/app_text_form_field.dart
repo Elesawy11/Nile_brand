@@ -92,7 +92,7 @@ class AppTextFormField extends StatelessWidget {
               )
             : null,
       ),
-      obscureText: hintText.contains("password"),
+      obscureText: hintText.contains("password")||hintText.contains("Password"),
       style: Styles.font20W400.copyWith(
         color: ColorManager.gray63,
       ),

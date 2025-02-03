@@ -8,6 +8,9 @@ import 'package:nile_brand/features/auth/ui/reset_password.dart';
 import 'package:nile_brand/features/category/ui/category_view.dart';
 import 'package:nile_brand/features/home/ui/home_view.dart';
 import 'package:nile_brand/features/my_cart/ui/my_cart_view.dart';
+import 'package:nile_brand/features/profile/ui/edit_profile.dart';
+import 'package:nile_brand/features/profile/ui/feedback.dart';
+import 'package:nile_brand/features/profile/ui/payment_methods.dart';
 import 'package:nile_brand/features/profile/ui/profile_view.dart';
 import 'package:nile_brand/features/start/ui/start_view.dart';
 import 'package:nile_brand/features/track_order/ui/teack_order_view.dart';
@@ -35,6 +38,18 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.creatAccount,
         builder: (context, state) => const CreateAccountView(),
+      ),
+      GoRoute(
+        path: Routes.editProfile,
+        builder: (context, state) => const EditProfile(),
+      ),
+      GoRoute(
+        path: Routes.editPaymentMethods,
+        builder: (context, state) => const PaymentMethods(),
+      ),
+      GoRoute(
+        path: Routes.addFeedback,
+        builder: (context, state) => const Feedback(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
