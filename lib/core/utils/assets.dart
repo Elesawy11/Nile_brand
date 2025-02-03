@@ -2,6 +2,8 @@
 class Assets {
   Assets._();
   
+  static const String imagesActiveCartIcon = "assets/images/activeCartIcon.png";
+
   static const String imagesActiveCategoryIcon = "assets/images/activeCategoryIcon.png";
 
   static const String imagesActiveHomeIcon = "assets/images/activeHomeIcon.png";
@@ -22,13 +24,18 @@ class Assets {
 
   static const String imagesCategoryIcon = "assets/images/categoryIcon.png";
 
+  static const String imagesChatboot = "assets/images/chatboot.png";
+
   static const String imagesClothes = "assets/images/clothes.png";
+
 
   static const String imagesDarkModeIcon = "assets/images/dark_mode_icon.png";
 
   static const String imagesFavoriteIcon = "assets/images/favorite_icon.png";
 
   static const String imagesFeadbackIcon = "assets/images/feadback_icon.png";
+
+  
 
   static const String imagesFilter = "assets/images/filter.png";
 
@@ -43,6 +50,7 @@ class Assets {
   static const String imagesMessageIcon = "assets/images/message_icon.png";
 
   static const String imagesNotificationIcon = "assets/images/notification_icon.png";
+
 
   static const String imagesNotificationInfo = "assets/images/notification_info.png";
 
@@ -59,6 +67,12 @@ class Assets {
   static const String imagesStart = "assets/images/start.png";
 
   static const String imagesTestItem = "assets/images/test_item.png";
+
+
+  static const String imagesUnreadMessageIcon = "assets/images/unreadMessageIcon.png";
+
+  static const String imagesUnreadNotificationIcon = "assets/images/unreadNotificationIcon.png";
+
 
   static const String imagesWishlistIcon = "assets/images/wishlistIcon.png";
 

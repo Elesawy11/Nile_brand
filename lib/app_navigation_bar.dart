@@ -9,11 +9,23 @@ class AppNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniCenterFloat,
-      // floatingActionButton: const CustomFloatingActionButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // context.go(Routes.chatBoot);
+        },
+        backgroundColor: Colors.white.withValues(alpha: 0),
+        elevation: 0,
+        child: Image.asset(
+          Assets.imagesChatboot,
+          width: 56.r,
+          height: 56.r,
+        ),
+      ),
       body: navigationShell,
       bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         currentIndex: navigationShell.currentIndex,
         onTap: (int index) => navigationShell.goBranch(index),
         items: [
@@ -78,7 +90,7 @@ class AppNavigationBar extends StatelessWidget {
             label: '',
             activeIcon: Image.asset(
               // ActiveCartIcon
-              Assets.imagesCartIcon,
+              Assets.imagesActiveCartIcon,
               width: 24.r,
               height: 24.r,
             ),

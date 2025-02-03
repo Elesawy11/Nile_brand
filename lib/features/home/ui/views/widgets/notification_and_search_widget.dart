@@ -19,7 +19,7 @@ class NotificationAndSearchWidget extends StatelessWidget {
         GestureDetector(
         
           child: Image.asset(
-            Assets.imagesMessageIcon,
+            Assets.unreadMessageIcon,
             width: 23.w,
             height: 23.h,
             color: Colors.black,
@@ -45,7 +45,7 @@ class NotificationAndSearchWidget extends StatelessWidget {
         ),
         GestureDetector(
           child: Image.asset(
-            Assets.imagesNotificationIcon,
+            Assets.unreadNotificationIcon,
             width: 23,
             height: 23,
             color: Colors.black,

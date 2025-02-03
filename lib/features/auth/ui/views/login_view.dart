@@ -7,9 +7,9 @@ import 'package:nile_brand/core/utils/spacer.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/core/widgets/app_text_button.dart';
 import 'package:nile_brand/core/widgets/app_text_form_field.dart';
-import 'package:nile_brand/features/auth/ui/widgets/custom_auth_bar_widget.dart';
-import 'package:nile_brand/features/auth/ui/widgets/divider_and_text.dart';
-import 'package:nile_brand/features/auth/ui/widgets/google_signin_widget.dart';
+import 'package:nile_brand/features/auth/ui/views/widgets/custom_auth_bar_widget.dart';
+import 'package:nile_brand/features/auth/ui/views/widgets/divider_and_text.dart';
+import 'package:nile_brand/features/auth/ui/views/widgets/google_signin_widget.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
