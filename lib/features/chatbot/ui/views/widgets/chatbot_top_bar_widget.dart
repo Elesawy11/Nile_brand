@@ -84,7 +84,7 @@ class ChatbotTopBarWidget extends StatelessWidget {
               height: 24.r,
             ),
           ),
-          horizontalSpace(36)
+          horizontalSpace(30)
         ],
       ),
     );

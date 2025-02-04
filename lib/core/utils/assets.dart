@@ -32,6 +32,8 @@ class Assets {
 
   static const String imagesChatbotImage2 = "assets/images/chatbotImage2.png";
 
+  static const String imagesChatbotLogo = "assets/images/chatbotLogo.png";
+
   static const String imagesClothes = "assets/images/clothes.png";
 
   static const String imagesDarkModeIcon = "assets/images/dark_mode_icon.png";
@@ -78,6 +80,12 @@ class Assets {
 
   static const String imagesWishlistIcon = "assets/images/wishlistIcon.png";
 
+  static const String svgImagesExport = "assets/svgImages/export.svg";
+
   static const String svgImagesLogo = "assets/svgImages/logo.svg";
+
+  static const String svgImagesSendIcon = "assets/svgImages/sendIcon.svg";
+
+  static const String svgImagesVolumeIcon = "assets/svgImages/volumeIcon.svg";
 }
 
