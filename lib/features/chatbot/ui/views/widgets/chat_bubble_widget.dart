@@ -32,15 +32,13 @@ class ChatBubbleWidget extends StatelessWidget {
           ),
         ),
         constraints: BoxConstraints(
-          maxWidth: MediaQuery.of(context).size.width * 0.8,
-          minHeight: 54.h,
+          maxWidth: MediaQuery.of(context).size.width * 0.7,
+          // minWidth: 100.w,
         ),
-        child: Center(
-          child: Text(
-            text,
-            style: Styles.font13W700.copyWith(
-              color: textColor,
-            ),
+        child: Text(
+          text,
+          style: Styles.font13W700.copyWith(
+            color: textColor,
           ),
         ),
       ),
