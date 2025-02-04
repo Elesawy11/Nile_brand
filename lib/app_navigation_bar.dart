@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/utils/assets.dart';
 
+import 'core/routing/routes.dart';
+
 class AppNavigationBar extends StatelessWidget {
   const AppNavigationBar({super.key, required this.navigationShell});
   final StatefulNavigationShell navigationShell;
@@ -12,7 +14,7 @@ class AppNavigationBar extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // context.go(Routes.chatBoot);
+          context.go(Routes.chatbotOnboarding);
         },
         backgroundColor: Colors.white,
         elevation: 0,

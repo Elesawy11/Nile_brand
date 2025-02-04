@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/app_navigation_bar.dart';
 import 'package:nile_brand/core/routing/routes.dart';
+import 'package:nile_brand/features/chatbot/ui/views/chatbot_onboarding_view.dart';
+import 'package:nile_brand/features/chatbot/ui/views/chatbot_view.dart';
 
 import 'package:nile_brand/features/profile/ui/edit_profile.dart';
 import 'package:nile_brand/features/profile/ui/feedback.dart';
@@ -59,10 +61,14 @@ abstract class AppRouter {
         path: Routes.addFeedback,
         builder: (context, state) => const FeedbackView(),
       ),
-      // GoRoute(
-      //   path: Routes.addFeedback,
-      //   // builder: (context, state) => Feedback(),
-      // ),
+      GoRoute(
+        path: Routes.chatbot,
+        builder: (context, state) => const ChatbotView(),
+      ),
+      GoRoute(
+        path: Routes.chatbotOnboarding,
+        builder: (context, state) => const ChatbotOnboardingView(),
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
             AppNavigationBar(navigationShell: navigationShell),

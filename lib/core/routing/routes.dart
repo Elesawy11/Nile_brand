@@ -14,4 +14,6 @@ abstract class Routes {
   static const String editProfile = '/editProfile';
   static const String editPaymentMethods = '/paymentMethods';
   static const String addFeedback = '/addFeedback';
+  static const String chatbot = '/chatbot';
+  static const String chatbotOnboarding = '/chatbotOnboarding';
 }

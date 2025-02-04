@@ -28,16 +28,19 @@ class Assets {
 
   static const String imagesChatboot = "assets/images/chatboot.png";
 
-  static const String imagesClothes = "assets/images/clothes.png";
+  static const String imagesChatbootImage = "assets/images/chatbootImage.png";
 
+  static const String imagesChatbotImage2 = "assets/images/chatbotImage2.png";
+
+  static const String imagesChatbotLogo = "assets/images/chatbotLogo.png";
+
+  static const String imagesClothes = "assets/images/clothes.png";
 
   static const String imagesDarkModeIcon = "assets/images/dark_mode_icon.png";
 
   static const String imagesFavoriteIcon = "assets/images/favorite_icon.png";
 
   static const String imagesFeadbackIcon = "assets/images/feadback_icon.png";
-
-  
 
   static const String imagesFilter = "assets/images/filter.png";
 
@@ -52,7 +55,6 @@ class Assets {
   static const String imagesMessageIcon = "assets/images/message_icon.png";
 
   static const String imagesNotificationIcon = "assets/images/notification_icon.png";
-
 
   static const String imagesNotificationInfo = "assets/images/notification_info.png";
 
@@ -72,14 +74,18 @@ class Assets {
 
   static const String imagesTestItem = "assets/images/test_item.png";
 
-
   static const String imagesUnreadMessageIcon = "assets/images/unreadMessageIcon.png";
 
   static const String imagesUnreadNotificationIcon = "assets/images/unreadNotificationIcon.png";
 
-
   static const String imagesWishlistIcon = "assets/images/wishlistIcon.png";
 
+  static const String svgImagesExport = "assets/svgImages/export.svg";
+
   static const String svgImagesLogo = "assets/svgImages/logo.svg";
+
+  static const String svgImagesSendIcon = "assets/svgImages/sendIcon.svg";
+
+  static const String svgImagesVolumeIcon = "assets/svgImages/volumeIcon.svg";
 }
 
