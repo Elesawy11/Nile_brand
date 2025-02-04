@@ -32,7 +32,7 @@ class ChatBarWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Hello chatGPT,how are you today?',
+              'Hello chatbot,how are you today?',
               style: Styles.font13W700.copyWith(
                 color: ColorManager.blue33,
               ),
