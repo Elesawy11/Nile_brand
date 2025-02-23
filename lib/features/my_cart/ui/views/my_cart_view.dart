@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/spacer.dart';
 import 'package:nile_brand/core/utils/styles.dart';
+import 'package:nile_brand/core/widgets/app_text_button.dart';
 import 'widgets/cart_checkout_widget.dart';
 import 'widgets/my_cart_item_widget.dart';
 
@@ -25,9 +26,27 @@ class MyCartView extends StatelessWidget {
                   style: Styles.font24W500,
                 ),
               ),
+              verticalSpace(12),
+              // clear all button
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 12.w),
+                  child: SizedBox(
+                    width: 100.w,
+                    height: 38.h,
+                    child: AppTextButton(
+                      text: 'clear all',
+                      onPressed: () {},
+                      backgroundColor: ColorManager.mainColor,
+                      borderRadius: 6.r,
+                    ),
+                  ),
+                ),
+              ),
               verticalSpace(18),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.7,
+                height: MediaQuery.of(context).size.height * 0.55,
                 child: ListView.builder(
                   itemCount: 6,
                   itemBuilder: (context, index) {
@@ -39,7 +58,7 @@ class MyCartView extends StatelessWidget {
                   },
                 ),
               ),
-              verticalSpace(34),
+              verticalSpace(18),
               Container(
                 height: 256.h,
                 decoration: BoxDecoration(

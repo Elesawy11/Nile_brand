@@ -11,12 +11,14 @@ class AppTextButton extends StatelessWidget {
     this.backgroundColor,
     this.textColor,
     this.borderColor,
+    this.borderRadius,
   });
   final void Function()? onPressed;
   final String text;
   final Color? backgroundColor;
   final Color? textColor;
   final Color? borderColor;
+  final double? borderRadius;
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -33,7 +35,7 @@ class AppTextButton extends StatelessWidget {
             width: 1.w,
           ),
           borderRadius: BorderRadius.circular(
-            40.r,
+            borderRadius ?? 40.r,
           ),
         ),
       ),
