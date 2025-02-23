@@ -13,10 +13,11 @@ class AppNavigationBar extends StatelessWidget {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       floatingActionButton: FloatingActionButton(
+        isExtended: true,
         onPressed: () {
           context.go(Routes.chatbotOnboarding);
         },
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.white.withOpacity(0),
         elevation: 0,
         child: Image.asset(
           Assets.imagesChatboot,

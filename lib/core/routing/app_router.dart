@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/app_navigation_bar.dart';
 import 'package:nile_brand/core/routing/routes.dart';
+import 'package:nile_brand/features/auth/ui/views/verification_screen.dart';
 import 'package:nile_brand/features/chatbot/ui/views/chatbot_onboarding_view.dart';
 import 'package:nile_brand/features/chatbot/ui/views/chatbot_view.dart';
 
@@ -68,6 +69,10 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.chatbotOnboarding,
         builder: (context, state) => const ChatbotOnboardingView(),
+      ),
+      GoRoute(
+        path: Routes.verificationScreen,
+        builder: (context, state) => const VerificationScreen(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>

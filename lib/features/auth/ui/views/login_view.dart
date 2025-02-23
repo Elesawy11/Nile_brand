@@ -11,9 +11,15 @@ import 'package:nile_brand/features/auth/ui/views/widgets/custom_auth_bar_widget
 import 'package:nile_brand/features/auth/ui/views/widgets/divider_and_text.dart';
 import 'package:nile_brand/features/auth/ui/views/widgets/google_signin_widget.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  final ValueNotifier<bool> viewPass = ValueNotifier<bool>(true);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +41,22 @@ class LoginView extends StatelessWidget {
                 validator: (p0) {},
               ),
               verticalSpace(35),
-              AppTextFormField(
-                labelText: 'Password',
-                hintText: 'password',
-                validator: (p0) {},
+              ValueListenableBuilder<bool>(
+                valueListenable: viewPass,
+                
+                builder: (context, value, child) {
+                  return AppTextFormField(
+                    labelText: 'Password',
+                    hintText: 'password',
+                    isObscureText: viewPass.value,
+                    
+                    suffixIcon: IconButton(
+                      onPressed: (){
+                        viewPass.value = !value;
+                      }, icon:viewPass.value ? const Icon(Icons.visibility_off_outlined): const Icon(Icons.visibility_outlined)),
+                    validator: (p0) {},
+                  );
+                }
               ),
               verticalSpace(10),
               Align(
@@ -54,29 +72,51 @@ class LoginView extends StatelessWidget {
                 ),
               ),
               verticalSpace(47),
-              AppTextButton(
-                text: 'Login',
-                onPressed: () => context.push(Routes.home),
-                backgroundColor: ColorManager.mainColor,
+               Center(
+                child: SizedBox(
+                  width: 300.w,
+                  child: AppTextButton(
+                    text: 'Login',
+                    onPressed: () {
+                      context.push(Routes.home);
+                    },
+                    backgroundColor: ColorManager.mainColor,
+                  ),
+                ),
               ),
               verticalSpace(35),
               const DividerAndText(),
               verticalSpace(36),
-              const GoogleSigninWidget(
-                text: 'Continue with Google',
-                backgroundColor: ColorManager.grayE4,
-              ),
-              verticalSpace(54),
-              Align(
-                alignment: Alignment.center,
-                child: GestureDetector(
-                  onTap: () => context.push(Routes.creatAccount),
-                  child: Text(
-                    'Create an account',
-                    style: Styles.font20W600,
+               Center(
+                child: SizedBox(
+                  width: 300.w,
+                  child: const GoogleSigninWidget(
+                    text: 'Continue with Google',
+                    backgroundColor: ColorManager.grayE4,
                   ),
                 ),
               ),
+              verticalSpace(54),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Don’t have account? ',
+                      style: Styles.font14W400.copyWith(
+                        color: Colors.black,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () => context.push(Routes.creatAccount),
+                      child: Text(
+                        'sign up now',
+                        style: Styles.font14W500.copyWith(
+                          color: ColorManager.blue33,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
             ],
           ),
         ),

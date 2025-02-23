@@ -11,7 +11,7 @@ class DividerAndText extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          width: MediaQuery.of(context).size.width * 0.25,
+          width: MediaQuery.of(context).size.width * 0.30,
           child: const Divider(
             color: ColorManager.gray76,
             thickness: 1,

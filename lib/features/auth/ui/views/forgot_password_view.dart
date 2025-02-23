@@ -40,16 +40,26 @@ class ForgotPasswordView extends StatelessWidget {
                 backgroundColor: ColorManager.mainColor,
               ),
               verticalSpace(230),
-              Align(
-                alignment: Alignment.center,
-                child: GestureDetector(
-                  onTap:() => context.go(Routes.creatAccount),
-                  child: Text(
-                    'Create an account',
-                    style: Styles.font20W600,
-                  ),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Don’t have account? ',
+                      style: Styles.font14W400.copyWith(
+                        color: Colors.black,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () => context.push(Routes.creatAccount),
+                      child: Text(
+                        'sign up now',
+                        style: Styles.font14W500.copyWith(
+                          color: ColorManager.blue33,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
             ],
           ),
         ),
