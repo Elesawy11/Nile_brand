@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/styles.dart';
+import 'package:nile_brand/core/widgets/app_text_button.dart';
 import 'package:nile_brand/features/track_order/presentation/views/constatns.dart';
 import 'widgets/custom_time_line_tile_widget.dart';
 
@@ -20,13 +22,22 @@ class TrackOrderView extends StatelessWidget {
                 style: Styles.font24W500,
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.8,
+                height: MediaQuery.of(context).size.height * 0.7,
                 child: ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: 3,
                   itemBuilder: (context, index) {
                     return itemBuilder(context, index);
                   },
+                ),
+              ),
+              SizedBox(
+                height: 50.h,
+                width: 120.w,
+                child: AppTextButton(
+                  text: 'Done',
+                  onPressed: () {},
+                  backgroundColor: ColorManager.mainColor,
                 ),
               ),
             ],
