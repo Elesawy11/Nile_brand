@@ -41,19 +41,28 @@ class MyCartItemWidget extends StatelessWidget {
                         style: Styles.font20W400,
                       ),
                     ),
-                    Icon(
-                      Icons.close,
-                      color: ColorManager.gray8C,
-                      size: 16.r,
+                    InkWell(
+                      onTap: () {},
+                      child: Icon(
+                        Icons.close,
+                        color: ColorManager.gray8C,
+                        size: 16.r,
+                      ),
                     ),
                   ],
                 ),
                 verticalSpace(7),
                 Text(
-                  'ID: SC-1024',
-                  style: Styles.font17W400,
+                  'clothes',
+                  style: Styles.font16W400.copyWith(color: ColorManager.gray8C),
                 ),
-                const Spacer(),
+                Expanded(
+                  child: Text(
+                    'Elegant black dress featuring a sleek silhouette, designed with premium',
+                    style: Styles.font16W400,
+                  ),
+                ),
+                // const Spacer(),
                 SizedBox(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
