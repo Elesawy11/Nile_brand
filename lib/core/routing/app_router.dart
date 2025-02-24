@@ -21,7 +21,7 @@ import 'package:nile_brand/features/my_cart/ui/views/my_cart_view.dart';
 
 import 'package:nile_brand/features/profile/ui/profile_view.dart';
 import 'package:nile_brand/features/start/ui/views/start_view.dart';
-import 'package:nile_brand/features/track_order/ui/teack_order_view.dart';
+import 'package:nile_brand/features/track_order/presentation/views/track_order_view.dart';
 import 'package:nile_brand/features/wish_list/ui/wish_list_view.dart';
 
 abstract class AppRouter {

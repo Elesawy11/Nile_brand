@@ -60,7 +60,13 @@ class Assets {
 
   static const String imagesNotificationInfo = "assets/images/notification_info.png";
 
+  static const String imagesOrderDelvering = "assets/images/order_delvering.png";
+
   static const String imagesOrderIcon = "assets/images/orderIcon.png";
+
+  static const String imagesOrderPending = "assets/images/order_pending.png";
+
+  static const String imagesOrderShipped = "assets/images/order_shipped.png";
 
   static const String imagesPaymentMethods = "assets/images/payment_methods.png";
 
