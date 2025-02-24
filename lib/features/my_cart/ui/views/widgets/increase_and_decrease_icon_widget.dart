@@ -18,7 +18,7 @@ class IncreaseAndDecreaseIconWidget extends StatelessWidget {
         color: ColorManager.grayD9,
         borderRadius: BorderRadius.circular(43.r),
       ),
-      child: GestureDetector(
+      child: InkWell(
         onTap: onTap,
         child: Icon(
           icon,

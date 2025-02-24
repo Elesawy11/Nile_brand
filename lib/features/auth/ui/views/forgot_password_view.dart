@@ -49,7 +49,7 @@ class ForgotPasswordView extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-                    GestureDetector(
+                    InkWell(
                       onTap: () => context.push(Routes.creatAccount),
                       child: Text(
                         'sign up now',

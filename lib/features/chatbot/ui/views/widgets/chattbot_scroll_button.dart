@@ -9,7 +9,7 @@ class ChatbotScrollButton extends StatelessWidget {
   final double progress;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () => getIt.get<ChatbotScrollCubit>().scroll(),
       child: SizedBox(
         child: Stack(

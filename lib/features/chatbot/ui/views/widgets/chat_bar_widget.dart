@@ -37,7 +37,7 @@ class ChatBarWidget extends StatelessWidget {
                 color: ColorManager.blue33,
               ),
             ),
-            GestureDetector(
+            InkWell(
               onTap: () {},
               child: SvgPicture.asset(
                 Assets.svgImagesSendIcon,

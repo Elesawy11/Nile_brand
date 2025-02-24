@@ -13,7 +13,7 @@ class CustomeItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: (){
         
       },
@@ -40,7 +40,7 @@ class CustomeItem extends StatelessWidget {
                   left: 75.w,
       
                   top: 60.h,
-                  child: GestureDetector(
+                  child: InkWell(
                       onTap: () {},
                       child: Image.asset(
                         "assets/images/favorite_icon.png",
@@ -70,7 +70,7 @@ class CustomeItem extends StatelessWidget {
                         "250 L.E",
                         style: Styles.font14W500,
                       ),
-                      GestureDetector(
+                      InkWell(
                           onTap: () {
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(const SnackBar(

@@ -17,7 +17,7 @@ class TopViewBarWidget extends StatelessWidget {
     return Row(
       children: [
         horizontalSpace(24),
-        GestureDetector(
+        InkWell(
           onTap: () => context.pop(),
           child: Image.asset(
             Assets.imagesArrowLeftIcon,

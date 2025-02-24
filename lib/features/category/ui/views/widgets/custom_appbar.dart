@@ -48,7 +48,7 @@ class _CustomeAppbarState extends State<CustomeAppbar>
                     child: CustomTabBar(tabController: widget.tabController)),
                 Expanded(
                   flex: 1,
-                  child: GestureDetector(
+                  child: InkWell(
                     child: Image.asset(
                       "assets/images/filter.png",
                       width: 20,

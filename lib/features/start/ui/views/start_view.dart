@@ -58,7 +58,7 @@ class StartView extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    GestureDetector(
+                    InkWell(
                       onTap: () => context.push(Routes.creatAccount),
                       child: Text(
                         'Create now',

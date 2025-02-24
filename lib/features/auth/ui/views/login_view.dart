@@ -61,7 +61,7 @@ class _LoginViewState extends State<LoginView> {
               verticalSpace(10),
               Align(
                 alignment: Alignment.centerRight,
-                child: GestureDetector(
+                child: InkWell(
                   onTap: () => context.push(Routes.forgotPassword),
                   child: Text(
                     'Forgot Password?',
@@ -106,7 +106,7 @@ class _LoginViewState extends State<LoginView> {
                         color: Colors.black,
                       ),
                     ),
-                    GestureDetector(
+                    InkWell(
                       onTap: () => context.push(Routes.creatAccount),
                       child: Text(
                         'sign up now',

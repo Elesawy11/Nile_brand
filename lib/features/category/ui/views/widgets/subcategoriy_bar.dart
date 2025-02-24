@@ -25,7 +25,7 @@ class SubcategoriyBar extends StatelessWidget {
                     alignment: Alignment.topLeft,
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 8.0),
-                      child: GestureDetector(
+                      child: InkWell(
                         onTap: () {},
                         child: Text(
                           subcategory,

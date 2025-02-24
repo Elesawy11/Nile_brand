@@ -86,7 +86,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                       color: Colors.black,
                     ),
                   ),
-                  GestureDetector(
+                  InkWell(
                     onTap: () => context.push(Routes.creatAccount),
                     child: Text(
                       'sign up now',
