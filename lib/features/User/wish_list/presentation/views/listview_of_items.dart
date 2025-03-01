@@ -74,7 +74,7 @@ class ListviewOfItemsOfWhishlist extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 style: Styles.font16W400,
                                 softWrap: true,
-                                maxLines:4 ,
+                                maxLines: 4,
                               ),
                             ),
                           ),
@@ -91,6 +91,7 @@ class ListviewOfItemsOfWhishlist extends StatelessWidget {
                                 width: 110.w,
                                 height: 40.h,
                                 child: AppTextButton(
+                                  borderRadius: 12.r,
                                   text: "Add to Cart",
                                   backgroundColor: ColorManager.mainColor,
                                   textColor: Colors.white,
