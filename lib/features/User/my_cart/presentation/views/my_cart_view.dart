@@ -17,18 +17,20 @@ class MyCartView extends StatelessWidget {
         bottom: false,
         left: false,
         right: false,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Center(
-                child: Text(
-                  'My Cart',
-                  style: Styles.font24W500,
-                ),
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              title: Text(
+                'My Cart',
+                style: Styles.font24W500,
               ),
-              verticalSpace(12),
-              // clear all button
-              Align(
+              centerTitle: true,
+            ),
+            SliverToBoxAdapter(
+              child: verticalSpace(12),
+            ),
+            SliverToBoxAdapter(
+              child: Align(
                 alignment: Alignment.centerRight,
                 child: Padding(
                   padding: EdgeInsets.only(right: 12.w),
@@ -44,22 +46,27 @@ class MyCartView extends StatelessWidget {
                   ),
                 ),
               ),
-              verticalSpace(18),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.55,
-                child: ListView.builder(
-                  itemCount: 6,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.only(
-                          left: 12.w, right: 12.w, bottom: 18.h),
-                      child: const MyCartItemWidget(),
-                    );
-                  },
-                ),
-              ),
-              verticalSpace(18),
-              Container(
+            ),
+            SliverToBoxAdapter(
+              child: verticalSpace(18),
+            ),
+            SliverList.builder(
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      left: 12.w,
+                      right: 12.w,
+                      bottom: 18.h,
+                    ),
+                    child: const MyCartItemWidget(),
+                  );
+                },
+                itemCount: 6),
+            SliverToBoxAdapter(
+              child: verticalSpace(18),
+            ),
+            SliverToBoxAdapter(
+              child: Container(
                 height: 256.h,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -75,9 +82,9 @@ class MyCartView extends StatelessWidget {
                   ),
                 ),
                 child: const CartCheckoutWidget(),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
