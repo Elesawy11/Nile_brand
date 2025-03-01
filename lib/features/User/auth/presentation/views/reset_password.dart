@@ -83,7 +83,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                   Text(
                     'Don’t have account? ',
                     style: Styles.font14W400.copyWith(
-                      color: Colors.black,
+                      color: ColorManager.mainText,
                     ),
                   ),
                   InkWell(

@@ -47,7 +47,7 @@ class GoogleSigninWidget extends StatelessWidget {
           Text(
             text,
             style: Styles.font20W400.copyWith(
-              color: ColorManager.gray63,
+              color: ColorManager.subText,
             ),
           ),
         ],

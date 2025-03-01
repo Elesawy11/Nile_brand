@@ -86,7 +86,9 @@ class _CreateAccountViewState extends State<CreateAccountView> {
               verticalSpace(20),
               Text(
                 "Rule",
-                style: Styles.font20W400.copyWith(color: Colors.black),
+                style: Styles.font20W400.copyWith(
+                  color: ColorManager.mainText,
+                ),
               ),
               DropdownMenu(
                   hintText: "User",

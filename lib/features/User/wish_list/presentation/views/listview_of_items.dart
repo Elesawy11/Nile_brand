@@ -58,8 +58,9 @@ class ListviewOfItemsOfWhishlist extends StatelessWidget {
                           // product id
                           Text(
                             "clothes",
-                            style: Styles.font17W400
-                                .copyWith(color: ColorManager.gray8C),
+                            style: Styles.font17W400.copyWith(
+                              color: ColorManager.subText,
+                            ),
                           ),
 
                           // product subcategory

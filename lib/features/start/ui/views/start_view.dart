@@ -63,7 +63,7 @@ class StartView extends StatelessWidget {
                       child: Text(
                         'Create now',
                         style: Styles.font14W500.copyWith(
-                          color: Colors.black,
+                          color: ColorManager.mainText,
                         ),
                       ),
                     ),

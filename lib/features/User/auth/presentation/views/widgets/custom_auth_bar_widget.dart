@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/spacer.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 
@@ -28,7 +29,7 @@ class CustomAuthWelcomeWidget extends StatelessWidget {
         Text(
           subTitle,
           style: Styles.font20W400.copyWith(
-            color: Colors.black,
+            color: ColorManager.mainText,
           ),
         )
       ],

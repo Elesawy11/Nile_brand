@@ -33,7 +33,9 @@ class VerificationScreen extends StatelessWidget {
               ),
               Text(
                 "example@gmail.com",
-                style: Styles.font20W400.copyWith(color: ColorManager.blue33),
+                style: Styles.font20W400.copyWith(
+                  color: ColorManager.blue33,
+                ),
               ),
               verticalSpace(30.h),
               SizedBox(

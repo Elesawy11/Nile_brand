@@ -15,8 +15,8 @@ abstract class ColorManager {
   static const Color gray50 = Color(0xFF505050);
   static const Color green3A = Color(0xFF3ABF38);
   static const Color red76 = Color(0xFF760D0D);
-  // static const Color mainText = Color(0xFF033555);
-  // static const Color subText = Color(0xFF760D0D);
+  static const Color mainText = Color(0xFF033555);
+  static const Color subText = Color(0xFF636363);
   // static const Color buttonText = Color(0xFFffffff);
   // border radius
   // padding horizontal ==12

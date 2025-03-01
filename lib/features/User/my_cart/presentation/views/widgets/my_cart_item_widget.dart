@@ -54,7 +54,9 @@ class MyCartItemWidget extends StatelessWidget {
                 verticalSpace(7),
                 Text(
                   'clothes',
-                  style: Styles.font16W400.copyWith(color: ColorManager.gray8C),
+                  style: Styles.font16W400.copyWith(
+                    color: ColorManager.subText,
+                  ),
                 ),
                 Expanded(
                   child: Text(

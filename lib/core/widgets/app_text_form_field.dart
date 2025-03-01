@@ -75,7 +75,7 @@ class AppTextFormField extends StatelessWidget {
         ),
         hintStyle: hintStyle ??
             Styles.font20W400.copyWith(
-              color: ColorManager.gray63,
+              color: ColorManager.subText,
             ),
         hintText: hintText,
         suffixIcon: suffixIcon,
@@ -87,14 +87,14 @@ class AppTextFormField extends StatelessWidget {
             ? Text(
                 labelText ?? '',
                 style: Styles.font20W400.copyWith(
-                  color: Colors.black,
+                  color: ColorManager.mainText,
                 ),
               )
             : null,
       ),
       obscureText: isObscureText ?? false,
       style: Styles.font20W400.copyWith(
-        color: ColorManager.gray63,
+        color: ColorManager.subText,
       ),
       validator: (value) {
         return validator(value);

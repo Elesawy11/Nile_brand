@@ -103,7 +103,7 @@ class _LoginViewState extends State<LoginView> {
                   Text(
                     'Don’t have account? ',
                     style: Styles.font14W400.copyWith(
-                      color: Colors.black,
+                      color: ColorManager.mainText,
                     ),
                   ),
                   InkWell(
