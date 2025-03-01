@@ -21,9 +21,16 @@ class VerificationScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               verticalSpace(30.h),
-              Text("verification",style: Styles.font35W700,),
+              Text(
+                "verification",
+                style: Styles.font35W700,
+              ),
               verticalSpace(40.h),
-              Text(textAlign: TextAlign.center,"Please enter the code we just end to Email",style: Styles.font20W400,),
+              Text(
+                textAlign: TextAlign.center,
+                "Please enter the code we just end to Email",
+                style: Styles.font20W400,
+              ),
               Text(
                 "example@gmail.com",
                 style: Styles.font20W400.copyWith(color: ColorManager.blue33),
@@ -35,15 +42,18 @@ class VerificationScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    for (int i = 0; i < 5;i++)
+                    for (int i = 0; i < 5; i++)
                       SizedBox(
                           width: 44.w,
                           height: 44.h,
                           child: TextFormField(
                             decoration: const InputDecoration(
-                              border: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-                              focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.black))
-                            ),
+                                border: OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.black)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.black))),
                             keyboardType: TextInputType.number,
                             textAlign: TextAlign.center,
                             inputFormatters: [
@@ -55,32 +65,24 @@ class VerificationScreen extends StatelessWidget {
                                 FocusScope.of(context).nextFocus();
                               }
                             },
-                          )
-                          )
+                          ))
                   ],
                 ),
-
-                
               ),
-
               verticalSpace(30.h),
-
-              Text("00 : 45",style: Styles.font20W400,),
-
+              Text(
+                "00 : 45",
+                style: Styles.font20W400,
+              ),
               verticalSpace(30.h),
-
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30.w),
                 child: AppTextButton(
                   text: 'Verify',
-                  onPressed: () {
-                    
-                  },
+                  onPressed: () {},
                   backgroundColor: ColorManager.mainColor,
                 ),
               ),
-
-
             ],
           ),
         ),

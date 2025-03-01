@@ -21,7 +21,7 @@ class CategoriesAndFilterWidget extends StatelessWidget {
             height: 32.h,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount:AppStrings.mainCategories.length,
+              itemCount: AppStrings.mainCategories.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.only(right: 24.w),
@@ -44,5 +44,3 @@ class CategoriesAndFilterWidget extends StatelessWidget {
     );
   }
 }
-
-

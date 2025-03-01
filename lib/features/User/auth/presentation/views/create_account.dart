@@ -25,7 +25,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,41 +48,41 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                 validator: (p0) {},
               ),
               verticalSpace(30),
-             ValueListenableBuilder<bool>(
-                valueListenable: viewPass,
-                
-                builder: (context, value, child) {
-                  return AppTextFormField(
-                    labelText: 'Password',
-                    hintText: 'password',
-                    isObscureText: viewPass.value,
-                    
-                    suffixIcon: IconButton(
-                      onPressed: (){
-                        viewPass.value = !value;
-                      }, icon:viewPass.value ? const Icon(Icons.visibility_off_outlined): const Icon(Icons.visibility_outlined)),
-                    validator: (p0) {},
-                  );
-                }
-              ),
+              ValueListenableBuilder<bool>(
+                  valueListenable: viewPass,
+                  builder: (context, value, child) {
+                    return AppTextFormField(
+                      labelText: 'Password',
+                      hintText: 'password',
+                      isObscureText: viewPass.value,
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            viewPass.value = !value;
+                          },
+                          icon: viewPass.value
+                              ? const Icon(Icons.visibility_off_outlined)
+                              : const Icon(Icons.visibility_outlined)),
+                      validator: (p0) {},
+                    );
+                  }),
               verticalSpace(30),
-               ValueListenableBuilder<bool>(
-                valueListenable: viewRestPass,
-                
-                builder: (context, rest, child) {
-                  return AppTextFormField(
-                    labelText: 'Re-enter Password',
-                    hintText: 're-enter password',
-                    isObscureText: viewRestPass.value,
-                    
-                    suffixIcon: IconButton(
-                      onPressed: (){
-                        viewRestPass.value = !rest;
-                      }, icon:viewRestPass.value ? const Icon(Icons.visibility_off_outlined): const Icon(Icons.visibility_outlined)),
-                    validator: (p0) {},
-                  );
-                }
-              ),
+              ValueListenableBuilder<bool>(
+                  valueListenable: viewRestPass,
+                  builder: (context, rest, child) {
+                    return AppTextFormField(
+                      labelText: 'Re-enter Password',
+                      hintText: 're-enter password',
+                      isObscureText: viewRestPass.value,
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            viewRestPass.value = !rest;
+                          },
+                          icon: viewRestPass.value
+                              ? const Icon(Icons.visibility_off_outlined)
+                              : const Icon(Icons.visibility_outlined)),
+                      validator: (p0) {},
+                    );
+                  }),
               verticalSpace(20),
               Text(
                 "Rule",
