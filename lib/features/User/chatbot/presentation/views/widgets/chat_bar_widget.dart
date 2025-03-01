@@ -15,7 +15,7 @@ class ChatBarWidget extends StatelessWidget {
     return Container(
       height: 56.h,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(45.r),
+        borderRadius: BorderRadius.circular(40.r),
         color: Colors.white,
         boxShadow: const [
           BoxShadow(

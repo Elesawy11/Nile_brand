@@ -21,7 +21,7 @@ class ChatbotChatBubbleWidget extends StatelessWidget {
           width: 26.r,
           height: 26.r,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(45.r),
+            borderRadius: BorderRadius.circular(40.r),
             color: Colors.white,
             boxShadow: const [
               BoxShadow(

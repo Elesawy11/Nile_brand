@@ -39,7 +39,7 @@ class MyCartView extends StatelessWidget {
                       text: 'clear all',
                       onPressed: () {},
                       backgroundColor: ColorManager.mainColor,
-                      borderRadius: 6.r,
+                      borderRadius: 12.r,
                     ),
                   ),
                 ),
@@ -64,8 +64,8 @@ class MyCartView extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(41.r),
-                    topRight: Radius.circular(41.r),
+                    topLeft: Radius.circular(40.r),
+                    topRight: Radius.circular(40.r),
                   ),
                   border: const Border(
                     top: BorderSide(
