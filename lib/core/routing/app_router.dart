@@ -2,27 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/app_navigation_bar.dart';
 import 'package:nile_brand/core/routing/routes.dart';
-import 'package:nile_brand/features/User/auth/presentation/views/verification_screen.dart';
-import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_onboarding_view.dart';
-import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_view.dart';
-
-import 'package:nile_brand/features/User/profile/presentation/edit_profile.dart';
-import 'package:nile_brand/features/User/profile/presentation/feedback.dart';
-// import 'package:nile_brand/features/profile/ui/feedback.dart';
-import 'package:nile_brand/features/User/profile/presentation/payment_methods.dart';
-
-import 'package:nile_brand/features/User/auth/presentation/views/create_account.dart';
-import 'package:nile_brand/features/User/auth/presentation/views/forgot_password_view.dart';
-import 'package:nile_brand/features/User/auth/presentation/views/login_view.dart';
-import 'package:nile_brand/features/User/auth/presentation/views/reset_password.dart';
-import 'package:nile_brand/features/User/category/presentation/views/category_view.dart';
-import 'package:nile_brand/features/User/home/presentation/views/home_view.dart';
-import 'package:nile_brand/features/User/my_cart/presentation/views/my_cart_view.dart';
-
-import 'package:nile_brand/features/User/profile/presentation/profile_view.dart';
-import 'package:nile_brand/features/start/ui/views/start_view.dart';
-import 'package:nile_brand/features/User/track_order/presentation/views/track_order_view.dart';
-import 'package:nile_brand/features/User/wish_list/presentation/wish_list_view.dart';
+import "package:nile_brand/core/routing/exports.dart";
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();

@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/routing/routes.dart';
 import 'package:nile_brand/core/utils/assets.dart';
-import 'package:nile_brand/core/utils/spacer.dart';
+import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
-import 'package:nile_brand/features/User/profile/presentation/widgets/infoTile.dart';
+import 'package:nile_brand/features/User/profile/presentation/widgets/infotile.dart';
 import 'package:nile_brand/features/User/profile/presentation/widgets/profile_image.dart';
 
 class ProfileView extends StatelessWidget {
@@ -35,7 +35,7 @@ class ProfileView extends StatelessWidget {
                 style: Styles.font20W600,
               ),
               Padding(
-                padding: EdgeInsets.all(15.h),
+                padding: 15.allEdgeInsets,
                 child: const Divider(
                   endIndent: 2,
                   thickness: 1,
@@ -44,27 +44,25 @@ class ProfileView extends StatelessWidget {
               InfoTile(
                   leadingIcon: Assets.imagesProfileIcon,
                   title: "Edit Profile",
-                  trailling: IconButton(
-                      onPressed: () {
-                        context.push(Routes.editProfile);
-                      },
-                      icon: Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        size: 17.spMax,
-                      ))),
-              verticalSpace(20),
+                  ontap: () {
+                    context.push(Routes.editProfile);
+                  },
+                  trailling: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 17.spMax,
+                  )),
+              20.vs,
               InfoTile(
                   leadingIcon: Assets.imagesPaymentMethods,
                   title: "Payment Methods",
-                  trailling: IconButton(
-                      onPressed: () {
-                        context.push(Routes.editPaymentMethods);
-                      },
-                      icon: Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        size: 17.spMax,
-                      ))),
-              verticalSpace(20),
+                  ontap: () {
+                    context.push(Routes.editPaymentMethods);
+                  },
+                  trailling: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 17.spMax,
+                  )),
+              20.vs,
               InfoTile(
                   leadingIcon: Assets.imagesNotificationInfo,
                   title: "Notifications",
@@ -72,7 +70,7 @@ class ProfileView extends StatelessWidget {
                     value: false,
                     onChanged: (value) {},
                   )),
-              verticalSpace(20),
+              20.vs,
               InfoTile(
                   leadingIcon: Assets.imagesDarkModeIcon,
                   title: "Dark Mode",
@@ -80,23 +78,20 @@ class ProfileView extends StatelessWidget {
                     value: false,
                     onChanged: (value) {},
                   )),
-              verticalSpace(20),
-              InfoTile(
-                  leadingIcon: Assets.imagesFeadbackIcon,
-                  title: "Feadback",
-                  trailling: IconButton(
-                      onPressed: () {
-                        context.push(Routes.addFeedback);
-                      },
-                      icon: Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        size: 17.spMax,
-                      ))),
-              verticalSpace(20),
+              20.vs,
               InfoTile(
                   ontap: () {
-                    
+                    context.push(Routes.addFeedback);
                   },
+                  leadingIcon: Assets.imagesFeadbackIcon,
+                  title: "Feadback",
+                  trailling: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 17.spMax,
+                  )),
+              20.vs,
+              InfoTile(
+                  ontap: () {},
                   leadingIcon: Assets.imagesLogOutIcon,
                   title: "Log Out",
                   trailling: SizedBox(

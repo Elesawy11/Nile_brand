@@ -3,11 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/routing/routes.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
+import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/spacer.dart';
-import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/core/widgets/app_text_button.dart';
-import 'package:nile_brand/core/widgets/app_text_form_field.dart';
 import 'package:nile_brand/features/User/auth/presentation/views/widgets/custom_auth_bar_widget.dart';
+import 'package:nile_brand/features/User/auth/presentation/views/widgets/have_acount_text.dart';
+import 'package:nile_brand/features/User/auth/presentation/views/widgets/password_field.dart';
 
 class ResetPasswordView extends StatefulWidget {
   const ResetPasswordView({super.key});
@@ -18,6 +19,7 @@ class ResetPasswordView extends StatefulWidget {
 
 class _ResetPasswordViewState extends State<ResetPasswordView> {
   final ValueNotifier<bool> viewPass = ValueNotifier<bool>(true);
+  final ValueNotifier<bool> viewRestPass = ValueNotifier<bool>(true);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,70 +35,32 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                   subTitle:
                       "Enter your new password twice below to reset a new password."),
               verticalSpace(92),
-              ValueListenableBuilder<bool>(
-                  valueListenable: viewPass,
-                  builder: (context, value, child) {
-                    return AppTextFormField(
-                      labelText: 'Password',
-                      hintText: 'password',
-                      isObscureText: viewPass.value,
-                      suffixIcon: IconButton(
-                          onPressed: () {
-                            viewPass.value = !value;
-                          },
-                          icon: viewPass.value
-                              ? const Icon(Icons.visibility_off_outlined)
-                              : const Icon(Icons.visibility_outlined)),
-                      validator: (p0) {},
-                    );
-                  }),
+              PasswordField(
+                  viewPass: viewPass,
+                  labelText: "Password",
+                  hintText: "password"),
               verticalSpace(35),
-              ValueListenableBuilder<bool>(
-                  valueListenable: viewPass,
-                  builder: (context, value, child) {
-                    return AppTextFormField(
-                      labelText: 'Re-enter new Password',
-                      hintText: 're-enter new password',
-                      isObscureText: viewPass.value,
-                      suffixIcon: IconButton(
-                          onPressed: () {
-                            viewPass.value = !value;
-                          },
-                          icon: viewPass.value
-                              ? const Icon(Icons.visibility_off_outlined)
-                              : const Icon(Icons.visibility_outlined)),
-                      validator: (p0) {},
-                    );
-                  }),
+              PasswordField(
+                  viewPass: viewRestPass,
+                  labelText: 'Re-enter new Password',
+                  hintText: 're-enter new password'),
               verticalSpace(57),
-              AppTextButton(
-                text: 'Reser Password',
-                onPressed: () {
-                  context.push(Routes.verificationScreen);
-                },
-                backgroundColor: ColorManager.mainColor,
+              SizedBox(
+                height: 50.h,
+                width: 420.w,
+                child: Padding(
+                  padding: 50.ph,
+                  child: AppTextButton(
+                    text: 'Reset Password',
+                    onPressed: () {
+                      context.go(Routes.verificationScreen);
+                    },
+                    backgroundColor: ColorManager.mainColor,
+                  ),
+                ),
               ),
               verticalSpace(160),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Don’t have account? ',
-                    style: Styles.font14W400.copyWith(
-                      color: ColorManager.mainText,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () => context.push(Routes.creatAccount),
-                    child: Text(
-                      'sign up now',
-                      style: Styles.font14W500.copyWith(
-                        color: ColorManager.blue33,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              const HaveAcountText(),
             ],
           ),
         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:nile_brand/core/utils/styles.dart';
+import 'package:nile_brand/features/User/category/presentation/views/widgets/content_postion.dart';
 
 class CustomeItem extends StatelessWidget {
   // added at integration with api
@@ -97,30 +98,4 @@ class CustomeItem extends StatelessWidget {
   }
 }
 
-// ignore: must_be_immutable
-class ContentPosition extends StatelessWidget {
-  double? top;
-  double? left;
-  double? right;
-  double? bottom;
-  final Widget child;
 
-  ContentPosition({
-    Key? key,
-    this.top,
-    this.left,
-    this.right,
-    this.bottom,
-    required this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-        top: top ?? 0,
-        left: left ?? 0,
-        right: right ?? 0,
-        bottom: bottom ?? 0,
-        child: child);
-  }
-}

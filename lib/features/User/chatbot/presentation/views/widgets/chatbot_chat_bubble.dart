@@ -25,7 +25,7 @@ class ChatbotChatBubbleWidget extends StatelessWidget {
             color: Colors.white,
             boxShadow: const [
               BoxShadow(
-                color: ColorManager.grayE4,
+                color: ColorManager.lightGrey,
                 blurRadius: 2,
                 offset: Offset(0, 2.0),
               ),

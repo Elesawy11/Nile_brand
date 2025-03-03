@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
-import '../../../../../core/utils/spacer.dart';
+import 'package:nile_brand/core/utils/sizes_padding.dart';
+import 'package:nile_brand/features/User/auth/presentation/views/widgets/verification_code_input.dart';
+
 import '../../../../../core/utils/styles.dart';
 import '../../../../../core/widgets/app_text_button.dart';
 
@@ -20,12 +21,12 @@ class VerificationScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              verticalSpace(30.h),
+              30.vs,
               Text(
                 "verification",
                 style: Styles.font35W700,
               ),
-              verticalSpace(40.h),
+              40.vs,
               Text(
                 textAlign: TextAlign.center,
                 "Please enter the code we just end to Email",
@@ -37,52 +38,24 @@ class VerificationScreen extends StatelessWidget {
                   color: ColorManager.blue33,
                 ),
               ),
-              verticalSpace(30.h),
-              SizedBox(
-                width: 290.w,
-                height: 44.h,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    for (int i = 0; i < 5; i++)
-                      SizedBox(
-                          width: 44.w,
-                          height: 44.h,
-                          child: TextFormField(
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.black)),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.black))),
-                            keyboardType: TextInputType.number,
-                            textAlign: TextAlign.center,
-                            inputFormatters: [
-                              LengthLimitingTextInputFormatter(1),
-                              FilteringTextInputFormatter.digitsOnly,
-                            ],
-                            onChanged: (value) {
-                              if (value.length == 1) {
-                                FocusScope.of(context).nextFocus();
-                              }
-                            },
-                          ))
-                  ],
-                ),
-              ),
-              verticalSpace(30.h),
+              30.vs,
+              const VerificationCodeInput(),
+              30.vs,
               Text(
                 "00 : 45",
                 style: Styles.font20W400,
               ),
-              verticalSpace(30.h),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30.w),
-                child: AppTextButton(
-                  text: 'Verify',
-                  onPressed: () {},
-                  backgroundColor: ColorManager.mainColor,
+              30.vs,
+              SizedBox(
+                height: 50.h,
+                width: 370.w,
+                child: Padding(
+                  padding: 50.ph,
+                  child: AppTextButton(
+                    text: 'Verify',
+                    onPressed: () {},
+                    backgroundColor: ColorManager.mainColor,
+                  ),
                 ),
               ),
             ],

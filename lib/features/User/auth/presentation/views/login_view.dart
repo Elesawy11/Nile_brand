@@ -10,6 +10,8 @@ import 'package:nile_brand/core/widgets/app_text_form_field.dart';
 import 'package:nile_brand/features/User/auth/presentation/views/widgets/custom_auth_bar_widget.dart';
 import 'package:nile_brand/features/User/auth/presentation/views/widgets/divider_and_text.dart';
 import 'package:nile_brand/features/User/auth/presentation/views/widgets/google_signin_widget.dart';
+import 'package:nile_brand/features/User/auth/presentation/views/widgets/have_acount_text.dart';
+import 'package:nile_brand/features/User/auth/presentation/views/widgets/password_field.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -41,23 +43,7 @@ class _LoginViewState extends State<LoginView> {
                 validator: (p0) {},
               ),
               verticalSpace(35),
-              ValueListenableBuilder<bool>(
-                  valueListenable: viewPass,
-                  builder: (context, value, child) {
-                    return AppTextFormField(
-                      labelText: 'Password',
-                      hintText: 'password',
-                      isObscureText: viewPass.value,
-                      suffixIcon: IconButton(
-                          onPressed: () {
-                            viewPass.value = !value;
-                          },
-                          icon: viewPass.value
-                              ? const Icon(Icons.visibility_off_outlined)
-                              : const Icon(Icons.visibility_outlined)),
-                      validator: (p0) {},
-                    );
-                  }),
+              PasswordField(viewPass: viewPass, labelText: "Password", hintText: "password"),
               verticalSpace(10),
               Align(
                 alignment: Alignment.centerRight,
@@ -66,7 +52,7 @@ class _LoginViewState extends State<LoginView> {
                   child: Text(
                     'Forgot Password?',
                     style: Styles.font14W400.copyWith(
-                      color: ColorManager.red76,
+                      color: ColorManager.forgetPassColor,
                     ),
                   ),
                 ),
@@ -92,31 +78,12 @@ class _LoginViewState extends State<LoginView> {
                   width: 300.w,
                   child: const GoogleSigninWidget(
                     text: 'Continue with Google',
-                    backgroundColor: ColorManager.grayE4,
+                    backgroundColor: ColorManager.lightGrey,
                   ),
                 ),
               ),
               verticalSpace(54),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Don’t have account? ',
-                    style: Styles.font14W400.copyWith(
-                      color: ColorManager.mainText,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () => context.push(Routes.creatAccount),
-                    child: Text(
-                      'sign up now',
-                      style: Styles.font14W500.copyWith(
-                        color: ColorManager.blue33,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              const HaveAcountText()
             ],
           ),
         ),

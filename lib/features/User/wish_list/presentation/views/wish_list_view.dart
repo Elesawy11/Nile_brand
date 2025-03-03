@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nile_brand/core/utils/styles.dart';
-import 'package:nile_brand/features/User/wish_list/presentation/views/listview_of_items.dart';
+import 'package:nile_brand/features/User/wish_list/presentation/views/widgets/listview_of_items.dart';
 
 class WishListView extends StatelessWidget {
   const WishListView({super.key});

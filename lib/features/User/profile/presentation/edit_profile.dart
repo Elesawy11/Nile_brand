@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
-import 'package:nile_brand/core/utils/spacer.dart';
+import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/core/widgets/app_text_button.dart';
 import 'package:nile_brand/core/widgets/app_text_form_field.dart';
+import 'package:nile_brand/features/User/auth/presentation/views/widgets/password_field.dart';
 import 'package:nile_brand/features/User/profile/presentation/widgets/profile_image.dart';
+
+import '../../../../core/utils/assets.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
@@ -31,51 +34,41 @@ class _EditProfileState extends State<EditProfile> {
         ),
         body: SingleChildScrollView(
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
+            
             children: [
-              const ProfileImage(imageUrl: "assets/images/profile_image.png"),
-              verticalSpace(26.h),
-
-              Padding(
-                padding: EdgeInsets.only(top: 10.h, left: 20.h, right: 20.h),
+              const ProfileImage(imageUrl: Assets.imagesProfileImage),
+              26.vs,
+              SizedBox(
+                height: 60.h,
+                width: 350.w,
                 child: AppTextFormField(
                   hintText: "Name",
                   labelText: "Name",
                   validator: (p0) {},
                 ),
               ),
-              verticalSpace(15.h),
-              Padding(
-                padding: EdgeInsets.only(top: 10.h, left: 20.h, right: 20.h),
+              25.vs,
+              SizedBox(
+                height: 60.h,
+                width: 350.w,
                 child: AppTextFormField(
                   hintText: "E-mail",
                   labelText: "E-mail",
                   validator: (p0) {},
                 ),
               ),
-              
-              verticalSpace(15.h),
-              ValueListenableBuilder<bool>(
-                valueListenable: viewPass,
-                builder: (context, value, child) {
-                  return Padding(
-                    padding: EdgeInsets.only(top: 10.h, left: 20.h, right: 20.h),
-                    child: AppTextFormField(
-                      hintText: "Password",
-                      labelText: "Password",
-                      isObscureText: viewPass.value,
-                      validator: (p0) {},
-                      suffixIcon: IconButton(
-                      onPressed: (){
-                        viewPass.value = !value;
-                      }, icon:viewPass.value ? const Icon(Icons.visibility_off_outlined): const Icon(Icons.visibility_outlined)),
-                    ),
-                  );
-                }
+              25.vs,
+              SizedBox(
+                height: 60.h,
+                width: 350.w,
+                child: PasswordField(
+                    viewPass: viewPass,
+                    labelText: "Password",
+                    hintText: "password"),
               ),
-              verticalSpace(20.h),
+              20.vs,
               Padding(
-                padding: EdgeInsets.only(top: 20.h, left: 70.h, right: 70.h),
+                padding: 70.ph,
                 child: AppTextButton(
                   backgroundColor: ColorManager.mainColor,
                   text: "Save Changes",

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nile_brand/core/utils/assets.dart';
 import 'package:timelines_plus/timelines_plus.dart';
 import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/styles.dart';
@@ -40,14 +39,14 @@ class CustomTimeLineTileWidget extends StatelessWidget {
                   TextSpan(
                     text: '$title\n',
                     style: Styles.font16W700.copyWith(
-                      color: ColorManager.mainColor,
+                      color: Colors.black,
                     ),
                   ),
                   WidgetSpan(
                     child: Text(
                       description,
                       style: Styles.font16W400.copyWith(
-                        color: ColorManager.mainColor,
+                        color: Colors.black,
                       ),
                       textAlign: TextAlign.center,
                     ),

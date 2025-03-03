@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
+
+  final String pngImagesPath = "assets/images/";
+  final String svgImagesPath = "assets/svgImages/";
   
   static const String imagesActiveCartIcon = "assets/images/activeCartIcon.png";
 

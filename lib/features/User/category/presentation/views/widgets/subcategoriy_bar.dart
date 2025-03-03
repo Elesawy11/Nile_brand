@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/app_strings.dart';
+import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 
 class SubcategoriyBar extends StatelessWidget {
@@ -10,7 +11,7 @@ class SubcategoriyBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:  EdgeInsets.only(top: 10.h, left: 10.r),
+      padding:  10.ph,
       decoration: const BoxDecoration(
         border: Border(right: BorderSide(color: Colors.black)),
         color: Colors.white,

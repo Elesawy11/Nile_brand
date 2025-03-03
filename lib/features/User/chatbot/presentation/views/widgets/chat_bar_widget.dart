@@ -19,7 +19,7 @@ class ChatBarWidget extends StatelessWidget {
         color: Colors.white,
         boxShadow: const [
           BoxShadow(
-            color: ColorManager.grayE4,
+            color: ColorManager.lightGrey,
             spreadRadius: 3,
             blurRadius: 3,
             offset: Offset(0, 2.0),

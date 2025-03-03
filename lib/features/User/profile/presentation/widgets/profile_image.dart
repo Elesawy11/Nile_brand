@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -14,30 +15,25 @@ class ProfileImage extends StatelessWidget {
     return Center(
       child: CircleAvatar(
         radius: 50.r,
-        backgroundImage:  AssetImage(imageUrl),
+        backgroundImage: AssetImage(imageUrl),
         child: Container(
             margin: EdgeInsets.only(top: 60.h),
             child: IconButton(
                 onPressed: () async {
                   final ImagePicker picker = ImagePicker();
-        
+
                   try {
                     final XFile? image =
                         await picker.pickImage(source: ImageSource.gallery);
-        
+
                     if (image != null) {
-                      
                       if (await File(image.path).exists()) {
-                        
-                          //  imageUrl = image.path;
-                          // change profile image
-                        
+                        //  imageUrl = image.path;
+                        // change profile image
                       }
                     }
                   } catch (e) {
-        
-                    // handle exceptions 
-                    print("Error picking image: $e");
+                    log(e.toString());
                   }
                 },
                 icon: const Icon(

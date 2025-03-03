@@ -61,7 +61,7 @@ class AppTextFormField extends StatelessWidget {
             EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
         focusedBorder: focusedBorder ??
             outLineBorder(
-              color: ColorManager.mainColor,
+              color: Colors.black,
             ),
         enabledBorder: enabledBorder ??
             outLineBorder(
@@ -87,7 +87,7 @@ class AppTextFormField extends StatelessWidget {
             ? Text(
                 labelText ?? '',
                 style: Styles.font20W400.copyWith(
-                  color: ColorManager.mainText,
+                  color: Colors.black,
                 ),
               )
             : null,
