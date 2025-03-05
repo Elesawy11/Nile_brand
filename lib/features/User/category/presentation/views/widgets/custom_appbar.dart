@@ -11,18 +11,17 @@ class CustomeAppbar extends StatefulWidget implements PreferredSizeWidget {
   State<CustomeAppbar> createState() => _CustomeAppbarState();
 
   @override
-  Size get preferredSize =>  Size(double.maxFinite, 127.h);
+  Size get preferredSize => Size(double.maxFinite, 127.h);
 }
 
 class _CustomeAppbarState extends State<CustomeAppbar>
     with SingleTickerProviderStateMixin {
   late TextEditingController searchController;
- 
+
   @override
   void initState() {
     super.initState();
     searchController = TextEditingController();
-  
   }
 
   @override
@@ -37,7 +36,7 @@ class _CustomeAppbarState extends State<CustomeAppbar>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.only(top: 30.h,right: 10.w,left: 10.w),
+        padding: EdgeInsets.only(top: 30.h, right: 10.w, left: 10.w),
         child: Column(
           children: [
             const NotificationAndSearchWidget(),
