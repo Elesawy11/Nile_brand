@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
+import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/utils/assets.dart';
 import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/styles.dart';
@@ -71,7 +73,8 @@ class CreateBrandBody extends StatelessWidget {
           child: AppTextButton(
             backgroundColor: ColorManager.mainColor,
             text: 'Submit',
-            onPressed: () {},
+            //TODO: change this
+            onPressed: () => context.push(Routes.ownerHome),
           ),
         )
       ],

@@ -1,9 +1,6 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-
-  final String pngImagesPath = "assets/images/";
-  final String svgImagesPath = "assets/svgImages/";
   
   static const String imagesActiveCartIcon = "assets/images/activeCartIcon.png";
 
@@ -25,6 +22,8 @@ class Assets {
 
   static const String imagesArrowLeftIcon = "assets/images/arrowLeftIcon.png";
 
+  static const String imagesBrandItem = "assets/images/brandItem.png";
+
   static const String imagesCartIcon = "assets/images/cartIcon.png";
 
   static const String imagesCategoryIcon = "assets/images/categoryIcon.png";
@@ -40,6 +39,8 @@ class Assets {
   static const String imagesClothes = "assets/images/clothes.png";
 
   static const String imagesDarkModeIcon = "assets/images/dark_mode_icon.png";
+
+  static const String imagesDeleteIcon = "assets/images/deleteIcon.png";
 
   static const String imagesEmptyWhislist = "assets/images/empty_whislist.png";
 

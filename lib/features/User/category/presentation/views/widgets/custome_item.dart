@@ -15,31 +15,25 @@ class CustomeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        
-      },
+      onTap: () {},
       child: SizedBox(
         height: 120.h,
         child: Container(
-          padding: EdgeInsets.only( right: 5.w, left: 5.w),
+          padding: EdgeInsets.only(right: 5.w, left: 5.w),
           margin: EdgeInsets.only(top: 5.h, right: 5.w, left: 5.w),
           color: const Color(0xffD9D9D9),
           child: Stack(
             children: [
               ContentPosition(
-                  
-      
                   bottom: 37.h,
                   child: Image.asset(
                     "assets/images/test_item.png",
                     width: 90.w,
                     height: 50.h,
-                    
                   )),
               ContentPosition(
                   // right: 5.w,
                   left: 75.w,
-      
                   top: 60.h,
                   child: InkWell(
                       onTap: () {},
@@ -97,5 +91,3 @@ class CustomeItem extends StatelessWidget {
     );
   }
 }
-
-

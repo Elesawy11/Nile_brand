@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nile_brand/features/Owner/owner_home/presentation/views/owner_home_view.dart';
 import 'package:nile_brand/features/User/constants.dart';
 import 'package:nile_brand/core/widgets/custom_app_navigation_bar.dart';
 import 'package:nile_brand/core/routing/routes.dart';
@@ -59,6 +60,10 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.createBrand,
         builder: (context, state) => const CreateBrandView(),
+      ),
+      GoRoute(
+        path: Routes.ownerHome,
+        builder: (context, state) => const OwnerHomeView(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) => CustomAppNavigationBar(

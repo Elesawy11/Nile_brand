@@ -18,4 +18,5 @@ abstract class Routes {
   static const String chatbotOnboarding = '/chatbotOnboarding';
   static const String verificationScreen = '/verificationSceen';
   static const String createBrand = '/createBrand';
+  static const String ownerHome = '/ownerHome';
 }
