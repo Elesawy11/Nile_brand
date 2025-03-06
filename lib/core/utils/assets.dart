@@ -44,6 +44,8 @@ class Assets {
 
   static const String imagesDarkModeIcon = "assets/images/dark_mode_icon.png";
 
+  static const String imagesDeleteBrandIcon = "assets/images/deleteBrandIcon.png";
+
   static const String imagesDeleteIcon = "assets/images/deleteIcon.png";
 
   static const String imagesEmptyWhislist = "assets/images/empty_whislist.png";

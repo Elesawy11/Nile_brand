@@ -45,7 +45,7 @@ class MyBrandViewFeaturesWidget extends StatelessWidget {
         20.vs,
         InfoTile(
             ontap: () {
-              context.push(Routes.addFeedback);
+              context.push(Routes.updateBrand);
             },
             leadingIcon: Assets.imagesUpdateBrandIcon,
             title: "Update Brand",
@@ -56,9 +56,9 @@ class MyBrandViewFeaturesWidget extends StatelessWidget {
         20.vs,
         InfoTile(
             ontap: () {
-              context.push(Routes.addFeedback);
+              //TODO: Delete brand method
             },
-            leadingIcon: Assets.imagesFeadbackIcon,
+            leadingIcon: Assets.imagesDeleteBrandIcon,
             title: "Delete Brand",
             trailling: Icon(
               Icons.arrow_forward_ios_rounded,
