@@ -20,9 +20,9 @@ abstract class Routes {
   static const String createBrand = '/createBrand';
   static const String ownerHome = '/ownerHome';
   static const String brandDetails = '/brandDetails';
-  static const String feature2 = '/feature2';
-  static const String feature4 = '/feature4';
-  static const String feature5 = '/feature5';
+  static const String orderStatus = '/orderStatus';
+  static const String dashboard = '/dashboard';
+  static const String cuopon = '/cuopon';
   static const String myBrand = '/myBrand';
   static const String brandProfile = '/brandProfile';
   static const String updateBrand = '/updateBrand';

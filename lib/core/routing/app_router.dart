@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/helpers/app_navigation_bar_items.dart';
-import 'package:nile_brand/features/Owner/feature2/feature2.dart';
-import 'package:nile_brand/features/Owner/feature4/feature4.dart';
-import 'package:nile_brand/features/Owner/feature5/feature5.dart';
+import 'package:nile_brand/features/Owner/orders_status/presentation/views/brand_orders_view.dart';
+import 'package:nile_brand/features/Owner/dashboard/presentation/views/dashboard_view.dart';
+import 'package:nile_brand/features/Owner/cuopon/presentation/views/cuopon_view.dart';
 import 'package:nile_brand/features/Owner/my_brand/presentation/views/brand_profile_view.dart';
 import 'package:nile_brand/features/Owner/my_brand/presentation/views/my_brand_view.dart';
 import 'package:nile_brand/features/Owner/my_brand/presentation/views/update_brand_view.dart';
@@ -152,8 +152,8 @@ abstract class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: Routes.feature2,
-                builder: (context, state) => const Feature2(),
+                path: Routes.orderStatus,
+                builder: (context, state) => const BrandOrdersStatusView(),
               ),
             ],
           ),
@@ -168,16 +168,16 @@ abstract class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: Routes.feature4,
-                builder: (context, state) => const Feature4(),
+                path: Routes.dashboard,
+                builder: (context, state) => const DashboardView(),
               ),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: Routes.feature5,
-                builder: (context, state) => const Feature5(),
+                path: Routes.cuopon,
+                builder: (context, state) => const CuoponView(),
               ),
             ],
           ),
@@ -204,7 +204,6 @@ abstract class AppRouter {
         path: Routes.updateBrand,
         builder: (context, state) => const UpdateBrandView(),
       ),
-     
     ],
   );
 }
