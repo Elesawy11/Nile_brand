@@ -45,7 +45,9 @@ class MyBrandViewFeaturesWidget extends StatelessWidget {
         20.vs,
         InfoTile(
             ontap: () {
-              context.push(Routes.updateBrand);
+              //TODO: Update brand method
+              // context.push(Routes.updateBrand);
+              context.push(Routes.addBrandProduct);
             },
             leadingIcon: Assets.imagesUpdateBrandIcon,
             title: "Update Brand",

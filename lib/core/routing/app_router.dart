@@ -17,6 +17,8 @@ import 'package:nile_brand/core/routing/routes.dart';
 import "package:nile_brand/core/routing/exports.dart";
 import 'package:nile_brand/features/Owner/create_brand/presentation/views/create_brand_view.dart';
 
+import '../../features/Owner/my_brand/presentation/views/add_brand_product_view.dart';
+
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
 
@@ -159,8 +161,8 @@ abstract class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: Routes.addBrandProduct,
-                builder: (context, state) => const AddBrandProductView(),
+                path: Routes.addProduct,
+                builder: (context, state) => const AddProductView(),
               ),
             ],
           ),
@@ -202,6 +204,10 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.updateBrand,
         builder: (context, state) => const UpdateBrandView(),
+      ),
+      GoRoute(
+        path: Routes.addBrandProduct,
+        builder: (context, state) => const AddBrandProductView(),
       ),
     ],
   );
