@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nile_brand/app_navigation_bar.dart';
 import 'package:nile_brand/core/routing/routes.dart';
 import "package:nile_brand/core/routing/exports.dart";
+import 'package:nile_brand/features/Owner/create_brand/presentation/views/create_brand_view.dart';
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -53,6 +54,10 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.verificationScreen,
         builder: (context, state) => const VerificationScreen(),
+      ),
+      GoRoute(
+        path: Routes.createBrand,
+        builder: (context, state) => const CreateBrandView(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
