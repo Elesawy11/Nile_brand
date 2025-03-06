@@ -76,7 +76,7 @@ class CreateBrandBody extends StatelessWidget {
             //TODO: change this
             onPressed: () => context.push(Routes.ownerHome),
           ),
-        )
+        ),
       ],
     );
   }

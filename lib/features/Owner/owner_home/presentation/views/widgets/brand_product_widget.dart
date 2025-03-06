@@ -14,7 +14,7 @@ class BrandProductWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.push(Routes.addFeedback),
+      onTap: () => context.push(Routes.brandDetails),
       child: Container(
         width: 147.r,
         height: 157.r,

@@ -7,6 +7,7 @@ import 'package:nile_brand/features/Owner/feature4/feature4.dart';
 import 'package:nile_brand/features/Owner/feature5/feature5.dart';
 import 'package:nile_brand/features/Owner/feature6/feature6.dart';
 import 'package:nile_brand/features/Owner/owner_constants.dart';
+import 'package:nile_brand/features/Owner/owner_home/presentation/views/brand_details_view.dart';
 import 'package:nile_brand/features/Owner/owner_home/presentation/views/owner_home_view.dart';
 import 'package:nile_brand/features/User/user_constants.dart';
 import 'package:nile_brand/core/widgets/custom_app_navigation_bar.dart';
@@ -68,10 +69,66 @@ abstract class AppRouter {
         path: Routes.createBrand,
         builder: (context, state) => const CreateBrandView(),
       ),
-      // GoRoute(
-      //   path: Routes.ownerHome,
-      //   builder: (context, state) => const OwnerHomeView(),
-      // ),
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) => CustomAppNavigationBar(
+          navigationShell: navigationShell,
+          isFloatingAction: true,
+          items: appNavigationBarItems(
+            list: UserConstants.userNavigationBarItemsImagesList,
+          ),
+        ),
+        branches: [
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.home,
+                builder: (context, state) => const HomeView(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.categoreis,
+                builder: (context, state) => const CategoryView(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.trackOrder,
+                builder: (context, state) => const TrackOrderView(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.wishList,
+                builder: (context, state) => const WishListView(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.myCart,
+                builder: (context, state) => const MyCartView(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.profile,
+                builder: (context, state) => const ProfileView(),
+              ),
+            ],
+          ),
+        ],
+      ),
+      // owner naviagation bar
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) => CustomAppNavigationBar(
           navigationShell: navigationShell,
@@ -131,64 +188,10 @@ abstract class AppRouter {
           ),
         ],
       ),
-      StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) => CustomAppNavigationBar(
-          navigationShell: navigationShell,
-          isFloatingAction: true,
-          items: appNavigationBarItems(
-            list: UserConstants.userNavigationBarItemsImagesList,
-          ),
-        ),
-        branches: [
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: Routes.home,
-                builder: (context, state) => const HomeView(),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: Routes.categoreis,
-                builder: (context, state) => const CategoryView(),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: Routes.trackOrder,
-                builder: (context, state) => const TrackOrderView(),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: Routes.wishList,
-                builder: (context, state) => const WishListView(),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: Routes.myCart,
-                builder: (context, state) => const MyCartView(),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: Routes.profile,
-                builder: (context, state) => const ProfileView(),
-              ),
-            ],
-          ),
-        ],
+
+      GoRoute(
+        path: Routes.brandDetails,
+        builder: (context, state) => const BrandDetailsView(),
       ),
     ],
   );
