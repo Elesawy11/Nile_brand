@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/helpers/app_navigation_bar_items.dart';
+import 'package:nile_brand/features/Owner/cuopon/presentation/views/create_cuopon_view.dart';
+import 'package:nile_brand/features/Owner/cuopon/presentation/views/update_cuopon_view.dart';
 import 'package:nile_brand/features/Owner/orders_status/presentation/views/brand_orders_view.dart';
 import 'package:nile_brand/features/Owner/dashboard/presentation/views/dashboard_view.dart';
 import 'package:nile_brand/features/Owner/cuopon/presentation/views/cuopon_view.dart';
@@ -203,6 +205,14 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.updateBrand,
         builder: (context, state) => const UpdateBrandView(),
+      ),
+      GoRoute(
+        path: Routes.createCuopon,
+        builder: (context, state) => const CreateCuoponView(),
+      ),
+      GoRoute(
+        path: Routes.updateCuopon,
+        builder: (context, state) => const UpdateCuoponView(),
       ),
     ],
   );

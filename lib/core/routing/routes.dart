@@ -27,4 +27,6 @@ abstract class Routes {
   static const String brandProfile = '/brandProfile';
   static const String updateBrand = '/updateBrand';
   static const String addBrandProduct = '/addBrandProduct';
+  static const String createCuopon = '/createCuopon';
+  static const String updateCuopon = '/updateCuopon';
 }

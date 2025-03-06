@@ -8,8 +8,8 @@ import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/widgets/app_text_button.dart';
 import '../../../../../core/widgets/app_text_form_field.dart';
 
-class CreateCuoponView extends StatelessWidget {
-  const CreateCuoponView({super.key});
+class UpdateCuoponView extends StatelessWidget {
+  const UpdateCuoponView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class CreateCuoponView extends StatelessWidget {
             children: [
               49.vs,
               Text(
-                'Create Cuopon',
+                'Update Cuopon',
                 style: Styles.font35W700,
               ),
               33.vs,
@@ -59,7 +59,7 @@ class CreateCuoponView extends StatelessWidget {
                 padding: 70.ph,
                 child: AppTextButton(
                   backgroundColor: ColorManager.mainColor,
-                  text: "Save",
+                  text: "Save Changes",
                   onPressed: () {
                     context.pop();
                   },
