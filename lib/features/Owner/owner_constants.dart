@@ -11,20 +11,20 @@ class OwnerConstants {
       activeImageIcon: Assets.imagesActiveHomeIcon,
     ),
     NavigationBarItemsImagesModel(
-      imageIcon: Assets.imagesCategoryIcon,
-      activeImageIcon: Assets.imagesActiveCategoryIcon,
+      imageIcon: Assets.imagesBrandOrderIcon,
+      activeImageIcon: Assets.imagesActivebrandOrderIcon,
     ),
     NavigationBarItemsImagesModel(
       imageIcon: Assets.imagesAddBrandProductIcon,
       activeImageIcon: Assets.imagesActiveAddBrandProductIcon,
     ),
     NavigationBarItemsImagesModel(
-      imageIcon: Assets.imagesWishlistIcon,
-      activeImageIcon: Assets.imagesActiveWishlistIcon,
+      imageIcon: Assets.imagesDashboardIcon,
+      activeImageIcon: Assets.imagesActiveDashboardIcon,
     ),
     NavigationBarItemsImagesModel(
-      imageIcon: Assets.imagesCartIcon,
-      activeImageIcon: Assets.imagesActiveCartIcon,
+      imageIcon: Assets.imagesCuoponIcon,
+      activeImageIcon: Assets.imagesActiveCuoponIcon,
     ),
     NavigationBarItemsImagesModel(
       imageIcon: Assets.imagesProfileIcon,
