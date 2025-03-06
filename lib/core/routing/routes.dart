@@ -17,4 +17,16 @@ abstract class Routes {
   static const String chatbot = '/chatbot';
   static const String chatbotOnboarding = '/chatbotOnboarding';
   static const String verificationScreen = '/verificationSceen';
+  static const String createBrand = '/createBrand';
+  static const String ownerHome = '/ownerHome';
+  static const String brandDetails = '/brandDetails';
+  static const String orderStatus = '/orderStatus';
+  static const String dashboard = '/dashboard';
+  static const String cuopon = '/cuopon';
+  static const String myBrand = '/myBrand';
+  static const String brandProfile = '/brandProfile';
+  static const String updateBrand = '/updateBrand';
+  static const String addBrandProduct = '/addBrandProduct';
+  static const String createCuopon = '/createCuopon';
+  static const String updateCuopon = '/updateCuopon';
 }

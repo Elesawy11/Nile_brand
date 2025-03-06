@@ -12,11 +12,15 @@ class _PaymentMethodsState extends State<PaymentMethods> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        
-        appBar: AppBar(centerTitle: true,title: Text("Payment Methods",style: Styles.font20W600,),),
-      )
-      );
+        child: Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          "Payment Methods",
+          style: Styles.font20W600,
+        ),
+      ),
+    ));
   }
 }

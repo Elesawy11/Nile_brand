@@ -34,7 +34,6 @@ class _EditProfileState extends State<EditProfile> {
         ),
         body: SingleChildScrollView(
           child: Column(
-            
             children: [
               const ProfileImage(imageUrl: Assets.imagesProfileImage),
               26.vs,

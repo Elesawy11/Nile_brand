@@ -6,12 +6,13 @@ class PasswordField extends StatelessWidget {
   final ValueNotifier<bool> viewPass;
   final String labelText;
   final String hintText;
+  final FloatingLabelBehavior? floatingLabelBehavior;
 
   const PasswordField({
     super.key,
     required this.viewPass,
     required this.labelText,
-    required this.hintText,
+    required this.hintText, this.floatingLabelBehavior,
   });
 
   @override
@@ -20,6 +21,7 @@ class PasswordField extends StatelessWidget {
       valueListenable: viewPass,
       builder: (context, value, child) {
         return AppTextFormField(
+          floatingLabelBehavior: floatingLabelBehavior,
           labelText: labelText,
           hintText: hintText,
           isObscureText: viewPass.value,

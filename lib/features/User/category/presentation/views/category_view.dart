@@ -10,33 +10,31 @@ class CategoryView extends StatefulWidget {
   State<CategoryView> createState() => _CategoryViewState();
 }
 
-class _CategoryViewState extends State<CategoryView> with SingleTickerProviderStateMixin{
+class _CategoryViewState extends State<CategoryView>
+    with SingleTickerProviderStateMixin {
   TabController? tabController;
   @override
   void initState() {
-    tabController=  TabController(length: 7, vsync: this);
+    tabController = TabController(length: 7, vsync: this);
     super.initState();
   }
 
   @override
   void dispose() {
-  tabController!.dispose();
+    tabController!.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
-      
       appBar: CustomeAppbar(tabController: tabController!),
-      body:TabBarView(
-        controller: tabController,
-        children: AppStrings.mainCategories.map((category)=>CategoryDetails(category: category)).toList()
-          
-
-
-        
-        ),
+      body: TabBarView(
+          controller: tabController,
+          children: AppStrings.mainCategories
+              .map((category) => CategoryDetails(category: category))
+              .toList()),
     );
   }
 }

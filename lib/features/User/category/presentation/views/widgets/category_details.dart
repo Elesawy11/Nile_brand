@@ -15,22 +15,20 @@ class CategoryDetails extends StatelessWidget {
         children: [
           SubcategoriyBar(category: category),
           Expanded(
-              flex:3,
-              child: GridView.builder(
-                  shrinkWrap: true,
-                  gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 4.w,
-                      mainAxisSpacing: 4.w,
-                      childAspectRatio: 2 / 3
-                      
-                      ),
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return const CustomeItem(
-                      
-                    );
-                  }))
+            flex: 3,
+            child: GridView.builder(
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 4.w,
+                  mainAxisSpacing: 4.w,
+                  childAspectRatio: 2 / 3),
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return const CustomeItem();
+              },
+            ),
+          ),
         ],
       ),
     );

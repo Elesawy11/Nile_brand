@@ -1,8 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nile_brand/app_navigation_bar.dart';
+import 'package:nile_brand/core/helpers/app_navigation_bar_items.dart';
+import 'package:nile_brand/features/Owner/cuopon/presentation/views/create_cuopon_view.dart';
+import 'package:nile_brand/features/Owner/cuopon/presentation/views/update_cuopon_view.dart';
+import 'package:nile_brand/features/Owner/orders_status/presentation/views/brand_orders_view.dart';
+import 'package:nile_brand/features/Owner/dashboard/presentation/views/dashboard_view.dart';
+import 'package:nile_brand/features/Owner/cuopon/presentation/views/cuopon_view.dart';
+import 'package:nile_brand/features/Owner/my_brand/presentation/views/brand_profile_view.dart';
+import 'package:nile_brand/features/Owner/my_brand/presentation/views/my_brand_view.dart';
+import 'package:nile_brand/features/Owner/my_brand/presentation/views/update_brand_view.dart';
+import 'package:nile_brand/features/Owner/owner_constants.dart';
+import 'package:nile_brand/features/Owner/owner_home/presentation/views/brand_details_view.dart';
+import 'package:nile_brand/features/Owner/owner_home/presentation/views/owner_home_view.dart';
+import 'package:nile_brand/features/User/user_constants.dart';
+import 'package:nile_brand/core/widgets/custom_app_navigation_bar.dart';
 import 'package:nile_brand/core/routing/routes.dart';
 import "package:nile_brand/core/routing/exports.dart";
+import 'package:nile_brand/features/Owner/create_brand/presentation/views/create_brand_view.dart';
+
+import '../../features/Owner/add_brand_product/persentation/views/add_brand_product_view.dart';
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -54,9 +70,18 @@ abstract class AppRouter {
         path: Routes.verificationScreen,
         builder: (context, state) => const VerificationScreen(),
       ),
+      GoRoute(
+        path: Routes.createBrand,
+        builder: (context, state) => const CreateBrandView(),
+      ),
       StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) =>
-            AppNavigationBar(navigationShell: navigationShell),
+        builder: (context, state, navigationShell) => CustomAppNavigationBar(
+          navigationShell: navigationShell,
+          isFloatingAction: true,
+          items: appNavigationBarItems(
+            list: UserConstants.userNavigationBarItemsImagesList,
+          ),
+        ),
         branches: [
           StatefulShellBranch(
             routes: [
@@ -107,6 +132,87 @@ abstract class AppRouter {
             ],
           ),
         ],
+      ),
+      // owner naviagation bar
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) => CustomAppNavigationBar(
+          navigationShell: navigationShell,
+          items: appNavigationBarItems(
+            list: OwnerConstants.userNavigationBarItemsImagesList,
+          ),
+          isFloatingAction: false,
+        ),
+        branches: [
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.ownerHome,
+                builder: (context, state) => const OwnerHomeView(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.orderStatus,
+                builder: (context, state) => const BrandOrdersStatusView(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.addBrandProduct,
+                builder: (context, state) => const AddBrandProductView(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.dashboard,
+                builder: (context, state) => const DashboardView(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.cuopon,
+                builder: (context, state) => const CuoponView(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.myBrand,
+                builder: (context, state) => const MyBrand(),
+              ),
+            ],
+          ),
+        ],
+      ),
+
+      GoRoute(
+        path: Routes.brandDetails,
+        builder: (context, state) => const BrandDetailsView(),
+      ),
+      GoRoute(
+        path: Routes.brandProfile,
+        builder: (context, state) => const BrandProfileView(),
+      ),
+      GoRoute(
+        path: Routes.updateBrand,
+        builder: (context, state) => const UpdateBrandView(),
+      ),
+      GoRoute(
+        path: Routes.createCuopon,
+        builder: (context, state) => const CreateCuoponView(),
+      ),
+      GoRoute(
+        path: Routes.updateCuopon,
+        builder: (context, state) => const UpdateCuoponView(),
       ),
     ],
   );

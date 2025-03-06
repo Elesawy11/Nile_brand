@@ -1,0 +1,34 @@
+import '../../core/utils/assets.dart';
+import '../../core/utils/navigation_bar_item_image_model.dart';
+
+class OwnerConstants {
+  OwnerConstants._();
+
+  static List<NavigationBarItemsImagesModel> userNavigationBarItemsImagesList =
+      [
+    NavigationBarItemsImagesModel(
+      imageIcon: Assets.imagesHomeIcon,
+      activeImageIcon: Assets.imagesActiveHomeIcon,
+    ),
+    NavigationBarItemsImagesModel(
+      imageIcon: Assets.imagesBrandOrderIcon,
+      activeImageIcon: Assets.imagesActivebrandOrderIcon,
+    ),
+    NavigationBarItemsImagesModel(
+      imageIcon: Assets.imagesAddBrandProductIcon,
+      activeImageIcon: Assets.imagesActiveAddBrandProductIcon,
+    ),
+    NavigationBarItemsImagesModel(
+      imageIcon: Assets.imagesDashboardIcon,
+      activeImageIcon: Assets.imagesActiveDashboardIcon,
+    ),
+    NavigationBarItemsImagesModel(
+      imageIcon: Assets.imagesCuoponIcon,
+      activeImageIcon: Assets.imagesActiveCuoponIcon,
+    ),
+    NavigationBarItemsImagesModel(
+      imageIcon: Assets.imagesProfileIcon,
+      activeImageIcon: Assets.imagesActiveProfileIcon,
+    )
+  ];
+}

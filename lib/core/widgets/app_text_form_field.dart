@@ -23,6 +23,7 @@ class AppTextFormField extends StatelessWidget {
   final double? raduis;
   final bool isLabled;
   final double? cursorHeight;
+  final FloatingLabelBehavior? floatingLabelBehavior;
 
   const AppTextFormField({
     super.key,
@@ -45,6 +46,7 @@ class AppTextFormField extends StatelessWidget {
     this.raduis,
     this.isLabled = true,
     this.cursorHeight,
+    this.floatingLabelBehavior,
   });
 
   @override
@@ -56,6 +58,7 @@ class AppTextFormField extends StatelessWidget {
       controller: controller,
       maxLines: maxLines,
       decoration: InputDecoration(
+        floatingLabelBehavior: floatingLabelBehavior,
         isDense: true,
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
