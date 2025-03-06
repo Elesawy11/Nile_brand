@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/utils/assets.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
-import 'package:nile_brand/features/Owner/my_brand/presentation/views/widgets/add_brand_product_textFields_widget.dart';
+import 'package:nile_brand/features/Owner/add_brand_product/persentation/views/widgets/add_brand_product_textFields_widget.dart';
 import '../../../../../core/widgets/app_text_button.dart';
 
 class AddBrandProductView extends StatelessWidget {
@@ -17,17 +16,6 @@ class AddBrandProductView extends StatelessWidget {
       appBar: AppBar(
         surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
-        leading: Padding(
-          padding: EdgeInsets.only(left: 22.w),
-          child: InkWell(
-            onTap: () => context.pop(),
-            child: Image.asset(
-              Assets.imagesArrowLeftIcon,
-              width: 24.r,
-              // height: 24.r,
-            ),
-          ),
-        ),
         title: Text(
           'Add Product',
           style: Styles.font24W500,
@@ -40,10 +28,11 @@ class AddBrandProductView extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                22.vs,
                 Card(
                   shadowColor: ColorManager.gray50,
                   child: Image.asset(
-                    Assets.imagesBrandItem,
+                    Assets.imagesAddImage,
                     width: 90.r,
                     height: 90.r,
                   ),

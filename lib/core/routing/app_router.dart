@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/helpers/app_navigation_bar_items.dart';
 import 'package:nile_brand/features/Owner/feature2/feature2.dart';
-import 'package:nile_brand/features/Owner/feature3/feature3.dart';
 import 'package:nile_brand/features/Owner/feature4/feature4.dart';
 import 'package:nile_brand/features/Owner/feature5/feature5.dart';
 import 'package:nile_brand/features/Owner/my_brand/presentation/views/brand_profile_view.dart';
@@ -17,7 +16,7 @@ import 'package:nile_brand/core/routing/routes.dart';
 import "package:nile_brand/core/routing/exports.dart";
 import 'package:nile_brand/features/Owner/create_brand/presentation/views/create_brand_view.dart';
 
-import '../../features/Owner/my_brand/presentation/views/add_brand_product_view.dart';
+import '../../features/Owner/add_brand_product/persentation/views/add_brand_product_view.dart';
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -161,8 +160,8 @@ abstract class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: Routes.addProduct,
-                builder: (context, state) => const AddProductView(),
+                path: Routes.addBrandProduct,
+                builder: (context, state) => const AddBrandProductView(),
               ),
             ],
           ),
@@ -205,10 +204,7 @@ abstract class AppRouter {
         path: Routes.updateBrand,
         builder: (context, state) => const UpdateBrandView(),
       ),
-      GoRoute(
-        path: Routes.addBrandProduct,
-        builder: (context, state) => const AddBrandProductView(),
-      ),
+     
     ],
   );
 }

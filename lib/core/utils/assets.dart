@@ -8,6 +8,10 @@ class Assets {
 
   static const String imagesActiveCategoryIcon = "assets/images/activeCategoryIcon.png";
 
+  static const String imagesActiveCuoponIcon = "assets/images/activeCuoponIcon.png";
+
+  static const String imagesActiveDashboardIcon = "assets/images/activeDashboardIcon.png";
+
   static const String imagesActiveHomeIcon = "assets/images/activeHomeIcon.png";
 
   static const String imagesActiveOrderIcon = "assets/images/activeOrderIcon.png";
@@ -16,7 +20,11 @@ class Assets {
 
   static const String imagesActiveWishlistIcon = "assets/images/activeWishlistIcon.png";
 
+  static const String imagesActivebrandOrderIcon = "assets/images/activebrandOrderIcon.png";
+
   static const String imagesAddBrandProductIcon = "assets/images/addBrandProductIcon.png";
+
+  static const String imagesAddImage = "assets/images/addImage.webp";
 
   static const String imagesAddedToFavoriteIcon = "assets/images/added_to_favorite_icon.png";
 
@@ -27,6 +35,8 @@ class Assets {
   static const String imagesArrowLeftIcon = "assets/images/arrowLeftIcon.png";
 
   static const String imagesBrandItem = "assets/images/brandItem.png";
+
+  static const String imagesBrandOrderIcon = "assets/images/brandOrderIcon.png";
 
   static const String imagesCartIcon = "assets/images/cartIcon.png";
 
@@ -42,7 +52,11 @@ class Assets {
 
   static const String imagesClothes = "assets/images/clothes.png";
 
+  static const String imagesCuoponIcon = "assets/images/cuoponIcon.png";
+
   static const String imagesDarkModeIcon = "assets/images/dark_mode_icon.png";
+
+  static const String imagesDashboardIcon = "assets/images/dashboardIcon.png";
 
   static const String imagesDeleteBrandIcon = "assets/images/deleteBrandIcon.png";
 
