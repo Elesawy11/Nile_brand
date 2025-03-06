@@ -20,7 +20,7 @@ class MyBrandViewFeaturesWidget extends StatelessWidget {
             leadingIcon: Assets.imagesProfileIcon,
             title: "Profile",
             ontap: () {
-              context.push(Routes.editProfile);
+              context.push(Routes.brandProfile);
             },
             trailling: Icon(
               Icons.arrow_forward_ios_rounded,

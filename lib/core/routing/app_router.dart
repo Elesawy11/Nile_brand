@@ -5,7 +5,8 @@ import 'package:nile_brand/features/Owner/feature2/feature2.dart';
 import 'package:nile_brand/features/Owner/feature3/feature3.dart';
 import 'package:nile_brand/features/Owner/feature4/feature4.dart';
 import 'package:nile_brand/features/Owner/feature5/feature5.dart';
-import 'package:nile_brand/features/Owner/feature6/presentation/views/my_brand_view.dart';
+import 'package:nile_brand/features/Owner/my_brand/presentation/views/brand_profile_view.dart';
+import 'package:nile_brand/features/Owner/my_brand/presentation/views/my_brand_view.dart';
 import 'package:nile_brand/features/Owner/owner_constants.dart';
 import 'package:nile_brand/features/Owner/owner_home/presentation/views/brand_details_view.dart';
 import 'package:nile_brand/features/Owner/owner_home/presentation/views/owner_home_view.dart';
@@ -181,7 +182,7 @@ abstract class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: Routes.feature6,
+                path: Routes.myBrand,
                 builder: (context, state) => const MyBrand(),
               ),
             ],
@@ -192,6 +193,10 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.brandDetails,
         builder: (context, state) => const BrandDetailsView(),
+      ),
+      GoRoute(
+        path: Routes.brandProfile,
+        builder: (context, state) => const BrandProfileView(),
       ),
     ],
   );

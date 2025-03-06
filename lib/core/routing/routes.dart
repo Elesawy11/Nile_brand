@@ -24,5 +24,6 @@ abstract class Routes {
   static const String feature3 = '/feature3';
   static const String feature4 = '/feature4';
   static const String feature5 = '/feature5';
-  static const String feature6 = '/feature6';
+  static const String myBrand = '/myBrand';
+  static const String brandProfile = '/brandProfile';
 }
