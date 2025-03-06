@@ -5,7 +5,7 @@ import 'package:nile_brand/features/Owner/feature2/feature2.dart';
 import 'package:nile_brand/features/Owner/feature3/feature3.dart';
 import 'package:nile_brand/features/Owner/feature4/feature4.dart';
 import 'package:nile_brand/features/Owner/feature5/feature5.dart';
-import 'package:nile_brand/features/Owner/feature6/feature6.dart';
+import 'package:nile_brand/features/Owner/feature6/presentation/views/my_brand_view.dart';
 import 'package:nile_brand/features/Owner/owner_constants.dart';
 import 'package:nile_brand/features/Owner/owner_home/presentation/views/brand_details_view.dart';
 import 'package:nile_brand/features/Owner/owner_home/presentation/views/owner_home_view.dart';
@@ -182,7 +182,7 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.feature6,
-                builder: (context, state) => const Feature6(),
+                builder: (context, state) => const MyBrand(),
               ),
             ],
           ),

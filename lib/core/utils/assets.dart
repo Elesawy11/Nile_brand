@@ -90,6 +90,8 @@ class Assets {
 
   static const String imagesUnreadNotificationIcon = "assets/images/unreadNotificationIcon.png";
 
+  static const String imagesUpdateBrandIcon = "assets/images/updateBrandIcon.png";
+
   static const String imagesWishlistIcon = "assets/images/wishlistIcon.png";
 
   static const String svgImagesExport = "assets/svgImages/export.svg";
