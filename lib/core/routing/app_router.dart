@@ -158,8 +158,8 @@ abstract class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: Routes.feature3,
-                builder: (context, state) => const Feature3(),
+                path: Routes.addBrandProduct,
+                builder: (context, state) => const AddBrandProductView(),
               ),
             ],
           ),

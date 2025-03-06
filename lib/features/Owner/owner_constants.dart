@@ -15,8 +15,8 @@ class OwnerConstants {
       activeImageIcon: Assets.imagesActiveCategoryIcon,
     ),
     NavigationBarItemsImagesModel(
-      imageIcon: Assets.imagesOrderIcon,
-      activeImageIcon: Assets.imagesActiveOrderIcon,
+      imageIcon: Assets.imagesAddBrandProductIcon,
+      activeImageIcon: Assets.imagesActiveAddBrandProductIcon,
     ),
     NavigationBarItemsImagesModel(
       imageIcon: Assets.imagesWishlistIcon,

@@ -2,6 +2,8 @@
 class Assets {
   Assets._();
   
+  static const String imagesActiveAddBrandProductIcon = "assets/images/activeAddBrandProductIcon.png";
+
   static const String imagesActiveCartIcon = "assets/images/activeCartIcon.png";
 
   static const String imagesActiveCategoryIcon = "assets/images/activeCategoryIcon.png";
@@ -13,6 +15,8 @@ class Assets {
   static const String imagesActiveProfileIcon = "assets/images/activeProfileIcon.png";
 
   static const String imagesActiveWishlistIcon = "assets/images/activeWishlistIcon.png";
+
+  static const String imagesAddBrandProductIcon = "assets/images/addBrandProductIcon.png";
 
   static const String imagesAddedToFavoriteIcon = "assets/images/added_to_favorite_icon.png";
 

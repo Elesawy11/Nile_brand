@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Feature3 extends StatelessWidget {
-  const Feature3({super.key});
+class AddBrandProductView extends StatelessWidget {
+  const AddBrandProductView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
         child: Text(
-          'Feature 3',
+          'addProduct view',
         ),
       ),
     );
