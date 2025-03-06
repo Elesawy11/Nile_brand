@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nile_brand/features/User/user_app_navigation_bar.dart';
+import 'package:nile_brand/features/User/constants.dart';
+import 'package:nile_brand/core/widgets/custom_app_navigation_bar.dart';
 import 'package:nile_brand/core/routing/routes.dart';
 import "package:nile_brand/core/routing/exports.dart";
 import 'package:nile_brand/features/Owner/create_brand/presentation/views/create_brand_view.dart';
@@ -60,8 +61,11 @@ abstract class AppRouter {
         builder: (context, state) => const CreateBrandView(),
       ),
       StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) =>
-            UserAppNavigationBar(navigationShell: navigationShell),
+        builder: (context, state, navigationShell) => CustomAppNavigationBar(
+          navigationShell: navigationShell,
+          isFloatingAction: true,
+          items: UserConstants.userAppNavigationBarItems(),
+        ),
         branches: [
           StatefulShellBranch(
             routes: [
