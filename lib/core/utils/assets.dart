@@ -4,9 +4,13 @@ class Assets {
   
   static const String imagesActiveAddBrandProductIcon = "assets/images/activeAddBrandProductIcon.png";
 
+  static const String imagesActiveBrandsAdmine = "assets/images/active_brands_admine.png";
+
   static const String imagesActiveCartIcon = "assets/images/activeCartIcon.png";
 
   static const String imagesActiveCategoryIcon = "assets/images/activeCategoryIcon.png";
+
+  static const String imagesActiveCatgAdmin = "assets/images/active_catg_admin.png";
 
   static const String imagesActiveCuoponIcon = "assets/images/activeCuoponIcon.png";
 
@@ -16,7 +20,13 @@ class Assets {
 
   static const String imagesActiveOrderIcon = "assets/images/activeOrderIcon.png";
 
+  static const String imagesActiveProdManageAdmin = "assets/images/active_prod_manage_admin.png";
+
   static const String imagesActiveProfileIcon = "assets/images/activeProfileIcon.png";
+
+  static const String imagesActiveSystemUsersAdmin = "assets/images/active_system_users_admin.png";
+
+  static const String imagesActiveSystemfeedbackAdmin = "assets/images/active_systemfeedback_admin.png";
 
   static const String imagesActiveWishlistIcon = "assets/images/activeWishlistIcon.png";
 
@@ -66,7 +76,7 @@ class Assets {
 
   static const String imagesFavoriteIcon = "assets/images/favorite_icon.png";
 
-  static const String imagesFeadbackIcon = "assets/images/feadback_icon.png";
+  static const String imagesFeedbackIcon = "assets/images/feedback_icon.png";
 
   static const String imagesFilter = "assets/images/filter.png";
 
@@ -100,17 +110,37 @@ class Assets {
 
   static const String imagesSearch = "assets/images/search.png";
 
+  static const String imagesSelectedStar = "assets/images/selected_star.png";
+
   static const String imagesStart = "assets/images/start.png";
+
+  static const String imagesTestBrand = "assets/images/test_brand.png";
 
   static const String imagesTestCartImage = "assets/images/testCartImage.png";
 
   static const String imagesTestItem = "assets/images/test_item.png";
 
+  static const String imagesUnactiveBrandsAdmin = "assets/images/unactive_brands_admin.png";
+
+  static const String imagesUnactiveCatgAdmin = "assets/images/unactive_catg_admin.png";
+
+  static const String imagesUnactiveFeedbackAdmin = "assets/images/unactive_feedback_admin.png";
+
+  static const String imagesUnactiveProdManageAdmin = "assets/images/unactive_prod_manage_admin.png";
+
+  static const String imagesUnactiveSystmeUsersAdmin = "assets/images/unactive_systme_users_admin.png";
+
   static const String imagesUnreadMessageIcon = "assets/images/unreadMessageIcon.png";
 
   static const String imagesUnreadNotificationIcon = "assets/images/unreadNotificationIcon.png";
 
+  static const String imagesUnselectedStar = "assets/images/unselected_star.png";
+
   static const String imagesUpdateBrandIcon = "assets/images/updateBrandIcon.png";
+
+  static const String imagesViewAllUsers = "assets/images/view_all_users.png";
+
+  static const String imagesViewUsers = "assets/images/view_users.png";
 
   static const String imagesWishlistIcon = "assets/images/wishlistIcon.png";
 

@@ -29,4 +29,15 @@ abstract class Routes {
   static const String addBrandProduct = '/addBrandProduct';
   static const String createCuopon = '/createCuopon';
   static const String updateCuopon = '/updateCuopon';
+  static const String allbrands = "/allbrands";
+  static const String manageProducts = "/manageProducts";
+  static const String manageUsers = "/manageUsers";
+  static const String manageCategories = "/manageCategories";
+  static const String systemFeedback = "/systemFeedback";
+  static const String productReviews = "/reviews";
+  static const String updateCategory = "/updateCategory";
+  static const String updateSubCategory = "/updateSubCategory";
+  static const String createSytemUser = "/createSytemUser";
+  static const String updateSystemUser = "/updateSystemUser";
+
 }

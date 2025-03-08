@@ -50,7 +50,8 @@ class ProfileView extends StatelessWidget {
                   trailling: Icon(
                     Icons.arrow_forward_ios_rounded,
                     size: 17.spMax,
-                  )),
+                  )
+                  ),
               20.vs,
               InfoTile(
                   leadingIcon: Assets.imagesPaymentMethods,
@@ -83,7 +84,7 @@ class ProfileView extends StatelessWidget {
                   ontap: () {
                     context.push(Routes.addFeedback);
                   },
-                  leadingIcon: Assets.imagesFeadbackIcon,
+                  leadingIcon: Assets.imagesFeedbackIcon,
                   title: "Feadback",
                   trailling: Icon(
                     Icons.arrow_forward_ios_rounded,

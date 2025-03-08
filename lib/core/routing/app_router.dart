@@ -1,24 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nile_brand/core/helpers/app_navigation_bar_items.dart';
-import 'package:nile_brand/features/Owner/cuopon/presentation/views/create_cuopon_view.dart';
-import 'package:nile_brand/features/Owner/cuopon/presentation/views/update_cuopon_view.dart';
-import 'package:nile_brand/features/Owner/orders_status/presentation/views/brand_orders_view.dart';
-import 'package:nile_brand/features/Owner/dashboard/presentation/views/dashboard_view.dart';
-import 'package:nile_brand/features/Owner/cuopon/presentation/views/cuopon_view.dart';
-import 'package:nile_brand/features/Owner/my_brand/presentation/views/brand_profile_view.dart';
-import 'package:nile_brand/features/Owner/my_brand/presentation/views/my_brand_view.dart';
-import 'package:nile_brand/features/Owner/my_brand/presentation/views/update_brand_view.dart';
-import 'package:nile_brand/features/Owner/owner_constants.dart';
-import 'package:nile_brand/features/Owner/owner_home/presentation/views/brand_details_view.dart';
-import 'package:nile_brand/features/Owner/owner_home/presentation/views/owner_home_view.dart';
-import 'package:nile_brand/features/User/user_constants.dart';
-import 'package:nile_brand/core/widgets/custom_app_navigation_bar.dart';
+
 import 'package:nile_brand/core/routing/routes.dart';
 import "package:nile_brand/core/routing/exports.dart";
-import 'package:nile_brand/features/Owner/create_brand/presentation/views/create_brand_view.dart';
+import 'package:nile_brand/features/Admin/systm_users/views/update_user_info.dart';
 
-import '../../features/Owner/add_brand_product/persentation/views/add_brand_product_view.dart';
+
+
+
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -214,6 +203,83 @@ abstract class AppRouter {
         path: Routes.updateCuopon,
         builder: (context, state) => const UpdateCuoponView(),
       ),
+
+      // admin navigation bar
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) => CustomAppNavigationBar(
+          navigationShell: navigationShell,
+          items: appNavigationBarItems(
+            list: AdminConstants.userNavigationBarItemsImagesList,
+          ),
+          isFloatingAction: false,
+        ),
+        branches: [
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.allbrands,
+                builder: (context, state) => const ManageBrandsView(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.manageCategories,
+                builder: (context, state) => const ManageCategoryView(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.manageProducts,
+                builder: (context, state) => const ManageProductsViews(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.manageUsers,
+                builder: (context, state) => const SystemUsersView(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.systemFeedback,
+                builder: (context, state) => const SystemFeedbackView(),
+              ),
+            ],
+          ),
+        ],
+      ),
+      GoRoute(
+        path: Routes.productReviews,
+        builder: (context, state) => const ProductReviews(),
+      ),
+      GoRoute(
+        path: Routes.updateCategory,
+        builder: (context, state) => UpdateCreateCategSetting(
+          title: state.extra as String,
+        ),
+      ),
+      GoRoute(
+        path: Routes.updateSubCategory,
+        builder: (context, state) => UpdateCreateSubcatg(
+          title: state.extra as String,
+        ),
+      ),
+      GoRoute(
+        path: Routes.createSytemUser,
+        builder: (context, state) => const CreateSystemUser(),
+      ),
+      GoRoute(
+        path: Routes.updateSystemUser,
+        builder: (context, state) => const UpdateUserInfo(),
+      )
     ],
   );
 }
