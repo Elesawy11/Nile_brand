@@ -33,7 +33,7 @@ class CartCheckoutWidget extends StatelessWidget {
           ),
           child: const CheckoutTextWidget(
             subtotal: 'Total',
-            total: '700 Le',
+            total: '700 LE',
           ),
         ),
         verticalSpace(32),
