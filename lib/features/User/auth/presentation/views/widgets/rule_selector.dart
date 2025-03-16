@@ -13,7 +13,8 @@ class RuleSelector extends StatelessWidget {
             backgroundColor: WidgetStatePropertyAll(Colors.white)),
         dropdownMenuEntries: const [
           DropdownMenuEntry(value: "customer", label: "Customer"),
-          DropdownMenuEntry(value: "owner", label: "Owner")
+          DropdownMenuEntry(value: "owner", label: "Owner"),
+          DropdownMenuEntry(value: "admin", label: "Admin"),
         ]);
   }
 }
