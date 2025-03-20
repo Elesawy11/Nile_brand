@@ -18,32 +18,35 @@ class UpdateUserInfo extends StatelessWidget {
           appBar: AppBar(
             title: Text(
               "Update System User",
-              style: Styles.font30W700,
+              style: Styles.font30W700.copyWith(fontSize: 25.sp,fontWeight: FontWeight.bold),
             ),
           ),
           body: Padding(
-            padding: 12.allEdgeInsets,
+            padding: 12.allEdgeInsets.copyWith(bottom: 40.h),
             child: Column(
               children: [
                 60.vs,
                 SizedBox(
-                  height: 100.h,
+                  height: 50.h,
+                 
+                width: 340.w,
                   child: AppTextFormField(
                     labelText: "Name",
                     hintText: "Name",
                     validator: (p0) {},
                   ),
                 ),
-                // 10.vs,
+                30.vs,
                 SizedBox(
-                  height: 100.h,
+                 height: 50.h,
+                width: 340.w,
                   child: AppTextFormField(
                     labelText: "Status",
                     hintText: "Status",
                     validator: (p0) {},
                   ),
                 ),
-                350.vs,
+                const Spacer(),
                 SizedBox(
                     width: 150.w,
                     child: AppTextButton(

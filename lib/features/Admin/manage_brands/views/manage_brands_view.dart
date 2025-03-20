@@ -16,7 +16,7 @@ class ManageBrandsView extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "All Brands",
-          style: Styles.font30W700,
+          style: Styles.font30W700.copyWith(fontSize: 25.sp,fontWeight: FontWeight.bold),
         ),
       ),
       body: Padding(
@@ -27,7 +27,7 @@ class ManageBrandsView extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 20.w,
                 mainAxisSpacing: 10.w,
-                childAspectRatio: 3 / 3.4),
+                childAspectRatio: 3.spMax / 3.8.spMax),
             itemCount: 10,
             itemBuilder: (context, index) {
               return const CustomeBrandItem();

@@ -12,15 +12,15 @@ class ManageCategoryView extends StatelessWidget {
       child: Scaffold(
 
         body: Padding(
-          padding: 5.ph,
+          padding: 8.ph,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               20.vs,
 
-              const CategorySubCategorySettings(mainTitle: "Category management",),
+              const CategorySubCategorySettings(mainTitle: "Category Management",),
               30.vs,
-              const CategorySubCategorySettings(mainTitle: "Subcategory management",),
+              const CategorySubCategorySettings(mainTitle: "Subcategory Management",),
 
 
 

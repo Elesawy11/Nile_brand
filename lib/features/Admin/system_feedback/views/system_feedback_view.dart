@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 
 import 'package:nile_brand/features/Admin/system_feedback/views/widgets/system_feedback_list.dart';
@@ -13,7 +14,7 @@ class SystemFeedbackView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Show System Feedback" , style: Styles.font30W700,),
+          title: Text("Show System Feedback" , style: Styles.font30W700.copyWith(fontSize: 25.sp,fontWeight: FontWeight.bold),),
         ),
 
         body: Padding(
