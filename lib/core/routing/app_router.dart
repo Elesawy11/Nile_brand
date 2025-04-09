@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:nile_brand/core/routing/routes.dart';
 import "package:nile_brand/core/routing/exports.dart";
+import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/features/Admin/systm_users/views/update_user_info.dart';
-
-
-
-
+import 'package:nile_brand/features/User/auth/presentation/cubits/cubit/sign_up_cubit.dart';
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -33,7 +32,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: Routes.creatAccount,
-        builder: (context, state) => const CreateAccountView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt.get<SignUpCubit>(),
+          child: const CreateAccountView(),
+        ),
       ),
       GoRoute(
         path: Routes.editProfile,

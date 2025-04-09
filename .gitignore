@@ -34,7 +34,7 @@ migrate_working_dir/
 /build/
 **.g.dart
 **.freezed.dart
-**/api_constants.dart
+# **/api_constants.dart
 
 # Symbolication related
 app.*.symbols

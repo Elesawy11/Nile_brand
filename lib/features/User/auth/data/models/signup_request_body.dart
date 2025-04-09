@@ -7,14 +7,14 @@ class SignupRequestBody {
   final String email;
   final String password;
   final String confirmPassword;
-  final String role;
+  final String rule;
 
   SignupRequestBody(
     this.name,
     this.email,
     this.password,
     this.confirmPassword,
-    this.role,
+    this.rule,
   );
 
   Map<String, dynamic> toJson() => _$SignupRequestBodyToJson(this);
