@@ -17,7 +17,7 @@ class UpdateCreateCategSetting extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             "$title Category",
-            style: Styles.font30W700,
+            style: Styles.font30W700.copyWith(fontSize: 25.sp,fontWeight: FontWeight.bold),
           ),
         ),
         body: Padding(
@@ -26,7 +26,7 @@ class UpdateCreateCategSetting extends StatelessWidget {
             children: [
               60.vs,
               SizedBox(
-                height: 100.h,
+                height: 50.h,
                 child: AppTextFormField(
                   labelText: "Name",
                   hintText: "Name",

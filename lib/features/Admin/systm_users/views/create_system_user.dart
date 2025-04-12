@@ -24,7 +24,7 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Create System User", style: Styles.font30W700,),
+          title: Text("Create System User", style: Styles.font30W700.copyWith(fontSize: 25.sp,fontWeight: FontWeight.bold),),
         ),
         body: Padding(
           padding: 12.allEdgeInsets,
@@ -63,7 +63,7 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
                  
                 
               
-              340.vs,
+              const Spacer(),
               SizedBox(
                 width: 150.w,
                   child: AppTextButton(

@@ -15,9 +15,12 @@ class CategorySubCategorySettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          mainTitle,
-          style: Styles.font30W700.copyWith(height: 1.h),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            mainTitle,
+            style: Styles.font30W700.copyWith(fontSize: 27,height: 1.h,fontWeight: FontWeight.bold),
+          ),
         ),
         10.vs,
         ...List.generate(

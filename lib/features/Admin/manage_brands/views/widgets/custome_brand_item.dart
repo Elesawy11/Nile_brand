@@ -35,7 +35,7 @@ class CustomeBrandItem extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Elegant Craft',
-                  style: Styles.font12W300.copyWith(color:const Color(0xFF242526)),
+                  style: Styles.font12W300.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w400,color:const Color(0xFF242526)),
                 ),
               ),
               Align(

@@ -17,7 +17,7 @@ class CreateUserTile extends StatelessWidget {
       },
       title: Text(
         "Create System User",
-        style: Styles.font24W500.copyWith(fontWeight: FontWeight.w700),
+        style: Styles.font30W700.copyWith(fontSize: 25.sp,fontWeight: FontWeight.bold),
       ),
       trailing: Icon(
         Icons.arrow_forward_ios_rounded,
