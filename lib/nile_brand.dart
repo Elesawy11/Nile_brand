@@ -1,4 +1,4 @@
-import 'package:device_preview_plus/device_preview_plus.dart';
+// import 'package:device_preview_plus/device_preview_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/routing/app_router.dart';
@@ -14,8 +14,8 @@ class NileBrandBody extends StatelessWidget {
       splitScreenMode: true,
       child: MaterialApp.router(
         useInheritedMediaQuery : true,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
+      // locale: DevicePreview.locale(context),
+      // builder: DevicePreview.appBuilder,
         
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
