@@ -16,6 +16,7 @@ class ChatbotView extends StatelessWidget {
           children: [
             const ChatbotTopBarWidget(),
             Expanded(
+            
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: const ListViewOfChatBubblesWidget(),

@@ -7,12 +7,15 @@ class PasswordField extends StatelessWidget {
   final String labelText;
   final String hintText;
   final FloatingLabelBehavior? floatingLabelBehavior;
+  final TextEditingController? controller;
 
   const PasswordField({
     super.key,
     required this.viewPass,
     required this.labelText,
-    required this.hintText, this.floatingLabelBehavior,
+    required this.hintText,
+    this.floatingLabelBehavior,
+    this.controller,
   });
 
   @override
@@ -21,6 +24,7 @@ class PasswordField extends StatelessWidget {
       valueListenable: viewPass,
       builder: (context, value, child) {
         return AppTextFormField(
+          controller: controller,
           floatingLabelBehavior: floatingLabelBehavior,
           labelText: labelText,
           hintText: hintText,
@@ -33,7 +37,11 @@ class PasswordField extends StatelessWidget {
                 ? const Icon(Icons.visibility_off_outlined)
                 : const Icon(Icons.visibility_outlined),
           ),
-          validator: (p0) {},
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter a valid password';
+            }
+          },
         );
       },
     );
