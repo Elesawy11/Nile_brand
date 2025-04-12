@@ -1,0 +1,43 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nile_brand/core/utils/sizes_padding.dart';
+import '../../../../../../core/widgets/app_text_form_field.dart';
+import '../../cubits/login_cubit/login_cubit.dart';
+import 'password_field.dart';
+
+class CustomLoginForm extends StatelessWidget {
+  const CustomLoginForm({
+    super.key,
+    required this.viewPass,
+  });
+
+  final ValueNotifier<bool> viewPass;
+
+  @override
+  Widget build(BuildContext context) {
+    final cubit = context.read<LoginCubit>();
+    return Form(
+      child: Column(
+        children: [
+          AppTextFormField(
+            controller: cubit.emailController,
+            labelText: 'E-mail',
+            hintText: 'email',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your email';
+              }
+            },
+          ),
+          35.vs,
+          PasswordField(
+            controller: cubit.passwordController,
+            viewPass: viewPass,
+            labelText: "Password",
+            hintText: "password",
+          ),
+        ],
+      ),
+    );
+  }
+}
