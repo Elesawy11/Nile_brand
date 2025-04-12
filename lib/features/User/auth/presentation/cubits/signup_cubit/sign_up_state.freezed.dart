@@ -14,11 +14,11 @@ part of 'sign_up_state.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$SignUpState<T> {
+mixin _$SignUpState {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is SignUpState<T>);
+        (other.runtimeType == runtimeType && other is SignUpState);
   }
 
   @override
@@ -26,24 +26,24 @@ mixin _$SignUpState<T> {
 
   @override
   String toString() {
-    return 'SignUpState<$T>()';
+    return 'SignUpState()';
   }
 }
 
 /// @nodoc
-class $SignUpStateCopyWith<T, $Res> {
-  $SignUpStateCopyWith(SignUpState<T> _, $Res Function(SignUpState<T>) __);
+class $SignUpStateCopyWith<$Res> {
+  $SignUpStateCopyWith(SignUpState _, $Res Function(SignUpState) __);
 }
 
 /// @nodoc
 
-class _Initial<T> implements SignUpState<T> {
+class _Initial implements SignUpState {
   const _Initial();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial<T>);
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -51,19 +51,19 @@ class _Initial<T> implements SignUpState<T> {
 
   @override
   String toString() {
-    return 'SignUpState<$T>.initial()';
+    return 'SignUpState.initial()';
   }
 }
 
 /// @nodoc
 
-class SignUpLoading<T> implements SignUpState<T> {
+class SignUpLoading implements SignUpState {
   const SignUpLoading();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is SignUpLoading<T>);
+        (other.runtimeType == runtimeType && other is SignUpLoading);
   }
 
   @override
@@ -71,78 +71,77 @@ class SignUpLoading<T> implements SignUpState<T> {
 
   @override
   String toString() {
-    return 'SignUpState<$T>.signUpLoading()';
+    return 'SignUpState.signUpLoading()';
   }
 }
 
 /// @nodoc
 
-class SignUpSuccess<T> implements SignUpState<T> {
+class SignUpSuccess implements SignUpState {
   const SignUpSuccess(this.data);
 
-  final T data;
+  final SignupResponse data;
 
   /// Create a copy of SignUpState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $SignUpSuccessCopyWith<T, SignUpSuccess<T>> get copyWith =>
-      _$SignUpSuccessCopyWithImpl<T, SignUpSuccess<T>>(this, _$identity);
+  $SignUpSuccessCopyWith<SignUpSuccess> get copyWith =>
+      _$SignUpSuccessCopyWithImpl<SignUpSuccess>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SignUpSuccess<T> &&
-            const DeepCollectionEquality().equals(other.data, data));
+            other is SignUpSuccess &&
+            (identical(other.data, data) || other.data == data));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+  int get hashCode => Object.hash(runtimeType, data);
 
   @override
   String toString() {
-    return 'SignUpState<$T>.signUpSuccess(data: $data)';
+    return 'SignUpState.signUpSuccess(data: $data)';
   }
 }
 
 /// @nodoc
-abstract mixin class $SignUpSuccessCopyWith<T, $Res>
-    implements $SignUpStateCopyWith<T, $Res> {
+abstract mixin class $SignUpSuccessCopyWith<$Res>
+    implements $SignUpStateCopyWith<$Res> {
   factory $SignUpSuccessCopyWith(
-          SignUpSuccess<T> value, $Res Function(SignUpSuccess<T>) _then) =
+          SignUpSuccess value, $Res Function(SignUpSuccess) _then) =
       _$SignUpSuccessCopyWithImpl;
   @useResult
-  $Res call({T data});
+  $Res call({SignupResponse data});
 }
 
 /// @nodoc
-class _$SignUpSuccessCopyWithImpl<T, $Res>
-    implements $SignUpSuccessCopyWith<T, $Res> {
+class _$SignUpSuccessCopyWithImpl<$Res>
+    implements $SignUpSuccessCopyWith<$Res> {
   _$SignUpSuccessCopyWithImpl(this._self, this._then);
 
-  final SignUpSuccess<T> _self;
-  final $Res Function(SignUpSuccess<T>) _then;
+  final SignUpSuccess _self;
+  final $Res Function(SignUpSuccess) _then;
 
   /// Create a copy of SignUpState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? data = freezed,
+    Object? data = null,
   }) {
-    return _then(SignUpSuccess<T>(
-      freezed == data
+    return _then(SignUpSuccess(
+      null == data
           ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
-              as T,
+              as SignupResponse,
     ));
   }
 }
 
 /// @nodoc
 
-class SignUpError<T> implements SignUpState<T> {
+class SignUpError implements SignUpState {
   const SignUpError({required this.error});
 
   final String error;
@@ -151,14 +150,14 @@ class SignUpError<T> implements SignUpState<T> {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $SignUpErrorCopyWith<T, SignUpError<T>> get copyWith =>
-      _$SignUpErrorCopyWithImpl<T, SignUpError<T>>(this, _$identity);
+  $SignUpErrorCopyWith<SignUpError> get copyWith =>
+      _$SignUpErrorCopyWithImpl<SignUpError>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SignUpError<T> &&
+            other is SignUpError &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -167,27 +166,26 @@ class SignUpError<T> implements SignUpState<T> {
 
   @override
   String toString() {
-    return 'SignUpState<$T>.signUpError(error: $error)';
+    return 'SignUpState.signUpError(error: $error)';
   }
 }
 
 /// @nodoc
-abstract mixin class $SignUpErrorCopyWith<T, $Res>
-    implements $SignUpStateCopyWith<T, $Res> {
+abstract mixin class $SignUpErrorCopyWith<$Res>
+    implements $SignUpStateCopyWith<$Res> {
   factory $SignUpErrorCopyWith(
-          SignUpError<T> value, $Res Function(SignUpError<T>) _then) =
+          SignUpError value, $Res Function(SignUpError) _then) =
       _$SignUpErrorCopyWithImpl;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class _$SignUpErrorCopyWithImpl<T, $Res>
-    implements $SignUpErrorCopyWith<T, $Res> {
+class _$SignUpErrorCopyWithImpl<$Res> implements $SignUpErrorCopyWith<$Res> {
   _$SignUpErrorCopyWithImpl(this._self, this._then);
 
-  final SignUpError<T> _self;
-  final $Res Function(SignUpError<T>) _then;
+  final SignUpError _self;
+  final $Res Function(SignUpError) _then;
 
   /// Create a copy of SignUpState
   /// with the given fields replaced by the non-null parameter values.
@@ -195,7 +193,7 @@ class _$SignUpErrorCopyWithImpl<T, $Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(SignUpError<T>(
+    return _then(SignUpError(
       error: null == error
           ? _self.error
           : error // ignore: cast_nullable_to_non_nullable

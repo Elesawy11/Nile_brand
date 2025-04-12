@@ -9,7 +9,7 @@ import 'package:nile_brand/features/User/auth/presentation/views/widgets/divider
 import 'package:nile_brand/features/User/auth/presentation/views/widgets/google_signin_widget.dart';
 import 'package:nile_brand/features/User/auth/presentation/views/widgets/signup_form.dart';
 
-import '../cubits/cubit/sign_up_cubit.dart';
+import '../cubits/signup_cubit/sign_up_cubit.dart';
 import 'widgets/signup_bloc_listener.dart';
 
 class CreateAccountView extends StatefulWidget {

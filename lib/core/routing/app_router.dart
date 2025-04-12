@@ -6,7 +6,7 @@ import 'package:nile_brand/core/routing/routes.dart';
 import "package:nile_brand/core/routing/exports.dart";
 import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/features/Admin/systm_users/views/update_user_info.dart';
-import 'package:nile_brand/features/User/auth/presentation/cubits/cubit/sign_up_cubit.dart';
+import 'package:nile_brand/features/User/auth/presentation/cubits/signup_cubit/sign_up_cubit.dart';
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();

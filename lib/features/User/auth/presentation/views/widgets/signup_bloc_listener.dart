@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import '../../../../../../core/routing/routes.dart';
-import '../../cubits/cubit/sign_up_cubit.dart';
-import '../../cubits/cubit/sign_up_state.dart';
+import '../../cubits/signup_cubit/sign_up_cubit.dart';
+import '../../cubits/signup_cubit/sign_up_state.dart';
 
 class SignupBlocListener extends StatelessWidget {
   const SignupBlocListener({super.key});

@@ -3,6 +3,7 @@ class ApiConstants {
 
   static const String baseUrl = 'https://nile-brands.up.railway.app/api/v1/';
   static const String signup = 'auth/signup';
+  static const String login = 'auth/login';
 }
 class ApiErrors {
   static const String badRequestError = "badRequestError";

@@ -4,7 +4,7 @@ import 'package:nile_brand/core/utils/sizes_padding.dart';
 import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../../core/widgets/app_text_form_field.dart';
-import '../../cubits/cubit/sign_up_cubit.dart';
+import '../../cubits/signup_cubit/sign_up_cubit.dart';
 import 'password_field.dart';
 import 'rule_selector.dart';
 
