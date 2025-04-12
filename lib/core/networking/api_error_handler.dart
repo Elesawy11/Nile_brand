@@ -70,14 +70,14 @@ extension DataSourceExtension on DataSource {
       case DataSource.NO_CONTENT:
         return ApiErrorModel(
           success: false,
-          errors: Errors(
+          error: Error(
             message: ResponseMessage.NO_CONTENT,
           ),
         );
       case DataSource.BAD_REQUEST:
         return ApiErrorModel(
           success: false,
-          errors: Errors(
+          error: Error(
             message: ResponseMessage.BAD_REQUEST,
           ),
         );
@@ -85,7 +85,7 @@ extension DataSourceExtension on DataSource {
       case DataSource.FORBIDDEN:
         return ApiErrorModel(
           success: false,
-          errors: Errors(
+          error: Error(
             message: ResponseMessage.FORBIDDEN,
           ),
         );
@@ -93,7 +93,7 @@ extension DataSourceExtension on DataSource {
       case DataSource.UNAUTORISED:
         return ApiErrorModel(
           success: false,
-          errors: Errors(
+          error: Error(
             message: ResponseMessage.UNAUTORISED,
           ),
         );
@@ -101,7 +101,7 @@ extension DataSourceExtension on DataSource {
       case DataSource.NOT_FOUND:
         return ApiErrorModel(
           success: false,
-          errors: Errors(
+          error: Error(
             message: ResponseMessage.NOT_FOUND,
           ),
         );
@@ -109,7 +109,7 @@ extension DataSourceExtension on DataSource {
       case DataSource.INTERNAL_SERVER_ERROR:
         return ApiErrorModel(
           success: false,
-          errors: Errors(
+          error: Error(
             message: ResponseMessage.INTERNAL_SERVER_ERROR,
           ),
         );
@@ -117,7 +117,7 @@ extension DataSourceExtension on DataSource {
       case DataSource.CONNECT_TIMEOUT:
         return ApiErrorModel(
           success: false,
-          errors: Errors(
+          error: Error(
             message: ResponseMessage.CONNECT_TIMEOUT,
           ),
         );
@@ -125,7 +125,7 @@ extension DataSourceExtension on DataSource {
       case DataSource.CANCEL:
         return ApiErrorModel(
           success: false,
-          errors: Errors(
+          error: Error(
             message: ResponseMessage.CANCEL,
           ),
         );
@@ -133,7 +133,7 @@ extension DataSourceExtension on DataSource {
       case DataSource.RECIEVE_TIMEOUT:
         return ApiErrorModel(
           success: false,
-          errors: Errors(
+          error: Error(
             message: ResponseMessage.RECIEVE_TIMEOUT,
           ),
         );
@@ -141,7 +141,7 @@ extension DataSourceExtension on DataSource {
       case DataSource.SEND_TIMEOUT:
         return ApiErrorModel(
           success: false,
-          errors: Errors(
+          error: Error(
             message: ResponseMessage.SEND_TIMEOUT,
           ),
         );
@@ -149,7 +149,7 @@ extension DataSourceExtension on DataSource {
       case DataSource.CACHE_ERROR:
         return ApiErrorModel(
           success: false,
-          errors: Errors(
+          error: Error(
             message: ResponseMessage.CACHE_ERROR,
           ),
         );
@@ -157,7 +157,7 @@ extension DataSourceExtension on DataSource {
       case DataSource.NO_INTERNET_CONNECTION:
         return ApiErrorModel(
           success: false,
-          errors: Errors(
+          error: Error(
             message: ResponseMessage.NO_INTERNET_CONNECTION,
           ),
         );
@@ -165,7 +165,7 @@ extension DataSourceExtension on DataSource {
       case DataSource.DEFAULT:
         return ApiErrorModel(
           success: false,
-          errors: Errors(
+          error: Error(
             message: ResponseMessage.DEFAULT,
           ),
         );

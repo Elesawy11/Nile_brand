@@ -30,7 +30,7 @@ class LoginCubit extends Cubit<LoginState> {
       case Failure():
         emit(
           LoginState.loginError(
-            error: response.errorHandler.apiErrorModel.errors?.message ??
+            error: response.errorHandler.apiErrorModel.error?.message ??
                 "Unknown error",
           ),
         );
