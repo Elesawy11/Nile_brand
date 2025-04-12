@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:nile_brand/features/User/auth/data/models/signup_request_body.dart';
-import 'package:nile_brand/features/User/auth/data/models/signup_response.dart';
 import 'package:nile_brand/features/User/auth/data/repo/signup_repo.dart';
-import '../../../../../../core/networking/api_result.dart';
+import '../../../../../../core/networking/signup_features/signup_result.dart';
+import '../../../data/models/signup_response.dart';
 import 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
@@ -36,9 +36,8 @@ class SignUpCubit extends Cubit<SignUpState> {
       case Failure():
         emit(
           SignUpState.signUpError(
-            error: response.errorHandler.apiErrorModel.error?.message ??
-                response.errorHandler.apiErrorModel.error?.message ??
-                'Unknown error',
+            error: response.errorHandler.apiErrorModel.errors?[0].msg ??
+                "Unknown error",
           ),
         );
         break;

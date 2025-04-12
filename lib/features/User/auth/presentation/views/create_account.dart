@@ -10,6 +10,7 @@ import 'package:nile_brand/features/User/auth/presentation/views/widgets/google_
 import 'package:nile_brand/features/User/auth/presentation/views/widgets/signup_form.dart';
 
 import '../cubits/cubit/sign_up_cubit.dart';
+import 'widgets/signup_bloc_listener.dart';
 
 class CreateAccountView extends StatefulWidget {
   const CreateAccountView({super.key});
@@ -24,7 +25,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<SignUpCubit>();
+    // final cubit = context.read<SignUpCubit>();
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
@@ -40,7 +41,6 @@ class _CreateAccountViewState extends State<CreateAccountView> {
               ),
               30.vs,
               SignupForm(
-                cubit: cubit,
                 viewPass: viewPass,
                 viewRestPass: viewRestPass,
               ),
@@ -67,6 +67,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                   ),
                 ),
               ),
+              SignupBlocListener(),
             ],
           ),
         ),

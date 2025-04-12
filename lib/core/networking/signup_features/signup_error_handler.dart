@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'api_constants.dart';
-import 'api_error_model.dart';
+import '../api_constants.dart';
+import 'signup_errors_model.dart';
 
 // TODO: wallahy I will refactor this .. Omar Ahmed
 enum DataSource {
@@ -65,118 +65,131 @@ class ResponseMessage {
 }
 
 extension DataSourceExtension on DataSource {
-  ApiErrorModel getFailure() {
+  SignupErrorsModel getFailure() {
     switch (this) {
       case DataSource.NO_CONTENT:
-        return ApiErrorModel(
-          success: false,
-          errors: Errors(
-            message: ResponseMessage.NO_CONTENT,
-          ),
+        return SignupErrorsModel(
+          errors: [
+            Errors(
+              msg: ResponseMessage.NO_CONTENT,
+            ),
+          ],
         );
       case DataSource.BAD_REQUEST:
-        return ApiErrorModel(
-          success: false,
-          errors: Errors(
-            message: ResponseMessage.BAD_REQUEST,
-          ),
+        return SignupErrorsModel(
+          errors: [
+            Errors(
+              msg: ResponseMessage.BAD_REQUEST,
+            ),
+          ],
         );
 
       case DataSource.FORBIDDEN:
-        return ApiErrorModel(
-          success: false,
-          errors: Errors(
-            message: ResponseMessage.FORBIDDEN,
-          ),
+        return SignupErrorsModel(
+          errors: [
+            Errors(
+              msg: ResponseMessage.FORBIDDEN,
+            ),
+          ],
         );
 
       case DataSource.UNAUTORISED:
-        return ApiErrorModel(
-          success: false,
-          errors: Errors(
-            message: ResponseMessage.UNAUTORISED,
-          ),
+        return SignupErrorsModel(
+          errors: [
+            Errors(
+              msg: ResponseMessage.UNAUTORISED,
+            ),
+          ],
         );
 
       case DataSource.NOT_FOUND:
-        return ApiErrorModel(
-          success: false,
-          errors: Errors(
-            message: ResponseMessage.NOT_FOUND,
-          ),
+        return SignupErrorsModel(
+          errors: [
+            Errors(
+              msg: ResponseMessage.NOT_FOUND,
+            ),
+          ],
         );
 
       case DataSource.INTERNAL_SERVER_ERROR:
-        return ApiErrorModel(
-          success: false,
-          errors: Errors(
-            message: ResponseMessage.INTERNAL_SERVER_ERROR,
-          ),
+        return SignupErrorsModel(
+          errors: [
+            Errors(
+              msg: ResponseMessage.INTERNAL_SERVER_ERROR,
+            ),
+          ],
         );
 
       case DataSource.CONNECT_TIMEOUT:
-        return ApiErrorModel(
-          success: false,
-          errors: Errors(
-            message: ResponseMessage.CONNECT_TIMEOUT,
-          ),
+        return SignupErrorsModel(
+          errors: [
+            Errors(
+              msg: ResponseMessage.CONNECT_TIMEOUT,
+            ),
+          ],
         );
 
       case DataSource.CANCEL:
-        return ApiErrorModel(
-          success: false,
-          errors: Errors(
-            message: ResponseMessage.CANCEL,
-          ),
+        return SignupErrorsModel(
+          errors: [
+            Errors(
+              msg: ResponseMessage.CANCEL,
+            ),
+          ],
         );
 
       case DataSource.RECIEVE_TIMEOUT:
-        return ApiErrorModel(
-          success: false,
-          errors: Errors(
-            message: ResponseMessage.RECIEVE_TIMEOUT,
-          ),
+        return SignupErrorsModel(
+          errors: [
+            Errors(
+              msg: ResponseMessage.RECIEVE_TIMEOUT,
+            ),
+          ],
         );
 
       case DataSource.SEND_TIMEOUT:
-        return ApiErrorModel(
-          success: false,
-          errors: Errors(
-            message: ResponseMessage.SEND_TIMEOUT,
-          ),
+        return SignupErrorsModel(
+          errors: [
+            Errors(
+              msg: ResponseMessage.SEND_TIMEOUT,
+            ),
+          ],
         );
 
       case DataSource.CACHE_ERROR:
-        return ApiErrorModel(
-          success: false,
-          errors: Errors(
-            message: ResponseMessage.CACHE_ERROR,
-          ),
+        return SignupErrorsModel(
+          errors: [
+            Errors(
+              msg: ResponseMessage.CACHE_ERROR,
+            ),
+          ],
         );
 
       case DataSource.NO_INTERNET_CONNECTION:
-        return ApiErrorModel(
-          success: false,
-          errors: Errors(
-            message: ResponseMessage.NO_INTERNET_CONNECTION,
-          ),
+        return SignupErrorsModel(
+          errors: [
+            Errors(
+              msg: ResponseMessage.NO_INTERNET_CONNECTION,
+            ),
+          ],
         );
 
       case DataSource.DEFAULT:
-        return ApiErrorModel(
-          success: false,
-          errors: Errors(
-            message: ResponseMessage.DEFAULT,
-          ),
+        return SignupErrorsModel(
+          errors: [
+            Errors(
+              msg: ResponseMessage.DEFAULT,
+            ),
+          ],
         );
     }
   }
 }
 
-class ErrorHandler implements Exception {
-  late ApiErrorModel apiErrorModel;
+class SignupErrorHandler implements Exception {
+  late SignupErrorsModel apiErrorModel;
 
-  ErrorHandler.handle(dynamic error) {
+  SignupErrorHandler.handle(dynamic error) {
     if (error is DioException) {
       // dio error so its an error from response of the API or from dio itself
       apiErrorModel = _handleError(error);
@@ -187,7 +200,7 @@ class ErrorHandler implements Exception {
   }
 }
 
-ApiErrorModel _handleError(DioException error) {
+SignupErrorsModel _handleError(DioException error) {
   switch (error.type) {
     case DioExceptionType.connectionTimeout:
       return DataSource.CONNECT_TIMEOUT.getFailure();
@@ -199,7 +212,7 @@ ApiErrorModel _handleError(DioException error) {
       if (error.response != null &&
           error.response?.statusCode != null &&
           error.response?.statusMessage != null) {
-        return ApiErrorModel.fromJson(error.response!.data);
+        return SignupErrorsModel.fromJson(error.response!.data);
       } else {
         return DataSource.DEFAULT.getFailure();
       }
@@ -207,7 +220,7 @@ ApiErrorModel _handleError(DioException error) {
       if (error.response != null &&
           error.response?.statusCode != null &&
           error.response?.statusMessage != null) {
-        return ApiErrorModel.fromJson(error.response!.data);
+        return SignupErrorsModel.fromJson(error.response!.data);
       } else {
         return DataSource.DEFAULT.getFailure();
       }

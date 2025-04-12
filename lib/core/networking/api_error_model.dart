@@ -1,13 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
-
 part 'api_error_model.g.dart';
 
 @JsonSerializable()
 class ApiErrorModel {
   final bool? success;
-  final Error? error;
+  final Errors? errors;
 
-  ApiErrorModel({this.success, this.error});
+  ApiErrorModel({this.success, this.errors});
   factory ApiErrorModel.fromJson(Map<String, dynamic> json) =>
       _$ApiErrorModelFromJson(json);
 
@@ -15,14 +14,14 @@ class ApiErrorModel {
 }
 
 @JsonSerializable()
-class Error {
-  Error({this.message, this.msg});
+class Errors {
+  Errors({
+    this.message,
+  });
 
   final String? message;
-  final String? msg;
-  String get errorMessage => message ?? msg ?? 'Unknown error';
 
-  factory Error.fromJson(Map<String, dynamic> json) => _$ErrorFromJson(json);
+  factory Errors.fromJson(Map<String, dynamic> json) => _$ErrorsFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ErrorToJson(this);
+  Map<String, dynamic> toJson() => _$ErrorsToJson(this);
 }
