@@ -12,7 +12,9 @@ class RuleSelector extends StatelessWidget {
     return DropdownMenu(
       controller: cubit.ruleController,
       onSelected: (value) {
-        cubit.ruleController.text = value ?? "user";
+        cubit.ruleController.text = value as String;
+        print("Selected value from cubit: ${cubit.ruleController.text}");
+        print('value of selected value: $value');
       },
       hintText: "User",
       width: 210.w,
