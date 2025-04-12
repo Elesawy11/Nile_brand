@@ -21,11 +21,11 @@ class SignUpCubit extends Cubit<SignUpState> {
     emit(const SignUpState.signUpLoading());
     final response = await _signUpRepo.signup(
       SignupRequestBody(
-        nameController.text,
-        emailController.text,
-        passwordController.text,
-        confirmPasswordController.text,
-        ruleController.text,
+        name: nameController.text,
+        email: emailController.text,
+        password: passwordController.text,
+        confirmPassword: confirmPasswordController.text,
+        role: ruleController.text,
       ),
     );
 

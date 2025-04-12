@@ -4,9 +4,9 @@ part 'api_error_model.g.dart';
 @JsonSerializable()
 class ApiErrorModel {
   final bool? success;
-  final Errors? errors;
+  final Error? error;
 
-  ApiErrorModel({this.success, this.errors});
+  ApiErrorModel({this.success, this.error});
   factory ApiErrorModel.fromJson(Map<String, dynamic> json) =>
       _$ApiErrorModelFromJson(json);
 
@@ -14,14 +14,14 @@ class ApiErrorModel {
 }
 
 @JsonSerializable()
-class Errors {
-  Errors({
+class Error {
+  Error({
     this.message,
   });
 
   final String? message;
 
-  factory Errors.fromJson(Map<String, dynamic> json) => _$ErrorsFromJson(json);
+  factory Error.fromJson(Map<String, dynamic> json) => _$ErrorFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ErrorsToJson(this);
+  Map<String, dynamic> toJson() => _$ErrorToJson(this);
 }

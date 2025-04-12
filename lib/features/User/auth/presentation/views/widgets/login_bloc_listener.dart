@@ -3,23 +3,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/styles.dart';
+import 'package:nile_brand/features/User/auth/presentation/cubits/login_cubit/login_cubit.dart';
+import 'package:nile_brand/features/User/auth/presentation/cubits/login_cubit/login_state.dart';
 import '../../../../../../core/routing/routes.dart';
-import '../../cubits/signup_cubit/sign_up_cubit.dart';
-import '../../cubits/signup_cubit/sign_up_state.dart';
 
-class SignupBlocListener extends StatelessWidget {
-  const SignupBlocListener({super.key});
+class LoginBlocListener extends StatelessWidget {
+  const LoginBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<SignUpCubit, SignUpState>(
+    return BlocListener<LoginCubit, LoginState>(
       listenWhen: (previous, current) =>
-          current is SignUpLoading ||
-          current is SignUpSuccess ||
-          current is SignUpError,
+          current is LoginLoading ||
+          current is LoginSuccess ||
+          current is LoginError,
       listener: (context, state) {
         switch (state) {
-          case SignUpLoading():
+          case LoginLoading():
             showDialog(
               context: context,
               builder: (context) => const Center(
@@ -30,33 +30,14 @@ class SignupBlocListener extends StatelessWidget {
             );
 
             break;
-          case SignUpSuccess():
+          case LoginSuccess():
             context.pop();
             showSuccessDialog(context);
             break;
-          case SignUpError():
+          case LoginError():
             setupErrorState(context, state.error);
             break;
         }
-        // state.whenOrNull(
-        //   signupLoading: () {
-        //     showDialog(
-        //       context: context,
-        //       builder: (context) => const Center(
-        //         child: CircularProgressIndicator(
-        //           color: ColorsManager.mainBlue,
-        //         ),
-        //       ),
-        //     );
-        //   },
-        //   signupSuccess: (signupResponse) {
-        //     context.pop();
-        //     showSuccessDialog(context);
-        //   },
-        //   signupError: (error) {
-        //     setupErrorState(context, error);
-        //   },
-        // );
       },
       child: const SizedBox.shrink(),
     );
