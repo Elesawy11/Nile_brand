@@ -2,25 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
-import 'package:nile_brand/features/User/auth/presentation/cubits/login_cubit/login_cubit.dart';
-import 'package:nile_brand/features/User/auth/presentation/cubits/login_cubit/login_state.dart';
+import 'package:nile_brand/features/User/auth/presentation/cubits/cubit/reset_pass_cubit.dart';
+import 'package:nile_brand/features/User/auth/presentation/cubits/cubit/reset_pass_state.dart';
 import '../../../../../../core/helpers/setup_error_state.dart';
-import '../../../../../../core/helpers/show_succes_dialog.dart';
 import '../../../../../../core/routing/routes.dart';
 
-class LoginBlocListener extends StatelessWidget {
-  const LoginBlocListener({super.key});
+class ResetPassBlocListener extends StatelessWidget {
+  const ResetPassBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginCubit, LoginState>(
+    return BlocListener<ResetPassCubit, ResetPassState>(
       listenWhen: (previous, current) =>
-          current is LoginLoading ||
-          current is LoginSuccess ||
-          current is LoginError,
+          current is ResetLoading ||
+          current is ResetSuccess ||
+          current is ResetError,
       listener: (context, state) {
         switch (state) {
-          case LoginLoading():
+          case ResetLoading():
             showDialog(
               context: context,
               builder: (context) => const Center(
@@ -31,15 +30,16 @@ class LoginBlocListener extends StatelessWidget {
             );
 
             break;
-          case LoginSuccess():
+          case ResetSuccess():
             context.pop();
-            showSuccessDialog(
-                message: 'Congratulations, you have logged in successfully!',
-                context, onPressed: () {
-              context.go(Routes.home);
-            });
+            Future.delayed(const Duration(seconds: 2)).then(
+              (value) => context.push(
+                Routes.home,
+              ),
+            );
+
             break;
-          case LoginError():
+          case ResetError():
             setupErrorState(context, state.error);
             break;
         }

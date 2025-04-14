@@ -8,6 +8,7 @@ class PasswordField extends StatelessWidget {
   final String hintText;
   final FloatingLabelBehavior? floatingLabelBehavior;
   final TextEditingController? controller;
+  final dynamic Function(String?)? validator;
 
   const PasswordField({
     super.key,
@@ -16,6 +17,7 @@ class PasswordField extends StatelessWidget {
     required this.hintText,
     this.floatingLabelBehavior,
     this.controller,
+    this.validator,
   });
 
   @override
@@ -37,11 +39,12 @@ class PasswordField extends StatelessWidget {
                 ? const Icon(Icons.visibility_off_outlined)
                 : const Icon(Icons.visibility_outlined),
           ),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Please enter a valid password';
-            }
-          },
+          validator: validator ??
+              (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter a valid password';
+                }
+              },
         );
       },
     );

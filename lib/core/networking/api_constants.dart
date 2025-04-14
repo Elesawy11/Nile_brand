@@ -4,7 +4,11 @@ class ApiConstants {
   static const String baseUrl = 'https://nile-brands.up.railway.app/api/v1/';
   static const String signup = 'auth/signup';
   static const String login = 'auth/login';
+  static const String forgotPassword = 'auth/forgetPassword';
+  static const String verifyCode = 'auth/verifyCode';
+  static const String resetPassword = 'auth/resetPassword';
 }
+
 class ApiErrors {
   static const String badRequestError = "badRequestError";
   static const String noContent = "noContent";
