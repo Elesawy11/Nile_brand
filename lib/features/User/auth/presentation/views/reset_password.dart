@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-import 'package:nile_brand/core/routing/routes.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/spacer.dart';
 import 'package:nile_brand/core/widgets/app_text_button.dart';
+import 'package:nile_brand/features/User/auth/presentation/cubits/cubit/reset_pass_cubit.dart';
 import 'package:nile_brand/features/User/auth/presentation/views/widgets/custom_auth_bar_widget.dart';
 import 'package:nile_brand/features/User/auth/presentation/views/widgets/have_acount_text.dart';
-import 'package:nile_brand/features/User/auth/presentation/views/widgets/password_field.dart';
+import 'package:nile_brand/features/User/auth/presentation/views/widgets/reset_bloc_listener.dart';
+import 'widgets/reset_pass_form.dart';
 
 class ResetPasswordView extends StatefulWidget {
   const ResetPasswordView({super.key});
@@ -31,19 +32,15 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const CustomAuthWelcomeWidget(
-                  title: "Reset Password",
-                  subTitle:
-                      "Enter your new password twice below to reset a new password."),
+                title: "Reset Password",
+                subTitle:
+                    "Enter your new password twice below to reset a new password.",
+              ),
               verticalSpace(92),
-              PasswordField(
-                  viewPass: viewPass,
-                  labelText: "Password",
-                  hintText: "password"),
-              verticalSpace(35),
-              PasswordField(
-                  viewPass: viewRestPass,
-                  labelText: 'Re-enter new Password',
-                  hintText: 're-enter new password'),
+              ResetPassForm(
+                viewPass: viewPass,
+                viewRestPass: viewRestPass,
+              ),
               verticalSpace(57),
               SizedBox(
                 height: 50.h,
@@ -52,19 +49,24 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                   padding: 50.ph,
                   child: AppTextButton(
                     text: 'Reset Password',
-                    onPressed: () {
-                      context.go(Routes.verificationScreen);
-                    },
+                    onPressed: () => validateThenDoReset(context),
                     backgroundColor: ColorManager.mainColor,
                   ),
                 ),
               ),
               verticalSpace(160),
               const HaveAcountText(),
+              ResetPassBlocListener(),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void validateThenDoReset(BuildContext context) {
+    if (context.read<ResetPassCubit>().formKey.currentState!.validate()) {
+      context.read<ResetPassCubit>().emitResetPassState();
+    }
   }
 }

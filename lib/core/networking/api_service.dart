@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:nile_brand/features/User/auth/data/models/forgot_pass_response.dart';
 import 'package:nile_brand/features/User/auth/data/models/login_request_body.dart';
 import 'package:nile_brand/features/User/auth/data/models/login_response.dart';
+import 'package:nile_brand/features/User/auth/data/models/reset_pass_request.dart';
 import 'package:nile_brand/features/User/auth/data/models/signup_request_body.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../features/User/auth/data/models/frogot_pass_request.dart';
@@ -32,6 +33,12 @@ abstract class ApiService {
   @POST(ApiConstants.verifyCode)
   Future<ForgotPassResponse> verifyPassword(
     @Body() Map<String, dynamic> body,
+    @Header('Authorization') String? token,
+  );
+
+  @PUT(ApiConstants.resetPassword)
+  Future<ForgotPassResponse> resetPassword(
+    @Body() ResetPassRequest resetPassRequest,
     @Header('Authorization') String? token,
   );
 }
