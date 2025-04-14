@@ -1,44 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../cubits/verify_code_cubit/verify_code_cubit.dart';
 
 class VerificationCodeInput extends StatelessWidget {
   const VerificationCodeInput({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-                width: 290.w,
+    final cubit = context.read<VerifyCodeCubit>();
+    return Form(
+      key: cubit.formKey,
+      child: SizedBox(
+        width: 290.w,
+        height: 44.h,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            for (int i = 0; i < 6; i++)
+              SizedBox(
+                width: 44.w,
                 height: 44.h,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    for (int i = 0; i < 5; i++)
-                      SizedBox(
-                          width: 44.w,
-                          height: 44.h,
-                          child: TextFormField(
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.black)),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.black))),
-                            keyboardType: TextInputType.number,
-                            textAlign: TextAlign.center,
-                            inputFormatters: [
-                              LengthLimitingTextInputFormatter(1),
-                              FilteringTextInputFormatter.digitsOnly,
-                            ],
-                            onChanged: (value) {
-                              if (value.length == 1) {
-                                FocusScope.of(context).nextFocus();
-                              }
-                            },
-                          ))
+                child: TextFormField(
+                  controller: cubit.controllers[i],
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  keyboardType: TextInputType.number,
+                  textAlign: TextAlign.center,
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(1),
+                    FilteringTextInputFormatter.digitsOnly,
                   ],
+                  onChanged: (value) {
+                    if (value.length == 1) {
+                      FocusScope.of(context).nextFocus();
+                    }
+                  },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter a digit';
+                    }
+                  },
                 ),
-              );
+              ),
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -2,25 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
-import 'package:nile_brand/features/User/auth/presentation/cubits/login_cubit/login_cubit.dart';
-import 'package:nile_brand/features/User/auth/presentation/cubits/login_cubit/login_state.dart';
+import 'package:nile_brand/features/User/auth/presentation/cubits/forgot_pass/forgot_pass_cubit.dart';
+import 'package:nile_brand/features/User/auth/presentation/cubits/forgot_pass/forgot_pass_state.dart';
 import '../../../../../../core/helpers/setup_error_state.dart';
 import '../../../../../../core/helpers/show_succes_dialog.dart';
 import '../../../../../../core/routing/routes.dart';
 
-class LoginBlocListener extends StatelessWidget {
-  const LoginBlocListener({super.key});
+class ForgotPassBlocListener extends StatelessWidget {
+  const ForgotPassBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginCubit, LoginState>(
+    return BlocListener<ForgotPassCubit, ForgotPassState>(
       listenWhen: (previous, current) =>
-          current is LoginLoading ||
-          current is LoginSuccess ||
-          current is LoginError,
+          current is ForgotLoading ||
+          current is ForgotSuccess ||
+          current is ForgotError,
       listener: (context, state) {
         switch (state) {
-          case LoginLoading():
+          case ForgotLoading():
             showDialog(
               context: context,
               builder: (context) => const Center(
@@ -31,15 +31,15 @@ class LoginBlocListener extends StatelessWidget {
             );
 
             break;
-          case LoginSuccess():
+          case ForgotSuccess():
             context.pop();
             showSuccessDialog(
-                message: 'Congratulations, you have logged in successfully!',
+                message: 'Check your email for the verification code.',
                 context, onPressed: () {
-              context.go(Routes.home);
+              context.go(Routes.verificationScreen);
             });
             break;
-          case LoginError():
+          case ForgotError():
             setupErrorState(context, state.error);
             break;
         }
