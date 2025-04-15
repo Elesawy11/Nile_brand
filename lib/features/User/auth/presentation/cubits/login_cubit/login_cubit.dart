@@ -37,4 +37,11 @@ class LoginCubit extends Cubit<LoginState> {
         break;
     }
   }
+
+  @override
+  Future<void> close() {
+    emailController.dispose();
+    passwordController.dispose();
+    return super.close();
+  }
 }

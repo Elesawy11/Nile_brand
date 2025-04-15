@@ -7,7 +7,7 @@ part 'forgot_pass_state.freezed.dart';
 class ForgotPassState with _$ForgotPassState {
   const factory ForgotPassState.initial() = _Initial;
   const factory ForgotPassState.forgotLoading() = ForgotLoading;
-  const factory ForgotPassState.forgotSuccess(ForgotPassResponse forgotPass) =
+  const factory ForgotPassState.forgotSuccess(ForgotPassResponse forgotPass,String email) =
       ForgotSuccess;
   const factory ForgotPassState.forgotError({required String error}) =
       ForgotError;

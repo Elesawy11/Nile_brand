@@ -43,4 +43,15 @@ class SignUpCubit extends Cubit<SignUpState> {
         break;
     }
   }
+
+  @override
+  Future<void> close() {
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    nameController.dispose();
+    ruleController.dispose();
+
+    return super.close();
+  }
 }
