@@ -2,9 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:nile_brand/core/networking/api_result.dart';
 import 'package:nile_brand/core/networking/token.dart';
-import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/features/User/auth/data/repo/verify_code_repo.dart';
-import 'package:nile_brand/features/User/auth/presentation/cubits/forgot_pass/forgot_pass_cubit.dart';
 import 'verify_code_state.dart';
 
 class VerifyCodeCubit extends Cubit<VerifyCodeState> {
@@ -45,5 +43,13 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
         );
         break;
     }
+  }
+
+  @override
+  Future<void> close() {
+    for (var controller in controllers) {
+      controller.dispose();
+    }
+    return super.close();
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../../core/widgets/app_text_form_field.dart';
 
 class PasswordField extends StatelessWidget {

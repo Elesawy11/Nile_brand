@@ -73,9 +73,18 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: Routes.verificationScreen,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt.get<VerifyCodeCubit>(),
-          child: const VerificationScreen(),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt.get<VerifyCodeCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt.get<ForgotPassCubit>(),
+            ),
+          ],
+          child: VerificationScreen(
+            email: state.extra.toString(),
+          ),
         ),
       ),
       GoRoute(

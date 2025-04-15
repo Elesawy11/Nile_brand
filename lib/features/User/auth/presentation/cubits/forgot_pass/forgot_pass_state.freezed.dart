@@ -79,9 +79,10 @@ class ForgotLoading implements ForgotPassState {
 /// @nodoc
 
 class ForgotSuccess implements ForgotPassState {
-  const ForgotSuccess(this.forgotPass);
+  const ForgotSuccess(this.forgotPass, this.email);
 
   final ForgotPassResponse forgotPass;
+  final String email;
 
   /// Create a copy of ForgotPassState
   /// with the given fields replaced by the non-null parameter values.
@@ -96,15 +97,16 @@ class ForgotSuccess implements ForgotPassState {
         (other.runtimeType == runtimeType &&
             other is ForgotSuccess &&
             (identical(other.forgotPass, forgotPass) ||
-                other.forgotPass == forgotPass));
+                other.forgotPass == forgotPass) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, forgotPass);
+  int get hashCode => Object.hash(runtimeType, forgotPass, email);
 
   @override
   String toString() {
-    return 'ForgotPassState.forgotSuccess(forgotPass: $forgotPass)';
+    return 'ForgotPassState.forgotSuccess(forgotPass: $forgotPass, email: $email)';
   }
 }
 
@@ -115,7 +117,7 @@ abstract mixin class $ForgotSuccessCopyWith<$Res>
           ForgotSuccess value, $Res Function(ForgotSuccess) _then) =
       _$ForgotSuccessCopyWithImpl;
   @useResult
-  $Res call({ForgotPassResponse forgotPass});
+  $Res call({ForgotPassResponse forgotPass, String email});
 }
 
 /// @nodoc
@@ -131,12 +133,17 @@ class _$ForgotSuccessCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? forgotPass = null,
+    Object? email = null,
   }) {
     return _then(ForgotSuccess(
       null == forgotPass
           ? _self.forgotPass
           : forgotPass // ignore: cast_nullable_to_non_nullable
               as ForgotPassResponse,
+      null == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
