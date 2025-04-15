@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "175442159443",
+    "firebase_url": "https://ecomm-95604-default-rtdb.firebaseio.com",
+    "project_id": "ecomm-95604",
+    "storage_bucket": "ecomm-95604.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175442159443:android:53ffbde84158f8f3e4e3a6",
+        "android_client_info": {
+          "package_name": "com.example.nile_brand"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALuJwG9CGJ5QHuMHmTQM9bKDYlxOCkLVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
