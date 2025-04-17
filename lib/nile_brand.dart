@@ -13,7 +13,7 @@ class NileBrandBody extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp.router(
-        useInheritedMediaQuery : true,
+        // useInheritedMediaQuery : true,
       // locale: DevicePreview.locale(context),
       // builder: DevicePreview.appBuilder,
         
