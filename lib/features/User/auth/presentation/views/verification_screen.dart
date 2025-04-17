@@ -82,7 +82,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
               style: Styles.font20W400,
             ),
             Text(
-              "******@gmail.com",
+              widget.email,
               style: Styles.font20W400.copyWith(
                 color: ColorManager.blue33,
               ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nile_brand/core/routing/routes.dart';
 import 'package:nile_brand/core/utils/app_strings.dart';
 import 'package:nile_brand/core/utils/assets.dart';
 import 'package:nile_brand/core/utils/spacer.dart';
@@ -25,9 +27,15 @@ class CategoriesAndFilterWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.only(right: 24.w),
-                  child: Text(
-                    AppStrings.mainCategories[index],
-                    style: Styles.font17W400,
+                  child: InkWell(
+                    onTap: () {
+                      //TODO: navigate to categories branch
+                      // context.push(Routes.categoreis);
+                    },
+                    child: Text(
+                      AppStrings.mainCategories[index],
+                      style: Styles.font17W400,
+                    ),
                   ),
                 );
               },
