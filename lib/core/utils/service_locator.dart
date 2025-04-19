@@ -1,16 +1,20 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nile_brand/core/networking/api_service.dart';
 import 'package:nile_brand/core/networking/dio_factory.dart';
+import 'package:nile_brand/features/User/auth/data/repo/google_auth_repo.dart';
 import 'package:nile_brand/features/User/auth/data/repo/signup_repo.dart';
 import 'package:nile_brand/features/User/auth/presentation/cubits/forgot_pass/forgot_pass_cubit.dart';
+import 'package:nile_brand/features/User/auth/presentation/cubits/google_sigin_cubit/google_signin_cubit.dart';
 import 'package:nile_brand/features/User/auth/presentation/cubits/signup_cubit/sign_up_cubit.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/cubits/cubit/chatbot_scroll_cubit.dart';
 import '../../features/User/auth/data/repo/forgot_pass_repo.dart';
 import '../../features/User/auth/data/repo/login_repo.dart';
 import '../../features/User/auth/data/repo/reset_pass_repo.dart';
 import '../../features/User/auth/data/repo/verify_code_repo.dart';
-import '../../features/User/auth/presentation/cubits/cubit/reset_pass_cubit.dart';
+import '../../features/User/auth/presentation/cubits/reset_pass_cubit/reset_pass_cubit.dart';
 import '../../features/User/auth/presentation/cubits/login_cubit/login_cubit.dart';
 import '../../features/User/auth/presentation/cubits/verify_code_cubit/verify_code_cubit.dart';
 
@@ -18,6 +22,8 @@ final getIt = GetIt.instance;
 
 void serviceLocator() {
   Dio dio = DioFactory.getDio();
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  GoogleSignIn googleSignIn = GoogleSignIn();
   getIt.registerLazySingleton(() => ApiService(dio));
   // Signup Features
   getIt.registerLazySingleton(() => SignUpRepo(getIt.get()));
@@ -34,6 +40,9 @@ void serviceLocator() {
   // Reset Password Features
   getIt.registerLazySingleton(() => ResetPassRepo(getIt.get()));
   getIt.registerFactory(() => ResetPassCubit(getIt.get()));
+  // Google Signin Features
+  getIt.registerLazySingleton(() => GoogleAuthRepo(firebaseAuth, googleSignIn));
+  getIt.registerFactory(() => GoogleSigninCubit(getIt.get()));
   // Chatbot Features
   getIt.registerLazySingleton(() => ChatbotScrollCubit());
 }

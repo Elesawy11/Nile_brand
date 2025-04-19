@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/utils/spacer.dart';
-import '../../cubits/cubit/reset_pass_cubit.dart';
+import '../../cubits/reset_pass_cubit/reset_pass_cubit.dart';
 import 'password_field.dart';
 
 class ResetPassForm extends StatelessWidget {

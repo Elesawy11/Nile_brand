@@ -8,15 +8,14 @@ import 'package:nile_brand/firebase_options.dart';
 import 'package:nile_brand/nile_brand.dart';
 import 'package:nile_brand/simple_bloc_observer.dart';
 
-void main(List<String> args) async{
+void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
-);
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   serviceLocator();
   Bloc.observer = SimpleBlocObserver();
   runApp(NileBrand());
-  
 }
 
 class NileBrand extends StatelessWidget {
