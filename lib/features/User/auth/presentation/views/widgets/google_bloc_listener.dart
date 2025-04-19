@@ -2,24 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
-import 'package:nile_brand/features/User/auth/presentation/cubits/reset_pass_cubit/reset_pass_cubit.dart';
-import 'package:nile_brand/features/User/auth/presentation/cubits/reset_pass_cubit/reset_pass_state.dart';
+import 'package:nile_brand/features/User/auth/presentation/cubits/google_sigin_cubit/google_signin_cubit.dart';
+import 'package:nile_brand/features/User/auth/presentation/cubits/google_sigin_cubit/google_signin_state.dart';
 import '../../../../../../core/helpers/setup_error_state.dart';
+import '../../../../../../core/helpers/show_succes_dialog.dart';
 import '../../../../../../core/routing/routes.dart';
 
-class ResetPassBlocListener extends StatelessWidget {
-  const ResetPassBlocListener({super.key});
+class GoogleBlocListener extends StatelessWidget {
+  const GoogleBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ResetPassCubit, ResetPassState>(
+    return BlocListener<GoogleSigninCubit, GoogleSigninState>(
       listenWhen: (previous, current) =>
-          current is ResetLoading ||
-          current is ResetSuccess ||
-          current is ResetError,
+          current is GoogleError ||
+          current is GoogleLoading ||
+          current is GoogleSuccess,
       listener: (context, state) {
         switch (state) {
-          case ResetLoading():
+          case GoogleLoading():
             showDialog(
               context: context,
               builder: (context) => const Center(
@@ -30,16 +31,15 @@ class ResetPassBlocListener extends StatelessWidget {
             );
 
             break;
-          case ResetSuccess():
+          case GoogleSuccess():
             context.pop();
-            Future.delayed(const Duration(seconds: 2)).then(
-              (value) => context.push(
-                Routes.home,
-              ),
-            );
-
+            showSuccessDialog(
+                message: 'Congratulations, you have logged in successfully!',
+                context, onPressed: () {
+              context.go(Routes.home);
+            });
             break;
-          case ResetError():
+          case GoogleError():
             setupErrorState(context, state.error);
             break;
         }
