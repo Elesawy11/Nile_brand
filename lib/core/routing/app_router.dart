@@ -13,6 +13,7 @@ import '../../features/User/auth/presentation/cubits/reset_pass_cubit/reset_pass
 import '../../features/User/auth/presentation/cubits/forgot_pass/forgot_pass_cubit.dart';
 import '../../features/User/auth/presentation/cubits/login_cubit/login_cubit.dart';
 import '../../features/User/auth/presentation/cubits/verify_code_cubit/verify_code_cubit.dart';
+import '../../features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -26,7 +27,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: Routes.login,
-        builder: (context, state) => MultiBlocProvider(
+        builder: (ontext, state) => MultiBlocProvider(
           providers: [
             BlocProvider(
               create: (context) => getIt.get<LoginCubit>(),
@@ -112,7 +113,11 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.home,
-                builder: (context, state) => const HomeView(),
+                builder: (context, state) => BlocProvider(
+                  create: (context) =>
+                      getIt.get<GetCategoryCubit>()..emitGetCategories(),
+                  child: const HomeView(),
+                ),
               ),
             ],
           ),
