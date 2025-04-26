@@ -12,7 +12,6 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.8
   custom_rating_bar: ^3.0.0
-  # dartz: ^0.10.1
   dio: ^5.8.0+1
   firebase_auth: ^5.5.2
   firebase_core: ^3.13.0
@@ -32,6 +31,7 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   retrofit: ^4.4.2
   retrofit_generator: ^9.1.9
+  skeletonizer: ^1.4.3
   timelines_plus: ^1.0.6
 
 dev_dependencies:

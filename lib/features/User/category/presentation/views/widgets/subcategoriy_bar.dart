@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nile_brand/core/utils/app_strings.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
-import 'package:nile_brand/features/User/category/data/models/sub_category_model.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_sub_categories_cubit/get_sub_categorys_cubit.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_sub_categories_cubit/get_sub_categorys_state.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class SubcategoriyBar extends StatelessWidget {
   // final List<SubCategoryModel> subCategoryList;
@@ -34,34 +33,32 @@ class SubcategoriyBar extends StatelessWidget {
           },
           builder: (context, state) {
             return state is SubCategorySuccess
-                ? Column(
-                    //TODO : add list from [Subcategory] repo
-                    children: state.subCategories
-                        .map((subcategory) => Align(
-                              alignment: Alignment.topLeft,
-                              child: Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: InkWell(
-                                  onTap: () {},
-                                  child: Text(
-                                    subcategory.name ?? 'Not Found',
-                                    style: Styles.font16W400,
+                ? Skeletonizer(
+                    enabled: state is SubCategoryLoading,
+                    child: Column(
+                      children: state.subCategories
+                          .map((subcategory) => Align(
+                                alignment: Alignment.topLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(bottom: 8.0),
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Text(
+                                      subcategory.name ?? 'Not Found',
+                                      style: Styles.font16W400,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ))
-                        .toList(),
+                              ))
+                          .toList(),
+                    ),
                   )
-                : state is SubCategoryLoading
-                    ? const Center(
-                        child: CircularProgressIndicator(),
+                : state is SubCategoryError
+                    ? Text(
+                        state.error,
+                        style: Styles.font16W400,
                       )
-                    : state is SubCategoryError
-                        ? Text(
-                            state.error,
-                            style: Styles.font16W400,
-                          )
-                        : const SizedBox();
+                    : const SizedBox();
           },
         ),
       ),
