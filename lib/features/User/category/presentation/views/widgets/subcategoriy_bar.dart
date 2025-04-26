@@ -11,16 +11,17 @@ class SubcategoriyBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:  10.ph,
+      padding: 10.ph,
       decoration: const BoxDecoration(
         border: Border(right: BorderSide(color: Colors.black)),
         color: Colors.white,
       ),
       height: double.infinity,
       width: 120.w,
-      child:SingleChildScrollView(
+      child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
+          //TODO : add list from [Subcategory] repo
           children: AppStrings.subCategories[category]!
               .map((subcategory) => Align(
                     alignment: Alignment.topLeft,

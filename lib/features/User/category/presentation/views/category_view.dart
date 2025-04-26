@@ -15,7 +15,8 @@ class _CategoryViewState extends State<CategoryView>
   TabController? tabController;
   @override
   void initState() {
-    tabController = TabController(length: 7, vsync: this);
+    //TODO: need lenght of categories from api from object box
+    tabController = TabController(length: 6, vsync: this);
     super.initState();
   }
 

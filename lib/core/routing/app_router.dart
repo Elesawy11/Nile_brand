@@ -125,7 +125,10 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.categoreis,
-                builder: (context, state) => const CategoryView(),
+                builder: (context, state) => BlocProvider(
+                  create: (context) => getIt.get<GetCategoryCubit>(),
+                  child: const CategoryView(),
+                ),
               ),
             ],
           ),
