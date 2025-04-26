@@ -13,16 +13,17 @@ class CategoryDetails extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Row(
         children: [
-          SubcategoriyBar(category: category),
+          SubcategoriyBar(),
           Expanded(
             flex: 3,
             child: GridView.builder(
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 4.w,
-                  mainAxisSpacing: 4.w,
-                  childAspectRatio: 2 / 3),
+                crossAxisCount: 2,
+                crossAxisSpacing: 4.w,
+                mainAxisSpacing: 4.w,
+                childAspectRatio: 2 / 3,
+              ),
               itemCount: 10,
               itemBuilder: (context, index) {
                 return const CustomeItem();

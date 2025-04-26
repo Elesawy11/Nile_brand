@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nile_brand/core/utils/app_strings.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/category_details.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/custom_appbar.dart';
+import 'package:nile_brand/features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
 
 class CategoryView extends StatefulWidget {
   const CategoryView({super.key});
@@ -28,14 +30,20 @@ class _CategoryViewState extends State<CategoryView>
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<GetCategoryCubit>();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CustomeAppbar(tabController: tabController!),
       body: TabBarView(
-          controller: tabController,
-          children: AppStrings.mainCategories
-              .map((category) => CategoryDetails(category: category))
-              .toList()),
+        controller: tabController,
+        children: cubit.categoryList
+            .map(
+              (category) => CategoryDetails(
+                category: category.id ?? 'Not Found',
+              ),
+            )
+            .toList(),
+      ),
     );
   }
 }

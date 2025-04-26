@@ -19,6 +19,9 @@ import '../../features/User/auth/data/repo/verify_code_repo.dart';
 import '../../features/User/auth/presentation/cubits/reset_pass_cubit/reset_pass_cubit.dart';
 import '../../features/User/auth/presentation/cubits/login_cubit/login_cubit.dart';
 import '../../features/User/auth/presentation/cubits/verify_code_cubit/verify_code_cubit.dart';
+import '../../features/User/category/data/api/sub_category_source.dart';
+import '../../features/User/category/data/repo/sub_category_repo_impl.dart';
+import '../../features/User/category/presentation/cubits/get_sub_categories_cubit/get_sub_categorys_cubit.dart';
 import '../../features/User/home/data/repo/category_repo_impl.dart';
 
 final getIt = GetIt.instance;
@@ -51,6 +54,10 @@ void serviceLocator() {
   getIt.registerLazySingleton(() => CategoryRepoImpl(categorySource));
   getIt.registerLazySingleton(
       () => GetCategoryCubit(getIt.get<CategoryRepoImpl>()));
+  // sub category Features
+  getIt.registerLazySingleton(() => SubCategorySource(dio));
+  getIt.registerLazySingleton(() => SubCategoryRepoImpl(getIt.get()));
+  getIt.registerLazySingleton(() => GetSubCategorysCubit(getIt.get()));
   // Chatbot Features
   getIt.registerLazySingleton(() => ChatbotScrollCubit());
 }
