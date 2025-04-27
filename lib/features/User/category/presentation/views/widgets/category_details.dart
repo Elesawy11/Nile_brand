@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/get_Category_products_Cubit/get_category_products_cubit.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/get_Category_products_Cubit/get_category_products_state.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/custome_item.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/subcategoriy_bar.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -14,24 +17,45 @@ class CategoryDetails extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Row(
         children: [
-          SubcategoriyBar(category: category),
+          SubcategoriyBar(),
           Expanded(
             flex: 3,
-            // TODOS: shimmer effect
-            child:Skeletonizer(
-              enabled:false,
-              child: GridView.builder(
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 4.w,
-                    mainAxisSpacing: 4.w,
-                    childAspectRatio: 2 / 3),
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return const CustomeItem();
-                },
-              ),
+            child:
+                BlocBuilder<GetCategoryProductsCubit, GetCategoryProductsState>(
+              buildWhen: (previous, current) {
+                return current is GetProductsError ||
+                    current is GetProductsLoading ||
+                    current is GetProductsSuccess;
+              },
+              builder: (context, state) {
+                return state is GetProductsSuccess
+                    ? GridView.builder(
+                        shrinkWrap: true,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 4.w,
+                          mainAxisSpacing: 4.w,
+                          childAspectRatio: 2 / 3,
+                        ),
+                        itemCount: state.products.length,
+                        itemBuilder: (context, index) {
+                          return Skeletonizer(
+                            enabled: state is GetProductsLoading,
+                            child: CustomeItem(
+                              product: state.products[index],
+                            ),
+                          );
+                        },
+                      )
+                    : state is GetProductsError
+                        ? Center(
+                            child: Text(
+                              state.error,
+                              style: const TextStyle(color: Colors.red),
+                            ),
+                          )
+                        : const SizedBox();
+              },
             ),
           ),
         ],

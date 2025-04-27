@@ -41,4 +41,10 @@ abstract class ApiService {
     @Body() ResetPassRequest resetPassRequest,
     @Header('Authorization') String? token,
   );
+  @GET('{path}')
+  Future<dynamic> get(
+    @Path('path') String path,
+    @Queries() Map<String, dynamic>? queries,
+    @Header('Authorization') String? token,
+  );
 }

@@ -62,7 +62,8 @@ class _LoginViewState extends State<LoginView> {
                   width: 300.w,
                   child: AppTextButton(
                     text: 'Login',
-                    onPressed: () => validateThenDoLogin(context),
+                    // onPressed: () => validateThenDoLogin(context),
+                    onPressed: () => context.push(Routes.home),
                     backgroundColor: ColorManager.mainColor,
                   ),
                 ),
