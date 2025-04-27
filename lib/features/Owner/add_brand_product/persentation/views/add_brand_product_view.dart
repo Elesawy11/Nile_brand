@@ -1,10 +1,14 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:nile_brand/core/utils/assets.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
-import 'package:nile_brand/features/Owner/add_brand_product/persentation/views/widgets/add_brand_product_textFields_widget.dart';
+import 'package:nile_brand/features/Owner/add_brand_product/persentation/views/widgets/add_brand_product_textfields_widget.dart';
 import '../../../../../core/widgets/app_text_button.dart';
 
 class AddBrandProductView extends StatelessWidget {
@@ -18,9 +22,9 @@ class AddBrandProductView extends StatelessWidget {
         backgroundColor: Colors.white,
         title: Text(
           'Add Product',
-          style: Styles.font24W500,
+          style: Styles.font24W500.copyWith(fontSize:30.sp,fontWeight:FontWeight.w700),
         ),
-        centerTitle: true,
+        
       ),
       body: SafeArea(
         child: Padding(
@@ -28,18 +32,34 @@ class AddBrandProductView extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                22.vs,
-                Card(
-                  shadowColor: ColorManager.gray50,
+                
+                InkWell(
+                  onTap: ()async{
+                    final ImagePicker picker = ImagePicker();
+                
+                try {
+                  final XFile? image =
+                      await picker.pickImage(source: ImageSource.gallery);
+                
+                  if (image != null) {
+                    if (await File(image.path).exists()) {
+                      //  imageUrl = image.path;
+                      // change profile image
+                    }
+                  }
+                } catch (e) {
+                  log(e.toString());
+                }
+                  },
                   child: Image.asset(
                     Assets.imagesAddImage,
                     width: 90.r,
                     height: 90.r,
                   ),
                 ),
-                16.vs,
+                10.vs,
                 const AddBrandProductTextFieldsWidgets(),
-                35.vs,
+                22.vs,
                 SizedBox(
                   width: 192.w,
                   child: AppTextButton(

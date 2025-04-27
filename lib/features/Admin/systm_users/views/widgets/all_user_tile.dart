@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/styles.dart';
 import 'cutome_system_user_info.dart';
@@ -27,13 +28,16 @@ class AllUserTile extends StatelessWidget {
           style: Styles.font24W500.copyWith(fontWeight: FontWeight.w700),
         ),
         children: [
-          ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: 7,
-            itemBuilder: (context, index) {
-              return const CustomeSystemUserInfo();
-            },
+          Skeletonizer(
+            enabled: false,
+            child: ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: 7,
+              itemBuilder: (context, index) {
+                return const CustomeSystemUserInfo();
+              },
+            ),
           )
         ]);
   }

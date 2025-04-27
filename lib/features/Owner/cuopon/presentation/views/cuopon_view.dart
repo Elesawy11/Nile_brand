@@ -14,16 +14,18 @@ class CuoponView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 22.w),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+                  'Manage Coupons',
+                  style: Styles.font35W700.copyWith(fontSize:30.sp),
+                ),
+        ),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 18.w),
           child: Column(
             children: [
-              Text(
-                'Manage Coupons',
-                style: Styles.font35W700,
-              ),
               35.vs,
               InkWell(
                 onTap: () => context.push(Routes.createCuopon),
@@ -37,7 +39,7 @@ class CuoponView extends StatelessWidget {
                     15.hs,
                     Text(
                       'Create Coupon',
-                      style: Styles.font24W500,
+                      style: Styles.font24W500.copyWith(fontWeight: FontWeight.w600),
                     ),
                     const Spacer(),
                     const Icon(Icons.arrow_forward_ios_rounded)
@@ -47,6 +49,9 @@ class CuoponView extends StatelessWidget {
               12.vs,
               ExpansionTile(
                   tilePadding: EdgeInsets.zero,
+                  collapsedShape: Border.all(color: Colors.white),
+                  shape: ShapeBorder.lerp(Border.all(color: Colors.white),
+                      Border.all(color: Colors.white), 0.5),
                   title: Row(
                     children: [
                       Image.asset(
@@ -57,7 +62,7 @@ class CuoponView extends StatelessWidget {
                       15.hs,
                       Text(
                         'View All Coupons',
-                        style: Styles.font24W500,
+                        style: Styles.font24W500.copyWith(fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),

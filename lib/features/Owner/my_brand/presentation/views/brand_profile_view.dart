@@ -40,7 +40,7 @@ class _BrandProfileViewState extends State<BrandProfileView> {
                 const ProfileImage(imageUrl: Assets.imagesProfileImage),
                 76.vs,
                 SizedBox(
-                  height: 60.h,
+                  height: 50.h,
                   child: AppTextFormField(
                     hintText: "Name",
                     labelText: "Name",
@@ -49,7 +49,7 @@ class _BrandProfileViewState extends State<BrandProfileView> {
                 ),
                 34.vs,
                 SizedBox(
-                  height: 60.h,
+                  height: 50.h,
                   child: AppTextFormField(
                     hintText: "E-mail",
                     labelText: "E-mail",
@@ -58,7 +58,7 @@ class _BrandProfileViewState extends State<BrandProfileView> {
                 ),
                 34.vs,
                 SizedBox(
-                  height: 60.h,
+                  height: 50.h,
                   child: PasswordField(
                     viewPass: viewPass,
                     labelText: "Password",

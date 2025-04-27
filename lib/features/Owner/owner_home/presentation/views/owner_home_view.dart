@@ -24,6 +24,7 @@ class OwnerHomeView extends StatelessWidget {
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 20.w,
+                  mainAxisExtent: 180.h,
                   mainAxisSpacing: 10.w,
                 ),
                 itemCount: 10,

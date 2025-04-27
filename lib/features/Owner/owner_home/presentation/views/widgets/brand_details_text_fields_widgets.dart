@@ -14,11 +14,41 @@ class BrandDetailsTextFieldsWidgets extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 60.h,
+          height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: "name of brand",
+            hintText: "Handmade Leather Bag",
             labelText: "Name",
+            validator: (p0) {},
+          ),
+        ),
+        16.vs,
+        SizedBox(
+          height: 50.h,
+          child: AppTextFormField(
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            hintText: "bag made in Egypt",
+            labelText: "Description",
+            validator: (p0) {},
+          ),
+        ),
+        16.vs,
+        SizedBox(
+          height: 50.h,
+          child: AppTextFormField(
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            hintText: '''["Small", "Medium", "Large"]''',
+            labelText: "Sizes",
+            validator: (p0) {},
+          ),
+        ),
+        16.vs,
+        SizedBox(
+          height: 50.h,
+          child: AppTextFormField(
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            hintText: "Brown",
+            labelText: "Colors",
             validator: (p0) {},
           ),
         ),
@@ -27,68 +57,38 @@ class BrandDetailsTextFieldsWidgets extends StatelessWidget {
           height: 60.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: "name of brand",
-            labelText: "Name",
+            hintText: "100.0",
+            labelText: "Price",
             validator: (p0) {},
           ),
         ),
         16.vs,
         SizedBox(
-          height: 60.h,
+          height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: "name of brand",
-            labelText: "Name",
+            hintText: "12",
+            labelText: "Quantity",
             validator: (p0) {},
           ),
         ),
         16.vs,
         SizedBox(
-          height: 60.h,
+          height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: "name of brand",
-            labelText: "Name",
+            hintText: "Accessories",
+            labelText: "Category",
             validator: (p0) {},
           ),
         ),
         16.vs,
         SizedBox(
-          height: 60.h,
+          height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: "name of brand",
-            labelText: "Name",
-            validator: (p0) {},
-          ),
-        ),
-        16.vs,
-        SizedBox(
-          height: 60.h,
-          child: AppTextFormField(
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: "name of brand",
-            labelText: "Name",
-            validator: (p0) {},
-          ),
-        ),
-        16.vs,
-        SizedBox(
-          height: 60.h,
-          child: AppTextFormField(
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: "name of brand",
-            labelText: "Name",
-            validator: (p0) {},
-          ),
-        ),
-        16.vs,
-        SizedBox(
-          height: 60.h,
-          child: AppTextFormField(
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: "name of brand",
-            labelText: "Name",
+            hintText: "Bags",
+            labelText: "SubCategory",
             validator: (p0) {},
           ),
         ),

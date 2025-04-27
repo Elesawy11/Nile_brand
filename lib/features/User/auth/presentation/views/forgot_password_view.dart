@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-import 'package:nile_brand/core/routing/routes.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/spacer.dart';
 import 'package:nile_brand/core/widgets/app_text_button.dart';
@@ -38,7 +36,7 @@ class ForgotPasswordView extends StatelessWidget {
                 child: AppTextFormField(
                   controller: cubit.emailController,
                   labelText: 'E-mail',
-                  hintText: 'email',
+                  hintText: 'example@gmail.com',
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your email';
