@@ -18,55 +18,53 @@ class ExistingProducts extends StatelessWidget {
       child: Container(
         width: 147.r,
         height: 157.r,
-        decoration: const BoxDecoration(
+        clipBehavior: Clip.hardEdge,
+        decoration:  BoxDecoration(
           color: ColorManager.grayD9,
+          borderRadius: BorderRadius.all(Radius.circular(20.r))
         ),
-        padding: EdgeInsets.only(top: 5.h,left: 12.r,right: 12.r),
-        child: Center(
-          child: SizedBox(
-            width: 130.r,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  Assets.imagesBrandItem,
-                  width: 130.r,
-                  height: 116.r,
-                  fit: BoxFit.fill,
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'T-shirts Cotton',
-                    style: Styles.font12W300,
-                  ),
-                ),
-                SizedBox(
-                  width: 140.r,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '250 L.E',
-                        style: Styles.font12W500,
-                      ),
-                      50.hs,
-                      InkWell(
-                        
-                        onTap: () {},
-                        child: Image.asset(
-                          Assets.imagesDeleteIcon,
-                          width: 16.r,
-                          height: 16.r,
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+        child: Column(
+          
+          children: [
+            Image.asset(
+              Assets.imagesBrandItem,
+              width: 159.w,
+              height: 120.w,
+              fit: BoxFit.fill,
             ),
-          ),
+            Padding(
+              padding: EdgeInsets.only(top:5.h,left:5.w),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'T-shirts Cotton',
+                  style: Styles.font12W300.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w600),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 140.r,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '250 L.E',
+                    style: Styles.font12W500.copyWith(fontWeight: FontWeight.w600),
+                  ),
+                  50.hs,
+                  InkWell(
+                    
+                    onTap: () {},
+                    child: Image.asset(
+                      Assets.imagesDeleteIcon,
+                      width: 16.r,
+                      height: 16.r,
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

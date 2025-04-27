@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/features/Admin/manage_products/views/widgets/product_review_list.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/utils/styles.dart';
 
@@ -21,8 +22,10 @@ class ProductReviews extends StatelessWidget {
       ),
       body: Padding(
         padding: 12.ph,
-        child:const Center(
-          child: ProductReviewList()
+        child: Center(
+          child: Skeletonizer(
+            enabled: false,
+            child: ProductReviewList())
         ),
       ),
     );

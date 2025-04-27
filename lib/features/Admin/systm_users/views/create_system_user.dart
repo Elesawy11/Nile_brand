@@ -34,36 +34,39 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
               20.vs,
 
               SizedBox(
-                height: 48.h,
+                height: 52.h,
                 width: 340.w,
                 child: AppTextFormField(
                   labelText: "Name",
-                  hintText: "Name", validator: (p0){}),
+                  hintText: "user name", validator: (p0){}),
                 
               ),
               25.vs,
               SizedBox(
-                height: 48.h,
+                height: 52.h,
                 width: 340.w,
                 child: AppTextFormField(
                   labelText: "Email",
-                  hintText: "Email", validator: (p0){}),
+                  hintText: "example@gmail.com", validator: (p0){}),
                 
               ),
               25.vs,
               SizedBox(
-                height: 48.h,
+                height: 52.h,
                 width: 340.w,
-                child: PasswordField(viewPass: viewPass, labelText: "Password", hintText: "Password")),
+                child: PasswordField(viewPass: viewPass, labelText: "Password", hintText: "password")),
               25.vs,
               SizedBox(
-                height: 48.h,
+                height: 52.h,
                 width: 340.w,
-                child: PasswordField(viewPass: conmfPass, labelText: "Confirm Password", hintText: "Confirm Password")),
+                child: PasswordField(
+                  viewPass: conmfPass, labelText: "Confirm Password", hintText: "confirm Password",
+                  )
+                  ),
                  
                 
               
-              const Spacer(),
+              190.vs,
               SizedBox(
                 width: 150.w,
                   child: AppTextButton(

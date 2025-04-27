@@ -17,8 +17,9 @@ class BrandProductWidget extends StatelessWidget {
       onTap: () => context.push(Routes.brandDetails),
       child: Container(
         width: 147.r,
-        height: 157.r,
-        decoration: const BoxDecoration(
+        height: 167.r,
+        decoration:  BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(14.r)),
           color: ColorManager.grayD9,
         ),
         padding: EdgeInsets.symmetric(horizontal: 12.r),

@@ -51,6 +51,7 @@ class VerificationCodeInput extends StatelessWidget {
                     if (value == null || value.isEmpty) {
                       return 'Please enter a digit';
                     }
+                    
                   },
                 ),
               ),

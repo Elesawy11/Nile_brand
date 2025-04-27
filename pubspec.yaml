@@ -10,6 +10,7 @@ environment:
   sdk: ">=3.4.4<4.0.0"
 
 dependencies:
+  bloc: ^9.0.0
   cupertino_icons: ^1.0.8
   custom_rating_bar: ^3.0.0
   dartz: ^0.10.1
@@ -28,6 +29,7 @@ dependencies:
   go_router: ^14.7.1
   google_sign_in: ^6.3.0
   image_picker: ^1.1.2
+  skeletonizer: ^1.4.3
   json_annotation: ^4.9.0
   pretty_dio_logger: ^1.4.0
   retrofit: ^4.4.2
