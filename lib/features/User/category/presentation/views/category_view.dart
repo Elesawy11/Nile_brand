@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nile_brand/core/utils/app_strings.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/category_details.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/custom_appbar.dart';
 import 'package:nile_brand/features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';

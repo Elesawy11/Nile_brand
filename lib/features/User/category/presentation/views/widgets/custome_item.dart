@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:nile_brand/core/utils/styles.dart';
+import 'package:nile_brand/features/User/category/data/models/product_model.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/content_postion.dart';
 
 class CustomeItem extends StatelessWidget {
-  // added at integration with api
-  // final String title;
-  // final String price;
-  // final String image_url;
-
-  const CustomeItem({super.key});
+  const CustomeItem({super.key, required this.product});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -25,30 +21,33 @@ class CustomeItem extends StatelessWidget {
           child: Stack(
             children: [
               ContentPosition(
-                  bottom: 37.h,
-                  child: Image.asset(
-                    "assets/images/test_item.png",
-                    width: 90.w,
-                    height: 50.h,
-                  )),
+                bottom: 37.h,
+                child: Image.network(
+                  product.images!.first,
+                  width: 90.w,
+                  height: 50.h,
+                ),
+              ),
               ContentPosition(
-                  // right: 5.w,
-                  left: 75.w,
-                  top: 60.h,
-                  child: InkWell(
-                      onTap: () {},
-                      child: Image.asset(
-                        "assets/images/favorite_icon.png",
-                        width: 10.w,
-                        height: 10.h,
-                      ))),
+                // right: 5.w,
+                left: 75.w,
+                top: 60.h,
+                child: InkWell(
+                  onTap: () {},
+                  child: Image.asset(
+                    "assets/images/favorite_icon.png",
+                    width: 10.w,
+                    height: 10.h,
+                  ),
+                ),
+              ),
               ContentPosition(
                   top: 130.spMax,
                   left: 4.w,
                   child: Container(
                     margin: EdgeInsets.only(top: 7.h),
                     child: Text(
-                      "T-shirts Cotton ",
+                      product.name ?? 'Not Found',
                       style: Styles.font14W400,
                     ),
                   )),
@@ -62,24 +61,27 @@ class CustomeItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "250 L.E",
+                        '${product.price} L.E',
                         style: Styles.font14W500,
                       ),
                       InkWell(
-                          onTap: () {
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(const SnackBar(
-                                    backgroundColor: Colors.white,
-                                    content: Text(
-                                      "Added to cart",
-                                      style: TextStyle(color: Colors.black),
-                                    )));
-                          },
-                          child: Image.asset(
-                            "assets/images/cartIcon.png",
-                            width: 20.w,
-                            height: 14.h,
-                          ))
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              backgroundColor: Colors.white,
+                              content: Text(
+                                "Added to cart",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ),
+                          );
+                        },
+                        child: Image.asset(
+                          "assets/images/cartIcon.png",
+                          width: 20.w,
+                          height: 14.h,
+                        ),
+                      ),
                     ],
                   ),
                 ),

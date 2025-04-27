@@ -21,6 +21,7 @@ import '../../features/User/auth/presentation/cubits/login_cubit/login_cubit.dar
 import '../../features/User/auth/presentation/cubits/verify_code_cubit/verify_code_cubit.dart';
 import '../../features/User/category/data/api/sub_category_source.dart';
 import '../../features/User/category/data/repo/sub_category_repo_impl.dart';
+import '../../features/User/category/presentation/cubits/get_Category_products_Cubit/get_category_products_cubit.dart';
 import '../../features/User/category/presentation/cubits/get_sub_categories_cubit/get_sub_categorys_cubit.dart';
 import '../../features/User/home/data/repo/category_repo_impl.dart';
 
@@ -58,6 +59,8 @@ void serviceLocator() {
   getIt.registerLazySingleton(() => SubCategorySource(dio));
   getIt.registerLazySingleton(() => SubCategoryRepoImpl(getIt.get()));
   getIt.registerLazySingleton(() => GetSubCategorysCubit(getIt.get()));
+  // get sub category products Features
+  getIt.registerLazySingleton(() => GetCategoryProductsCubit(getIt.get()));
   // Chatbot Features
   getIt.registerLazySingleton(() => ChatbotScrollCubit());
 }

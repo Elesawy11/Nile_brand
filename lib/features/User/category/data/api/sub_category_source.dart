@@ -11,4 +11,9 @@ abstract class SubCategorySource {
   Future<dynamic> getSubCategories(
     @Path('id') String id,
   );
+
+  @GET('${ApiConstants.categories}/{id}')
+  Future<dynamic> getCategoryProducts(
+    @Path('id') String id,
+  );
 }

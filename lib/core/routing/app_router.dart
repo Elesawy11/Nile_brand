@@ -14,6 +14,7 @@ import '../../features/User/auth/presentation/cubits/reset_pass_cubit/reset_pass
 import '../../features/User/auth/presentation/cubits/forgot_pass/forgot_pass_cubit.dart';
 import '../../features/User/auth/presentation/cubits/login_cubit/login_cubit.dart';
 import '../../features/User/auth/presentation/cubits/verify_code_cubit/verify_code_cubit.dart';
+import '../../features/User/category/presentation/cubits/get_Category_products_Cubit/get_category_products_cubit.dart';
 import '../../features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
 
 abstract class AppRouter {
@@ -133,6 +134,10 @@ abstract class AppRouter {
                     ),
                     BlocProvider(
                       create: (context) => getIt.get<GetSubCategorysCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) =>
+                          getIt.get<GetCategoryProductsCubit>(),
                     ),
                   ],
                   child: const CategoryView(),
