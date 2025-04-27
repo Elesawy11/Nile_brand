@@ -44,8 +44,11 @@ class _CustomeAppbarState extends State<CustomeAppbar>
             Row(
               children: [
                 Expanded(
-                    flex: 6,
-                    child: CustomTabBar(tabController: widget.tabController)),
+                  flex: 6,
+                  child: CustomTabBar(
+                    tabController: widget.tabController,
+                  ),
+                ),
                 Expanded(
                   flex: 1,
                   child: InkWell(
