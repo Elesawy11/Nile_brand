@@ -27,7 +27,7 @@ dependencies:
   freezed_annotation: ^3.0.0
   get_it: ^8.0.3
   go_router: ^14.7.1
-  google_sign_in: ^6.3.0
+  google_sign_in: any
   image_picker: ^1.1.2
   skeletonizer: ^1.4.3
   json_annotation: ^4.9.0
