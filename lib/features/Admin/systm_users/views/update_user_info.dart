@@ -27,26 +27,26 @@ class UpdateUserInfo extends StatelessWidget {
               children: [
                 60.vs,
                 SizedBox(
-                  height: 50.h,
+                  height: 52.h,
                  
                 width: 340.w,
                   child: AppTextFormField(
                     labelText: "Name",
-                    hintText: "Name",
+                    hintText: "user name",
                     validator: (p0) {},
                   ),
                 ),
                 30.vs,
                 SizedBox(
-                 height: 50.h,
+                 height: 52.h,
                 width: 340.w,
                   child: AppTextFormField(
                     labelText: "Status",
-                    hintText: "Status",
+                    hintText: "status",
                     validator: (p0) {},
                   ),
                 ),
-                const Spacer(),
+                320.vs,
                 SizedBox(
                     width: 150.w,
                     child: AppTextButton(

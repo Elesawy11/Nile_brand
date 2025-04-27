@@ -1,5 +1,6 @@
-import 'package:bloc/bloc.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nile_brand/features/User/auth/data/models/signup_request_body.dart';
 import 'package:nile_brand/features/User/auth/data/repo/signup_repo.dart';
 import '../../../../../../core/networking/signup_features/signup_result.dart';

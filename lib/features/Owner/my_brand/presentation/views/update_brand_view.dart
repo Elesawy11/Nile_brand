@@ -40,27 +40,27 @@ class _UpdateBrandViewState extends State<UpdateBrandView> {
                 const ProfileImage(imageUrl: Assets.imagesProfileImage),
                 76.vs,
                 SizedBox(
-                  height: 60.h,
+                  height: 50.h,
                   child: AppTextFormField(
                     floatingLabelBehavior: FloatingLabelBehavior.always,
-                    hintText: "Name",
-                    labelText: "Name",
+                    hintText: "brand name",
+                    labelText: "Brand neme",
                     validator: (p0) {},
                   ),
                 ),
                 34.vs,
                 SizedBox(
-                  height: 60.h,
+                  height: 50.h,
                   child: AppTextFormField(
                     floatingLabelBehavior: FloatingLabelBehavior.always,
-                    hintText: "E-mail",
+                    hintText: "brand@gmail.com",
                     labelText: "E-mail",
                     validator: (p0) {},
                   ),
                 ),
                 34.vs,
                 SizedBox(
-                  height: 60.h,
+                  height: 50.h,
                   child: PasswordField(
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                     viewPass: viewPass,
@@ -70,7 +70,7 @@ class _UpdateBrandViewState extends State<UpdateBrandView> {
                 ),
                 116.vs,
                 Padding(
-                  padding: 70.ph,
+                  padding: 50.ph,
                   child: AppTextButton(
                     backgroundColor: ColorManager.mainColor,
                     text: "Save Changes",

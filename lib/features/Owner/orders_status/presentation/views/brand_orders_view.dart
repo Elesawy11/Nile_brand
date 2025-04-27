@@ -9,14 +9,21 @@ class BrandOrdersStatusView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
           children: [
-            Text(
-              'Order Status',
-              style: Styles.font35W700,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: EdgeInsets.only(left:15.w),
+                child: Text(
+                  'Order Status',
+                  style: Styles.font35W700.copyWith(fontSize: 30.sp),
+                ),
+              ),
             ),
+            30.vs,
             ExpansionTile(
                 title: Row(
               children: [

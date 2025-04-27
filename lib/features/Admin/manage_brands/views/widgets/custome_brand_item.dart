@@ -12,50 +12,59 @@ class CustomeBrandItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150.r,
-      height: 157.r,
-      decoration: const BoxDecoration(
+      width: 150.w,
+      height: 157.w,
+      clipBehavior: Clip.hardEdge,
+      decoration:  BoxDecoration(
+
+        borderRadius: BorderRadius.all(Radius.circular(20.r)),
         color: ColorManager.grayD9,
       ),
-      padding: EdgeInsets.only(top: 5.h, left: 8.r, right: 8.r),
-      child: Center(
-        child: SizedBox(
-          width: 140.r,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                "assets/images/test_brand.png",
-                width: 138.r,
-                height: 125.r,
-                fit: BoxFit.fill,
+      // padding: EdgeInsets.only(top: 5.h, left: 8.r, right: 8.r),
+      child: Column(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        // mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Align(
+            alignment: Alignment.topCenter,
+            child: Image.asset(
+              "assets/images/test_brand.png",
+              width: 170.w,
+              height: 155.r,
+              fit: BoxFit.fill,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top:5.w,left: 7.w),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Elegant Craft',
+                style: Styles.font12W300.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w600,color:const Color(0xFF242526)),
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Elegant Craft',
-                  style: Styles.font12W300.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w400,color:const Color(0xFF242526)),
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: SizedBox(
-                  width: 35.r,
-                  child: InkWell(
-                    
-                    onTap: () {},
-                    child: Image.asset(
-                      Assets.imagesDeleteIcon,
-                      width: 16.r,
-                      height: 16.r,
-                    ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(right:7.w,bottom: 5.h),
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: SizedBox(
+                width: 35.r,
+                child: InkWell(
+                  
+                  onTap: () {
+                    // handle deletion 
+                  },
+                  child: Image.asset(
+                    Assets.imagesDeleteIcon,
+                    width: 16.r,
+                    height: 16.r,
                   ),
                 ),
-              )
-            ],
-          ),
-        ),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

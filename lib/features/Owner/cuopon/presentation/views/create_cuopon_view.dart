@@ -19,14 +19,17 @@ class CreateCuoponView extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 22.w),
           child: Column(
             children: [
-              49.vs,
-              Text(
-                'Create Cuopon',
-                style: Styles.font35W700,
+              30.vs,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Create Cuopon',
+                  style: Styles.font35W700,
+                ),
               ),
               33.vs,
               SizedBox(
-                height: 60.h,
+                height: 50.h,
                 child: AppTextFormField(
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                   hintText: "SUMMER2024",
@@ -36,7 +39,7 @@ class CreateCuoponView extends StatelessWidget {
               ),
               20.vs,
               SizedBox(
-                height: 60.h,
+                height: 50.h,
                 child: AppTextFormField(
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                   hintText: "2024, 8, 31",
@@ -46,7 +49,7 @@ class CreateCuoponView extends StatelessWidget {
               ),
               20.vs,
               SizedBox(
-                height: 60.h,
+                height: 50.h,
                 child: AppTextFormField(
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                   hintText: "20.0",

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 
 import 'package:nile_brand/features/Admin/system_feedback/views/widgets/system_feedback_list.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/utils/styles.dart';
 
@@ -19,9 +20,9 @@ class SystemFeedbackView extends StatelessWidget {
 
         body: Padding(
           padding: 12.allEdgeInsets,
-          child: const Center(
+          child:  Center(
 
-            child:SystemFeedbackList(),
+            child:Skeletonizer(enabled: false,child: SystemFeedbackList()),
           ),
           ),
       ),

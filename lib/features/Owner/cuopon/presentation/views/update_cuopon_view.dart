@@ -19,10 +19,13 @@ class UpdateCuoponView extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 22.w),
           child: Column(
             children: [
-              49.vs,
-              Text(
-                'Update Cuopon',
-                style: Styles.font35W700,
+              30.vs,
+              Align(
+                alignment:Alignment.centerLeft,
+                child: Text(
+                  'Update Cuopon',
+                  style: Styles.font35W700.copyWith(fontSize:30.sp),
+                ),
               ),
               33.vs,
               SizedBox(

@@ -14,7 +14,7 @@ class AddBrandProductTextFieldsWidgets extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 60.h,
+          height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: "Handmade Leather Bag",
@@ -24,7 +24,7 @@ class AddBrandProductTextFieldsWidgets extends StatelessWidget {
         ),
         16.vs,
         SizedBox(
-          height: 60.h,
+          height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: "bag made in Egypt",
@@ -34,7 +34,7 @@ class AddBrandProductTextFieldsWidgets extends StatelessWidget {
         ),
         16.vs,
         SizedBox(
-          height: 60.h,
+          height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: '["Small", "Medium", "Large"]',
@@ -44,7 +44,7 @@ class AddBrandProductTextFieldsWidgets extends StatelessWidget {
         ),
         16.vs,
         SizedBox(
-          height: 60.h,
+          height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: "Brown",
@@ -54,7 +54,7 @@ class AddBrandProductTextFieldsWidgets extends StatelessWidget {
         ),
         16.vs,
         SizedBox(
-          height: 60.h,
+          height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: "120.50",
@@ -64,7 +64,7 @@ class AddBrandProductTextFieldsWidgets extends StatelessWidget {
         ),
         16.vs,
         SizedBox(
-          height: 60.h,
+          height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: "50",
@@ -74,7 +74,7 @@ class AddBrandProductTextFieldsWidgets extends StatelessWidget {
         ),
         16.vs,
         SizedBox(
-          height: 60.h,
+          height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: "Accessories",
@@ -84,7 +84,7 @@ class AddBrandProductTextFieldsWidgets extends StatelessWidget {
         ),
         16.vs,
         SizedBox(
-          height: 60.h,
+          height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: "Bags",

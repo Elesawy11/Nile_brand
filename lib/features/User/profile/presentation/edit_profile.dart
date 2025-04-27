@@ -38,7 +38,7 @@ class _EditProfileState extends State<EditProfile> {
               const ProfileImage(imageUrl: Assets.imagesProfileImage),
               26.vs,
               SizedBox(
-                height: 60.h,
+                height: 50.h,
                 width: 350.w,
                 child: AppTextFormField(
                   hintText: "Name",
@@ -48,7 +48,7 @@ class _EditProfileState extends State<EditProfile> {
               ),
               25.vs,
               SizedBox(
-                height: 60.h,
+                height: 50.h,
                 width: 350.w,
                 child: AppTextFormField(
                   hintText: "E-mail",
@@ -58,7 +58,7 @@ class _EditProfileState extends State<EditProfile> {
               ),
               25.vs,
               SizedBox(
-                height: 60.h,
+                height: 50.h,
                 width: 350.w,
                 child: PasswordField(
                     viewPass: viewPass,
