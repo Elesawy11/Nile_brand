@@ -59,19 +59,7 @@ class _LoginViewState extends State<LoginView> {
                       ),
                     ),
                   ),
-<<<<<<< Updated upstream
-                ),
-              ),
-              verticalSpace(47),
-              Center(
-                child: SizedBox(
-                  width: 300.w,
-                  child: AppTextButton(
-                    text: 'Login',
-                    // onPressed: () => validateThenDoLogin(context),
-                    onPressed: () => context.push(Routes.home),
-                    backgroundColor: ColorManager.mainColor,
-=======
+
                   verticalSpace(47),
                   Center(
                     child: SizedBox(
@@ -82,7 +70,7 @@ class _LoginViewState extends State<LoginView> {
                         backgroundColor: ColorManager.mainColor,
                       ),
                     ),
->>>>>>> Stashed changes
+
                   ),
                   verticalSpace(35),
                   const DividerAndText(),

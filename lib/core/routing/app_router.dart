@@ -1,25 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:nile_brand/core/routing/routes.dart';
 import "package:nile_brand/core/routing/exports.dart";
 import 'package:nile_brand/core/utils/service_locator.dart';
-import 'package:nile_brand/features/Admin/systm_users/views/update_user_info.dart';
-import 'package:nile_brand/features/User/auth/presentation/cubits/google_sigin_cubit/google_signin_cubit.dart';
-import 'package:nile_brand/features/User/auth/presentation/cubits/signup_cubit/sign_up_cubit.dart';
-<<<<<<< Updated upstream
-import 'package:nile_brand/features/User/category/presentation/cubits/get_sub_categories_cubit/get_sub_categorys_cubit.dart';
-=======
-import 'package:nile_brand/features/User/category/presentation/views/product_details_view.dart';
->>>>>>> Stashed changes
+import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
 
-import '../../features/User/auth/presentation/cubits/reset_pass_cubit/reset_pass_cubit.dart';
-import '../../features/User/auth/presentation/cubits/forgot_pass/forgot_pass_cubit.dart';
-import '../../features/User/auth/presentation/cubits/login_cubit/login_cubit.dart';
-import '../../features/User/auth/presentation/cubits/verify_code_cubit/verify_code_cubit.dart';
-import '../../features/User/category/presentation/cubits/get_Category_products_Cubit/get_category_products_cubit.dart';
-import '../../features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
+
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -31,6 +18,11 @@ abstract class AppRouter {
         path: Routes.start,
         builder: (context, state) => const StartView(),
       ),
+      GoRoute(
+        path: Routes.chatBotSplash2,
+        builder: (context, state) => const ChatbotSplash2(),
+        
+        ),
       GoRoute(
         path: Routes.ptoductDetails,
         builder: (context, state) => const ProductDetailsView(),
@@ -165,7 +157,7 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.wishList,
-                builder: (context, state) => const WishListView(),
+                builder: (context, state) => const  WishListView(),
               ),
             ],
           ),

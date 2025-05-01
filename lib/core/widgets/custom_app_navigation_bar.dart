@@ -27,7 +27,7 @@ class CustomAppNavigationBar extends StatelessWidget {
               backgroundColor: Colors.white.withValues(alpha: 0),
               elevation: 0,
               child: Image.asset(
-                Assets.imagesChatboot,
+                Assets.imagesChatbootImage,
                 width: 56.r,
                 height: 56.r,
               ),

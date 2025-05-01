@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nile_brand/core/utils/sizes_padding.dart';
-
 import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/styles.dart';
-import '../../../../../../core/widgets/app_text_button.dart';
+
 
 class PriceButton extends StatelessWidget {
   const PriceButton({super.key});
@@ -15,19 +13,27 @@ class PriceButton extends StatelessWidget {
       children: [
         // price
         Text(
-          "700 le",
-          style: Styles.font20W600,
+          "700 LE",
+          style: Styles.font20W600.copyWith(fontSize: 18.sp,color: ColorManager.mainColor),
         ),
-        47.hs,
-        SizedBox(
-          width: 110.w,
-          height: 40.h,
-          child: AppTextButton(
-            borderRadius: 12.r,
-            text: "Add to Cart",
-            backgroundColor: ColorManager.mainColor,
-            textColor: Colors.white,
-            onPressed: () {},
+        Spacer(),
+        InkWell(
+          onTap: (){},
+          child: Container(
+            width: 90.w,
+            height: 30.h,
+            padding: EdgeInsets.symmetric(horizontal: 3.w),
+            decoration: BoxDecoration(
+              color:  ColorManager.mainColor,
+              borderRadius: BorderRadius.all(Radius.circular(12.r))
+            ),
+            
+            child: Center(
+              child: Text(
+                "Add To Cart",
+                style: Styles.font14W500.copyWith(color: Colors.white),
+              ),
+            ),
           ),
         )
       ],

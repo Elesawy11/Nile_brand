@@ -1,14 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nile_brand/features/User/chatbot/presentation/cubits/chat/chat_cubit.dart';
 import '../../../../../../core/utils/assets.dart';
 import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/styles.dart';
 
-class ChatBarWidget extends StatelessWidget {
-  const ChatBarWidget({
-    super.key,
-  });
+
+class ChatBarWidget extends StatefulWidget {
+  const ChatBarWidget({super.key});
+
+  @override
+  State<ChatBarWidget> createState() => _ChatBarWidgetState();
+}
+
+class _ChatBarWidgetState extends State<ChatBarWidget> {
+  final TextEditingController _controller = TextEditingController();
+
+  void _sendMessage() {
+    final text = _controller.text.trim();
+    if (text.isNotEmpty) {
+      context.read<ChatbotCubit>().askQuestion(text); 
+      _controller.clear();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,26 +42,41 @@ class ChatBarWidget extends StatelessWidget {
           ),
         ],
       ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Hello chatbot,how are you today?',
-              style: Styles.font13W700.copyWith(
-                color: ColorManager.blue33,
+      child: TextFormField(
+        controller: _controller,
+        onFieldSubmitted: (_) => _sendMessage(), 
+        decoration: InputDecoration(
+          suffixIconConstraints: BoxConstraints(
+            maxWidth: 40.w,
+            maxHeight: 40.h,
+          ),
+          suffixIcon: InkWell(
+            onTap: _sendMessage,
+            child: Padding(
+              padding: EdgeInsets.only(right: 6.w),
+              child: SizedBox(
+                width: 23.w,
+                height: 23.h,
+                child: SvgPicture.asset(
+                  Assets.svgImagesSendIcon,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
-            InkWell(
-              onTap: () {},
-              child: SvgPicture.asset(
-                Assets.svgImagesSendIcon,
-                width: 24.r,
-                height: 24.r,
-              ),
-            ),
-          ],
+          ),
+          hintText: 'Hello chatbot, how are you today?',
+          hintStyle: Styles.font13W700.copyWith(
+            color: ColorManager.blue33,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.transparent),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.transparent),
+          ),
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.transparent),
+          ),
         ),
       ),
     );

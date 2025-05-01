@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/features/Admin/systm_users/views/widgets/all_user_tile.dart';
 import 'package:nile_brand/features/Admin/systm_users/views/widgets/create_user_tile.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/utils/styles.dart';
 
 class SystemUsersView extends StatelessWidget {
