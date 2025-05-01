@@ -28,7 +28,12 @@ dependencies:
   go_router: ^14.7.1
   google_sign_in: any
   image_picker: ^1.1.2
+<<<<<<< Updated upstream
   # skeletonizer: ^1.4.3
+=======
+  skeletonizer: ^1.4.3
+  readmore: ^2.2.0
+>>>>>>> Stashed changes
   json_annotation: ^4.9.0
   pretty_dio_logger: ^1.4.0
   retrofit: ^4.4.2

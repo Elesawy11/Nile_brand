@@ -151,5 +151,7 @@ class Assets {
   static const String svgImagesSendIcon = "assets/svgImages/sendIcon.svg";
 
   static const String svgImagesVolumeIcon = "assets/svgImages/volumeIcon.svg";
+
+  static const String arOprion = "assets/images/ar_option.png";
 }
 

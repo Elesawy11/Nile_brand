@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+<<<<<<< Updated upstream
+=======
+import 'package:go_router/go_router.dart';
+import 'package:nile_brand/core/routing/app_router.dart';
+import 'package:nile_brand/core/routing/routes.dart';
+
+>>>>>>> Stashed changes
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/features/User/category/data/models/product_model.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/content_postion.dart';
@@ -29,6 +36,7 @@ class CustomeItem extends StatelessWidget {
                 ),
               ),
               ContentPosition(
+<<<<<<< Updated upstream
                 // right: 5.w,
                 left: 75.w,
                 top: 60.h,
@@ -41,6 +49,20 @@ class CustomeItem extends StatelessWidget {
                   ),
                 ),
               ),
+=======
+                  // right: 5.w,
+                  left: 75.w,
+                  top: 60.h,
+                  child: InkWell(
+                      onTap: () {
+                        context.pushNamed(Routes.ptoductDetails);
+                      },
+                      child: Image.asset(
+                        "assets/images/favorite_icon.png",
+                        width: 10.w,
+                        height: 10.h,
+                      ))),
+>>>>>>> Stashed changes
               ContentPosition(
                   top: 130.spMax,
                   left: 4.w,

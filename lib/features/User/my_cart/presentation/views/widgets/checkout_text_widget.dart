@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nile_brand/core/utils/color_manager.dart';
 
 import '../../../../../../core/utils/styles.dart';
 
@@ -27,7 +28,7 @@ class CheckoutTextWidget extends StatelessWidget {
           ),
           Text(
             total,
-            style: Styles.font20W400,
+            style: Styles.font20W400.copyWith(color: ColorManager.mainColor,fontWeight: FontWeight.w600),
           ),
         ],
       ),

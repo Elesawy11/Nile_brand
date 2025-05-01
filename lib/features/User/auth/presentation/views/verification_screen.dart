@@ -66,6 +66,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
         child: Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,

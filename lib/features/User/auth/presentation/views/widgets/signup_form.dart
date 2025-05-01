@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/styles.dart';
@@ -26,26 +27,32 @@ class SignupForm extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppTextFormField(
-            labelText: 'Name',
-            hintText: 'name',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a valid name';
-              }
-            },
-            controller: cubit.nameController,
+          SizedBox(
+            height: 50.h,
+            child: AppTextFormField(
+              labelText: 'Name',
+              hintText: 'user_name',
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter a valid name';
+                }
+              },
+              controller: cubit.nameController,
+            ),
           ),
           30.vs,
-          AppTextFormField(
-            labelText: 'E-mail',
-            hintText: 'email',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a valid e-mail';
-              }
-            },
-            controller: cubit.emailController,
+          SizedBox(
+            height: 50.h,
+            child: AppTextFormField(
+              labelText: 'E-mail',
+              hintText: 'example@gmail.com',
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter a valid e-mail';
+                }
+              },
+              controller: cubit.emailController,
+            ),
           ),
           30.vs,
           PasswordField(

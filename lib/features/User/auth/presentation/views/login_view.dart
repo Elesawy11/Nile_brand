@@ -29,31 +29,37 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const CustomAuthWelcomeWidget(
-                title: 'Login',
-                subTitle: 'Welcome back to the app',
-              ),
-              verticalSpace(54),
-              CustomLoginForm(viewPass: viewPass),
-              verticalSpace(10),
-              Align(
-                alignment: Alignment.centerRight,
-                child: InkWell(
-                  onTap: () => context.push(Routes.forgotPassword),
-                  child: Text(
-                    'Forgot Password?',
-                    style: Styles.font14W400.copyWith(
-                      color: ColorManager.forgetPassColor,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          physics: ClampingScrollPhysics(),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const CustomAuthWelcomeWidget(
+                    title: 'Login',
+                    subTitle: 'Welcome back to the app',
+                  ),
+                  verticalSpace(54),
+                  CustomLoginForm(viewPass: viewPass),
+                  verticalSpace(10),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: InkWell(
+                      onTap: () => context.push(Routes.forgotPassword),
+                      child: Text(
+                        'Forgot Password?',
+                        style: Styles.font14W400.copyWith(
+                          color: ColorManager.forgetPassColor,
+                        ),
+                      ),
                     ),
                   ),
+<<<<<<< Updated upstream
                 ),
               ),
               verticalSpace(47),
@@ -65,29 +71,41 @@ class _LoginViewState extends State<LoginView> {
                     // onPressed: () => validateThenDoLogin(context),
                     onPressed: () => context.push(Routes.home),
                     backgroundColor: ColorManager.mainColor,
+=======
+                  verticalSpace(47),
+                  Center(
+                    child: SizedBox(
+                      width: 300.w,
+                      child: AppTextButton(
+                        text: 'Login',
+                        onPressed: () => validateThenDoLogin(context),
+                        backgroundColor: ColorManager.mainColor,
+                      ),
+                    ),
+>>>>>>> Stashed changes
                   ),
-                ),
-              ),
-              verticalSpace(35),
-              const DividerAndText(),
-              verticalSpace(36),
-              Center(
-                child: SizedBox(
-                  width: 300.w,
-                  child: GoogleSigninWidget(
-                    text: 'Continue with Google',
-                    backgroundColor: ColorManager.lightGrey,
-                    onPressed: () {
-                      context.read<GoogleSigninCubit>().emitSignInWithGoogle();
-                    },
+                  verticalSpace(35),
+                  const DividerAndText(),
+                  verticalSpace(36),
+                  Center(
+                    child: SizedBox(
+                      width: 300.w,
+                      child: GoogleSigninWidget(
+                        text: 'Continue with Google',
+                        backgroundColor: ColorManager.lightGrey,
+                        onPressed: () {
+                          context.read<GoogleSigninCubit>().emitSignInWithGoogle();
+                        },
+                      ),
+                    ),
                   ),
-                ),
+                  verticalSpace(54),
+                  const HaveAcountText(),
+                  LoginBlocListener(),
+                  GoogleBlocListener(),
+                ],
               ),
-              verticalSpace(54),
-              const HaveAcountText(),
-              LoginBlocListener(),
-              GoogleBlocListener(),
-            ],
+            ),
           ),
         ),
       ),
