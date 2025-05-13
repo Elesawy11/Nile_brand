@@ -73,14 +73,6 @@ class ProfileView extends StatelessWidget {
                   )),
               20.vs,
               InfoTile(
-                  leadingIcon: Assets.imagesDarkModeIcon,
-                  title: "Dark Mode",
-                  trailling: Switch(
-                    value: false,
-                    onChanged: (value) {},
-                  )),
-              20.vs,
-              InfoTile(
                   ontap: () {
                     context.push(Routes.addFeedback);
                   },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/widgets/app_text_form_field.dart';
 
 class PasswordField extends StatelessWidget {
@@ -24,26 +25,29 @@ class PasswordField extends StatelessWidget {
     return ValueListenableBuilder<bool>(
       valueListenable: viewPass,
       builder: (context, value, child) {
-        return AppTextFormField(
-          controller: controller,
-          floatingLabelBehavior: floatingLabelBehavior,
-          labelText: labelText,
-          hintText: hintText,
-          isObscureText: viewPass.value,
-          suffixIcon: IconButton(
-            onPressed: () {
-              viewPass.value = !value;
-            },
-            icon: viewPass.value
-                ? const Icon(Icons.visibility_off_outlined)
-                : const Icon(Icons.visibility_outlined),
-          ),
-          validator: validator ??
-              (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter a valid password';
-                }
+        return SizedBox(
+          height: 50.h,
+          child: AppTextFormField(
+            controller: controller,
+            floatingLabelBehavior: floatingLabelBehavior,
+            labelText: labelText,
+            hintText: hintText,
+            isObscureText: viewPass.value,
+            suffixIcon: IconButton(
+              onPressed: () {
+                viewPass.value = !value;
               },
+              icon: viewPass.value
+                  ? const Icon(Icons.visibility_off_outlined)
+                  : const Icon(Icons.visibility_outlined),
+            ),
+            validator: validator ??
+                (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a valid password';
+                  }
+                },
+          ),
         );
       },
     );

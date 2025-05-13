@@ -17,44 +17,52 @@ class ForgotPasswordView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<ForgotPassCubit>();
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const CustomAuthWelcomeWidget(
-                title: 'Forgot Password?',
-                subTitle:
-                    'Enter your email address to get the password reset link.',
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          physics: ClampingScrollPhysics(),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const CustomAuthWelcomeWidget(
+                    title: 'Forgot Password?',
+                    subTitle:
+                        'Enter your email address to get the password reset link.',
+                  ),
+                  verticalSpace(54),
+                  Form(
+                    key: cubit.formKey,
+                    child: SizedBox(
+                      height: 50.h,
+                      child: AppTextFormField(
+                        controller: cubit.emailController,
+                        labelText: 'E-mail',
+                        hintText: 'example@gmail.com',
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your email';
+                          }
+                        },
+                      ),
+                    ),
+                  ),
+                  verticalSpace(76),
+                  AppTextButton(
+                    text: 'Password Reset',
+                    onPressed: () => validateThenDoResetPass(context),
+                    // onPressed: () => context.push(Routes.verificationScreen),
+                    backgroundColor: ColorManager.mainColor,
+                  ),
+                  verticalSpace(230),
+                  const HaveAcountText(),
+                  ForgotPassBlocListener(),
+                ],
               ),
-              verticalSpace(54),
-              Form(
-                key: cubit.formKey,
-                child: AppTextFormField(
-                  controller: cubit.emailController,
-                  labelText: 'E-mail',
-                  hintText: 'example@gmail.com',
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
-                    }
-                  },
-                ),
-              ),
-              verticalSpace(76),
-              AppTextButton(
-                text: 'Password Reset',
-                onPressed: () => validateThenDoResetPass(context),
-                // onPressed: () => context.push(Routes.verificationScreen),
-                backgroundColor: ColorManager.mainColor,
-              ),
-              verticalSpace(230),
-              const HaveAcountText(),
-              ForgotPassBlocListener(),
-            ],
+            ),
           ),
         ),
       ),
