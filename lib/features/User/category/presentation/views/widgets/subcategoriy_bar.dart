@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/cubit/get_sub_category_product_cubit.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_sub_categories_cubit/get_sub_categorys_cubit.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_sub_categories_cubit/get_sub_categorys_state.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -42,7 +43,16 @@ class SubcategoriyBar extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.only(bottom: 8.0),
                                   child: InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      context
+                                          .read<GetSubCategoryProductCubit>()
+                                          .getSubCategoryProducts(
+                                            cId: subcategory.category?.id ??
+                                                'Not Found',
+                                            subId:
+                                                subcategory.id ?? 'Not Found',
+                                          );
+                                    },
                                     child: Text(
                                       subcategory.name ?? 'Not Found',
                                       style: Styles.font16W400,

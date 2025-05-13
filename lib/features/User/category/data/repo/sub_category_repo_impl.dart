@@ -31,6 +31,16 @@ class SubCategoryRepoImpl {
     }
   }
 
+  Future<ApiResult<List<ProductModel>>> getSubCategoryProducts(
+      {required String cId, required String subId}) async {
+    try {
+      final response = await _subCategorySource.getSubCategoryProducts(cId, subId);
+      final products = getProductsList(response);
+      return ApiResult.success(products);
+    } catch (e) {
+      return ApiResult.failure(ErrorHandler.handle(e));
+    }
+  }
   static List<SubCategoryModel> getSubCategoryList(Map<String, dynamic> data) {
     List<SubCategoryModel> subCategories = [];
     for (var categoryMap in data['data']) {
@@ -38,6 +48,7 @@ class SubCategoryRepoImpl {
     }
     return subCategories;
   }
+
 
   static List<ProductModel> getProductsList(Map<String, dynamic> data) {
     List<ProductModel> products = [];

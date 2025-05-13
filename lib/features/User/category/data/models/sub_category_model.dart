@@ -1,4 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
+
+import 'product_model.dart';
 part 'sub_category_model.g.dart';
 
 @JsonSerializable()
@@ -9,14 +11,17 @@ class SubCategoryModel {
   String? createdAt;
   String? updatedAt;
   String? id;
+  List<ProductModel>? products;
 
-  SubCategoryModel(
-      {this.sId,
-      this.name,
-      this.category,
-      this.createdAt,
-      this.updatedAt,
-      this.id});
+  SubCategoryModel({
+    this.sId,
+    this.name,
+    this.category,
+    this.createdAt,
+    this.updatedAt,
+    this.id,
+    this.products,
+  });
 
   factory SubCategoryModel.fromJson(Map<String, dynamic> json) =>
       _$SubCategoryModelFromJson(json);

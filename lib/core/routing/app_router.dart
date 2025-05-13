@@ -8,6 +8,7 @@ import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/features/Admin/systm_users/views/update_user_info.dart';
 import 'package:nile_brand/features/User/auth/presentation/cubits/google_sigin_cubit/google_signin_cubit.dart';
 import 'package:nile_brand/features/User/auth/presentation/cubits/signup_cubit/sign_up_cubit.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/cubit/get_sub_category_product_cubit.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_sub_categories_cubit/get_sub_categorys_cubit.dart';
 
 import '../../features/User/auth/presentation/cubits/reset_pass_cubit/reset_pass_cubit.dart';
@@ -138,6 +139,10 @@ abstract class AppRouter {
                     BlocProvider(
                       create: (context) =>
                           getIt.get<GetCategoryProductsCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) =>
+                          getIt.get<GetSubCategoryProductCubit>(),
                     ),
                   ],
                   child: const CategoryView(),

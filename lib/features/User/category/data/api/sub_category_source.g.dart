@@ -10,7 +10,7 @@ part of 'sub_category_source.dart';
 
 class _SubCategorySource implements SubCategorySource {
   _SubCategorySource(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://nile-brands.up.railway.app/api/v1/';
+    baseUrl ??= 'https://nile-brands-backend.up.railway.app/api/v1/';
   }
 
   final Dio _dio;
@@ -51,6 +51,27 @@ class _SubCategorySource implements SubCategorySource {
           .compose(
             _dio.options,
             'categories/${id}',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch(_options);
+    final _value = _result.data;
+    return _value;
+  }
+
+  @override
+  Future<dynamic> getSubCategoryProducts(String cId, String subId) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<dynamic>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'categories/${cId}/subcategories/${subId}',
             queryParameters: queryParameters,
             data: _data,
           )
