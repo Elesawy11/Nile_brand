@@ -26,49 +26,54 @@ class _CreateAccountViewState extends State<CreateAccountView> {
   @override
   Widget build(BuildContext context) {
     // final cubit = context.read<SignUpCubit>();
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              50.vs,
-              Text(
-                "Create an account",
-                style: Styles.font35W700,
-              ),
-              30.vs,
-              SignupForm(
-                viewPass: viewPass,
-                viewRestPass: viewRestPass,
-              ),
-              30.vs,
-              Center(
-                child: SizedBox(
-                  width: 300.w,
-                  child: AppTextButton(
-                    text: 'Sign Up',
-                    onPressed: () => validateThenDoSignup(context),
-                    backgroundColor: ColorManager.mainColor,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          physics: ClampingScrollPhysics(),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  50.vs,
+                  Text(
+                    "Create an account",
+                    style: Styles.font35W700,
                   ),
-                ),
-              ),
-              30.vs,
-              const DividerAndText(),
-              20.vs,
-              Center(
-                child: SizedBox(
-                  width: 300.w,
-                  child: const GoogleSigninWidget(
-                    text: 'Continue with Google',
-                    backgroundColor: ColorManager.lightGrey,
+                  30.vs,
+                  SignupForm(
+                    viewPass: viewPass,
+                    viewRestPass: viewRestPass,
                   ),
-                ),
+                  30.vs,
+                  Center(
+                    child: SizedBox(
+                      width: 300.w,
+                      child: AppTextButton(
+                        text: 'Sign Up',
+                        onPressed: () => validateThenDoSignup(context),
+                        backgroundColor: ColorManager.mainColor,
+                      ),
+                    ),
+                  ),
+                  30.vs,
+                  const DividerAndText(),
+                  20.vs,
+                  Center(
+                    child: SizedBox(
+                      width: 300.w,
+                      child: const GoogleSigninWidget(
+                        text: 'Continue with Google',
+                        backgroundColor: ColorManager.lightGrey,
+                      ),
+                    ),
+                  ),
+                  SignupBlocListener(),
+                ],
               ),
-              SignupBlocListener(),
-            ],
+            ),
           ),
         ),
       ),

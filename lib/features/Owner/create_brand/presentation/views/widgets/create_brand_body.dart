@@ -36,7 +36,7 @@ class CreateBrandBody extends StatelessWidget {
         ),
         44.vs,
         SizedBox(
-          height: 60.h,
+          height: 50.h,
           width: 350.w,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -47,7 +47,7 @@ class CreateBrandBody extends StatelessWidget {
         ),
         22.vs,
         SizedBox(
-          height: 60.h,
+          height: 50.h,
           width: 350.w,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -58,7 +58,7 @@ class CreateBrandBody extends StatelessWidget {
         ),
         22.vs,
         SizedBox(
-          height: 60.h,
+          height: 50.h,
           width: 350.w,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,

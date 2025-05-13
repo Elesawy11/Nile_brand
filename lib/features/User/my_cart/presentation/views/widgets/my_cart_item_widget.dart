@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nile_brand/core/utils/sizes_padding.dart';
 import '../../../../../../core/utils/assets.dart';
 import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/spacer.dart';
@@ -13,13 +14,27 @@ class MyCartItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
+    return Container(
+      width: MediaQuery.of(context).size.width*.9,
       height: 144.h,
+      clipBehavior: Clip.hardEdge,
+      // padding: EdgeInsets.only(right: 5.w),
+      decoration: BoxDecoration(
+        color:Colors.white,
+        borderRadius: BorderRadius.circular(15.r),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0,0),
+            color: Colors.black.withValues(alpha: .4),
+            blurRadius: 4.r
+          )
+        ]
+
+      ),
       child: Row(
         children: [
           Image.asset(
-            Assets.imagesTestCartImage,
+            Assets.imagesTestItem,
             width: 127.w,
             height: 144.h,
             fit: BoxFit.cover,
@@ -31,7 +46,7 @@ class MyCartItemWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
                       width: 187.w,
@@ -41,14 +56,16 @@ class MyCartItemWidget extends StatelessWidget {
                         style: Styles.font20W400,
                       ),
                     ),
+                    Spacer(),
                     InkWell(
                       onTap: () {},
                       child: Icon(
                         Icons.close,
-                        color: ColorManager.gray8C,
-                        size: 16.r,
+                        color: const Color.fromARGB(255, 194, 30, 19),
+                        size: 19.r,
                       ),
                     ),
+                    7.hs
                   ],
                 ),
                 verticalSpace(7),
@@ -60,6 +77,7 @@ class MyCartItemWidget extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
+                    
                     'Elegant black dress featuring a sleek silhouette, designed with premium',
                     style: Styles.font16W400,
                   ),
@@ -67,12 +85,13 @@ class MyCartItemWidget extends StatelessWidget {
                 // const Spacer(),
                 SizedBox(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
                         '120.00 LE',
-                        style: Styles.font20W400,
+                        style: Styles.font20W400.copyWith(color: ColorManager.mainColor,fontWeight: FontWeight.w600,fontSize: 18.sp),
                       ),
+                      Spacer(),
                       Row(
                         children: [
                           IncreaseAndDecreaseIconWidget(
@@ -90,7 +109,8 @@ class MyCartItemWidget extends StatelessWidget {
                             icon: Icons.remove,
                           ),
                         ],
-                      )
+                      ),
+                      7.hs,
                     ],
                   ),
                 )

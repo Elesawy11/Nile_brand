@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../../core/utils/assets.dart';
@@ -68,23 +67,6 @@ class ChatbotTopBarWidget extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              Assets.svgImagesVolumeIcon,
-              width: 24.r,
-              height: 24.r,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              Assets.svgImagesExport,
-              width: 24.r,
-              height: 24.r,
-            ),
-          ),
-          horizontalSpace(30)
         ],
       ),
     );

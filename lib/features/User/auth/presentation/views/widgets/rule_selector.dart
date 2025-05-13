@@ -9,20 +9,25 @@ class RuleSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<SignUpCubit>();
-    return DropdownMenu(
-      controller: cubit.ruleController,
-      onSelected: (value) {
-        cubit.ruleController.text = value ?? "user";
-      },
-      hintText: "User",
-      width: 210.w,
-      menuStyle: const MenuStyle(
-          backgroundColor: WidgetStatePropertyAll(Colors.white)),
-      dropdownMenuEntries: const [
-        DropdownMenuEntry(value: "user", label: "User"),
-        DropdownMenuEntry(value: "owner", label: "Owner"),
-        DropdownMenuEntry(value: "admin", label: "Admin"),
-      ],
+    return SizedBox(
+      height: 50.h,
+      child: DropdownMenu(
+        controller: cubit.ruleController,
+        
+        onSelected: (value) {
+          cubit.ruleController.text = value ?? "user";
+        },
+        hintText: "User",
+        width: 210.w,
+        menuStyle:  MenuStyle(
+          minimumSize: WidgetStatePropertyAll(Size(70.w, 40.h)),
+            backgroundColor: WidgetStatePropertyAll(Colors.white)),
+        dropdownMenuEntries: const [
+          DropdownMenuEntry(value: "user", label: "User"),
+          DropdownMenuEntry(value: "owner", label: "Owner"),
+          DropdownMenuEntry(value: "admin", label: "Admin"),
+        ],
+      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import '../../../../../../core/widgets/app_text_form_field.dart';
 import '../../cubits/login_cubit/login_cubit.dart';
@@ -20,15 +21,18 @@ class CustomLoginForm extends StatelessWidget {
       key: cubit.formKey,
       child: Column(
         children: [
-          AppTextFormField(
-            controller: cubit.emailController,
-            labelText: 'E-mail',
-            hintText: 'email',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your email';
-              }
-            },
+          SizedBox(
+            height: 50.h,
+            child: AppTextFormField(
+              controller: cubit.emailController,
+              labelText: 'E-mail',
+              hintText: 'example@gmail.com',
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter your email';
+                }
+              },
+            ),
           ),
           35.vs,
           PasswordField(

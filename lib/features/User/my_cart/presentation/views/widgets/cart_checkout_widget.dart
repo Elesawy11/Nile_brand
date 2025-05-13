@@ -18,23 +18,20 @@ class CartCheckoutWidget extends StatelessWidget {
         verticalSpace(22),
         const CheckoutTextWidget(
           subtotal: 'Subtotal',
-          total: '700 Le',
+          total: '700 LE',
           subColor: ColorManager.gray8C,
         ),
         verticalSpace(18),
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 24.h),
-          decoration: const BoxDecoration(
-            border: Border.symmetric(
-              horizontal: BorderSide(
-                color: ColorManager.gray8C,
-              ),
-            ),
-          ),
-          child: const CheckoutTextWidget(
-            subtotal: 'Total',
-            total: '700 LE',
-          ),
+
+        Divider(
+          color: ColorManager.gray8C,
+          thickness: 1,
+          endIndent: 26.w,
+          indent: 26.w,
+        ),
+        const CheckoutTextWidget(
+          subtotal: 'Total',
+          total: '700 LE',
         ),
         verticalSpace(32),
         SizedBox(
