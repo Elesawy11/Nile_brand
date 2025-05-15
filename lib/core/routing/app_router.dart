@@ -115,10 +115,10 @@ abstract class AppRouter {
                 path: Routes.home,
                 builder: (context, state) => MultiBlocProvider(
                   providers: [
-                    // BlocProvider(
-                    //   create: (context) =>
-                    //       getIt.get<GetProductsCubit>()..getProducts(),
-                    // ),
+                    BlocProvider(
+                      create: (context) =>
+                          getIt.get<GetProductsCubit>()..getProducts(),
+                    ),
                     BlocProvider(
                       create: (context) =>
                           getIt.get<GetCategoryCubit>()..emitGetCategories(),
@@ -142,18 +142,11 @@ abstract class AppRouter {
                       create: (context) =>
                           getIt.get<GetSubCategorysCubit>()..getSubCategories(),
                     ),
-                    // BlocProvider(
-                    //   create: (context) =>
-                    //       getIt.get<GetCategoryProductsCubit>(),
-                    // ),
                     BlocProvider(
-                      create: (context) =>
-                          getIt.get<GetProductsCubit>()..getProducts(),
+                      create: (context) => getIt.get<GetProductsCubit>(),
                     ),
                   ],
-                  child: CategoryView(
-                    // getCategoryCubit: context.read<GetCategoryCubit>(),
-                  ),
+                  child: CategoryView(),
                 ),
               ),
             ],

@@ -94,6 +94,8 @@ class Assets {
 
   static const String imagesMessageIcon = "assets/images/message_icon.png";
 
+  static const String imagesNoImage = "assets/images/no_image.jpg";
+
   static const String imagesNotFoundImage = "assets/images/not_found_image.jpg";
 
   static const String imagesNotificationIcon = "assets/images/notification_icon.png";

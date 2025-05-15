@@ -45,17 +45,28 @@ class SubcategoriyBar extends StatelessWidget {
                                 alignment: Alignment.topLeft,
                                 child: Padding(
                                   padding: const EdgeInsets.only(bottom: 8.0),
-                                  child: InkWell(
-                                    onTap: () {
-                                      context
-                                          .read<GetProductsCubit>()
-                                          .getSubCategoryProducts(
-                                            subcategory.id!,
-                                          );
-                                    },
-                                    child: Text(
-                                      subcategory.name ?? 'Not Found',
-                                      style: Styles.font16W400,
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      border: Border(
+                                        bottom: BorderSide(
+                                          color: Colors.black,
+                                          width: 0.5,
+                                        ),
+                                      ),
+                                    ),
+                                    child: InkWell(
+                                      onTap: () {
+                                        context
+                                            .read<GetProductsCubit>()
+                                            .getSubCategoryProducts(
+                                              subcategory.id!,
+                                            );
+                                      },
+                                      child: Text(
+                                        subcategory.name ?? 'Not Found',
+                                        style: Styles.font16W400,
+                                      ),
                                     ),
                                   ),
                                 ),

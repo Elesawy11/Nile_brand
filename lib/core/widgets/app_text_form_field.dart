@@ -56,7 +56,7 @@ class AppTextFormField extends StatelessWidget {
       onTapOutside: onTapOutside,
       onTap: onTap,
       controller: controller,
-      autofocus: true,
+      autofocus: false,
       // focusNode: FocusNode().,
 
       maxLines: maxLines,

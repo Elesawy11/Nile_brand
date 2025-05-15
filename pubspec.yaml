@@ -11,6 +11,7 @@ environment:
 
 dependencies:
   bloc: ^9.0.0
+  cached_network_image: ^3.4.1
   cupertino_icons: ^1.0.8
   custom_rating_bar: ^3.0.0
   dio: ^5.8.0+1
@@ -28,12 +29,12 @@ dependencies:
   go_router: ^14.7.1
   google_sign_in: any
   image_picker: ^1.1.2
-  skeletonizer: ^1.4.3
-  readmore: ^2.2.0
   json_annotation: ^4.9.0
   pretty_dio_logger: ^1.4.0
+  readmore: ^2.2.0
   retrofit: ^4.4.2
   retrofit_generator: ^9.1.9
+  skeletonizer: ^1.4.3
   timelines_plus: ^1.0.6
 
 dev_dependencies:
