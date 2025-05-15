@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nile_brand/features/User/category/presentation/cubits/get_Category_products_Cubit/get_category_products_cubit.dart';
-import 'package:nile_brand/features/User/category/presentation/cubits/get_Category_products_Cubit/get_category_products_state.dart';
+// import 'package:nile_brand/features/User/category/presentation/cubits/get_Category_products_Cubit/get_category_products_cubit.dart';
+// import 'package:nile_brand/features/User/category/presentation/cubits/get_Category_products_Cubit/get_category_products_state.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_cubit.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_state.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/custome_item.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/subcategoriy_bar.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -20,15 +22,14 @@ class CategoryDetails extends StatelessWidget {
           SubcategoriyBar(),
           Expanded(
             flex: 3,
-            child:
-                BlocBuilder<GetCategoryProductsCubit, GetCategoryProductsState>(
+            child: BlocBuilder<GetProductsCubit, GetProductsState>(
               buildWhen: (previous, current) {
-                return current is GetProductsError ||
-                    current is GetProductsLoading ||
-                    current is GetProductsSuccess;
+                return current is GetProductSuccess ||
+                    current is GetProductLoading ||
+                    current is GetProductSuccess;
               },
               builder: (context, state) {
-                return state is GetProductsSuccess
+                return state is GetProductSuccess
                     ? GridView.builder(
                         shrinkWrap: true,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -40,14 +41,14 @@ class CategoryDetails extends StatelessWidget {
                         itemCount: state.products.length,
                         itemBuilder: (context, index) {
                           return Skeletonizer(
-                            enabled: state is GetProductsLoading,
+                            enabled: state is GetProductLoading,
                             child: CustomeItem(
                               product: state.products[index],
                             ),
                           );
                         },
                       )
-                    : state is GetProductsError
+                    : state is GetProductError
                         ? Center(
                             child: Text(
                               state.error,

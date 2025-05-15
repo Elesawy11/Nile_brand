@@ -26,7 +26,7 @@ class PasswordField extends StatelessWidget {
       valueListenable: viewPass,
       builder: (context, value, child) {
         return SizedBox(
-          height: 50.h,
+          // height: 50.h,
           child: AppTextFormField(
             controller: controller,
             floatingLabelBehavior: floatingLabelBehavior,

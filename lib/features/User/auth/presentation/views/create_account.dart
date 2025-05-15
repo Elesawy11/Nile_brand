@@ -37,7 +37,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  50.vs,
+                  30.vs,
                   Text(
                     "Create an account",
                     style: Styles.font35W700,

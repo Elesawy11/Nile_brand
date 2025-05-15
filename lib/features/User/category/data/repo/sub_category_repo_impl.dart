@@ -10,9 +10,9 @@ class SubCategoryRepoImpl {
   SubCategoryRepoImpl(this._subCategorySource);
 
   Future<ApiResult<List<SubCategoryModel>>> getSubCategories(
-      {required String id}) async {
+     ) async {
     try {
-      final response = await _subCategorySource.getSubCategories(id);
+      final response = await _subCategorySource.getSubCategories();
       final categories = getSubCategoryList(response);
       return ApiResult.success(categories);
     } catch (e) {
@@ -20,11 +20,11 @@ class SubCategoryRepoImpl {
     }
   }
 
-  Future<ApiResult<List<ProductModel>>> getCategoryProducts(
-      {required String id}) async {
+
+  Future<ApiResult<List<ProductModel>>> getProducts() async {
     try {
-      final response = await _subCategorySource.getCategoryProducts(id);
-      final products = getProductsList(response);
+      final response = await _subCategorySource.getProducts();
+      final products = getProductsListNew(response);
       return ApiResult.success(products);
     } catch (e) {
       return ApiResult.failure(ErrorHandler.handle(e));
@@ -42,6 +42,13 @@ class SubCategoryRepoImpl {
   static List<ProductModel> getProductsList(Map<String, dynamic> data) {
     List<ProductModel> products = [];
     for (var productMap in data['data']['products']) {
+      products.add(ProductModel.fromJson(productMap));
+    }
+    return products;
+  }
+  static List<ProductModel> getProductsListNew(Map<String, dynamic> data) {
+    List<ProductModel> products = [];
+    for (var productMap in data['data']) {
       products.add(ProductModel.fromJson(productMap));
     }
     return products;

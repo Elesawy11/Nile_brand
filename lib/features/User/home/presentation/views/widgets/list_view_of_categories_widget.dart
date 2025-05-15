@@ -22,10 +22,10 @@ class ListViewOfCategoreisWidget extends StatelessWidget {
       builder: (context, state) {
         return state is CategorySuccess
             ? GridView.builder(
-                scrollDirection: Axis.horizontal,
+                scrollDirection: Axis.vertical,
                 itemCount: state.categories.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
+                  crossAxisCount: 3,
                 ),
                 itemBuilder: (context, index) {
                   return SizedBox(

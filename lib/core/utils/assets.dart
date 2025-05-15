@@ -42,6 +42,8 @@ class Assets {
 
   static const String imagesAdv2 = "assets/images/adv2.png";
 
+  static const String imagesArOption = "assets/images/ar_option.png";
+
   static const String imagesArrowLeftIcon = "assets/images/arrowLeftIcon.png";
 
   static const String imagesBrandItem = "assets/images/brandItem.png";
@@ -72,6 +74,8 @@ class Assets {
 
   static const String imagesDeleteIcon = "assets/images/deleteIcon.png";
 
+  static const String imagesDress = "assets/images/dress.png";
+
   static const String imagesEmptyWhislist = "assets/images/empty_whislist.png";
 
   static const String imagesFavoriteIcon = "assets/images/favorite_icon.png";
@@ -89,6 +93,8 @@ class Assets {
   static const String imagesLogo = "assets/images/logo.png";
 
   static const String imagesMessageIcon = "assets/images/message_icon.png";
+
+  static const String imagesNotFoundImage = "assets/images/not_found_image.jpg";
 
   static const String imagesNotificationIcon = "assets/images/notification_icon.png";
 
@@ -151,7 +157,5 @@ class Assets {
   static const String svgImagesSendIcon = "assets/svgImages/sendIcon.svg";
 
   static const String svgImagesVolumeIcon = "assets/svgImages/volumeIcon.svg";
-
-  static const String arOprion = "assets/images/ar_option.png";
 }
 

@@ -1,13 +1,15 @@
 class ApiConstants {
   ApiConstants._();
 
-  static const String baseUrl = 'https://nile-brands.up.railway.app/api/v1/';
+  static const String baseUrl = 'https://nile-brands-backend.up.railway.app/api/v1/';
   static const String signup = 'auth/signup';
   static const String login = 'auth/login';
   static const String forgotPassword = 'auth/forgetPassword';
   static const String verifyCode = 'auth/verifyCode';
   static const String resetPassword = 'auth/resetPassword';
   static const String categories = 'categories';
+  static const String subcategories = 'subcategories';
+  static const String products = 'products';
 }
 
 class ApiErrors {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/routing/routes.dart';
+import 'package:nile_brand/core/utils/assets.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/features/User/category/data/models/product_model.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/content_postion.dart';
@@ -15,7 +16,7 @@ class CustomeItem extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: SizedBox(
-        height: 120.h,
+        // height: 120.h,
         child: Container(
           padding: EdgeInsets.only(right: 5.w, left: 5.w),
           margin: EdgeInsets.only(top: 5.h, right: 5.w, left: 5.w),
@@ -24,71 +25,100 @@ class CustomeItem extends StatelessWidget {
             children: [
               ContentPosition(
                 bottom: 37.h,
-                child: Image.network(
-                  product.images!.first,
-                  width: 90.w,
-                  height: 50.h,
-                ),
+                child: product.images?.first == null
+                    ? Image.asset(
+                        Assets.imagesNotFoundImage,
+                        width: 90.w,
+                        height: 50.h,
+                      )
+                    : Image.network(
+                        product.images!.first,
+                        width: 90.w,
+                        height: 50.h,
+                      ),
               ),
-              ContentPosition(
-                
-                  left: 75.w,
-                  top: 60.h,
-                  child: InkWell(
-                      onTap: () {
-                        context.pushNamed(Routes.ptoductDetails);
-                      },
-                      child: Image.asset(
-                        "assets/images/favorite_icon.png",
-                        width: 10.w,
-                        height: 10.h,
-                      ))),
-
-              ContentPosition(
-                  top: 130.spMax,
-                  left: 4.w,
-                  child: Container(
+              Row(
+                children: [
+                  Container(
+                    width: 40.w,
                     margin: EdgeInsets.only(top: 7.h),
                     child: Text(
                       product.name ?? 'Not Found',
                       style: Styles.font14W400,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
-                  )),
-              ContentPosition(
-                top: 145.spMax,
-                left: 5.w,
-                right: 5.w,
-                child: SizedBox(
-                  width: 100.w,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '${product.price} L.E',
-                        style: Styles.font14W500,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              backgroundColor: Colors.white,
-                              content: Text(
-                                "Added to cart",
-                                style: TextStyle(color: Colors.black),
-                              ),
-                            ),
-                          );
-                        },
-                        child: Image.asset(
-                          "assets/images/cartIcon.png",
-                          width: 20.w,
-                          height: 14.h,
-                        ),
-                      ),
-                    ],
                   ),
-                ),
-              )
+                  Image.asset(
+                    "assets/images/favorite_icon.png",
+                    width: 10.w,
+                    height: 10.h,
+                  ),
+                ],
+              ),
+              // ContentPosition(
+              //   left: 75.w,
+              //   top: 60.h,
+              //   child: InkWell(
+              //     onTap: () {
+              //       context.pushNamed(Routes.ptoductDetails);
+              //     },
+              //     child: Image.asset(
+              //       "assets/images/favorite_icon.png",
+              //       width: 10.w,
+              //       height: 10.h,
+              //     ),
+              //   ),
+              // ),
+              // ContentPosition(
+              //   top: 130.spMax,
+              //   left: 4.w,
+              //   child: Container(
+              //     width: 40.w,
+              //     margin: EdgeInsets.only(top: 7.h),
+              //     child: Text(
+              //       product.name ?? 'Not Found',
+              //       style: Styles.font14W400,
+              //       overflow: TextOverflow.ellipsis,
+              //       maxLines: 1,
+              //     ),
+              //   ),
+              // ),
+              // // ContentPosition(
+              //   top: 145.spMax,
+              //   left: 5.w,
+              //   right: 5.w,
+              //   child: SizedBox(
+              //     width: 100.w,
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //       children: [
+              //         Text(
+              //           '${product.price} L.E',
+              //           style: Styles.font14W500,
+              //         ),
+              //         InkWell(
+              //           onTap: () {
+              //             ScaffoldMessenger.of(context).showSnackBar(
+              //               const SnackBar(
+              //                 backgroundColor: Colors.white,
+              //                 content: Text(
+              //                   "Added to cart",
+              //                   style: TextStyle(color: Colors.black),
+              //                 ),
+              //               ),
+              //             );
+              //           },
+              //           child: Image.asset(
+              //             "assets/images/cartIcon.png",
+              //             width: 20.w,
+              //             height: 14.h,
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // )
             ],
           ),
         ),

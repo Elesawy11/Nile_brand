@@ -20,7 +20,7 @@ class CustomAuthWelcomeWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        verticalSpace(80),
+        verticalSpace(50),
         Text(
           title,
           style: Styles.font35W700,

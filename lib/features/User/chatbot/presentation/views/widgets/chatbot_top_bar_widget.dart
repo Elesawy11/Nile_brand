@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nile_brand/core/routing/routes.dart';
 
 import '../../../../../../core/utils/assets.dart';
 import '../../../../../../core/utils/color_manager.dart';
@@ -27,7 +28,7 @@ class ChatbotTopBarWidget extends StatelessWidget {
       child: Row(
         children: [
           IconButton(
-            onPressed: () => context.pop(),
+            onPressed: () => context.pushReplacement(Routes.home),
             icon: const Icon(
               Icons.arrow_back_outlined,
               color: Colors.black,

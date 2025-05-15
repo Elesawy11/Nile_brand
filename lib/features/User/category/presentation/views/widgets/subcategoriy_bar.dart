@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nile_brand/core/routing/exports.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
-import 'package:nile_brand/features/User/category/presentation/cubits/get_sub_categories_cubit/get_sub_categorys_cubit.dart';
-import 'package:nile_brand/features/User/category/presentation/cubits/get_sub_categories_cubit/get_sub_categorys_state.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_cubit.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+
+import '../../cubits/get_sub_categories_cubit/get_sub_categorys_state.dart';
 
 class SubcategoriyBar extends StatelessWidget {
   // final List<SubCategoryModel> subCategoryList;
@@ -15,6 +17,8 @@ class SubcategoriyBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // from getCategoryProductsCubit
+
     return Container(
       padding: 10.ph,
       decoration: const BoxDecoration(
@@ -42,7 +46,13 @@ class SubcategoriyBar extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.only(bottom: 8.0),
                                   child: InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      context
+                                          .read<GetProductsCubit>()
+                                          .getSubCategoryProducts(
+                                            subcategory.id!,
+                                          );
+                                    },
                                     child: Text(
                                       subcategory.name ?? 'Not Found',
                                       style: Styles.font16W400,

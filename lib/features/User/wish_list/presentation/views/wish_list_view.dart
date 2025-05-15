@@ -13,19 +13,21 @@ class WishListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            "Whishlist",
-            style: Styles.font20W600,
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            surfaceTintColor: Colors.white,
+            centerTitle: true,
+            title: Text(
+              "Whishlist",
+              style: Styles.font20W600,
+            ),
           ),
-        ),
-        body:SingleChildScrollView(
-          child: Expanded(
-            child: Column(
-              children: [
-                Align(
+          body: SingleChildScrollView(
+            child: Expanded(
+              child: Column(
+                children: [
+                  Align(
                     alignment: Alignment.centerRight,
                     child: Padding(
                       padding: EdgeInsets.only(right: 12.w),
@@ -41,12 +43,11 @@ class WishListView extends StatelessWidget {
                       ),
                     ),
                   ),
-                const ListviewOfItemsOfWhishlist(),
-              ],
+                  const ListviewOfItemsOfWhishlist(),
+                ],
+              ),
             ),
-          ),
-        )
-      ),
+          )),
     );
   }
 }

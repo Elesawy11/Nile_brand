@@ -4,9 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/routing/routes.dart';
 import "package:nile_brand/core/routing/exports.dart";
 import 'package:nile_brand/core/utils/service_locator.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_cubit.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
-
-
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -21,8 +20,7 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.chatBotSplash2,
         builder: (context, state) => const ChatbotSplash2(),
-        
-        ),
+      ),
       GoRoute(
         path: Routes.ptoductDetails,
         builder: (context, state) => const ProductDetailsView(),
@@ -115,9 +113,17 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.home,
-                builder: (context, state) => BlocProvider(
-                  create: (context) =>
-                      getIt.get<GetCategoryCubit>()..emitGetCategories(),
+                builder: (context, state) => MultiBlocProvider(
+                  providers: [
+                    // BlocProvider(
+                    //   create: (context) =>
+                    //       getIt.get<GetProductsCubit>()..getProducts(),
+                    // ),
+                    BlocProvider(
+                      create: (context) =>
+                          getIt.get<GetCategoryCubit>()..emitGetCategories(),
+                    ),
+                  ],
                   child: const HomeView(),
                 ),
               ),
@@ -133,14 +139,21 @@ abstract class AppRouter {
                       create: (context) => getIt.get<GetCategoryCubit>(),
                     ),
                     BlocProvider(
-                      create: (context) => getIt.get<GetSubCategorysCubit>(),
+                      create: (context) =>
+                          getIt.get<GetSubCategorysCubit>()..getSubCategories(),
                     ),
+                    // BlocProvider(
+                    //   create: (context) =>
+                    //       getIt.get<GetCategoryProductsCubit>(),
+                    // ),
                     BlocProvider(
                       create: (context) =>
-                          getIt.get<GetCategoryProductsCubit>(),
+                          getIt.get<GetProductsCubit>()..getProducts(),
                     ),
                   ],
-                  child: const CategoryView(),
+                  child: CategoryView(
+                    // getCategoryCubit: context.read<GetCategoryCubit>(),
+                  ),
                 ),
               ),
             ],
@@ -157,7 +170,7 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.wishList,
-                builder: (context, state) => const  WishListView(),
+                builder: (context, state) => const WishListView(),
               ),
             ],
           ),

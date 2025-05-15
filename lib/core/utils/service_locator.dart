@@ -9,6 +9,7 @@ import 'package:nile_brand/features/User/auth/data/repo/signup_repo.dart';
 import 'package:nile_brand/features/User/auth/presentation/cubits/forgot_pass/forgot_pass_cubit.dart';
 import 'package:nile_brand/features/User/auth/presentation/cubits/google_sigin_cubit/google_signin_cubit.dart';
 import 'package:nile_brand/features/User/auth/presentation/cubits/signup_cubit/sign_up_cubit.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_cubit.dart';
 import 'package:nile_brand/features/User/home/data/data_source/category_remote_data_source.dart';
 import 'package:nile_brand/features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/cubits/cubit/chatbot_scroll_cubit.dart';
@@ -21,7 +22,6 @@ import '../../features/User/auth/presentation/cubits/login_cubit/login_cubit.dar
 import '../../features/User/auth/presentation/cubits/verify_code_cubit/verify_code_cubit.dart';
 import '../../features/User/category/data/api/sub_category_source.dart';
 import '../../features/User/category/data/repo/sub_category_repo_impl.dart';
-import '../../features/User/category/presentation/cubits/get_Category_products_Cubit/get_category_products_cubit.dart';
 import '../../features/User/category/presentation/cubits/get_sub_categories_cubit/get_sub_categorys_cubit.dart';
 import '../../features/User/home/data/repo/category_repo_impl.dart';
 
@@ -60,7 +60,9 @@ void serviceLocator() {
   getIt.registerLazySingleton(() => SubCategoryRepoImpl(getIt.get()));
   getIt.registerLazySingleton(() => GetSubCategorysCubit(getIt.get()));
   // get sub category products Features
-  getIt.registerLazySingleton(() => GetCategoryProductsCubit(getIt.get()));
+  // getIt.registerLazySingleton(() => GetCategoryProductsCubit(getIt.get()));
+  // get product cubit Features
+  getIt.registerLazySingleton(() => GetProductsCubit(getIt.get()));
   // Chatbot Features
   getIt.registerLazySingleton(() => ChatbotScrollCubit());
 }

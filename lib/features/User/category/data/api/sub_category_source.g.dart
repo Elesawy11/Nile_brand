@@ -10,7 +10,7 @@ part of 'sub_category_source.dart';
 
 class _SubCategorySource implements SubCategorySource {
   _SubCategorySource(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://nile-brands.up.railway.app/api/v1/';
+    baseUrl ??= 'https://nile-brands-backend.up.railway.app/api/v1/';
   }
 
   final Dio _dio;
@@ -20,16 +20,16 @@ class _SubCategorySource implements SubCategorySource {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<dynamic> getSubCategories(String id) async {
+  Future<dynamic> getSubCategories({int limit = 50000}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'limit': limit};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<dynamic>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'categories/${id}/subcategories',
+            'subcategories',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -41,16 +41,16 @@ class _SubCategorySource implements SubCategorySource {
   }
 
   @override
-  Future<dynamic> getCategoryProducts(String id) async {
+  Future<dynamic> getProducts({int limit = 50000}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'limit': limit};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<dynamic>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'categories/${id}',
+            'products',
             queryParameters: queryParameters,
             data: _data,
           )

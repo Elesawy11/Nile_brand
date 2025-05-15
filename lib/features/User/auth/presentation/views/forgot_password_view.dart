@@ -37,7 +37,6 @@ class ForgotPasswordView extends StatelessWidget {
                   Form(
                     key: cubit.formKey,
                     child: SizedBox(
-                      height: 50.h,
                       child: AppTextFormField(
                         controller: cubit.emailController,
                         labelText: 'E-mail',

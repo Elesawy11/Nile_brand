@@ -58,14 +58,13 @@ class AppTextFormField extends StatelessWidget {
       controller: controller,
       autofocus: true,
       // focusNode: FocusNode().,
-      
+
       maxLines: maxLines,
       decoration: InputDecoration(
-        
         floatingLabelBehavior: FloatingLabelBehavior.always,
         isDense: true,
         contentPadding: contentPadding ??
-            EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
+            EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
         focusedBorder: focusedBorder ??
             outLineBorder(
               color: Colors.black,
@@ -104,7 +103,7 @@ class AppTextFormField extends StatelessWidget {
             : null,
       ),
       obscureText: isObscureText ?? false,
-      
+
       style: Styles.font20W400.copyWith(
         color: ColorManager.subText,
       ),
