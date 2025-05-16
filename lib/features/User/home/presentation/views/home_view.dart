@@ -8,6 +8,7 @@ import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_cubit.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_state.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import '../../../../../core/utils/assets.dart';
 import '../../../category/presentation/views/widgets/custome_item.dart';
 import 'widgets/list_view_of_categories_widget.dart';
 import 'widgets/notification_and_search_widget.dart';
@@ -87,9 +88,8 @@ class HomeView extends StatelessWidget {
                       )
                     : state is GetProductError
                         ? Center(
-                            child: Text(
-                              state.error,
-                              style: Styles.font16W400,
+                            child: Image.asset(
+                              Assets.imagesNoImage,
                             ),
                           )
                         : const SizedBox();

@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,7 +37,7 @@ class CustomeItem extends StatelessWidget {
           children: [
             ContentPosition(
               bottom: 37.h,
-              child: isValidUri(product.images!.first)
+              child: isValidUri(product.images?.first ?? '')
                   ? Image.network(
                       product.images!.first,
                       width: 90.w,
