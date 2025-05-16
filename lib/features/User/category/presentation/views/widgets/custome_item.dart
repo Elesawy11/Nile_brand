@@ -27,7 +27,7 @@ class CustomeItem extends StatelessWidget {
         log('product image ====>>>>>>: ${product.images?.first}');
       },
       child: Container(
-        padding: EdgeInsets.only(right: 5.w, left: 5.w),
+        // padding: EdgeInsets.only(right: 5.w, left: 5.w),
         margin: EdgeInsets.only(top: 5.h, right: 5.w, left: 5.w),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
@@ -46,40 +46,43 @@ class CustomeItem extends StatelessWidget {
                     )
                   : Image.asset(
                       Assets.imagesNoImage,
-                      width: 90.w,
-                      height: 50.h,
-                      fit: BoxFit.fill,
+                      width: 20.w,
+                      height: 20.h,
+                      // fit: BoxFit.fill,
                     ),
             ),
             ContentPosition(
               top: 90.spMax,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 86.w,
-                    margin: EdgeInsets.only(top: 7.h),
-                    child: Text(
-                      product.name ?? 'Not Found',
-                      style: Styles.font14W400,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 86.w,
+                      margin: EdgeInsets.only(top: 7.h),
+                      child: Text(
+                        product.name ?? 'Not Found',
+                        style: Styles.font14W400,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
                     ),
-                  ),
-                  Image.asset(
-                    "assets/images/favorite_icon.png",
-                    width: 18.r,
-                    height: 18.r,
-                  ),
-                ],
+                    Image.asset(
+                      "assets/images/favorite_icon.png",
+                      width: 18.r,
+                      height: 18.r,
+                    ),
+                  ],
+                ),
               ),
             ),
             ContentPosition(
               top: 145.spMax,
               left: 5.w,
               right: 5.w,
-              child: SizedBox(
-                // width: 100.w,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

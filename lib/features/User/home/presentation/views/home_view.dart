@@ -78,6 +78,7 @@ class HomeView extends StatelessWidget {
                           itemCount: 20,
                           itemBuilder: (context, index) {
                             return Skeletonizer(
+                              ignoreContainers: true,
                               enabled: state is GetProductLoading,
                               child: CustomeItem(
                                 product: state.products[index],
