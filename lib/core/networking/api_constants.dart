@@ -10,6 +10,7 @@ class ApiConstants {
   static const String categories = 'categories';
   static const String subcategories = 'subcategories';
   static const String products = 'products';
+  static const String myProfile = 'users/me';
 }
 
 class ApiErrors {

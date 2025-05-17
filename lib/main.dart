@@ -10,10 +10,11 @@ import 'package:nile_brand/simple_bloc_observer.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
+  
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  serviceLocator();
+ await serviceLocator();
   Bloc.observer = SimpleBlocObserver();
   runApp(NileBrand());
 }

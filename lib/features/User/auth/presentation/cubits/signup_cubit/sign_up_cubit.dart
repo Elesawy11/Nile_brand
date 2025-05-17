@@ -1,8 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/features/User/auth/data/models/signup_request_body.dart';
 import 'package:nile_brand/features/User/auth/data/repo/signup_repo.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../../core/networking/signup_features/signup_result.dart';
 import '../../../data/models/signup_response.dart';
 import 'sign_up_state.dart';
@@ -33,6 +34,9 @@ class SignUpCubit extends Cubit<SignUpState> {
     switch (response) {
       case Success<SignupResponse>():
         emit(SignUpState.signUpSuccess(response.data));
+        getIt
+            .get<SharedPreferences>()
+            .setString('token', response.data.token ?? '');
         break;
       case Failure():
         emit(

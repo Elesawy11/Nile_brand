@@ -8,14 +8,14 @@ import 'package:nile_brand/core/utils/color_manager.dart';
 
 class ProfileImage extends StatelessWidget {
   final String imageUrl;
-  const ProfileImage({super.key, required this.imageUrl});
-
+  const ProfileImage({super.key, required this.imageUrl, this.backgroundImage});
+  final ImageProvider<Object>? backgroundImage;
   @override
   Widget build(BuildContext context) {
     return Center(
       child: CircleAvatar(
         radius: 50.r,
-        backgroundImage: AssetImage(imageUrl),
+        backgroundImage: backgroundImage,
         child: Container(
             margin: EdgeInsets.only(top: 60.h),
             child: IconButton(

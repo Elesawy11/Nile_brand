@@ -8,6 +8,7 @@ abstract class SubCategorySource {
   factory SubCategorySource(Dio dio) = _SubCategorySource;
 
   @GET(ApiConstants.subcategories)
+
   Future<dynamic> getSubCategories({
     @Query('limit') int limit = 50000,
   });

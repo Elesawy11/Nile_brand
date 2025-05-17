@@ -6,6 +6,7 @@ import "package:nile_brand/core/routing/exports.dart";
 import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_cubit.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
+import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_profile_cubit/get_my_profile_cubit.dart';
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -179,7 +180,11 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.profile,
-                builder: (context, state) => const ProfileView(),
+                builder: (context, state) => BlocProvider(
+                  create: (context) =>
+                      getIt.get<GetMyProfileCubit>()..getMyProfile(),
+                  child: const ProfileView(),
+                ),
               ),
             ],
           ),

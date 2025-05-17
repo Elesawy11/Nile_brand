@@ -13,6 +13,10 @@ import 'package:nile_brand/features/User/category/presentation/cubits/get_produc
 import 'package:nile_brand/features/User/home/data/data_source/category_remote_data_source.dart';
 import 'package:nile_brand/features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/cubits/cubit/chatbot_scroll_cubit.dart';
+import 'package:nile_brand/features/User/profile/data/api/my_profile_api_source.dart';
+import 'package:nile_brand/features/User/profile/data/repo_impl/my_profile_repo_impl.dart';
+import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_profile_cubit/get_my_profile_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/User/auth/data/repo/forgot_pass_repo.dart';
 import '../../features/User/auth/data/repo/login_repo.dart';
 import '../../features/User/auth/data/repo/reset_pass_repo.dart';
@@ -27,7 +31,9 @@ import '../../features/User/home/data/repo/category_repo_impl.dart';
 
 final getIt = GetIt.instance;
 
-void serviceLocator() {
+Future<void> serviceLocator() async {
+  final sharedPreferences = await SharedPreferences.getInstance();
+  getIt.registerFactory(() => sharedPreferences);
   Dio dio = DioFactory.getDio();
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   GoogleSignIn googleSignIn = GoogleSignIn();
@@ -53,7 +59,7 @@ void serviceLocator() {
   // category Features
   HomeRemoteDataSource categorySource = HomeRemoteDataSource(dio);
   getIt.registerLazySingleton(() => CategoryRepoImpl(categorySource));
-  getIt.registerLazySingleton(
+  getIt.registerFactory(
       () => GetCategoryCubit(getIt.get<CategoryRepoImpl>()));
   // sub category Features
   getIt.registerLazySingleton(() => SubCategorySource(dio));
@@ -63,6 +69,10 @@ void serviceLocator() {
   // getIt.registerLazySingleton(() => GetCategoryProductsCubit(getIt.get()));
   // get product cubit Features
   getIt.registerLazySingleton(() => GetProductsCubit(getIt.get()));
+  // myProfile Features
+  getIt.registerLazySingleton(() => MyProfileApiSource(dio));
+  getIt.registerLazySingleton(() => MyProfileRepoImpl(getIt.get()));
+  getIt.registerFactory(() => GetMyProfileCubit(getIt.get()));
   // Chatbot Features
   getIt.registerLazySingleton(() => ChatbotScrollCubit());
 }

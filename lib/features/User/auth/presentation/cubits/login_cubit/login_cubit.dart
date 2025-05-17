@@ -1,7 +1,10 @@
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/features/User/auth/data/repo/login_repo.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../../core/networking/api_result.dart';
 import '../../../data/models/login_request_body.dart';
 import '../../../data/models/login_response.dart';
@@ -27,6 +30,13 @@ class LoginCubit extends Cubit<LoginState> {
     switch (response) {
       case Success<LoginResponse>():
         emit(LoginState.loginSuccess(response.data));
+        getIt
+            .get<SharedPreferences>()
+            .setString('token', response.data.token ?? '');
+
+        log(getIt.get<SharedPreferences>().getString('token') ??
+            'the token is null');
+
         break;
       case Failure():
         emit(
