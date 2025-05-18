@@ -28,7 +28,7 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
       password: json['password'] as String?,
       role: json['role'] as String?,
       active: json['active'] as bool?,
-      sId: json['sId'] as String?,
+      sId: json['_id'] as String?,
       createdAt: json['createdAt'] as String?,
       updatedAt: json['updatedAt'] as String?,
     );
@@ -39,7 +39,7 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'password': instance.password,
       'role': instance.role,
       'active': instance.active,
-      'sId': instance.sId,
+      '_id': instance.sId,
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
     };

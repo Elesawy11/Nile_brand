@@ -1,87 +1,123 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
-import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/core/widgets/app_text_button.dart';
 import 'package:nile_brand/core/widgets/app_text_form_field.dart';
-import 'package:nile_brand/features/User/auth/presentation/views/widgets/password_field.dart';
-import 'package:nile_brand/features/User/profile/presentation/widgets/profile_image.dart';
+import 'package:nile_brand/features/Owner/create_brand/presentation/views/widgets/dialogs.dart';
+import '../manager/update_brand/update_brand_cubit.dart';
+import '../manager/update_brand/update_brand_state.dart';
 
-import '../../../../../core/utils/assets.dart';
-
-class UpdateBrandView extends StatefulWidget {
-  const UpdateBrandView({super.key});
+class UpdateBrandBody extends StatefulWidget {
+  const UpdateBrandBody({super.key});
 
   @override
-  State<UpdateBrandView> createState() => _UpdateBrandViewState();
+  State<UpdateBrandBody> createState() => _UpdateBrandBodyState();
 }
 
-class _UpdateBrandViewState extends State<UpdateBrandView> {
-  final ValueNotifier<bool> viewPass = ValueNotifier<bool>(true);
+class _UpdateBrandBodyState extends State<UpdateBrandBody> {
+  GlobalKey<FormState> key = GlobalKey<FormState>();
+  @override
+  void initState() {
+    context.read<UpdateBrandCubit>().fillControllers();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: Text(
-            "Update Brand",
-            style: Styles.font20W600,
-          ),
-          centerTitle: true,
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 22.w),
-            child: Column(
-              children: [
-                const ProfileImage(imageUrl: Assets.imagesProfileImage),
-                76.vs,
-                SizedBox(
-                  height: 50.h,
-                  child: AppTextFormField(
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    hintText: "brand name",
-                    labelText: "Brand neme",
-                    validator: (p0) {},
+        appBar: AppBar(),
+        body: BlocConsumer<UpdateBrandCubit, UpdateBrandState>(
+          listener: (context, state) async{
+            
+            if (state is UpdateBrandSuccess) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                    content: Text("Success"), backgroundColor: Colors.green),
+              );
+              context.pop();
+            } else if (state is UpdateBrandFailure) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                    content: Text(state.message), backgroundColor: Colors.red),
+              );
+            }
+          },
+          builder: (context, state) {
+            final cubit = context.read<UpdateBrandCubit>();
+
+            return SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 22.w),
+                child: Form(
+                  key: key,
+                  child: Column(
+                    children: [
+                      40.vs,
+                      GestureDetector(
+                        onTap: () async {
+                          final picked = await ImagePicker()
+                              .pickImage(source: ImageSource.gallery);
+                          if (picked != null) {
+                            final savedImage =
+                                await saveImagePermanently(picked.path);
+                            cubit.setImage(savedImage);
+                          }
+                        },
+                        child: CircleAvatar(
+                          radius: 50,
+                          backgroundImage: NetworkImage(
+                              "https://nile-brands-backend.up.railway.app/brands/${cubit.logoPath}"),
+                        ),
+                      ),
+                      76.vs,
+                      AppTextFormField(
+                        controller: cubit.nameController,
+                        hintText: "brand name",
+                        labelText: "Brand name",
+                        validator: (name) {},
+                      ),
+                      34.vs,
+                      AppTextFormField(
+                        controller: context
+                            .read<UpdateBrandCubit>()
+                            .descriptionController,
+                        hintText: "brand description",
+                        labelText: "Description",
+                        validator: (p0) {},
+                      ),
+                      34.vs,
+                      AppTextFormField(
+                        keyboardType: TextInputType.number,
+                        controller: cubit.taxIdController,
+                        hintText: "",
+                        labelText: "TaxID",
+                        validator: (p0) {},
+                      ),
+                      116.vs,
+                      Padding(
+                        padding: 50.ph,
+                        child: AppTextButton(
+                          backgroundColor: ColorManager.mainColor,
+                          text: state is UpdateBrandLoading
+                              ? "Saving..."
+                              : "Save Changes",
+                          onPressed: () {
+                            cubit.updateBrand();
+                            // context.pop();
+                          },
+                        ),
+                      )
+                    ],
                   ),
                 ),
-                34.vs,
-                SizedBox(
-                  height: 50.h,
-                  child: AppTextFormField(
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    hintText: "brand@gmail.com",
-                    labelText: "E-mail",
-                    validator: (p0) {},
-                  ),
-                ),
-                34.vs,
-                SizedBox(
-                  height: 50.h,
-                  child: PasswordField(
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    viewPass: viewPass,
-                    labelText: "Password",
-                    hintText: "password",
-                  ),
-                ),
-                116.vs,
-                Padding(
-                  padding: 50.ph,
-                  child: AppTextButton(
-                    backgroundColor: ColorManager.mainColor,
-                    text: "Save Changes",
-                    onPressed: () {
-                      context.pop();
-                    },
-                  ),
-                )
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ),
     );

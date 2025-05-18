@@ -36,7 +36,19 @@ class SignupBlocListener extends StatelessWidget {
             showSuccessDialog(
                 message: 'Congratulations, you have signed up successfully!',
                 context, onPressed: () {
-              context.go(Routes.home);
+              // context.go(Routes.login);
+              if(context.read<SignUpCubit>().ruleController.text == "owner"){
+                context.go(Routes.createBrand);
+
+              }
+              else if(context.read<SignUpCubit>().ruleController.text == "user"){
+
+                context.go(Routes.home);
+
+              }
+              else{
+                context.go(Routes.allbrands);
+              }
             });
             break;
           case SignUpError():

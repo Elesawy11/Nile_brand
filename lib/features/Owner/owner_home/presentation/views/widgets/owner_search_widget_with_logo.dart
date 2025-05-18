@@ -8,8 +8,10 @@ import '../../../../../../core/utils/styles.dart';
 import '../../../../../../core/widgets/app_text_form_field.dart';
 
 class OwnerSearchWidgetWithLogo extends StatelessWidget {
+  final String brandLogo;
   const OwnerSearchWidgetWithLogo({
     super.key,
+    required this.brandLogo,
   });
 
   @override
@@ -35,10 +37,19 @@ class OwnerSearchWidgetWithLogo extends StatelessWidget {
           ),
         ),
         12.hs,
-        Image.asset(
-          Assets.imagesProfileImage,
-          width: 36.r,
-          height: 36.r,
+        CircleAvatar(
+          radius: 20.r,
+          backgroundColor: Colors.grey.shade200,
+          child: ClipOval(
+            child: Image.network(
+              "https://nile-brands-backend.up.railway.app/brands/$brandLogo",
+              fit: BoxFit.cover,
+              width: 40.r,
+              height: 40.r,
+              errorBuilder: (context, error, stackTrace) =>
+                  Icon(Icons.error, size: 20.r),
+            ),
+          ),
         )
       ],
     );

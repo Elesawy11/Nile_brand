@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nile_brand/features/Owner/owner_helpers.dart';
 import 'package:nile_brand/features/User/auth/data/models/signup_request_body.dart';
 import 'package:nile_brand/features/User/auth/data/repo/signup_repo.dart';
 import '../../../../../../core/networking/signup_features/signup_result.dart';
@@ -33,6 +33,12 @@ class SignUpCubit extends Cubit<SignUpState> {
     switch (response) {
       case Success<SignupResponse>():
         emit(SignUpState.signUpSuccess(response.data));
+
+        if (response.data.data!.sId != null) {
+          await BrandPrefs.setOwnerId(response.data.data!.sId);
+          
+          await BrandPrefs.setToken(response.data.token!);
+        }
         break;
       case Failure():
         emit(

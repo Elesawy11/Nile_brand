@@ -13,7 +13,7 @@ class GoogleSigninCubit extends Cubit<GoogleSigninState> {
     try {
       final response = await _firebaseAuthServices.signInWithGoogle();
       if (response != null) {
-        emit(GoogleSigninState.googleSuccess(user: response));
+        emit(GoogleSigninState.googleSuccess(user: response));  
       } else {
         emit(GoogleSigninState.googleError(error: "Google sign-in failed"));
       }

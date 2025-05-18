@@ -7,6 +7,7 @@ class AppTextFormField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
   final InputBorder? enabledBorder;
+  final TextInputType? keyboardType;
   final TextStyle? inputTextStyle;
   final TextStyle? hintStyle;
   final String hintText;
@@ -46,7 +47,7 @@ class AppTextFormField extends StatelessWidget {
     this.raduis,
     this.isLabled = true,
     this.cursorHeight,
-    this.floatingLabelBehavior,
+    this.floatingLabelBehavior, this.keyboardType,
   });
 
   @override
@@ -60,6 +61,7 @@ class AppTextFormField extends StatelessWidget {
       // focusNode: FocusNode().,
       
       maxLines: maxLines,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
         
         floatingLabelBehavior: FloatingLabelBehavior.always,

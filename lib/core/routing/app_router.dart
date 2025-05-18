@@ -1,12 +1,22 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nile_brand/core/networking/api_constants.dart';
+import 'package:nile_brand/core/networking/dio_factory.dart';
 import 'package:nile_brand/core/routing/routes.dart';
 import "package:nile_brand/core/routing/exports.dart";
 import 'package:nile_brand/core/utils/service_locator.dart';
+import 'package:nile_brand/features/Owner/create_brand/data/api/create_brand_api_services.dart';
+import 'package:nile_brand/features/Owner/my_brand/data/api/my_brand_services.dart';
+import 'package:nile_brand/features/Owner/my_brand/data/repo/update_brand_repo.dart';
+import 'package:nile_brand/features/User/chat/presentation/views/user_owner_chat.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
 
-
+import '../../features/Owner/create_brand/data/repo/new_brand_repo.dart';
+import '../../features/Owner/create_brand/presentation/manager/create_brand_cubit/create_brand_cubit.dart';
+import '../../features/Owner/my_brand/presentation/manager/update_brand/update_brand_cubit.dart';
+import '../../features/Owner/owner_helpers.dart';
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -21,8 +31,12 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.chatBotSplash2,
         builder: (context, state) => const ChatbotSplash2(),
-        
-        ),
+      ),
+
+      GoRoute(
+        path: Routes.chatOwnerAndUser,
+        builder: (context, state) => const UserOwnerChat(),
+      ),
       GoRoute(
         path: Routes.ptoductDetails,
         builder: (context, state) => const ProductDetailsView(),
@@ -48,6 +62,36 @@ abstract class AppRouter {
           child: const ForgotPasswordView(),
         ),
       ),
+      GoRoute(
+        name: 'updateBrand',
+        path: Routes.updateBrand,
+        builder: (context, state) => FutureBuilder<String?>(
+          future: BrandPrefs.getToken(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const Scaffold(
+                body: Center(child: CircularProgressIndicator()),
+              );
+            }
+
+            final dio = DioFactory.getDio()
+              ..options.headers = {
+                "Content-Type": "multipart/form-data",
+                "X-Requested-With": "XMLHttpRequest",
+                "accept": "*/*",
+                "Authorization": "Bearer ${snapshot.data}",
+              };
+
+            return BlocProvider(
+              create: (context) => UpdateBrandCubit(
+                UpdateBrandRepoImpl(BrandDetailsSource(dio)),
+              ),
+              child: const UpdateBrandBody(),
+            );
+          },
+        ),
+      ),
+
       GoRoute(
         path: Routes.resetPassword,
         builder: (context, state) => BlocProvider(
@@ -100,8 +144,33 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: Routes.createBrand,
-        builder: (context, state) => const CreateBrandView(),
+        builder: (context, state) => FutureBuilder<String?>(
+          future: BrandPrefs.getToken(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const Scaffold(
+                body: Center(child: CircularProgressIndicator()),
+              );
+            }
+
+            final dio = DioFactory.getDio()
+              ..options.headers = {
+                "Content-Type": "multipart/form-data",
+                "X-Requested-With": "XMLHttpRequest",
+                "accept": "*/*",
+                "Authorization": "Bearer ${snapshot.data}",
+              };
+
+            return BlocProvider(
+              create: (context) => CreateBrandCubit(
+                CreateBrandRepoImpl(BrandInfoSource(dio)),
+              ),
+              child: const CreateBrandView(),
+            );
+          },
+        ),
       ),
+
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) => CustomAppNavigationBar(
           navigationShell: navigationShell,
@@ -157,7 +226,7 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.wishList,
-                builder: (context, state) => const  WishListView(),
+                builder: (context, state) => const WishListView(),
               ),
             ],
           ),
@@ -193,7 +262,9 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.ownerHome,
-                builder: (context, state) => const OwnerHomeView(),
+                builder: (context, state) => OwnerHomeView(
+                  brandId: state.extra as String,
+                ),
               ),
             ],
           ),
@@ -233,7 +304,31 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.myBrand,
-                builder: (context, state) => const MyBrand(),
+                builder: (context, state) => FutureBuilder<String?>(
+                  future: BrandPrefs.getToken(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Scaffold(
+                        body: Center(child: CircularProgressIndicator()),
+                      );
+                    }
+
+                    final dio = DioFactory.getDio()
+                      ..options.headers = {
+                        "Content-Type": "multipart/form-data",
+                        "X-Requested-With": "XMLHttpRequest",
+                        "accept": "*/*",
+                        "Authorization": "Bearer ${snapshot.data}",
+                      };
+
+                    return BlocProvider(
+                      create: (context) => UpdateBrandCubit(
+                        UpdateBrandRepoImpl(BrandDetailsSource(dio)),
+                      ),
+                      child: MyBrand(),
+                    );
+                  },
+                ),
               ),
             ],
           ),
@@ -248,10 +343,7 @@ abstract class AppRouter {
         path: Routes.brandProfile,
         builder: (context, state) => const BrandProfileView(),
       ),
-      GoRoute(
-        path: Routes.updateBrand,
-        builder: (context, state) => const UpdateBrandView(),
-      ),
+
       GoRoute(
         path: Routes.createCuopon,
         builder: (context, state) => const CreateCuoponView(),

@@ -19,6 +19,7 @@ class Data {
   String? password;
   String? role;
   bool? active;
+  @JsonKey(name: "_id")
   String? sId;
   String? createdAt;
   String? updatedAt;

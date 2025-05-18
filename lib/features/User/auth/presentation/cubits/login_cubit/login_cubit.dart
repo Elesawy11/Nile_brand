@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nile_brand/features/User/auth/data/repo/login_repo.dart';
 import '../../../../../../core/networking/api_result.dart';
+import '../../../../../Owner/owner_helpers.dart';
 import '../../../data/models/login_request_body.dart';
 import '../../../data/models/login_response.dart';
 import 'login_state.dart';
@@ -27,6 +28,10 @@ class LoginCubit extends Cubit<LoginState> {
     switch (response) {
       case Success<LoginResponse>():
         emit(LoginState.loginSuccess(response.data));
+        
+        if (response.data.token != null) {
+          await BrandPrefs.setToken(response.data.token!);
+        }
         break;
       case Failure():
         emit(
