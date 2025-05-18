@@ -4,7 +4,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'get_category_products_state.dart';
+part of 'get_products_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,11 +14,11 @@ part of 'get_category_products_state.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$GetCategoryProductsState {
+mixin _$GetProductsState {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is GetCategoryProductsState);
+        (other.runtimeType == runtimeType && other is GetProductsState);
   }
 
   @override
@@ -26,19 +26,19 @@ mixin _$GetCategoryProductsState {
 
   @override
   String toString() {
-    return 'GetCategoryProductsState()';
+    return 'GetProductsState()';
   }
 }
 
 /// @nodoc
-class $GetCategoryProductsStateCopyWith<$Res> {
-  $GetCategoryProductsStateCopyWith(
-      GetCategoryProductsState _, $Res Function(GetCategoryProductsState) __);
+class $GetProductsStateCopyWith<$Res> {
+  $GetProductsStateCopyWith(
+      GetProductsState _, $Res Function(GetProductsState) __);
 }
 
 /// @nodoc
 
-class _Initial implements GetCategoryProductsState {
+class _Initial implements GetProductsState {
   const _Initial();
 
   @override
@@ -52,34 +52,14 @@ class _Initial implements GetCategoryProductsState {
 
   @override
   String toString() {
-    return 'GetCategoryProductsState.initial()';
+    return 'GetProductsState.initial()';
   }
 }
 
 /// @nodoc
 
-class GetProductsLoading implements GetCategoryProductsState {
-  const GetProductsLoading();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is GetProductsLoading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'GetCategoryProductsState.getProductsLoading()';
-  }
-}
-
-/// @nodoc
-
-class GetProductsSuccess implements GetCategoryProductsState {
-  const GetProductsSuccess({required final List<ProductModel> products})
+class GetProductSuccess implements GetProductsState {
+  const GetProductSuccess({required final List<ProductModel> products})
       : _products = products;
 
   final List<ProductModel> _products;
@@ -89,18 +69,18 @@ class GetProductsSuccess implements GetCategoryProductsState {
     return EqualUnmodifiableListView(_products);
   }
 
-  /// Create a copy of GetCategoryProductsState
+  /// Create a copy of GetProductsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $GetProductsSuccessCopyWith<GetProductsSuccess> get copyWith =>
-      _$GetProductsSuccessCopyWithImpl<GetProductsSuccess>(this, _$identity);
+  $GetProductSuccessCopyWith<GetProductSuccess> get copyWith =>
+      _$GetProductSuccessCopyWithImpl<GetProductSuccess>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is GetProductsSuccess &&
+            other is GetProductSuccess &&
             const DeepCollectionEquality().equals(other._products, _products));
   }
 
@@ -110,35 +90,35 @@ class GetProductsSuccess implements GetCategoryProductsState {
 
   @override
   String toString() {
-    return 'GetCategoryProductsState.getProductsSuccess(products: $products)';
+    return 'GetProductsState.getProductSuccess(products: $products)';
   }
 }
 
 /// @nodoc
-abstract mixin class $GetProductsSuccessCopyWith<$Res>
-    implements $GetCategoryProductsStateCopyWith<$Res> {
-  factory $GetProductsSuccessCopyWith(
-          GetProductsSuccess value, $Res Function(GetProductsSuccess) _then) =
-      _$GetProductsSuccessCopyWithImpl;
+abstract mixin class $GetProductSuccessCopyWith<$Res>
+    implements $GetProductsStateCopyWith<$Res> {
+  factory $GetProductSuccessCopyWith(
+          GetProductSuccess value, $Res Function(GetProductSuccess) _then) =
+      _$GetProductSuccessCopyWithImpl;
   @useResult
   $Res call({List<ProductModel> products});
 }
 
 /// @nodoc
-class _$GetProductsSuccessCopyWithImpl<$Res>
-    implements $GetProductsSuccessCopyWith<$Res> {
-  _$GetProductsSuccessCopyWithImpl(this._self, this._then);
+class _$GetProductSuccessCopyWithImpl<$Res>
+    implements $GetProductSuccessCopyWith<$Res> {
+  _$GetProductSuccessCopyWithImpl(this._self, this._then);
 
-  final GetProductsSuccess _self;
-  final $Res Function(GetProductsSuccess) _then;
+  final GetProductSuccess _self;
+  final $Res Function(GetProductSuccess) _then;
 
-  /// Create a copy of GetCategoryProductsState
+  /// Create a copy of GetProductsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
     Object? products = null,
   }) {
-    return _then(GetProductsSuccess(
+    return _then(GetProductSuccess(
       products: null == products
           ? _self._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -149,23 +129,43 @@ class _$GetProductsSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class GetProductsError implements GetCategoryProductsState {
-  const GetProductsError({required this.error});
+class GetProductLoading implements GetProductsState {
+  const GetProductLoading();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is GetProductLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'GetProductsState.getProductLoading()';
+  }
+}
+
+/// @nodoc
+
+class GetProductError implements GetProductsState {
+  const GetProductError({required this.error});
 
   final String error;
 
-  /// Create a copy of GetCategoryProductsState
+  /// Create a copy of GetProductsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $GetProductsErrorCopyWith<GetProductsError> get copyWith =>
-      _$GetProductsErrorCopyWithImpl<GetProductsError>(this, _$identity);
+  $GetProductErrorCopyWith<GetProductError> get copyWith =>
+      _$GetProductErrorCopyWithImpl<GetProductError>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is GetProductsError &&
+            other is GetProductError &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -174,35 +174,35 @@ class GetProductsError implements GetCategoryProductsState {
 
   @override
   String toString() {
-    return 'GetCategoryProductsState.getProductsError(error: $error)';
+    return 'GetProductsState.getProductError(error: $error)';
   }
 }
 
 /// @nodoc
-abstract mixin class $GetProductsErrorCopyWith<$Res>
-    implements $GetCategoryProductsStateCopyWith<$Res> {
-  factory $GetProductsErrorCopyWith(
-          GetProductsError value, $Res Function(GetProductsError) _then) =
-      _$GetProductsErrorCopyWithImpl;
+abstract mixin class $GetProductErrorCopyWith<$Res>
+    implements $GetProductsStateCopyWith<$Res> {
+  factory $GetProductErrorCopyWith(
+          GetProductError value, $Res Function(GetProductError) _then) =
+      _$GetProductErrorCopyWithImpl;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class _$GetProductsErrorCopyWithImpl<$Res>
-    implements $GetProductsErrorCopyWith<$Res> {
-  _$GetProductsErrorCopyWithImpl(this._self, this._then);
+class _$GetProductErrorCopyWithImpl<$Res>
+    implements $GetProductErrorCopyWith<$Res> {
+  _$GetProductErrorCopyWithImpl(this._self, this._then);
 
-  final GetProductsError _self;
-  final $Res Function(GetProductsError) _then;
+  final GetProductError _self;
+  final $Res Function(GetProductError) _then;
 
-  /// Create a copy of GetCategoryProductsState
+  /// Create a copy of GetProductsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
     Object? error = null,
   }) {
-    return _then(GetProductsError(
+    return _then(GetProductError(
       error: null == error
           ? _self.error
           : error // ignore: cast_nullable_to_non_nullable

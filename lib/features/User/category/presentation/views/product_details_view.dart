@@ -73,7 +73,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
             child: Padding(
               padding: EdgeInsets.only(right: 20.r),
               child: Image.asset(
-                Assets.arOprion,
+                Assets.imagesArOption,
                 height: 24.h,
                 width: 24.w,
               ),

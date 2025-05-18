@@ -28,7 +28,7 @@ class SignupForm extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 50.h,
+            // height: 50.h,
             child: AppTextFormField(
               labelText: 'Name',
               hintText: 'user_name',
@@ -40,9 +40,9 @@ class SignupForm extends StatelessWidget {
               controller: cubit.nameController,
             ),
           ),
-          30.vs,
+          22.vs,
           SizedBox(
-            height: 50.h,
+            // height: 50.h,
             child: AppTextFormField(
               labelText: 'E-mail',
               hintText: 'example@gmail.com',
@@ -54,14 +54,14 @@ class SignupForm extends StatelessWidget {
               controller: cubit.emailController,
             ),
           ),
-          30.vs,
+          22.vs,
           PasswordField(
             viewPass: viewPass,
             labelText: "Password",
             hintText: "password",
             controller: cubit.passwordController,
           ),
-          30.vs,
+          22.vs,
           PasswordField(
             viewPass: viewRestPass,
             labelText: 'Re-enter Password',

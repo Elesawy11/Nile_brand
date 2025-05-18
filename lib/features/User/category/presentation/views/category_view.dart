@@ -1,11 +1,18 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/category_details.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/custom_appbar.dart';
 import 'package:nile_brand/features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
 
+import '../../../../../core/routing/exports.dart';
+
 class CategoryView extends StatefulWidget {
-  const CategoryView({super.key});
+  const CategoryView({
+    super.key,
+  });
 
   @override
   State<CategoryView> createState() => _CategoryViewState();
@@ -14,10 +21,14 @@ class CategoryView extends StatefulWidget {
 class _CategoryViewState extends State<CategoryView>
     with SingleTickerProviderStateMixin {
   TabController? tabController;
+  final cubit = getIt.get<GetCategoryCubit>();
+
   @override
   void initState() {
     //TODO: need lenght of categories from api from object box
-    tabController = TabController(length: 6, vsync: this);
+    tabController =
+        TabController(length: cubit.categoryList.length + 1, vsync: this);
+    log('Category List Length: ==++++>>>>>${cubit.categoryList.length + 1}');
     super.initState();
   }
 
@@ -30,6 +41,7 @@ class _CategoryViewState extends State<CategoryView>
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<GetCategoryCubit>();
+  
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CustomeAppbar(tabController: tabController!),

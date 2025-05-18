@@ -57,17 +57,16 @@ class AppTextFormField extends StatelessWidget {
       onTapOutside: onTapOutside,
       onTap: onTap,
       controller: controller,
-      autofocus: true,
+      autofocus: false,
       // focusNode: FocusNode().,
-      
+
       maxLines: maxLines,
       keyboardType: keyboardType,
       decoration: InputDecoration(
-        
         floatingLabelBehavior: FloatingLabelBehavior.always,
         isDense: true,
         contentPadding: contentPadding ??
-            EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
+            EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
         focusedBorder: focusedBorder ??
             outLineBorder(
               color: Colors.black,
@@ -106,7 +105,7 @@ class AppTextFormField extends StatelessWidget {
             : null,
       ),
       obscureText: isObscureText ?? false,
-      
+
       style: Styles.font20W400.copyWith(
         color: ColorManager.subText,
       ),

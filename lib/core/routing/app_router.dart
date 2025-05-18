@@ -7,6 +7,7 @@ import 'package:nile_brand/core/networking/dio_factory.dart';
 import 'package:nile_brand/core/routing/routes.dart';
 import "package:nile_brand/core/routing/exports.dart";
 import 'package:nile_brand/core/utils/service_locator.dart';
+<<<<<<< HEAD
 import 'package:nile_brand/features/Owner/create_brand/data/api/create_brand_api_services.dart';
 import 'package:nile_brand/features/Owner/my_brand/data/api/my_brand_services.dart';
 import 'package:nile_brand/features/Owner/my_brand/data/repo/update_brand_repo.dart';
@@ -17,6 +18,13 @@ import '../../features/Owner/create_brand/data/repo/new_brand_repo.dart';
 import '../../features/Owner/create_brand/presentation/manager/create_brand_cubit/create_brand_cubit.dart';
 import '../../features/Owner/my_brand/presentation/manager/update_brand/update_brand_cubit.dart';
 import '../../features/Owner/owner_helpers.dart';
+=======
+import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_cubit.dart';
+import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
+import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_profile_cubit/get_my_profile_cubit.dart';
+import 'package:nile_brand/features/User/profile/presentation/cubits/update_password_cubit/update_password_cubit.dart';
+import 'package:nile_brand/features/User/profile/presentation/views/edit_password.dart';
+>>>>>>> 385f745cea92f02bf1c315857a1735a757b3f468
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -32,11 +40,14 @@ abstract class AppRouter {
         path: Routes.chatBotSplash2,
         builder: (context, state) => const ChatbotSplash2(),
       ),
+<<<<<<< HEAD
 
       GoRoute(
         path: Routes.chatOwnerAndUser,
         builder: (context, state) => const UserOwnerChat(),
       ),
+=======
+>>>>>>> 385f745cea92f02bf1c315857a1735a757b3f468
       GoRoute(
         path: Routes.ptoductDetails,
         builder: (context, state) => const ProductDetailsView(),
@@ -107,8 +118,20 @@ abstract class AppRouter {
         ),
       ),
       GoRoute(
-        path: Routes.editProfile,
-        builder: (context, state) => const EditProfile(),
+          path: Routes.editProfile,
+          builder: (context, state) {
+            final args = state.extra as Map<String, dynamic>;
+            return EditProfile(
+              name: args['name']!,
+              imageUrl: args['imageUrl']!,
+            );
+          }),
+      GoRoute(
+        path: Routes.editPassword,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt.get<UpdatePasswordCubit>(),
+          child: const EditPassword(),
+        ),
       ),
       GoRoute(
         path: Routes.editPaymentMethods,
@@ -184,9 +207,17 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.home,
-                builder: (context, state) => BlocProvider(
-                  create: (context) =>
-                      getIt.get<GetCategoryCubit>()..emitGetCategories(),
+                builder: (context, state) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) =>
+                          getIt.get<GetProductsCubit>()..getProducts(),
+                    ),
+                    BlocProvider(
+                      create: (context) =>
+                          getIt.get<GetCategoryCubit>()..emitGetCategories(),
+                    ),
+                  ],
                   child: const HomeView(),
                 ),
               ),
@@ -202,14 +233,14 @@ abstract class AppRouter {
                       create: (context) => getIt.get<GetCategoryCubit>(),
                     ),
                     BlocProvider(
-                      create: (context) => getIt.get<GetSubCategorysCubit>(),
+                      create: (context) =>
+                          getIt.get<GetSubCategorysCubit>()..getSubCategories(),
                     ),
                     BlocProvider(
-                      create: (context) =>
-                          getIt.get<GetCategoryProductsCubit>(),
+                      create: (context) => getIt.get<GetProductsCubit>(),
                     ),
                   ],
-                  child: const CategoryView(),
+                  child: CategoryView(),
                 ),
               ),
             ],
@@ -242,7 +273,11 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.profile,
-                builder: (context, state) => const ProfileView(),
+                builder: (context, state) => BlocProvider(
+                  create: (context) =>
+                      getIt.get<GetMyProfileCubit>()..getMyProfile(),
+                  child: const ProfileView(),
+                ),
               ),
             ],
           ),

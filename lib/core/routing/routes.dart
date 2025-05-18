@@ -12,6 +12,7 @@ abstract class Routes {
   static const String myCart = '/myCart';
   static const String profile = '/profile';
   static const String editProfile = '/editProfile';
+  static const String editPassword = '/editPassword';
   static const String editPaymentMethods = '/paymentMethods';
   static const String addFeedback = '/addFeedback';
   static const String chatbot = '/chatbot';

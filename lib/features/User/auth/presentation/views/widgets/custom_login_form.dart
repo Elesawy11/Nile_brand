@@ -22,7 +22,7 @@ class CustomLoginForm extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 50.h,
+            // height: 50.h,
             child: AppTextFormField(
               controller: cubit.emailController,
               labelText: 'E-mail',

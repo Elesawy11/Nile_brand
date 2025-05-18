@@ -7,13 +7,14 @@ part 'sub_category_source.g.dart';
 abstract class SubCategorySource {
   factory SubCategorySource(Dio dio) = _SubCategorySource;
 
-  @GET('${ApiConstants.categories}/{id}/subcategories')
-  Future<dynamic> getSubCategories(
-    @Path('id') String id,
-  );
+  @GET(ApiConstants.subcategories)
 
-  @GET('${ApiConstants.categories}/{id}')
-  Future<dynamic> getCategoryProducts(
-    @Path('id') String id,
-  );
+  Future<dynamic> getSubCategories({
+    @Query('limit') int limit = 50000,
+  });
+
+  @GET(ApiConstants.products)
+  Future<dynamic> getProducts({
+    @Query('limit') int limit = 50000,
+  });
 }

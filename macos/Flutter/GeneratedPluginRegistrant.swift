@@ -12,6 +12,10 @@ import firebase_messaging
 import google_sign_in_ios
 import path_provider_foundation
 import shared_preferences_foundation
+<<<<<<< HEAD
+=======
+import sqflite_darwin
+>>>>>>> 385f745cea92f02bf1c315857a1735a757b3f468
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   FileSelectorPlugin.register(with: registry.registrar(forPlugin: "FileSelectorPlugin"))
@@ -21,4 +25,8 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   FLTGoogleSignInPlugin.register(with: registry.registrar(forPlugin: "FLTGoogleSignInPlugin"))
   PathProviderPlugin.register(with: registry.registrar(forPlugin: "PathProviderPlugin"))
   SharedPreferencesPlugin.register(with: registry.registrar(forPlugin: "SharedPreferencesPlugin"))
+<<<<<<< HEAD
+=======
+  SqflitePlugin.register(with: registry.registrar(forPlugin: "SqflitePlugin"))
+>>>>>>> 385f745cea92f02bf1c315857a1735a757b3f468
 }
