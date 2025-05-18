@@ -8,7 +8,7 @@ import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/core/widgets/app_text_button.dart';
 import 'package:nile_brand/core/widgets/app_text_form_field.dart';
-import 'package:nile_brand/features/User/profile/presentation/widgets/profile_image.dart';
+import 'package:nile_brand/features/User/profile/presentation/views/widgets/profile_image.dart';
 
 class FeedbackView extends StatelessWidget {
   const FeedbackView({super.key});

@@ -11,6 +11,7 @@ class ApiConstants {
   static const String subcategories = 'subcategories';
   static const String products = 'products';
   static const String myProfile = 'users/me';
+  static const String updatePassword = 'users/changeMyPassword';
 }
 
 class ApiErrors {

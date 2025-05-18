@@ -28,6 +28,7 @@ import '../../features/User/category/data/api/sub_category_source.dart';
 import '../../features/User/category/data/repo/sub_category_repo_impl.dart';
 import '../../features/User/category/presentation/cubits/get_sub_categories_cubit/get_sub_categorys_cubit.dart';
 import '../../features/User/home/data/repo/category_repo_impl.dart';
+import '../../features/User/profile/presentation/cubits/update_password_cubit/update_password_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -59,8 +60,7 @@ Future<void> serviceLocator() async {
   // category Features
   HomeRemoteDataSource categorySource = HomeRemoteDataSource(dio);
   getIt.registerLazySingleton(() => CategoryRepoImpl(categorySource));
-  getIt.registerFactory(
-      () => GetCategoryCubit(getIt.get<CategoryRepoImpl>()));
+  getIt.registerFactory(() => GetCategoryCubit(getIt.get<CategoryRepoImpl>()));
   // sub category Features
   getIt.registerLazySingleton(() => SubCategorySource(dio));
   getIt.registerLazySingleton(() => SubCategoryRepoImpl(getIt.get()));
@@ -73,6 +73,9 @@ Future<void> serviceLocator() async {
   getIt.registerLazySingleton(() => MyProfileApiSource(dio));
   getIt.registerLazySingleton(() => MyProfileRepoImpl(getIt.get()));
   getIt.registerFactory(() => GetMyProfileCubit(getIt.get()));
+  // update password Features
+  getIt.registerFactory(
+      () => UpdatePasswordCubit(getIt.get<MyProfileRepoImpl>()));
   // Chatbot Features
   getIt.registerLazySingleton(() => ChatbotScrollCubit());
 }

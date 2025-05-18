@@ -88,6 +88,8 @@ class Assets {
 
   static const String imagesHomeIcon = "assets/images/homeIcon.png";
 
+  static const String imagesLock = "assets/images/lock.png";
+
   static const String imagesLogOutIcon = "assets/images/log_out_icon.png";
 
   static const String imagesLogo = "assets/images/logo.png";

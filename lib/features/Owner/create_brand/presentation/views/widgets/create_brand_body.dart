@@ -8,7 +8,7 @@ import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../../core/widgets/app_text_button.dart';
 import '../../../../../../core/widgets/app_text_form_field.dart';
-import '../../../../../User/profile/presentation/widgets/profile_image.dart';
+import '../../../../../User/profile/presentation/views/widgets/profile_image.dart';
 
 class CreateBrandBody extends StatelessWidget {
   const CreateBrandBody({

@@ -99,7 +99,7 @@ class _LoginViewState extends State<LoginView> {
         ),
       ),
     );
-  }
+  } 
 
   void validateThenDoLogin(BuildContext context) {
     if (context.read<LoginCubit>().formKey.currentState!.validate()) {

@@ -9,10 +9,10 @@ import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_profile_cubit/get_my_profile_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/widgets/infotile.dart';
-import 'package:nile_brand/features/User/profile/presentation/widgets/profile_image.dart';
+import 'package:nile_brand/features/User/profile/presentation/views/widgets/profile_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'cubits/get_my_profile_cubit/get_my_profile_state.dart';
+import '../cubits/get_my_profile_cubit/get_my_profile_state.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -51,6 +51,7 @@ class ProfileView extends StatelessWidget {
                   return Column(
                     children: [
                       ProfileImage(
+                        isAddImage: false,
                         imageUrl: image,
                         backgroundImage: state is GetMyProfileSuccess
                             ? NetworkImage(state.myProfile.userImage!)
@@ -60,27 +61,30 @@ class ProfileView extends StatelessWidget {
                         userName,
                         style: Styles.font20W600,
                       ),
+                      Padding(
+                        padding: 15.allEdgeInsets,
+                        child: const Divider(
+                          endIndent: 2,
+                          thickness: 1,
+                        ),
+                      ),
+                      InfoTile(
+                          leadingIcon: Assets.imagesProfileIcon,
+                          title: "Edit Profile",
+                          ontap: () {
+                            context.push(Routes.editProfile, extra: {
+                              "name": userName,
+                              "imageUrl": image,
+                            });
+                          },
+                          trailling: Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            size: 17.spMax,
+                          )),
                     ],
                   );
                 },
               ),
-              Padding(
-                padding: 15.allEdgeInsets,
-                child: const Divider(
-                  endIndent: 2,
-                  thickness: 1,
-                ),
-              ),
-              InfoTile(
-                  leadingIcon: Assets.imagesProfileIcon,
-                  title: "Edit Profile",
-                  ontap: () {
-                    context.push(Routes.editProfile);
-                  },
-                  trailling: Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 17.spMax,
-                  )),
               20.vs,
               InfoTile(
                   leadingIcon: Assets.imagesPaymentMethods,

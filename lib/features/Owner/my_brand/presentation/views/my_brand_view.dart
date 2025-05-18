@@ -3,7 +3,7 @@ import 'package:nile_brand/core/utils/assets.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
-import 'package:nile_brand/features/User/profile/presentation/widgets/profile_image.dart';
+import 'package:nile_brand/features/User/profile/presentation/views/widgets/profile_image.dart';
 import 'widgets/my_brand_view_features_widget.dart';
 
 class MyBrand extends StatelessWidget {
