@@ -13,11 +13,12 @@ class CustomTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<GetCategoryCubit>();
+    final categoryCubit = context.read<GetCategoryCubit>();
     final subCategoryCubit = context.read<GetSubCategorysCubit>();
     final productCubit = context.read<GetProductsCubit>();
     List<String> categoryList = ['All'];
-    categoryList.addAll(cubit.categoryList.map((e) => e.name ?? ''));
+    categoryList.addAll(categoryCubit.categoryList.map((e) => e.name ?? ''));
+    // log('my category list ===>>>> ${cubit.categoryList[0].name}');
     return TabBar(
       isScrollable: true,
       controller: tabController,
@@ -29,10 +30,10 @@ class CustomTabBar extends StatelessWidget {
           productCubit.getAllProducts();
         } else {
           subCategoryCubit.getCategorySubCategories(
-            id: cubit.categoryList[value - 1].id!,
+            id: categoryCubit.categoryList[value - 1].id!,
           );
           productCubit.getCategoryProducts(
-              id: cubit.categoryList[value - 1].id!);
+              id: categoryCubit.categoryList[value - 1].id!);
         }
       },
       dividerHeight: 0,

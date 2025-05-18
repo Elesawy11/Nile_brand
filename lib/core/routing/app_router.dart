@@ -6,6 +6,7 @@ import "package:nile_brand/core/routing/exports.dart";
 import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_cubit.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
+import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedback_cubit/add_feedback_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_profile_cubit/get_my_profile_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/update_password_cubit/update_password_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/views/edit_password.dart';
@@ -85,7 +86,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: Routes.addFeedback,
-        builder: (context, state) => const FeedbackView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt.get<AddFeedbackCubit>(),
+          child: const FeedbackView(),
+        ),
       ),
       GoRoute(
         path: Routes.chatbot,

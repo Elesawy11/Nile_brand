@@ -15,6 +15,7 @@ import 'package:nile_brand/features/User/home/presentation/cubits/get_category_c
 import 'package:nile_brand/features/User/chatbot/presentation/cubits/cubit/chatbot_scroll_cubit.dart';
 import 'package:nile_brand/features/User/profile/data/api/my_profile_api_source.dart';
 import 'package:nile_brand/features/User/profile/data/repo_impl/my_profile_repo_impl.dart';
+import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedback_cubit/add_feedback_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_profile_cubit/get_my_profile_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/User/auth/data/repo/forgot_pass_repo.dart';
@@ -60,7 +61,7 @@ Future<void> serviceLocator() async {
   // category Features
   HomeRemoteDataSource categorySource = HomeRemoteDataSource(dio);
   getIt.registerLazySingleton(() => CategoryRepoImpl(categorySource));
-  getIt.registerFactory(() => GetCategoryCubit(getIt.get<CategoryRepoImpl>()));
+  getIt.registerLazySingleton(() => GetCategoryCubit(getIt.get<CategoryRepoImpl>()));
   // sub category Features
   getIt.registerLazySingleton(() => SubCategorySource(dio));
   getIt.registerLazySingleton(() => SubCategoryRepoImpl(getIt.get()));
@@ -72,10 +73,13 @@ Future<void> serviceLocator() async {
   // myProfile Features
   getIt.registerLazySingleton(() => MyProfileApiSource(dio));
   getIt.registerLazySingleton(() => MyProfileRepoImpl(getIt.get()));
-  getIt.registerFactory(() => GetMyProfileCubit(getIt.get()));
+  getIt.registerLazySingleton(() => GetMyProfileCubit(getIt.get()));
   // update password Features
   getIt.registerFactory(
       () => UpdatePasswordCubit(getIt.get<MyProfileRepoImpl>()));
+
+  // add feedback features
+  getIt.registerFactory(() => AddFeedbackCubit(getIt.get()));
   // Chatbot Features
   getIt.registerLazySingleton(() => ChatbotScrollCubit());
 }

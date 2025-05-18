@@ -96,7 +96,7 @@ class Assets {
 
   static const String imagesMessageIcon = "assets/images/message_icon.png";
 
-  static const String imagesNoImage = "assets/images/no_image.jpg";
+  static const String imagesNoImage = "assets/images/no_image.png";
 
   static const String imagesNotFoundImage = "assets/images/not_found_image.jpg";
 

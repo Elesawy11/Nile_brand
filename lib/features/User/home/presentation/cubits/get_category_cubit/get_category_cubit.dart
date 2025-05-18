@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
+import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/features/User/home/domain/repo/home_repo.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../../core/networking/api_result.dart';
 import '../../../data/models/category_model.dart';
 import 'get_category_state.dart';
@@ -37,6 +41,8 @@ class GetCategoryCubit extends Cubit<GetCategoryState> {
 
         categoryList.addAll(list);
         emit(GetCategoryState.categorySuccess(categories: categoryList));
+        getIt.get<SharedPreferences>().setInt('category', categoryList.length);
+        log('my category leght from cubit${categoryList.length}');
         break;
       case Failure():
         if (isLoadMore) {
