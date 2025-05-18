@@ -9,15 +9,15 @@ part of 'api_service.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
 class _ApiService implements ApiService {
-<<<<<<< HEAD
+
   _ApiService(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
   }) {
-=======
+
   _ApiService(this._dio, {this.baseUrl, this.errorLogger}) {
->>>>>>> 385f745cea92f02bf1c315857a1735a757b3f468
+
     baseUrl ??= 'https://nile-brands-backend.up.railway.app/api/v1/';
   }
 
@@ -271,4 +271,5 @@ class _ApiService implements ApiService {
 
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
+}
 }

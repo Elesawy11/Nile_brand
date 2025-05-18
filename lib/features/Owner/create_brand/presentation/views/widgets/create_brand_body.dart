@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
-<<<<<<< HEAD
+
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/core/widgets/app_text_button.dart';
 import 'package:nile_brand/core/widgets/app_text_form_field.dart';
@@ -12,7 +12,7 @@ import 'package:nile_brand/features/Owner/create_brand/presentation/manager/crea
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/assets.dart';
 import 'package:nile_brand/features/Owner/create_brand/presentation/views/widgets/dialogs.dart';
-=======
+
 import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/utils/assets.dart';
 import '../../../../../../core/utils/color_manager.dart';
@@ -20,7 +20,7 @@ import '../../../../../../core/utils/styles.dart';
 import '../../../../../../core/widgets/app_text_button.dart';
 import '../../../../../../core/widgets/app_text_form_field.dart';
 import '../../../../../User/profile/presentation/views/widgets/profile_image.dart';
->>>>>>> 385f745cea92f02bf1c315857a1735a757b3f468
+
 
 
 class CreateBrandBody extends StatefulWidget {
