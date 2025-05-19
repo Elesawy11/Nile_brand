@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nile_brand/core/routing/app_router.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
@@ -9,6 +11,7 @@ import 'package:nile_brand/features/User/auth/presentation/views/widgets/divider
 import 'package:nile_brand/features/User/auth/presentation/views/widgets/google_signin_widget.dart';
 import 'package:nile_brand/features/User/auth/presentation/views/widgets/signup_form.dart';
 
+import '../../../../../core/routing/routes.dart';
 import '../cubits/signup_cubit/sign_up_cubit.dart';
 import 'widgets/signup_bloc_listener.dart';
 
@@ -53,7 +56,13 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                       width: 300.w,
                       child: AppTextButton(
                         text: 'Sign Up',
-                        onPressed: () => validateThenDoSignup(context),
+                        onPressed: () {
+                          validateThenDoSignup(context);
+                          // if (context.read<SignUpCubit>().ruleController.text ==
+                          //     "Owner") {
+                          //   context.pushReplacement(Routes.createBrand);
+                          // }
+                        },
                         backgroundColor: ColorManager.mainColor,
                       ),
                     ),

@@ -7,9 +7,9 @@ class CreateBrandView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 22.w),
           child: const CreateBrandBody(),
         ),

@@ -4,6 +4,9 @@ import '../../core/utils/navigation_bar_item_image_model.dart';
 class OwnerConstants {
   OwnerConstants._();
 
+
+  
+
   static List<NavigationBarItemsImagesModel> userNavigationBarItemsImagesList =
       [
     NavigationBarItemsImagesModel(

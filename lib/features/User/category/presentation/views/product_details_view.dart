@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:go_router/go_router.dart';
+// import 'package:nile_brand/core/routing/routes.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
@@ -8,6 +10,7 @@ import 'package:nile_brand/features/User/category/presentation/views/widgets/det
 import 'package:nile_brand/features/User/category/presentation/views/widgets/product_colors.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/product_images.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/reviews_info.dart';
+import 'package:nile_brand/features/User/chat/presentation/views/user_owner_chat.dart';
 // import 'package:readmore/readmore.dart';
 
 import '../../../../../core/utils/assets.dart';
@@ -25,7 +28,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
   ValueNotifier<int> selectedSize = ValueNotifier(0);
   late TabController _tabController;
 
-  List<Widget> productInfo = [DescreptionInfo(),ReviewsInfo()];
+  List<Widget> productInfo = [DescreptionInfo(), ReviewsInfo()];
 
   @override
   void initState() {
@@ -46,6 +49,18 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      // floatingActionButtonLocation: FloatingActionButtonLocation.,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserOwnerChat(),));
+        },
+        child: Image.asset(
+          Assets.imagesChatWithOwnerIcon,
+          width: 32.w,
+          height: 32.h,
+        ),
+      ),
       appBar: AppBar(
         title: Text(
           "Details",

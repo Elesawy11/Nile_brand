@@ -16,6 +16,9 @@ class NotificationAndSearchWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         InkWell(
+          onTap: (){
+            
+          },
           child: Image.asset(
             Assets.imagesMessageIcon,
             width: 23.w,

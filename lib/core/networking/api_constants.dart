@@ -8,11 +8,17 @@ class ApiConstants {
   static const String verifyCode = 'auth/verifyCode';
   static const String resetPassword = 'auth/resetPassword';
   static const String categories = 'categories';
+ static const String brands = "brands";
+
   static const String subcategories = 'subcategories';
   static const String products = 'products';
   static const String myProfile = 'users/me';
   static const String updatePassword = 'users/changeMyPassword';
+
   static const String feedback = 'feedback';
+
+
+
 }
 
 class ApiErrors {

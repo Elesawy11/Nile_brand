@@ -54,6 +54,8 @@ class Assets {
 
   static const String imagesCategoryIcon = "assets/images/categoryIcon.png";
 
+  static const String imagesChatWithOwnerIcon = "assets/images/chat_with_owner_icon.png";
+
   static const String imagesChatboot = "assets/images/chatboot.png";
 
   static const String imagesChatbootImage = "assets/images/chatbootImage.png";
@@ -97,6 +99,8 @@ class Assets {
   static const String imagesMessageIcon = "assets/images/message_icon.png";
 
   static const String imagesNoImage = "assets/images/no_image.png";
+
+  static const String imagesNoProductsCreated = "assets/images/no_products_created.png";
 
   static const String imagesNotFoundImage = "assets/images/not_found_image.jpg";
 

@@ -15,7 +15,7 @@ class CuoponView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
+      child: Scaffold(  
         appBar: AppBar(
           title: Text(
                   'Manage Coupons',
@@ -72,17 +72,13 @@ class CuoponView extends StatelessWidget {
                       child: ListView.builder(
                         itemCount: 10,
                         shrinkWrap: true,
-                        // physics: const NeverScrollableScrollPhysics(),
+
                         itemBuilder: (context, index) =>
                             const CuoponItemWidget(),
                       ),
                     )
                   ]
-                  // List.generate(
-                  //   6,
-                  //   (index) => const CuoponItemWidget(),
-                  // ),
-                  // CuoponItemWidget()
+
                   ),
             ],
           ),
