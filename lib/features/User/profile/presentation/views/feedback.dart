@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/utils/assets.dart';
@@ -8,6 +11,8 @@ import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/core/widgets/app_text_button.dart';
 import 'package:nile_brand/core/widgets/app_text_form_field.dart';
+import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedback_cubit/add_feedback_cubit.dart';
+import 'package:nile_brand/features/User/profile/presentation/views/widgets/feedback_bloc_listener.dart';
 import 'package:nile_brand/features/User/profile/presentation/views/widgets/profile_image.dart';
 
 class FeedbackView extends StatelessWidget {
@@ -15,6 +20,7 @@ class FeedbackView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<AddFeedbackCubit>();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -29,11 +35,6 @@ class FeedbackView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const ProfileImage(imageUrl: Assets.imagesProfileImage),
-              Text(
-                "User Name",
-                style: Styles.font20W600,
-              ),
               20.vs,
               Text(
                 "We’re Listening!",
@@ -53,7 +54,10 @@ class FeedbackView extends StatelessWidget {
                 alignment: Alignment.center,
                 filledIcon: Icons.star,
                 emptyIcon: Icons.star_border,
-                onRatingChanged: (value) => debugPrint('$value'),
+                onRatingChanged: (value) {
+                  log(value.toString());
+                  cubit.reatingController?.text = value.toString();
+                },
                 initialRating: 0,
                 maxRating: 5,
               ),
@@ -61,11 +65,17 @@ class FeedbackView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(10.h),
                 child: AppTextFormField(
+                  controller: cubit.commentController,
                   isLabled: true,
                   backgroundColor: const Color(0xffD9D9D9),
                   maxLines: 7,
                   hintText: "Tell Us How We Can Enhance Your Experience?",
-                  validator: (p0) {},
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
                 ),
               ),
               10.vs,
@@ -76,10 +86,13 @@ class FeedbackView extends StatelessWidget {
                   backgroundColor: ColorManager.mainColor,
                   textColor: Colors.white,
                   onPressed: () {
-                    context.pop();
+                    cubit.addFeedback();
+                    // log(int.parse(cubit.reatingController.text.substring(0,1))
+                    //     .toString());
                   },
                 ),
-              )
+              ),
+              FeedbackBlocListener(),
             ],
           ),
         ),

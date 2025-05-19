@@ -83,6 +83,44 @@ class _MyProfileApiSource implements MyProfileApiSource {
           _dio.options.baseUrl,
           baseUrl,
         )));
+<<<<<<< HEAD
+=======
+    final _result = await _dio.fetch(_options);
+    final _value = _result.data;
+    return _value;
+  }
+
+  @override
+  Future<dynamic> addFeedback(
+    String token,
+    String comment,
+    int rating,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = {
+      'comment': comment,
+      'rating': rating,
+    };
+    final _options = _setStreamType<dynamic>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'feedback',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+>>>>>>> a54eeb5921c3ae71190a3b691bcc863236fc435c
     final _result = await _dio.fetch(_options);
     final _value = _result.data;
     return _value;

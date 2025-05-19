@@ -8,11 +8,14 @@ import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_profile_cubit/get_my_profile_cubit.dart';
+
 import 'package:nile_brand/features/User/profile/presentation/views/widgets/infoTile.dart';
+
 import 'package:nile_brand/features/User/profile/presentation/views/widgets/profile_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../cubits/get_my_profile_cubit/get_my_profile_state.dart';
+import 'widgets/infoTile.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});

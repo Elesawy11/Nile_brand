@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:nile_brand/features/Owner/owner_helpers.dart';
 
 import 'package:nile_brand/core/utils/service_locator.dart';
@@ -40,7 +41,7 @@ class SignUpCubit extends Cubit<SignUpState> {
 
         if (response.data.data!.sId != null) {
           await BrandPrefs.setOwnerId(response.data.data!.sId);
-          
+
           await BrandPrefs.setToken(response.data.token!);
         }
 

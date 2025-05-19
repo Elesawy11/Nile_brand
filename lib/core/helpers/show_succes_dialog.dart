@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 void showSuccessDialog(BuildContext context,
-    {void Function()? onPressed, required String message}) {
+    {void Function()? onPressed, required String message,required String title}) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: const Text('Signup Successful'),
+        title:  Text(title),
         content: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[

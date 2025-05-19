@@ -35,7 +35,7 @@ class UpdatePassBlocListener extends StatelessWidget {
             break;
           case UpdatePasswordSuccess():
             context.pop();
-            showSuccessDialog(message: 'update successfully!', context,
+            showSuccessDialog(title: 'Update Successful',message: 'update successfully!', context,
                 onPressed: () {
               context.go(Routes.editProfile);
             });

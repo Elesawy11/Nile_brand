@@ -75,7 +75,7 @@ Widget build(BuildContext context) {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                  Assets.noProductsForBrand,
+                                  Assets.imagesNoProductsCreated,
                                   height: 220.h,
                                   width: 220.w,
                                 ),

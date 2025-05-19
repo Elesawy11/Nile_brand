@@ -21,6 +21,7 @@ import '../../features/Owner/owner_helpers.dart';
 
 import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_cubit.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
+import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedback_cubit/add_feedback_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_profile_cubit/get_my_profile_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/update_password_cubit/update_password_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/views/edit_password.dart';
@@ -40,11 +41,20 @@ abstract class AppRouter {
         path: Routes.chatBotSplash2,
         builder: (context, state) => const ChatbotSplash2(),
       ),
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a54eeb5921c3ae71190a3b691bcc863236fc435c
       GoRoute(
         path: Routes.chatOwnerAndUser,
         builder: (context, state) => const UserOwnerChat(),
       ),
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a54eeb5921c3ae71190a3b691bcc863236fc435c
       GoRoute(
         path: Routes.ptoductDetails,
         builder: (context, state) => const ProductDetailsView(),
@@ -136,7 +146,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: Routes.addFeedback,
-        builder: (context, state) => const FeedbackView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt.get<AddFeedbackCubit>(),
+          child: const FeedbackView(),
+        ),
       ),
       GoRoute(
         path: Routes.chatbot,

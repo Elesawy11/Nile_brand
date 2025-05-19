@@ -34,6 +34,7 @@ class LoginBlocListener extends StatelessWidget {
           case LoginSuccess():
             context.pop();
             showSuccessDialog(
+              title: 'Login Successful',
                 message: 'Congratulations, you have logged in successfully!',
                 context, onPressed: () {
               context.go(Routes.home);

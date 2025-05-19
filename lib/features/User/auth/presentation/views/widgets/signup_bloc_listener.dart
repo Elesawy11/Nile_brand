@@ -34,6 +34,7 @@ class SignupBlocListener extends StatelessWidget {
           case SignUpSuccess():
             context.pop();
             showSuccessDialog(
+              title: 'Sign Up Successful',
                 message: 'Congratulations, you have signed up successfully!',
                 context, onPressed: () {
               // context.go(Routes.login);

@@ -21,4 +21,11 @@ abstract class MyProfileApiSource {
     @Field("password") String password,
     @Field("confirmPassword") String confirmPassword,
   );
+
+  @POST(ApiConstants.feedback)
+  Future<dynamic> addFeedback(
+    @Header("Authorization") String token,
+    @Field("comment") String comment,
+    @Field("rating") int rating,
+  );
 }

@@ -57,7 +57,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserOwnerChat(),));
         },
         child: Image.asset(
-          Assets.chatWithOwner,
+          Assets.imagesChatWithOwnerIcon,
           width: 32.w,
           height: 32.h,
         ),

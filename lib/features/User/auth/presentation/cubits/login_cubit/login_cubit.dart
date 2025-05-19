@@ -44,6 +44,8 @@ class LoginCubit extends Cubit<LoginState> {
         log(getIt.get<SharedPreferences>().getString('token') ??
             'the token is null');
 
+
+
         break;
       case Failure():
         emit(
