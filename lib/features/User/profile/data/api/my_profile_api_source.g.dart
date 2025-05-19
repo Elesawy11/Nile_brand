@@ -83,8 +83,6 @@ class _MyProfileApiSource implements MyProfileApiSource {
           _dio.options.baseUrl,
           baseUrl,
         )));
-<<<<<<< HEAD
-=======
     final _result = await _dio.fetch(_options);
     final _value = _result.data;
     return _value;
@@ -120,7 +118,6 @@ class _MyProfileApiSource implements MyProfileApiSource {
           _dio.options.baseUrl,
           baseUrl,
         )));
->>>>>>> a54eeb5921c3ae71190a3b691bcc863236fc435c
     final _result = await _dio.fetch(_options);
     final _value = _result.data;
     return _value;
