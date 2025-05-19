@@ -15,14 +15,12 @@ import 'features/Owner/owner_helpers.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
-<<<<<<< HEAD
+
   await Hive.initFlutter();
   await BrandPrefs.init();
   Hive.registerAdapter(BrandDataAdapter());
   Hive.registerAdapter(CreateCuoponSuccessAdapter());
-=======
-  
->>>>>>> 385f745cea92f02bf1c315857a1735a757b3f468
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

@@ -112,16 +112,14 @@ class Assets {
 
   static const String imagesMessageIcon = "assets/images/message_icon.png";
 
-<<<<<<< HEAD
-  static const String imagesNotificationIcon =
-      "assets/images/notification_icon.png";
-=======
+
+
   static const String imagesNoImage = "assets/images/no_image.jpg";
 
   static const String imagesNotFoundImage = "assets/images/not_found_image.jpg";
 
   static const String imagesNotificationIcon = "assets/images/notification_icon.png";
->>>>>>> 385f745cea92f02bf1c315857a1735a757b3f468
+
 
   static const String imagesNotificationInfo =
       "assets/images/notification_info.png";
@@ -194,12 +192,9 @@ class Assets {
   static const String svgImagesSendIcon = "assets/svgImages/sendIcon.svg";
 
   static const String svgImagesVolumeIcon = "assets/svgImages/volumeIcon.svg";
-<<<<<<< HEAD
+
 
   static const String arOprion = "assets/images/ar_option.png";
-=======
-}
->>>>>>> 385f745cea92f02bf1c315857a1735a757b3f468
 
   static const String chatWithOwner = "assets/images/chat_with_owner_icon.png";
 

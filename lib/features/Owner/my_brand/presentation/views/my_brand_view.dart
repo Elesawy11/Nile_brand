@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
-<<<<<<< HEAD
 import 'package:nile_brand/features/Owner/create_brand/data/models/create_brand_response_body.dart';
 import 'package:nile_brand/features/Owner/my_brand/presentation/views/widgets/my_brand_view_features_widget.dart';
 import 'package:nile_brand/features/Owner/owner_helpers.dart';
 
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/styles.dart';
-=======
+
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/features/User/profile/presentation/views/widgets/profile_image.dart';
 import 'widgets/my_brand_view_features_widget.dart';
->>>>>>> 385f745cea92f02bf1c315857a1735a757b3f468
+
 
 class MyBrand extends StatelessWidget {
   const MyBrand({super.key});

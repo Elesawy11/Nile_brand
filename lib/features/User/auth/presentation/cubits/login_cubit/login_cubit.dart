@@ -31,12 +31,12 @@ class LoginCubit extends Cubit<LoginState> {
     switch (response) {
       case Success<LoginResponse>():
         emit(LoginState.loginSuccess(response.data));
-<<<<<<< HEAD
+
         
         if (response.data.token != null) {
           await BrandPrefs.setToken(response.data.token!);
         }
-=======
+
         getIt
             .get<SharedPreferences>()
             .setString('token', response.data.token ?? '');
@@ -44,7 +44,6 @@ class LoginCubit extends Cubit<LoginState> {
         log(getIt.get<SharedPreferences>().getString('token') ??
             'the token is null');
 
->>>>>>> 385f745cea92f02bf1c315857a1735a757b3f468
         break;
       case Failure():
         emit(

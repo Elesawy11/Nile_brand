@@ -9,15 +9,11 @@ part of 'sub_category_source.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
 class _SubCategorySource implements SubCategorySource {
-<<<<<<< HEAD
   _SubCategorySource(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
   }) {
-=======
-  _SubCategorySource(this._dio, {this.baseUrl, this.errorLogger}) {
->>>>>>> 385f745cea92f02bf1c315857a1735a757b3f468
     baseUrl ??= 'https://nile-brands-backend.up.railway.app/api/v1/';
   }
 
@@ -33,7 +29,6 @@ class _SubCategorySource implements SubCategorySource {
     final queryParameters = <String, dynamic>{r'limit': limit};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-<<<<<<< HEAD
     final _options = _setStreamType<dynamic>(Options(
       method: 'GET',
       headers: _headers,
@@ -41,7 +36,7 @@ class _SubCategorySource implements SubCategorySource {
     )
         .compose(
           _dio.options,
-          'categories/${id}/subcategories',
+          'subcategories',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -50,18 +45,6 @@ class _SubCategorySource implements SubCategorySource {
           _dio.options.baseUrl,
           baseUrl,
         )));
-=======
-    final _options = _setStreamType<dynamic>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            'subcategories',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
->>>>>>> 385f745cea92f02bf1c315857a1735a757b3f468
     final _result = await _dio.fetch(_options);
     final _value = _result.data;
     return _value;
@@ -73,7 +56,6 @@ class _SubCategorySource implements SubCategorySource {
     final queryParameters = <String, dynamic>{r'limit': limit};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-<<<<<<< HEAD
     final _options = _setStreamType<dynamic>(Options(
       method: 'GET',
       headers: _headers,
@@ -81,7 +63,7 @@ class _SubCategorySource implements SubCategorySource {
     )
         .compose(
           _dio.options,
-          'categories/${id}',
+          'products',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -90,18 +72,6 @@ class _SubCategorySource implements SubCategorySource {
           _dio.options.baseUrl,
           baseUrl,
         )));
-=======
-    final _options = _setStreamType<dynamic>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            'products',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
->>>>>>> 385f745cea92f02bf1c315857a1735a757b3f468
     final _result = await _dio.fetch(_options);
     final _value = _result.data;
     return _value;

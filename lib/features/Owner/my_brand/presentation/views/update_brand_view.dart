@@ -7,14 +7,12 @@ import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/widgets/app_text_button.dart';
 import 'package:nile_brand/core/widgets/app_text_form_field.dart';
-<<<<<<< HEAD
 import 'package:nile_brand/features/Owner/create_brand/presentation/views/widgets/dialogs.dart';
 import '../manager/update_brand/update_brand_cubit.dart';
 import '../manager/update_brand/update_brand_state.dart';
-=======
 import 'package:nile_brand/features/User/auth/presentation/views/widgets/password_field.dart';
 import 'package:nile_brand/features/User/profile/presentation/views/widgets/profile_image.dart';
->>>>>>> 385f745cea92f02bf1c315857a1735a757b3f468
+
 
 class UpdateBrandBody extends StatefulWidget {
   const UpdateBrandBody({super.key});
