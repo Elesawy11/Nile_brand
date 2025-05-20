@@ -12,15 +12,6 @@ class CustomeItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isValidUri(String uri) {
-      try {
-        final parsed = Uri.parse(uri);
-        return parsed.isAbsolute && (parsed.hasScheme);
-      } catch (e) {
-        return false;
-      }
-    }
-
     return InkWell(
       onTap: () {
         log('product image ====>>>>>>: ${product.images?.first}');
@@ -38,13 +29,9 @@ class CustomeItem extends StatelessWidget {
             isValidUri(product.images?.first ?? '')
                 ? Image.network(
                     product.images!.first,
-                    // width: 90.w,
-                    // height: 50.h,
                     fit: BoxFit.fill,
                   )
-                :
-                // Text('"Oops, this product doesn\'t have a photo"'),
-                SizedBox(
+                : SizedBox(
                     width: 60.r,
                     height: 60.r,
                     child: Image.asset(
@@ -114,5 +101,14 @@ class CustomeItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  bool isValidUri(String uri) {
+    try {
+      final parsed = Uri.parse(uri);
+      return parsed.isAbsolute && (parsed.hasScheme);
+    } catch (e) {
+      return false;
+    }
   }
 }
