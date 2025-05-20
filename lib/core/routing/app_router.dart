@@ -41,14 +41,10 @@ abstract class AppRouter {
         path: Routes.chatBotSplash2,
         builder: (context, state) => const ChatbotSplash2(),
       ),
-
-
       GoRoute(
         path: Routes.chatOwnerAndUser,
         builder: (context, state) => const UserOwnerChat(),
       ),
-
-
       GoRoute(
         path: Routes.ptoductDetails,
         builder: (context, state) => const ProductDetailsView(),
