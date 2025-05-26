@@ -55,6 +55,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
         backgroundColor: Colors.white,
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserOwnerChat(),));
+          
         },
         child: Image.asset(
           Assets.imagesChatWithOwnerIcon,

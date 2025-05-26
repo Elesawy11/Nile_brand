@@ -6,7 +6,6 @@ import 'package:nile_brand/features/User/chatbot/presentation/views/widgets/chat
 import 'package:nile_brand/features/User/chatbot/presentation/views/widgets/chatbot_top_bar_widget.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/views/widgets/list_view_of_chat_bubbles_widget.dart';
 
-
 class ChatbotView extends StatelessWidget {
   const ChatbotView({super.key});
 

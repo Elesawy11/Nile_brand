@@ -1,10 +1,11 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/assets.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/features/User/category/data/models/product_model.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nile_brand/core/routing/routes.dart';
 
 class CustomeItem extends StatelessWidget {
   const CustomeItem({super.key, required this.product});
@@ -14,7 +15,7 @@ class CustomeItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        log('product image ====>>>>>>: ${product.images?.first}');
+        context.push(Routes.productDetails);
       },
       child: Container(
         margin: EdgeInsets.only(top: 5.h, right: 5.w, left: 5.w),
@@ -26,7 +27,9 @@ class CustomeItem extends StatelessWidget {
           // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Spacer(),
-            isValidUri(product.images?.first ?? '')
+            isValidUri(
+              product.images?.first ?? '',
+            )
                 ? Image.network(
                     product.images!.first,
                     fit: BoxFit.fill,

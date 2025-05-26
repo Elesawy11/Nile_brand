@@ -26,7 +26,6 @@ import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_prof
 import 'package:nile_brand/features/User/profile/presentation/cubits/update_password_cubit/update_password_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/views/edit_password.dart';
 
-
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
 
@@ -46,7 +45,7 @@ abstract class AppRouter {
         builder: (context, state) => const UserOwnerChat(),
       ),
       GoRoute(
-        path: Routes.ptoductDetails,
+        path: Routes.productDetails,
         builder: (context, state) => const ProductDetailsView(),
       ),
       GoRoute(

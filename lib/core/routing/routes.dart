@@ -40,7 +40,7 @@ abstract class Routes {
   static const String updateSubCategory = "/updateSubCategory";
   static const String createSytemUser = "/createSytemUser";
   static const String updateSystemUser = "/updateSystemUser";
-  static const String ptoductDetails = "/producDetails";
+  static const String productDetails = "/producDetails";
   static const String chatBotSplash2 = "/chatBotSplash2";
   static const String chatOwnerAndUser = "/chatOwnerAndUser";
 }

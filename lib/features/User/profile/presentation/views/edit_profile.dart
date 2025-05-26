@@ -37,13 +37,14 @@ class _EditProfileState extends State<EditProfile> {
         body: SingleChildScrollView(
           child: Column(
             children: [
+              18.vs,
               ProfileImage(
                 imageUrl: Assets.imagesProfileImage,
                 backgroundImage: isValidUri(widget.imageUrl)
                     ? NetworkImage(widget.imageUrl)
                     : AssetImage(Assets.imagesProfileImage),
               ),
-              26.vs,
+              50.vs,
               SizedBox(
                 height: 50.h,
                 width: 350.w,
@@ -66,7 +67,7 @@ class _EditProfileState extends State<EditProfile> {
                   size: 17.spMax,
                 ),
               ),
-              20.vs,
+              50.vs,
               Padding(
                 padding: 70.ph,
                 child: AppTextButton(
