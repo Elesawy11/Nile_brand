@@ -15,7 +15,7 @@ class CustomeItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.push(Routes.productDetails);
+        context.push(Routes.productDetails, extra: product);
       },
       child: Container(
         margin: EdgeInsets.only(top: 5.h, right: 5.w, left: 5.w),

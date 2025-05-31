@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/assets.dart';
 // import 'package:go_router/go_router.dart';
@@ -6,6 +7,7 @@ import 'package:nile_brand/core/utils/assets.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/descreption_info.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/details_tab_view.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/product_colors.dart';
@@ -15,10 +17,11 @@ import 'package:nile_brand/features/User/chat/presentation/views/user_owner_chat
 // import 'package:readmore/readmore.dart';
 
 import '../../../../../core/utils/assets.dart';
+import '../../data/models/product_model.dart';
 
 class ProductDetailsView extends StatefulWidget {
-  const ProductDetailsView({super.key});
-
+  const ProductDetailsView({super.key, required this.product});
+  final ProductModel product;
   @override
   State<ProductDetailsView> createState() => _ProductDetailsViewState();
 }
@@ -28,8 +31,6 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
   ValueNotifier<int> selectedColor = ValueNotifier(0);
   ValueNotifier<int> selectedSize = ValueNotifier(0);
   late TabController _tabController;
-
-  List<Widget> productInfo = [DescreptionInfo(), ReviewsInfo()];
 
   @override
   void initState() {
@@ -48,14 +49,28 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
 
   @override
   Widget build(BuildContext context) {
+    // final cubit = context.read<GetReviewsCubit>()
+    //   ..getReviews(widget.product.id!);
+    if (_tabController.index == 1) {
+      context.read<GetReviewsCubit>().getReviews(widget.product.id!);
+    }
+    List<Widget> productInfo = [
+      DescreptionInfo(
+        description: widget.product.description,
+      ),
+      ReviewsInfo(
+        productId: widget.product.id!,
+      )
+    ];
     return SafeArea(
         child: Scaffold(
       // floatingActionButtonLocation: FloatingActionButtonLocation.,
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white,
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserOwnerChat(),));
-          
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const UserOwnerChat(),
+          ));
         },
         child: Image.asset(
           Assets.imagesChatWithOwnerIcon,
@@ -83,116 +98,128 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
           )
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            35.vs,
-            ValueListenableBuilder<int>(
-                valueListenable: selectedColor,
-                builder: (context, v, c) {
-                  return Column(
-                    children: [
-                      ProductImages(selectedColor: selectedColor),
-                      20.vs,
-                      ProductColors(selectedColor: selectedColor),
-                    ],
-                  );
-                }),
-            16.vs,
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Row(
-                children: [
-                  Text(
-                    "Sizes",
-                    style: Styles.font24W500
-                        .copyWith(fontWeight: FontWeight.w600, fontSize: 20.sp),
-                  ),
-                  Spacer(),
-                  Row(
-                    children: [
-                      Text(
-                        "(4.5)",
-                        style: Styles.font14W500.copyWith(color: Colors.yellow),
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                        size: 20.w,
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-            8.vs,
-            Center(
-                child: SizedBox(
-              width: 200,
-              child: ValueListenableBuilder<int>(
-                  valueListenable: selectedSize,
-                  builder: (context, _, c) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: CustomScrollView(slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            children: [
+              35.vs,
+              ValueListenableBuilder<int>(
+                  valueListenable: selectedColor,
+                  builder: (context, v, c) {
+                    return Column(
                       children: [
-                        ...List.generate(
-                          3,
-                          (index) {
-                            return InkWell(
-                              onTap: () {
-                                selectedSize.value = index;
-                              },
-                              child: Container(
-                                width: 42,
-                                height: 42,
-                                decoration: BoxDecoration(
-                                    color: Color(0xffF5F7F8),
-                                    border: selectedSize.value == index
-                                        ? Border.all(
-                                            color: ColorManager.mainColor)
-                                        : null,
-                                    borderRadius: BorderRadius.circular(10.r)),
-                                child: Center(
-                                    child: Text(
-                                  "$index",
-                                  style: Styles.font20W600,
-                                )),
-                              ),
-                            );
-                          },
-                        )
+                        ProductImages(
+                          selectedColor: selectedColor,
+                          productImage: widget.product.coverImage ??
+                              widget.product.images!.first,
+                        ),
+                        20.vs,
+                        ProductColors(
+                          selectedColor: selectedColor,
+                          productImages: widget.product.images!,
+                        ),
                       ],
                     );
                   }),
-            )),
-            10.vs,
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Row(
-                children: [
-                  Text(
-                    "Black dress",
-                    style: Styles.font24W500
-                        .copyWith(fontWeight: FontWeight.w600, fontSize: 20.sp),
-                  ),
-                  Spacer(),
-                  Text(
-                    "450 L.E",
-                    style: Styles.font24W500
-                        .copyWith(fontWeight: FontWeight.w600, fontSize: 20.sp),
-                  ),
-                ],
+              16.vs,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Row(
+                  children: [
+                    Text(
+                      "Sizes",
+                      style: Styles.font24W500.copyWith(
+                          fontWeight: FontWeight.w600, fontSize: 20.sp),
+                    ),
+                    Spacer(),
+                    Row(
+                      children: [
+                        Text(
+                          '(${widget.product.ratingAverage})',
+                          style:
+                              Styles.font14W500.copyWith(color: Colors.yellow),
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                          size: 20.w,
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
-            ),
-            Center(
-                child: DetailsTabView(
-              tabController: _tabController,
-            )),
-            14.vs,
-            productInfo[_tabController.index]
-          ],
-        ),
-      ),
+              8.vs,
+              Center(
+                  child: SizedBox(
+                width: 200,
+                child: ValueListenableBuilder<int>(
+                    valueListenable: selectedSize,
+                    builder: (context, _, c) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          ...List.generate(
+                            widget.product.sizes?.length ?? 0,
+                            (index) {
+                              return InkWell(
+                                onTap: () {
+                                  selectedSize.value = index;
+                                },
+                                child: Container(
+                                  width: 42,
+                                  height: 42,
+                                  decoration: BoxDecoration(
+                                      color: Color(0xffF5F7F8),
+                                      border: selectedSize.value == index
+                                          ? Border.all(
+                                              color: ColorManager.mainColor)
+                                          : null,
+                                      borderRadius:
+                                          BorderRadius.circular(10.r)),
+                                  child: Center(
+                                      child: Text(
+                                    widget.product.sizes?[index] ?? 'L',
+                                    style: Styles.font20W600,
+                                  )),
+                                ),
+                              );
+                            },
+                          )
+                        ],
+                      );
+                    }),
+              )),
+              10.vs,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      widget.product.name!,
+                      style: Styles.font24W500.copyWith(
+                          fontWeight: FontWeight.w600, fontSize: 20.sp),
+                    ),
+                    Text(
+                      '${widget.product.price} L.E',
+                      style: Styles.font24W500.copyWith(
+                          fontWeight: FontWeight.w600, fontSize: 20.sp),
+                    ),
+                  ],
+                ),
+              ),
+              Center(
+                  child: DetailsTabView(
+                productId: widget.product.id!,
+                tabController: _tabController,
+              )),
+              14.vs,
+              productInfo[_tabController.index]
+            ],
+          ),
+        )
+      ]),
     ));
   }
 }

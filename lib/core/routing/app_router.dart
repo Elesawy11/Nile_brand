@@ -11,8 +11,11 @@ import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/features/Owner/create_brand/data/api/create_brand_api_services.dart';
 import 'package:nile_brand/features/Owner/my_brand/data/api/my_brand_services.dart';
 import 'package:nile_brand/features/Owner/my_brand/data/repo/update_brand_repo.dart';
+import 'package:nile_brand/features/User/category/data/models/product_model.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:nile_brand/features/User/chat/presentation/views/user_owner_chat.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/Owner/create_brand/data/repo/new_brand_repo.dart';
 import '../../features/Owner/create_brand/presentation/manager/create_brand_cubit/create_brand_cubit.dart';
@@ -31,6 +34,17 @@ abstract class AppRouter {
 
   static final router = GoRouter(
     navigatorKey: rootNavigatotKey,
+    redirect: (context, state) async {
+      final token = getIt.get<SharedPreferences>().get('token');
+      if (token != null && state.matchedLocation == '/login') {
+        return '/home';
+      }
+      // If no token and trying to access home, redirect to login
+      if (token == null && state.matchedLocation == '/home') {
+        return '/login';
+      }
+      return null;
+    },
     routes: [
       GoRoute(
         path: Routes.start,
@@ -46,7 +60,12 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: Routes.productDetails,
-        builder: (context, state) => const ProductDetailsView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt.get<GetReviewsCubit>(),
+          child: ProductDetailsView(
+            product: state.extra as ProductModel,
+          ),
+        ),
       ),
       GoRoute(
         path: Routes.login,
