@@ -12,9 +12,11 @@ import 'package:nile_brand/features/Owner/create_brand/data/api/create_brand_api
 import 'package:nile_brand/features/Owner/my_brand/data/api/my_brand_services.dart';
 import 'package:nile_brand/features/Owner/my_brand/data/repo/update_brand_repo.dart';
 import 'package:nile_brand/features/User/category/data/models/product_model.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/create_review_cubit/create_review_cubit.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:nile_brand/features/User/chat/presentation/views/user_owner_chat.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
+import 'package:nile_brand/features/User/wish_list/presentation/cubits/get_wish_list_cubit/get_wish_list_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/Owner/create_brand/data/repo/new_brand_repo.dart';
@@ -60,8 +62,15 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: Routes.productDetails,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt.get<GetReviewsCubit>(),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt.get<GetReviewsCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt.get<CreateReviewCubit>(),
+            ),
+          ],
           child: ProductDetailsView(
             product: state.extra as ProductModel,
           ),
@@ -275,7 +284,11 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.wishList,
-                builder: (context, state) => const WishListView(),
+                builder: (context, state) => BlocProvider(
+                  create: (context) =>
+                      getIt.get<GetWishListCubit>()..getWishListProduct(),
+                  child: const WishListView(),
+                ),
               ),
             ],
           ),

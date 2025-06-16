@@ -24,11 +24,11 @@ class _ProductImagesState extends State<ProductImages> {
         width: 175.w,
         padding: EdgeInsets.only(right: 11.w, left: 11.w, top: 18.h),
         decoration: BoxDecoration(
-          color: Color(0xffF5F7F8),
+          color: const Color(0xffF5F7F8),
           boxShadow: [
             BoxShadow(
                 color: Colors.black.withValues(alpha: .4),
-                offset: Offset(1, 1),
+                offset: const Offset(1, 1),
                 blurRadius: 4.r)
           ],
           borderRadius: BorderRadius.all(Radius.circular(20.r)),
@@ -103,6 +103,4 @@ class _ProductImagesState extends State<ProductImages> {
       ),
     );
   }
-
-  
 }

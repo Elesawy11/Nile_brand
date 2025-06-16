@@ -5,6 +5,8 @@ import 'package:nile_brand/core/helpers/is_valid_uri.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/create_review_cubit/create_review_cubit.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/create_review_cubit/create_review_state.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_reviews_cubit/get_reviews_state.dart';
 
@@ -18,6 +20,7 @@ class ReviewsInfo extends StatelessWidget {
   final String productId;
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<CreateReviewCubit>();
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
@@ -31,38 +34,82 @@ class ReviewsInfo extends StatelessWidget {
               color: ColorManager.grayD9,
               borderRadius: BorderRadius.circular(11.r),
             ),
-            child: Row(
-              children: [
-                Image.asset(
-                  Assets.imagesProfileImage,
-                  height: 32.h,
-                  width: 32.w,
-                ),
-                Expanded(
-                  flex: 2,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        hintText: "Add review",
-                        helperStyle: Styles.font16W500
-                            .copyWith(color: ColorManager.grayD9),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.white.withValues(alpha: 0))),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.white.withValues(alpha: 0))),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.white.withValues(alpha: 0)))),
+            child: Form(
+              key: cubit.formKey,
+              child: Row(
+                children: [
+                  Image.asset(
+                    Assets.imagesProfileImage,
+                    height: 32.h,
+                    width: 32.w,
                   ),
-                ),
-                InkWell(
-                    child: Icon(
-                  Icons.send_outlined,
-                  size: 24.w,
-                  color: ColorManager.mainColor,
-                ))
-              ],
+                  Expanded(
+                    flex: 2,
+                    child: TextFormField(
+                      controller: cubit.reviewController,
+                      validator: (value) {
+                        if (value != null && value.isNotEmpty) {
+                          return "this faild is required";
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                          hintText: "Add review",
+                          helperStyle: Styles.font16W500
+                              .copyWith(color: ColorManager.grayD9),
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.white.withValues(alpha: 0))),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.white.withValues(alpha: 0))),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.white.withValues(alpha: 0)))),
+                    ),
+                  ),
+                  BlocConsumer<CreateReviewCubit, CreateReviewState>(
+                    listener: (context, state) {
+                      if (state is CreateReivewSuccess) {
+                        context.read<GetReviewsCubit>().getReviews(productId);
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            backgroundColor: ColorManager.grayCA,
+                            content: Text(
+                              'commit add succesfuly',
+                              style: Styles.font14W500.copyWith(
+                                color: ColorManager.mainText,
+                              ),
+                            )));
+                      } else if (state is CreateReivewError) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            backgroundColor: ColorManager.grayCA,
+                            content: Text(
+                              state.error,
+                              style: Styles.font14W500.copyWith(
+                                  color: ColorManager.forgetPassColor),
+                            )));
+                      }
+                    },
+                    builder: (context, state) {
+                      return InkWell(
+                          onTap: () {
+                            cubit.createReview(id: productId);
+                            cubit.reviewController.clear();
+                          },
+                          child: state is CreateReivewLoading
+                              ? SizedBox(
+                                  height: 24.r,
+                                  width: 24.r,
+                                  child: const CircularProgressIndicator())
+                              : Icon(
+                                  Icons.send_outlined,
+                                  size: 24.w,
+                                  color: ColorManager.mainColor,
+                                ));
+                    },
+                  )
+                ],
+              ),
             ),
           ),
           10.vs,

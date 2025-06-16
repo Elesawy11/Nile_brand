@@ -14,7 +14,7 @@ class _SubCategorySource implements SubCategorySource {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://nile-brands-backend.up.railway.app/api/v1/';
+    baseUrl ??= 'https://nile-brands.up.railway.app/api/v1/';
   }
 
   final Dio _dio;
@@ -88,6 +88,39 @@ class _SubCategorySource implements SubCategorySource {
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<dynamic>(Options(
       method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'products/${id}/reviews',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch(_options);
+    final _value = _result.data;
+    return _value;
+  }
+
+  @override
+  Future<dynamic> createReview(
+    String id,
+    Map<String, dynamic> body,
+    String token,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _options = _setStreamType<dynamic>(Options(
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )

@@ -22,4 +22,12 @@ abstract class SubCategorySource {
     @Path('id') String id, {
     @Query('limit') int limit = 50000,
   });
+
+  @POST('${ApiConstants.products}/{id}/${ApiConstants.reviews}')
+  Future<dynamic> createReview(
+    @Path('id') String id,
+    @Body() Map<String, dynamic> body,
+    @Header("Authorization") String token,
+
+  );
 }

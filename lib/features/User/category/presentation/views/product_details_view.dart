@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/assets.dart';
-// import 'package:go_router/go_router.dart';
-// import 'package:nile_brand/core/routing/routes.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
@@ -14,9 +12,6 @@ import 'package:nile_brand/features/User/category/presentation/views/widgets/pro
 import 'package:nile_brand/features/User/category/presentation/views/widgets/product_images.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/reviews_info.dart';
 import 'package:nile_brand/features/User/chat/presentation/views/user_owner_chat.dart';
-// import 'package:readmore/readmore.dart';
-
-import '../../../../../core/utils/assets.dart';
 import '../../data/models/product_model.dart';
 
 class ProductDetailsView extends StatefulWidget {
@@ -110,8 +105,8 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
                       children: [
                         ProductImages(
                           selectedColor: selectedColor,
-                          productImage: widget.product.coverImage ??
-                              widget.product.images!.first,
+                          productImage:
+                              widget.product.images![selectedColor.value],
                         ),
                         20.vs,
                         ProductColors(
@@ -131,7 +126,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
                       style: Styles.font24W500.copyWith(
                           fontWeight: FontWeight.w600, fontSize: 20.sp),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Row(
                       children: [
                         Text(
@@ -170,7 +165,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
                                   width: 42,
                                   height: 42,
                                   decoration: BoxDecoration(
-                                      color: Color(0xffF5F7F8),
+                                      color: const Color(0xffF5F7F8),
                                       border: selectedSize.value == index
                                           ? Border.all(
                                               color: ColorManager.mainColor)

@@ -10,6 +10,7 @@ import 'package:nile_brand/features/Owner/cuopon/data/model/create_cuopin_succes
 import 'package:nile_brand/firebase_options.dart';
 import 'package:nile_brand/nile_brand.dart';
 import 'package:nile_brand/simple_bloc_observer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'features/Owner/create_brand/data/models/create_brand_response_body.dart';
 import 'features/Owner/owner_helpers.dart';
@@ -25,9 +26,9 @@ void main(List<String> args) async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
- await serviceLocator();
+  await serviceLocator();
   Bloc.observer = SimpleBlocObserver();
-  runApp(NileBrand());
+  runApp(const NileBrand());
 }
 
 class NileBrand extends StatelessWidget {
@@ -35,6 +36,7 @@ class NileBrand extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getIt.get<SharedPreferences>().remove('token');
     return const NileBrandBody();
   }
 }

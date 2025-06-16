@@ -9,6 +9,7 @@ import 'package:nile_brand/features/User/auth/data/repo/signup_repo.dart';
 import 'package:nile_brand/features/User/auth/presentation/cubits/forgot_pass/forgot_pass_cubit.dart';
 import 'package:nile_brand/features/User/auth/presentation/cubits/google_sigin_cubit/google_signin_cubit.dart';
 import 'package:nile_brand/features/User/auth/presentation/cubits/signup_cubit/sign_up_cubit.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/create_review_cubit/create_review_cubit.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_cubit.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:nile_brand/features/User/home/data/data_source/category_remote_data_source.dart';
@@ -18,6 +19,9 @@ import 'package:nile_brand/features/User/profile/data/api/my_profile_api_source.
 import 'package:nile_brand/features/User/profile/data/repo_impl/my_profile_repo_impl.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedback_cubit/add_feedback_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_profile_cubit/get_my_profile_cubit.dart';
+import 'package:nile_brand/features/User/wish_list/data/api/wish_list_source.dart';
+import 'package:nile_brand/features/User/wish_list/data/repo_impl/wish_list_repo_impl.dart';
+import 'package:nile_brand/features/User/wish_list/presentation/cubits/get_wish_list_cubit/get_wish_list_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/User/auth/data/repo/forgot_pass_repo.dart';
 import '../../features/User/auth/data/repo/login_repo.dart';
@@ -85,6 +89,14 @@ Future<void> serviceLocator() async {
 
   // get reviews Features
   getIt.registerFactory(() => GetReviewsCubit(getIt.get()));
+  // create review cubit
+  getIt.registerFactory(() => CreateReviewCubit(getIt.get()));
+
+  // wishList Features
+
+  getIt.registerLazySingleton(() => WishListSource(dio));
+  getIt.registerLazySingleton(() => WishListRepoImpl(getIt.get()));
+  getIt.registerLazySingleton(() => GetWishListCubit(getIt.get()));
   // Chatbot Features
   getIt.registerLazySingleton(() => ChatbotScrollCubit());
 }

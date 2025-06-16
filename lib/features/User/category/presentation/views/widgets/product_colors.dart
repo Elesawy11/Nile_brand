@@ -35,7 +35,7 @@ class _ProductColorsState extends State<ProductColors> {
                       border: widget.selectedColor.value == index
                           ? Border.all(color: ColorManager.blue33)
                           : null,
-                      color: Color(0xffF5F7F8),
+                      color: const Color(0xffF5F7F8),
                       borderRadius: BorderRadius.all(Radius.circular(10.r))),
                   child: Image.network(
                     widget.productImages[index],
