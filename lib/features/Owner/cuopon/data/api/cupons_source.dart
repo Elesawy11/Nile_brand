@@ -11,13 +11,19 @@ abstract class CouponsSource {
   factory CouponsSource(Dio dio) = _CouponsSource;
 
   @POST('${ApiConstants.baseUrl}/coupons')
-  Future<dynamic> createCoupon(@Body() CuponRequestBody coupon);
+  Future<dynamic> createCoupon(@Body() CuponRequestBody coupon,@Header('Authorization') String? token);
 
   @DELETE("${ApiConstants.baseUrl}/coupons/{id}")
-  Future<void> deletCoupon(@PUT("id") String id);
+  Future<void> deletCoupon(@PUT("id") String id,@Header('Authorization') String? token);
 
   @GET("${ApiConstants.baseUrl}/coupons")
-  Future<dynamic> getAllCupons();
+  Future<dynamic> getAllCupons(@Header('Authorization') String? token);
 
+  @PUT("${ApiConstants.baseUrl}/coupons/{id}")
+  Future<dynamic> updateCupon(@PUT("id") String id ,@Body() CuponRequestBody newCupon ,@Header('Authorization') String? token);
+   
+
+  @POST("${ApiConstants.baseUrl}/coupons/sendCoupon")
+  Future<dynamic> sendCupon(@Body() String email,@Header('Authorization') String? token);
 
 }

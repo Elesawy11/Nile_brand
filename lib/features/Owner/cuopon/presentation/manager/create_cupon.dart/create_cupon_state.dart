@@ -14,10 +14,3 @@ class CreateCuponSucessState extends CuponState {
 }
 
 class CreateCuponFailureState extends CuponState{}
-
-
-class DeleteCuponSucess extends CuponState{}
-
-
-
-

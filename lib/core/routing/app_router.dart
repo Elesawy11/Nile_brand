@@ -1,14 +1,18 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nile_brand/core/networking/api_constants.dart';
 import 'package:nile_brand/core/networking/dio_factory.dart';
 import 'package:nile_brand/core/routing/routes.dart';
 import "package:nile_brand/core/routing/exports.dart";
 import 'package:nile_brand/core/utils/service_locator.dart';
 
 import 'package:nile_brand/features/Owner/create_brand/data/api/create_brand_api_services.dart';
+import 'package:nile_brand/features/Owner/cuopon/data/api/cupons_source.dart';
+import 'package:nile_brand/features/Owner/cuopon/data/model/create_cuopin_success.dart';
+import 'package:nile_brand/features/Owner/cuopon/data/repo/cupons_repo.dart';
+import 'package:nile_brand/features/Owner/cuopon/presentation/manager/create_cupon.dart/create_cupon_cubit.dart';
+import 'package:nile_brand/features/Owner/cuopon/presentation/manager/get_cupons/cupon_cubit.dart';
+import 'package:nile_brand/features/Owner/cuopon/presentation/manager/update_cupon/update_cupon_cubit.dart';
 import 'package:nile_brand/features/Owner/my_brand/data/api/my_brand_services.dart';
 import 'package:nile_brand/features/Owner/my_brand/data/repo/update_brand_repo.dart';
 import 'package:nile_brand/features/User/chat/presentation/views/user_owner_chat.dart';
@@ -20,12 +24,10 @@ import '../../features/Owner/my_brand/presentation/manager/update_brand/update_b
 import '../../features/Owner/owner_helpers.dart';
 
 import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_cubit.dart';
-import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedback_cubit/add_feedback_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_profile_cubit/get_my_profile_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/update_password_cubit/update_password_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/views/edit_password.dart';
-
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -331,7 +333,11 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.cuopon,
-                builder: (context, state) => const CuoponView(),
+                builder: (context, state) => BlocProvider(
+                  create: (context) => GetCuponsCubit(
+                      CuponsRepo(CouponsSource(DioFactory.getDio())))..getAllCupons(),
+                  child: CuoponView(),
+                ),
               ),
             ],
           ),
@@ -381,11 +387,23 @@ abstract class AppRouter {
 
       GoRoute(
         path: Routes.createCuopon,
-        builder: (context, state) => const CreateCuoponView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) =>
+              CreateCuponCubit(CuponsRepo(CouponsSource(DioFactory.getDio()))),
+          child: CreateCuoponView(),
+        ),
       ),
       GoRoute(
         path: Routes.updateCuopon,
-        builder: (context, state) => const UpdateCuoponView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => UpdateCuponCubit(
+            CuponsRepo(CouponsSource(DioFactory.getDio()))
+
+          ),
+          child: UpdateCuoponView(
+            cupon: state.extra as CreateCuoponSuccess,
+          ),
+        ),
       ),
 
       // admin navigation bar

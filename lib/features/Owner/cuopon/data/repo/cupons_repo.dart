@@ -8,30 +8,59 @@ class CuponsRepo {
   final CouponsSource _couponsSource;
 
   CuponsRepo(this._couponsSource);
-  Future<ApiResult<CreateCuoponSuccess>> createCupon(CuponRequestBody newCupon)async{
+  Future<ApiResult<CreateCuoponSuccess>> createCupon(
+      CuponRequestBody newCupon, String token) async {
     try {
-      final response = await _couponsSource.createCoupon(newCupon);
-      final CreateCuoponSuccess cupon = CreateCuoponSuccess.fromJson(response["data"]);
+      final response = await _couponsSource.createCoupon(newCupon, token);
+      final CreateCuoponSuccess cupon =
+          CreateCuoponSuccess.fromJson(response["data"]);
       return ApiResult.success(cupon);
     } catch (e) {
       return ApiResult.failure(ErrorHandler.handle(e));
     }
   }
 
-  Future<ApiResult<String>> deleteCupon(String id)async{
+  Future<ApiResult<String>> deleteCupon(String id, String token) async {
     try {
-       await _couponsSource.deletCoupon(id);
+      await _couponsSource.deletCoupon(id, token);
       return ApiResult.success("Deleted Successfully!");
     } catch (e) {
       return ApiResult.failure(ErrorHandler.handle(e));
     }
-
-
-
-
   }
 
+  Future<ApiResult<List<CreateCuoponSuccess>>> getAllCupons(
+      String token) async {
+    try {
+      final Map<String, dynamic> response =
+          await _couponsSource.getAllCupons(token);
+      final List<CreateCuoponSuccess> data = response["data"]
+          .map((data) => CreateCuoponSuccess.fromJson(data))
+          .toList();
+      ;
+      return ApiResult.success(data);
+    } catch (e) {
+      return ApiResult.failure(ErrorHandler.handle(e));
+    }
+  }
 
+  Future<ApiResult<String>> sendCupons(String email, String token) async {
+    try {
+      final response = await _couponsSource.sendCupon(email, token);
+      return ApiResult.success((response as Map<String, dynamic>)["message"]);
+    } catch (e) {
+      return ApiResult.failure(ErrorHandler.handle(("Please Try again ")));
+    }
+  }
 
+  Future<ApiResult<String>> updateCupon(
+      String id, CuponRequestBody newCupon, String token) async {
+    try {
+      final response = await _couponsSource.updateCupon(id, newCupon, token);
+      print(CreateCuoponSuccess.fromJson(response["data"]));
+      return ApiResult.success("Cupon Updated Successfully");
+    } catch (e) {
+      return ApiResult.failure(ErrorHandler.handle(("Please Try again ")));
+    }
+  }
 }
-

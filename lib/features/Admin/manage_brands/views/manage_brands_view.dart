@@ -32,6 +32,7 @@ class ManageBrandsView extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 20.w,
                   mainAxisSpacing: 10.w,
+                  mainAxisExtent: 200.h,
                   childAspectRatio: 3.spMax / 3.8.spMax),
               itemCount: 10,
               itemBuilder: (context, index) {

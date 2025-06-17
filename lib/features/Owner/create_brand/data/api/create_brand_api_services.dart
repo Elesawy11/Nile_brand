@@ -11,7 +11,6 @@ class BrandInfoSource {
       "${ApiConstants.baseUrl}brands",
       data: formData,
     );
-
     return response.data;
   }
 }

@@ -12,8 +12,6 @@ class ChatbotCubit extends Cubit<ChatbotState> {
   ChatbotCubit() : super(ChatbotInitial()) {
     _loadFAQs();
   }
-
-
   Future<void> _loadFAQs() async {
     final String jsonString = await rootBundle.loadString('assets/json/chatbot-data.json');
     final Map<String, dynamic> jsonData = json.decode(jsonString);
@@ -24,31 +22,23 @@ class ChatbotCubit extends Cubit<ChatbotState> {
         .expand((faq) => faq.questions)
         .toList();
   }
-
   void askQuestion(String question) {
-
     _chatHistory.add({"role": "user", "message": question});
-
     final answer = _findAnswer(question);
-    
     String partial = "";
     int index = 0;
-
     Timer.periodic(const Duration(milliseconds: 50), (timer) {
       if (index >= answer.length) {
         timer.cancel();
-      
         _chatHistory.add({"role": "bot", "message": answer});
         emit(ChatbotResponseState(List.from(_chatHistory)));
       } else {
         partial += answer[index];
         index++;
-      
         emit(ChatbotTypingState(List.from(_chatHistory), partial));
       }
     });
   }
-
   String _findAnswer(String question) {
     for (var faq in _allFAQs) {
       if (faq.question.toLowerCase().contains(question.toLowerCase()) ||

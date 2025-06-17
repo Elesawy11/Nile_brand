@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'sub_category_source.dart';
+part of 'system_feedback_services.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'sub_category_source.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
-class _SubCategorySource implements SubCategorySource {
-  _SubCategorySource(
+class _SystemFeedbackSource implements SystemFeedbackSource {
+  _SystemFeedbackSource(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
@@ -24,10 +24,12 @@ class _SubCategorySource implements SubCategorySource {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<dynamic> getSubCategories({int limit = 50000}) async {
+  Future<dynamic> getSystemFeeds(String? token) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'limit': limit};
-    final _headers = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<dynamic>(Options(
       method: 'GET',
@@ -36,34 +38,7 @@ class _SubCategorySource implements SubCategorySource {
     )
         .compose(
           _dio.options,
-          'subcategories',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
-    return _value;
-  }
-
-  @override
-  Future<dynamic> getProducts({int limit = 50000}) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'limit': limit};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<dynamic>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          'products',
+          'feedback',
           queryParameters: queryParameters,
           data: _data,
         )

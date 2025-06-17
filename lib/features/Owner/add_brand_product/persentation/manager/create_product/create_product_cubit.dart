@@ -1,8 +1,9 @@
 import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
-import '../../../data/models/new_product_model.dart';
+import 'package:http_parser/http_parser.dart';
+import 'package:nile_brand/features/Owner/owner_helpers.dart';
 import '../../../data/repo/create_product_repo.dart';
 
 part 'create_product_state.dart';
@@ -25,8 +26,8 @@ class CreateProductCubit extends Cubit<CreateProductState> {
 
   List<String> selectedSizes = [];
   List<String> selectedColors = [];
-  List<XFile> productImages = [];
-  XFile? coverImage;
+  List<File> productImages = [];
+  File? coverImage;
 
   void setCategory(String id) {
     selectedCategoryId = id;
@@ -35,11 +36,6 @@ class CreateProductCubit extends Cubit<CreateProductState> {
 
   void setSubCategory(String id) {
     selectedSubCategoryId = id;
-    emit(CreateProductUpdated());
-  }
-
-  void setBrand(String id) {
-    selectedBrandId = id;
     emit(CreateProductUpdated());
   }
 
@@ -53,45 +49,50 @@ class CreateProductCubit extends Cubit<CreateProductState> {
     emit(CreateProductUpdated());
   }
 
-  void setCoverImage(XFile image) {
+  void setCoverImage(File image) {
     coverImage = image;
     emit(CreateProductUpdated());
   }
 
-  void setImages(List<XFile> images) {
+  void setImages(List<File> images) {
     productImages = images;
     emit(CreateProductUpdated());
   }
 
   Future<void> submitProduct() async {
-    if (selectedBrandId == null ||
-        selectedCategoryId == null ||
-        selectedSubCategoryId == null ||
-        coverImage == null ||
-        productImages.isEmpty) {
-      emit(CreateProductError("Fields should be"));
-      return;
-    }
+    
 
     emit(CreateProductLoading());
 
-    final model = NewProductModel(
-      name: nameController.text.trim(),
-      description: descriptionController.text.trim(),
-      price: priceController.text.trim(),
-      quantity: quantityController.text.trim(),
-      category: selectedCategoryId!,
-      subcategory: selectedSubCategoryId!,
-      brand: selectedBrandId!,
-      sizes: selectedSizes,
-      colors: selectedColors,
-      images: productImages,
-      coverImage: coverImage!,
+    selectedBrandId = await BrandPrefs.getbrandId();
+    final formData = FormData.fromMap({
+      "name": nameController.text.trim(),
+      "description": descriptionController.text.trim(),
+      "price": priceController.text.trim(),
+      "quantity": quantityController.text.trim(),
+     " category": selectedCategoryId!,
+      "subcategory": selectedSubCategoryId!,
+      "brand": selectedBrandId!,
+      "sizes": selectedSizes,
+     " colors": selectedColors,
+      'coverImage': await MultipartFile.fromFile(coverImage!.path,
+          filename: coverImage!.path.split('/').last,
+          contentType: MediaType("image", "png")),
+
+      "images":productImages.isNotEmpty? productImages.map((image)async{
+         await MultipartFile.fromFile(image.path,
+          filename: image.path.split('/').last,
+          contentType: MediaType("image", "png"));
+
+      }).toList() : productImages
+    }
     );
+
+    
 
     final result = await _repo.createProduct(
       brandId: selectedBrandId!,
-      model: model,
+      data: formData,
     );
 
     result.when(

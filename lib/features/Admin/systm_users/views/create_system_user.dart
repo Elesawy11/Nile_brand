@@ -6,6 +6,7 @@ import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/core/widgets/app_text_form_field.dart';
 import 'package:nile_brand/features/User/auth/presentation/views/widgets/password_field.dart';
 
+import '../../../../core/utils/assets.dart';
 import '../../../../core/utils/color_manager.dart';
 import '../../../../core/widgets/app_text_button.dart';
 
@@ -32,6 +33,27 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
             children: [
 
               20.vs,
+                GestureDetector(
+                  onTap: () async {
+                    // final picked = await ImagePicker()
+                    //     .pickImage(source: ImageSource.gallery);
+                    // if (picked != null) {
+                    //   final savedImage =
+                    //       await saveImagePermanently(picked.path);
+                    //   cubit.setLogo(savedImage);
+                    // } cubit.logoPng.path.isNotEmpty
+                        // ? FileImage(File(cubit.logoPng.path))
+                  },
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundImage: 
+                       AssetImage(Assets.imagesProfileImage)
+                            as ImageProvider,
+                  ),
+                ),
+                10.vs,
+                Text('Tap to select Image', style: Styles.font16W400),
+                10.vs,
 
               SizedBox(
                 height: 52.h,
@@ -54,6 +76,15 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
               SizedBox(
                 height: 52.h,
                 width: 340.w,
+                child: AppTextFormField(
+                  labelText: "Role",
+                  hintText: "admin , owner , customer", validator: (p0){}),
+                
+              ),
+              25.vs,
+              SizedBox(
+                height: 52.h,
+                width: 340.w,
                 child: PasswordField(viewPass: viewPass, labelText: "Password", hintText: "password")),
               25.vs,
               SizedBox(
@@ -66,7 +97,7 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
                  
                 
               
-              190.vs,
+              140.vs,
               SizedBox(
                 width: 150.w,
                   child: AppTextButton(

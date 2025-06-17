@@ -38,6 +38,16 @@ class ExistingProducts extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'T-shirts Cotton',
+                  style: Styles.font12W300.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w600,height: 0.h),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left:5.w),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Brand Name',
                   style: Styles.font12W300.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w600),
                 ),
               ),

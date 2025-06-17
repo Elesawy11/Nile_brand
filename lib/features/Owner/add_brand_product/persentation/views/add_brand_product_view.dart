@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,7 +34,7 @@ class _AddBrandProductViewState extends State<AddBrandProductView> {
       CreateProductRepo(ProductApiService(
         DioFactory.getDio(),
       )),
-    ); // تأكد من توفير الـ Repo هنا
+    );
   }
 
   @override
@@ -49,10 +50,9 @@ class _AddBrandProductViewState extends State<AddBrandProductView> {
       child: BlocConsumer<CreateProductCubit, CreateProductState>(
         listener: (context, state) {
           if (state is CreateProductLoading) {
-            // يمكن عرض Loader
           } else if (state is CreateProductSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text("تم حفظ المنتج بنجاح"),
+              content: Text("Product Saved Successfully!"),
             ));
           } else if (state is CreateProductError) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -80,34 +80,102 @@ class _AddBrandProductViewState extends State<AddBrandProductView> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      InkWell(
-                        onTap: () async {
-                          final ImagePicker picker = ImagePicker();
-                          try {
-                            final XFile? image = await picker.pickImage(
-                                source: ImageSource.gallery);
-                            if (image != null &&
-                                await File(image.path).exists()) {
-                              cubit.setCoverImage(image);
-                            }
-                          } catch (e) {
-                            log(e.toString());
-                          }
-                        },
-                        child: cubit.coverImage != null
-                            ? Image.file(
-                                File(cubit.coverImage!.path),
-                                width: 90.r,
-                                height: 90.r,
-                                fit: BoxFit.cover,
-                              )
-                            : Image.asset(
-                                Assets.imagesAddImage,
-                                width: 90.r,
-                                height: 90.r,
+                      10.vs,
+                      // InkWell(
+                      //   onTap: () async {
+                      //     final ImagePicker picker = ImagePicker();
+                      //     try {
+                      //       final XFile? image = await picker.pickImage(
+                      //           source: ImageSource.gallery);
+                      //       if (image != null &&
+                      //           await File(image.path).exists()) {
+                      //         cubit.setCoverImage(image);
+                      //       }
+                      //     } catch (e) {
+                      //       log(e.toString());
+                      //     }
+                      //   },
+                      //   child: cubit.coverImage != null
+                      //       ? Image.file(
+                      //           File(cubit.coverImage!.path),
+                      //           width: 90.r,
+                      //           height: 90.r,
+                      //           fit: BoxFit.cover,
+                      //         )
+                      //       : Image.asset(
+                      //           Assets.imagesAddImage,
+                      //           width: 200.w,
+                      //           height: 90.h,
+                      //         ),
+                      // ),
+                      DottedBorder(
+                        color: ColorManager.blue33,
+                        strokeWidth: 2,
+                        dashPattern: [6, 3],
+                        borderType: BorderType.RRect,
+                        radius: Radius.circular(12),
+                        child: Container(
+                          width: 400.w,
+                          height: 77.h,
+                          // padding: EdgeInsets.all(16),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.image,
+                                size: 27,
+                                color: ColorManager.mainColor,
                               ),
+                              Text("Pick cover Image"),
+                            ],
+                          ),
+                        ),
                       ),
                       10.vs,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Additional Images",style: TextStyle(
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w600
+                          ),),
+                          5.vs,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ...List.generate(
+                                5,
+                                (index) {
+                                  return DottedBorder(
+                                    color: ColorManager.blue33,
+                                    strokeWidth: 2,
+                                    dashPattern: [6, 3],
+                                    borderType: BorderType.RRect,
+                                    radius: Radius.circular(12),
+                                    child: Container(
+                                      width: 50.w,
+                                      height: 55.h,
+                                      // padding: EdgeInsets.all(16),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.image,
+                                            size: 27,
+                                            color: ColorManager.mainColor,
+                                          ),
+                                          // Text("Pick cover Image"),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                      20.vs,
                       const AddBrandProductTextFieldsWidgets(),
                       22.vs,
                       SizedBox(

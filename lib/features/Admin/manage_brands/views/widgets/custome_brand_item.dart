@@ -13,7 +13,7 @@ class CustomeBrandItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 150.w,
-      height: 157.w,
+      height: 190.w,
       clipBehavior: Clip.hardEdge,
       decoration:  BoxDecoration(
 
@@ -30,36 +30,43 @@ class CustomeBrandItem extends StatelessWidget {
             child: Image.asset(
               "assets/images/test_brand.png",
               width: 170.w,
-              height: 155.r,
+              height: 125.r,
               fit: BoxFit.fill,
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top:5.w,left: 7.w),
+            padding: EdgeInsets.only(top:5.w,left: 5.w),
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text(
-                'Elegant Craft',
-                style: Styles.font12W300.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w600,color:const Color(0xFF242526)),
+              child: Column(
+                children: [
+                  Text(
+                    'Elegant Craft',
+                    style: Styles.font12W300.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w600,color:const Color(0xFF242526)),
+                  ),
+
+                   Text(
+                    ' Owner : owner',
+                    style: Styles.font12W300.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w600,color:const Color(0xFF242526)),
+                  ),
+
+                ],
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(right:7.w,bottom: 5.h),
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: SizedBox(
-                width: 35.r,
-                child: InkWell(
-                  
-                  onTap: () {
-                    // handle deletion 
-                  },
-                  child: Image.asset(
-                    Assets.imagesDeleteIcon,
-                    width: 16.r,
-                    height: 16.r,
-                  ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: SizedBox(
+              width: 35.r,
+              child: InkWell(
+                
+                onTap: () {
+                  // handle deletion 
+                },
+                child: Image.asset(
+                  Assets.imagesDeleteIcon,
+                  width: 16.r,
+                  height: 16.r,
                 ),
               ),
             ),

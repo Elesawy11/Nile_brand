@@ -1,9 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:nile_brand/core/networking/api_result.dart';
 import 'package:nile_brand/core/networking/api_error_handler.dart';
-
-
 import '../api/new_product_services.dart';
-import '../models/new_product_model.dart';
 
 class CreateProductRepo {
   final ProductApiService _productApiService;
@@ -12,13 +10,10 @@ class CreateProductRepo {
 
   Future<ApiResult<String>> createProduct({
     required String brandId,
-    required NewProductModel model,
+    required FormData data,
   }) async {
     try {
-      await _productApiService.createProductWithImages(
-        brandId: brandId,
-        model: model,
-      );
+      await _productApiService.createProduct(brandId, data);
       return const ApiResult.success("Product created successfully");
     } catch (error) {
       return ApiResult.failure(ErrorHandler.handle(error));

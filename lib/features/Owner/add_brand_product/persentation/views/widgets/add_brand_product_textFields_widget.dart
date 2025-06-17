@@ -14,7 +14,7 @@ class AddBrandProductTextFieldsWidgets extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 50.h,
+          // height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: "Handmade Leather Bag",
@@ -24,37 +24,38 @@ class AddBrandProductTextFieldsWidgets extends StatelessWidget {
         ),
         16.vs,
         SizedBox(
-          height: 50.h,
+          // height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: "bag made in Egypt",
+            maxLines: 3,
             labelText: "description",
             validator: (p0) {},
           ),
         ),
         16.vs,
         SizedBox(
-          height: 50.h,
+          // height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: '["Small", "Medium", "Large"]',
-            labelText: "Sizes",
+            hintText: 'ex : large , small ..etc',
+            labelText: "Sizes (optional)",
             validator: (p0) {},
           ),
         ),
         16.vs,
         SizedBox(
-          height: 50.h,
+          // height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: "Brown",
-            labelText: "Color",
+            hintText: "ex : red , brown ..etc",
+            labelText: "Color (optional)",
             validator: (p0) {},
           ),
         ),
         16.vs,
         SizedBox(
-          height: 50.h,
+          // height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: "120.50",
@@ -64,7 +65,7 @@ class AddBrandProductTextFieldsWidgets extends StatelessWidget {
         ),
         16.vs,
         SizedBox(
-          height: 50.h,
+          // height: 50.h,
           child: AppTextFormField(
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: "50",
@@ -73,26 +74,54 @@ class AddBrandProductTextFieldsWidgets extends StatelessWidget {
           ),
         ),
         16.vs,
-        SizedBox(
-          height: 50.h,
-          child: AppTextFormField(
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: "Accessories",
-            labelText: "category",
-            validator: (p0) {},
-          ),
-        ),
+       categoryAndSub(
+        "Category",
+        'Accessories'
+
+        
+       )
+,
         16.vs,
-        SizedBox(
-          height: 50.h,
-          child: AppTextFormField(
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: "Bags",
-            labelText: "subcategory",
-            validator: (p0) {},
-          ),
-        ),
+        categoryAndSub("SubCategory", "Accessories")
       ],
     );
+  }
+
+  SizedBox categoryAndSub(String title,String value) {
+    return SizedBox(
+
+child: DropdownButtonFormField<String>(
+  decoration: InputDecoration(
+    labelText: title,
+    hintText: "Select a category",
+    floatingLabelBehavior: FloatingLabelBehavior.always,
+    border: OutlineInputBorder(), 
+  ),
+  value: value, 
+  items: [
+    'Accessories',
+    'Clothing',
+    'Electronics',
+    'Shoes',
+    'Beauty',
+  ].map((category) {
+    return DropdownMenuItem<String>(
+      value: category,
+      child: Text(category),
+    );
+  }).toList(),
+  onChanged: (value) {
+    // setState(() {
+    //   selectedCategory = value!;
+    // });
+  },
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return "Please select a category";
+    }
+    return null;
+  },
+),
+);
   }
 }

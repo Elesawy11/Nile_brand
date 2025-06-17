@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/utils/styles.dart';
+
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});
 
@@ -7,10 +9,15 @@ class DashboardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return  SafeArea(
       child: Scaffold(
-        body: Center(
-          child: Text(
+        appBar: AppBar(
+          title: Text(
             'dashboard',
+            style: Styles.font20W600,
           ),
+        ),
+        
+        body: Center(
+          child: Text(""),
         ),
       ),
     );
