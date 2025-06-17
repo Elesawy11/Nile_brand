@@ -51,17 +51,18 @@ class MyCartView extends StatelessWidget {
               child: verticalSpace(18),
             ),
             SliverList.builder(
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(
-                      left: 12.w,
-                      right: 12.w,
-                      bottom: 18.h,
-                    ),
-                    child: const MyCartItemWidget(),
-                  );
-                },
-                itemCount: 6),
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                    left: 12.w,
+                    right: 12.w,
+                    bottom: 18.h,
+                  ),
+                  child: const MyCartItemWidget(),
+                );
+              },
+              itemCount: 2,
+            ),
             SliverToBoxAdapter(
               child: verticalSpace(18),
             ),

@@ -7,7 +7,8 @@ import 'package:nile_brand/core/utils/spacer.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_cubit.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_state.dart';
-import 'package:skeletonizer/skeletonizer.dart';
+import 'package:nile_brand/features/User/category/presentation/views/widgets/product_shimmer.dart';
+import 'package:nile_brand/features/User/home/presentation/cubits/get_category_cubit/get_category_state.dart';
 import '../../../../../core/utils/assets.dart';
 import '../../../category/presentation/views/widgets/custome_item.dart';
 import 'widgets/list_view_of_categories_widget.dart';
@@ -77,12 +78,8 @@ class HomeView extends StatelessWidget {
                           ),
                           itemCount: 20,
                           itemBuilder: (context, index) {
-                            return Skeletonizer(
-                              ignoreContainers: true,
-                              enabled: state is GetProductLoading,
-                              child: CustomeItem(
-                                product: state.products[index],
-                              ),
+                            return CustomeItem(
+                              product: state.products[index],
                             );
                           },
                         ),
@@ -93,7 +90,23 @@ class HomeView extends StatelessWidget {
                               Assets.imagesNoImage,
                             ),
                           )
-                        : const SizedBox();
+                        : state is GetProductLoading
+                            ? Expanded(
+                                child: GridView.builder(
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 1,
+                                    crossAxisSpacing: 4.w,
+                                    mainAxisSpacing: 4.w,
+                                    childAspectRatio: 2 / 2.3,
+                                  ),
+                                  itemCount: 20,
+                                  itemBuilder: (context, index) {
+                                    return ProductShimmer();
+                                  },
+                                ),
+                              )
+                            : const SizedBox();
               },
             ),
           ],

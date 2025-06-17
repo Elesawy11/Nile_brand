@@ -1,10 +1,11 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/assets.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/features/User/category/data/models/product_model.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nile_brand/core/routing/routes.dart';
 
 class CustomeItem extends StatelessWidget {
   const CustomeItem({super.key, required this.product});
@@ -12,18 +13,9 @@ class CustomeItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isValidUri(String uri) {
-      try {
-        final parsed = Uri.parse(uri);
-        return parsed.isAbsolute && (parsed.hasScheme);
-      } catch (e) {
-        return false;
-      }
-    }
-
     return InkWell(
       onTap: () {
-        log('product image ====>>>>>>: ${product.images?.first}');
+        context.push(Routes.productDetails, extra: product);
       },
       child: Container(
         margin: EdgeInsets.only(top: 5.h, right: 5.w, left: 5.w),
@@ -35,16 +27,14 @@ class CustomeItem extends StatelessWidget {
           // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Spacer(),
-            isValidUri(product.images?.first ?? '')
+            isValidUri(
+              product.images?.first ?? '',
+            )
                 ? Image.network(
                     product.images!.first,
-                    // width: 90.w,
-                    // height: 50.h,
                     fit: BoxFit.fill,
                   )
-                :
-                // Text('"Oops, this product doesn\'t have a photo"'),
-                SizedBox(
+                : SizedBox(
                     width: 60.r,
                     height: 60.r,
                     child: Image.asset(
@@ -114,5 +104,14 @@ class CustomeItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  bool isValidUri(String uri) {
+    try {
+      final parsed = Uri.parse(uri);
+      return parsed.isAbsolute && (parsed.hasScheme);
+    } catch (e) {
+      return false;
+    }
   }
 }

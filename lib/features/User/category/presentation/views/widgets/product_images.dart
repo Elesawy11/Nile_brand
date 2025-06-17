@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../../core/helpers/is_valid_uri.dart';
 import '../../../../../../core/utils/assets.dart';
 import '../../../../../../core/utils/color_manager.dart';
 
 class ProductImages extends StatefulWidget {
   final ValueNotifier<int> selectedColor;
-  const ProductImages({super.key, required this.selectedColor});
+  final String productImage;
+  const ProductImages(
+      {super.key, required this.selectedColor, required this.productImage});
 
   @override
   State<ProductImages> createState() => _ProductImagesState();
@@ -39,11 +42,31 @@ class _ProductImagesState extends State<ProductImages> {
                 Assets.imagesFavoriteIcon,
               ),
             ),
-            Image.asset(
-              "assets/images/dress.png",
-              width: 120.w,
-              height: 120.h,
-            ),
+            isValidUri(
+              widget.productImage,
+            )
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(12.r),
+                    child: Image.network(
+                      widget.productImage,
+                      fit: BoxFit.fill,
+                    ),
+                  )
+                : SizedBox(
+                    width: 60.r,
+                    height: 60.r,
+                    child: Image.asset(
+                      Assets.imagesNoImage,
+                      width: 20.r,
+                      height: 20.r,
+                      // fit: BoxFit.fill,
+                    ),
+                  ),
+            // Image.asset(
+            //   "assets/images/dress.png",
+            //   width: 120.w,
+            //   height: 120.h,
+            // ),
             Align(
               alignment: Alignment.bottomCenter,
               child: SizedBox(
@@ -61,11 +84,12 @@ class _ProductImagesState extends State<ProductImages> {
                             height: 7.h,
                             width: 7.w,
                             decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(7.r)),
-                                color:widget.selectedColor.value == index
-                                    ? ColorManager.mainColor
-                                    : ColorManager.grayD9),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(7.r)),
+                              color: widget.selectedColor.value == index
+                                  ? ColorManager.mainColor
+                                  : ColorManager.grayD9,
+                            ),
                           ),
                         );
                       },
@@ -79,4 +103,6 @@ class _ProductImagesState extends State<ProductImages> {
       ),
     );
   }
+
+  
 }

@@ -16,6 +16,7 @@ class ApiConstants {
   static const String updatePassword = 'users/changeMyPassword';
 
   static const String feedback = 'feedback';
+  static const String reviews = 'reviews';
 
 
 

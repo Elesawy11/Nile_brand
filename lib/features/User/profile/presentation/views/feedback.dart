@@ -63,12 +63,12 @@ class FeedbackView extends StatelessWidget {
               ),
               20.vs,
               Padding(
-                padding: EdgeInsets.all(10.h),
+                padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: AppTextFormField(
                   controller: cubit.commentController,
                   isLabled: true,
                   backgroundColor: const Color(0xffD9D9D9),
-                  maxLines: 7,
+                  maxLines: 5,
                   hintText: "Tell Us How We Can Enhance Your Experience?",
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -78,7 +78,7 @@ class FeedbackView extends StatelessWidget {
                   },
                 ),
               ),
-              10.vs,
+              20.vs,
               Padding(
                 padding: 50.ph,
                 child: AppTextButton(

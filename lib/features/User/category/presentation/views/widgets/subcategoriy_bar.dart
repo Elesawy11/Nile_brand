@@ -48,13 +48,13 @@ class SubcategoriyBar extends StatelessWidget {
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
-                                      border: Border(
-                                        bottom: BorderSide(
-                                          color: Colors.black,
-                                          width: 0.5,
+                                        // border: Border(
+                                        //   bottom: BorderSide(
+                                        //     color: Colors.black,
+                                        //     width: 0.5,
+                                        //   ),
+                                        // ),
                                         ),
-                                      ),
-                                    ),
                                     child: InkWell(
                                       onTap: () {
                                         context

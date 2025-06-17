@@ -1,6 +1,7 @@
 import 'package:nile_brand/core/networking/api_result.dart';
 import 'package:nile_brand/features/User/category/data/api/sub_category_source.dart';
 import 'package:nile_brand/features/User/category/data/models/product_model.dart';
+import 'package:nile_brand/features/User/category/data/models/review_model.dart';
 import 'package:nile_brand/features/User/category/data/models/sub_category_model.dart';
 import '../../../../../core/networking/api_error_handler.dart';
 
@@ -9,8 +10,7 @@ class SubCategoryRepoImpl {
 
   SubCategoryRepoImpl(this._subCategorySource);
 
-  Future<ApiResult<List<SubCategoryModel>>> getSubCategories(
-     ) async {
+  Future<ApiResult<List<SubCategoryModel>>> getSubCategories() async {
     try {
       final response = await _subCategorySource.getSubCategories();
       final categories = getSubCategoryList(response);
@@ -20,12 +20,21 @@ class SubCategoryRepoImpl {
     }
   }
 
-
   Future<ApiResult<List<ProductModel>>> getProducts() async {
     try {
       final response = await _subCategorySource.getProducts();
       final products = getProductsListNew(response);
       return ApiResult.success(products);
+    } catch (e) {
+      return ApiResult.failure(ErrorHandler.handle(e));
+    }
+  }
+
+  Future<ApiResult<List<ReviewModel>>> getReviews({required String id}) async {
+    try {
+      final response = await _subCategorySource.getReviews(id);
+      final reviews = getReviewsList(response);
+      return ApiResult.success(reviews);
     } catch (e) {
       return ApiResult.failure(ErrorHandler.handle(e));
     }
@@ -46,6 +55,15 @@ class SubCategoryRepoImpl {
     }
     return products;
   }
+
+  static List<ReviewModel> getReviewsList(Map<String, dynamic> data) {
+    List<ReviewModel> reviews = [];
+    for (var reviewMap in data['data']) {
+      reviews.add(ReviewModel.fromJson(reviewMap));
+    }
+    return reviews;
+  }
+
   static List<ProductModel> getProductsListNew(Map<String, dynamic> data) {
     List<ProductModel> products = [];
     for (var productMap in data['data']) {

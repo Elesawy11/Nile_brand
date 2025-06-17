@@ -5,7 +5,9 @@ import '../../../../../../core/utils/color_manager.dart';
 
 class ProductColors extends StatefulWidget {
   final ValueNotifier<int> selectedColor;
-  const ProductColors({super.key, required this.selectedColor});
+  final List<String> productImages;
+  const ProductColors(
+      {super.key, required this.selectedColor, required this.productImages});
 
   @override
   State<ProductColors> createState() => _ProductColorsState();
@@ -20,7 +22,7 @@ class _ProductColorsState extends State<ProductColors> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           ...List.generate(
-            5,
+            widget.productImages.length,
             (index) {
               return InkWell(
                 onTap: () {
@@ -35,8 +37,8 @@ class _ProductColorsState extends State<ProductColors> {
                           : null,
                       color: Color(0xffF5F7F8),
                       borderRadius: BorderRadius.all(Radius.circular(10.r))),
-                  child: Image.asset(
-                    "assets/images/dress.png",
+                  child: Image.network(
+                    widget.productImages[index],
                     width: 10.w,
                     height: 10.h,
                   ),
