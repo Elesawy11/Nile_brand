@@ -10,11 +10,12 @@ class WishListRepoImpl {
 
   WishListRepoImpl(this._repo);
 
-  final token = getIt.get<SharedPreferences>().getString('token');
+  final String token =
+      'Bearer ${getIt.get<SharedPreferences>().getString('token')}';
 
   Future<ApiResult<List<ProductModel>>> getWishList() async {
     try {
-      final response = await _repo.getWishList(token ?? '');
+      final response = await _repo.getWishList(token);
       final products = getProductFromWishList(response);
       return ApiResult.success(products);
     } catch (e) {

@@ -36,7 +36,7 @@ class NileBrand extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    getIt.get<SharedPreferences>().remove('token');
+   
     return const NileBrandBody();
   }
 }

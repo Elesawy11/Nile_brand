@@ -15,6 +15,9 @@ import 'package:nile_brand/features/User/category/presentation/cubits/get_review
 import 'package:nile_brand/features/User/home/data/data_source/category_remote_data_source.dart';
 import 'package:nile_brand/features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/cubits/cubit/chatbot_scroll_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/data/repo/my_cart_repo_impl.dart';
+import 'package:nile_brand/features/User/my_cart/data/source/my_cart_source.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/cubit/get_my_cart_cubit.dart';
 import 'package:nile_brand/features/User/profile/data/api/my_profile_api_source.dart';
 import 'package:nile_brand/features/User/profile/data/repo_impl/my_profile_repo_impl.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedback_cubit/add_feedback_cubit.dart';
@@ -66,16 +69,16 @@ Future<void> serviceLocator() async {
   // category Features
   HomeRemoteDataSource categorySource = HomeRemoteDataSource(dio);
   getIt.registerLazySingleton(() => CategoryRepoImpl(categorySource));
-  getIt.registerLazySingleton(
-      () => GetCategoryCubit(getIt.get<CategoryRepoImpl>()));
+  getIt.registerFactory(
+      () => GetCategoryCubit(getIt.get()));
   // sub category Features
   getIt.registerLazySingleton(() => SubCategorySource(dio));
   getIt.registerLazySingleton(() => SubCategoryRepoImpl(getIt.get()));
-  getIt.registerLazySingleton(() => GetSubCategorysCubit(getIt.get()));
+  getIt.registerFactory(() => GetSubCategorysCubit(getIt.get()));
   // get sub category products Features
   // getIt.registerLazySingleton(() => GetCategoryProductsCubit(getIt.get()));
   // get product cubit Features
-  getIt.registerLazySingleton(() => GetProductsCubit(getIt.get()));
+  getIt.registerFactory(() => GetProductsCubit(getIt.get()));
   // myProfile Features
   getIt.registerLazySingleton(() => MyProfileApiSource(dio));
   getIt.registerLazySingleton(() => MyProfileRepoImpl(getIt.get()));
@@ -96,7 +99,12 @@ Future<void> serviceLocator() async {
 
   getIt.registerLazySingleton(() => WishListSource(dio));
   getIt.registerLazySingleton(() => WishListRepoImpl(getIt.get()));
-  getIt.registerLazySingleton(() => GetWishListCubit(getIt.get()));
+  getIt.registerFactory(() => GetWishListCubit(getIt.get()));
+
+  // MyCart Features
+  getIt.registerLazySingleton(() => MyCartSource(dio));
+  getIt.registerLazySingleton(() => MyCartRepoImpl(getIt.get()));
+  getIt.registerFactory(() => GetMyCartCubit(getIt.get()));
   // Chatbot Features
   getIt.registerLazySingleton(() => ChatbotScrollCubit());
 }

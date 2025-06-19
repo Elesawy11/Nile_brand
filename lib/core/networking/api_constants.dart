@@ -19,6 +19,7 @@ class ApiConstants {
   static const String feedback = 'feedback';
   static const String reviews = 'reviews';
   static const String wishlist = 'wishlist';
+  static const String carts = 'carts';
 }
 
 class ApiErrors {

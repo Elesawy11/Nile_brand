@@ -13,14 +13,14 @@ import 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   final LoginRepo _loginRepo;
-  LoginCubit(this._loginRepo) : super(LoginState.initial());
+  LoginCubit(this._loginRepo) : super(const LoginState.initial());
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   void emitLoginState() async {
-    emit(LoginState.loginLoading());
+    emit(const LoginState.loginLoading());
     final response = await _loginRepo.login(
       LoginRequestBody(
         email: emailController.text,
@@ -32,7 +32,6 @@ class LoginCubit extends Cubit<LoginState> {
       case Success<LoginResponse>():
         emit(LoginState.loginSuccess(response.data));
 
-        
         if (response.data.token != null) {
           await BrandPrefs.setToken(response.data.token!);
         }
@@ -40,10 +39,6 @@ class LoginCubit extends Cubit<LoginState> {
         getIt
             .get<SharedPreferences>()
             .setString('token', response.data.token ?? '');
-
-        
-
-
 
         break;
       case Failure():

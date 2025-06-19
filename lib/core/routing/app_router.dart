@@ -16,6 +16,7 @@ import 'package:nile_brand/features/User/category/presentation/cubits/create_rev
 import 'package:nile_brand/features/User/category/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:nile_brand/features/User/chat/presentation/views/user_owner_chat.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/cubit/get_my_cart_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/get_wish_list_cubit/get_wish_list_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -296,7 +297,10 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.myCart,
-                builder: (context, state) => const MyCartView(),
+                builder: (context, state) => BlocProvider(
+                  create: (context) => getIt.get<GetMyCartCubit>(),
+                  child: const MyCartView(),
+                ),
               ),
             ],
           ),

@@ -2,15 +2,15 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:nile_brand/core/utils/service_locator.dart';
-import 'package:nile_brand/features/User/home/domain/repo/home_repo.dart';
+import 'package:nile_brand/features/User/home/data/repo/category_repo_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../../core/networking/api_result.dart';
 import '../../../data/models/category_model.dart';
 import 'get_category_state.dart';
 
 class GetCategoryCubit extends Cubit<GetCategoryState> {
-  final HomeRepo _repo;
-  GetCategoryCubit(this._repo) : super(GetCategoryState.initial());
+  final CategoryRepoImpl _repo;
+  GetCategoryCubit(this._repo) : super(const GetCategoryState.initial());
   int limit = 20;
   int page = 0;
   bool hasMore = true;
@@ -24,9 +24,9 @@ class GetCategoryCubit extends Cubit<GetCategoryState> {
       page = 1;
       hasMore = true;
       categoryList.clear();
-      emit(GetCategoryState.categoryLoading());
+      emit(const GetCategoryState.categoryLoading());
     } else {
-      emit(GetCategoryState.categoryPaginationLoading());
+      emit(const GetCategoryState.categoryPaginationLoading());
     }
     final response = await _repo.getCategories(limit: limit, page: page);
     switch (response) {

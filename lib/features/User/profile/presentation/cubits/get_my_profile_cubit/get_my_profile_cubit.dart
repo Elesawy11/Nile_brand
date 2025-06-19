@@ -6,9 +6,9 @@ import 'get_my_profile_state.dart';
 
 class GetMyProfileCubit extends Cubit<GetMyProfileState> {
   final MyProfileRepoImpl _repo;
-  GetMyProfileCubit(this._repo) : super(GetMyProfileState.initial());
+  GetMyProfileCubit(this._repo) : super(const GetMyProfileState.initial());
   Future<void> getMyProfile() async {
-    emit(GetMyProfileState.getMyProfileLoading());
+    emit(const GetMyProfileState.getMyProfileLoading());
     final response = await _repo.getMyProfile();
 
     switch (response) {
