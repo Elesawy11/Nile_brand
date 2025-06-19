@@ -9,29 +9,29 @@ import 'checkout_text_widget.dart';
 class CartCheckoutWidget extends StatelessWidget {
   const CartCheckoutWidget({
     super.key,
+    required this.price,
   });
-
+  final String price;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         verticalSpace(22),
-        const CheckoutTextWidget(
+        CheckoutTextWidget(
           subtotal: 'Subtotal',
-          total: '700 LE',
+          total: '$price LE',
           subColor: ColorManager.gray8C,
         ),
         verticalSpace(18),
-
         Divider(
           color: ColorManager.gray8C,
           thickness: 1,
           endIndent: 26.w,
           indent: 26.w,
         ),
-        const CheckoutTextWidget(
+        CheckoutTextWidget(
           subtotal: 'Total',
-          total: '700 LE',
+          total: '$price LE',
         ),
         verticalSpace(32),
         SizedBox(

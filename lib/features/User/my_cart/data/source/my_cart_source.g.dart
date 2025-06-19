@@ -12,7 +12,7 @@ class _MyCartSource implements MyCartSource {
   _MyCartSource(
     this._dio, {
     this.baseUrl,
-    // this.errorLogger,
+    this.errorLogger,
   }) {
     baseUrl ??= 'https://nile-brands.up.railway.app/api/v1/';
   }
@@ -21,7 +21,7 @@ class _MyCartSource implements MyCartSource {
 
   String? baseUrl;
 
-  // final ParseErrorLogger? errorLogger;
+  final ParseErrorLogger? errorLogger;
 
   @override
   Future<dynamic> getMyCart(

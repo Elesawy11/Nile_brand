@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/color_manager.dart';
+import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/spacer.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/core/widgets/app_text_button.dart';
@@ -19,9 +20,11 @@ class MyCartView extends StatelessWidget {
     context.read<GetMyCartCubit>().getMyCart();
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.white,
         title: Text(
           'My Cart',
-          style: Styles.font24W500,
+          style: Styles.font24W500.copyWith(color: Colors.black),
         ),
         centerTitle: true,
       ),
@@ -57,11 +60,7 @@ class MyCartView extends StatelessWidget {
                             ),
                           ),
                           SliverToBoxAdapter(
-                            child: Column(
-                              children: [
-                                verticalSpace(18),
-                              ],
-                            ),
+                            child: verticalSpace(18),
                           ),
                           SliverList.builder(
                             itemBuilder: (context, index) {
@@ -77,7 +76,7 @@ class MyCartView extends StatelessWidget {
                             itemCount: state.myCart.cartItems?.length ?? 0,
                           ),
                           SliverToBoxAdapter(
-                            child: verticalSpace(18),
+                            child: 18.vs,
                           ),
                           SliverToBoxAdapter(
                             child: Container(
@@ -95,9 +94,11 @@ class MyCartView extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              child: const CartCheckoutWidget(),
+                              child: CartCheckoutWidget(
+                                price: state.myCart.totalPrice.toString(),
+                              ),
                             ),
-                          )
+                          ),
                         ],
                       )
                     : state is GetMyCartError

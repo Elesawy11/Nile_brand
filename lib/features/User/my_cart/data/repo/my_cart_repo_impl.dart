@@ -17,8 +17,8 @@ class MyCartRepoImpl {
   Future<ApiResult<MyCartModel>> getMyCart() async {
     try {
       final response = await _source.getMyCart(token);
-      // getMyCartProducts(data: response['data']['cartItems']);
-      return ApiResult.success(response['data']);
+      final myCart = MyCartModel.fromJson(response['data']);
+      return ApiResult.success(myCart);
     } catch (e) {
       return ApiResult.failure(ErrorHandler.handle(e));
     }
