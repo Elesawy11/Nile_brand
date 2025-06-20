@@ -6,9 +6,11 @@ import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/spacer.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/core/widgets/app_text_button.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_cubit.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_state.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/views/widgets/empty_wishlist_view.dart';
+import '../cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_state.dart';
 import 'widgets/cart_checkout_widget.dart';
 import 'widgets/my_cart_item_widget.dart';
 
@@ -42,18 +44,31 @@ class MyCartView extends StatelessWidget {
                     ? CustomScrollView(
                         slivers: [
                           SliverToBoxAdapter(
-                            child: Align(
-                              alignment: Alignment.centerRight,
-                              child: Padding(
-                                padding: EdgeInsets.only(right: 12.w),
-                                child: SizedBox(
-                                  width: 100.w,
-                                  height: 38.h,
-                                  child: AppTextButton(
-                                    text: 'clear all',
-                                    onPressed: () {},
-                                    backgroundColor: ColorManager.mainColor,
-                                    borderRadius: 12.r,
+                            child: BlocListener<DeleteProductFromMyCartCubit,
+                                DeleteProductFromMyCartState>(
+                              listener: (context, state) {
+                                if (state is DeleteProductSuccess) {
+                                  context.read<GetMyCartCubit>().getMyCart();
+                                }
+                              },
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Padding(
+                                  padding: EdgeInsets.only(right: 12.w),
+                                  child: SizedBox(
+                                    width: 100.w,
+                                    height: 38.h,
+                                    child: AppTextButton(
+                                      text: 'clear all',
+                                      onPressed: () {
+                                        context
+                                            .read<
+                                                DeleteProductFromMyCartCubit>()
+                                            .deleteMyCart();
+                                      },
+                                      backgroundColor: ColorManager.mainColor,
+                                      borderRadius: 12.r,
+                                    ),
                                   ),
                                 ),
                               ),

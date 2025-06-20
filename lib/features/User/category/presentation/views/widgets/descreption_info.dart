@@ -51,11 +51,12 @@ class DescreptionInfo extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text('Prdouct add successfully'),
                       ));
+
                       context.read<GetMyCartCubit>().getMyCart();
                     } else if (state is AddProductError) {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        // content: Text('Prdouct not added'),
-                        content: Text(state.error),
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('Prdouct not added'),
+                        // content: Text(state.error),
                       ));
                     }
                   },

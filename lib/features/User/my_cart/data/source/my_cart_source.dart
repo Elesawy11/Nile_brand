@@ -20,9 +20,12 @@ abstract class MyCartSource {
     @Path('id') String id,
   );
 
+  @DELETE(ApiConstants.carts)
+  Future<dynamic> deleteMyCart(
+    @Header('Authorization') String token,
+  );
+
   @POST(ApiConstants.carts)
   Future<dynamic> addProductToCart(
-    @Header('Authorization') String token,
-    @Body() Map<String,dynamic> body
-  );
+      @Header('Authorization') String token, @Body() Map<String, dynamic> body);
 }

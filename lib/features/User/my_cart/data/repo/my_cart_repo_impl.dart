@@ -38,6 +38,15 @@ class MyCartRepoImpl {
     }
   }
 
+  Future<ApiResult> deleteMyCart() async {
+    try {
+      final response = await _source.deleteMyCart(token);
+      return ApiResult.success(response);
+    } on Exception catch (e) {
+      return ApiResult.failure(ErrorHandler.handle(e));
+    }
+  }
+
   Future<ApiResult> addProductToCart({required String productId}) async {
     try {
       final response =

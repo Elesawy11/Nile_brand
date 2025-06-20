@@ -38,33 +38,6 @@ class GetMyCartCubit extends Cubit<GetMyCartState> {
     }
   }
 
-  Future<void> deleteProductFromMyCart({required String productId}) async {
-    // emit(const GetMyCartState.getMyCartLoading());
-    final response = await _repo.deleteProductFromMyCart(productId: productId);
-    switch (response) {
-      case Success():
-        final List<CartProductModel> productsList =
-            response.data.cartItems ?? [];
-        // getMyCartProducts(data: response.data.cartItems ?? []);
-        emit(
-          GetMyCartState.getMyCartSuccess(
-            myCart: response.data,
-            productsList: productsList,
-          ),
-        );
-
-        break;
-
-      case Failure():
-        emit(
-          GetMyCartState.getMyCartError(
-            error: response.errorHandler.apiErrorModel.error?.message ??
-                'unknown error',
-          ),
-        );
-      default:
-    }
-  }
 
   static List<CartProductModel> getMyCartProducts(
       {required List<Map<String, dynamic>> data}) {

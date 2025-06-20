@@ -28,4 +28,23 @@ class DeleteProductFromMyCartCubit extends Cubit<DeleteProductFromMyCartState> {
         );
     }
   }
+
+  Future<void> deleteMyCart() async {
+    emit(const DeleteProductFromMyCartState.deleteProductLoading());
+    final response = await _repo.deleteMyCart();
+
+    switch (response) {
+      case Success():
+        emit(const DeleteProductFromMyCartState.deleteProductSuccess());
+
+        break;
+      case Failure():
+        emit(
+          DeleteProductFromMyCartState.deleteProductError(
+            error: response.errorHandler.apiErrorModel.error?.message ??
+                "unkown error",
+          ),
+        );
+    }
+  }
 }
