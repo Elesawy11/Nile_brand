@@ -9,7 +9,7 @@ part of 'my_cart_model.dart';
 MyCartModel _$MyCartModelFromJson(Map<String, dynamic> json) => MyCartModel(
       sId: json['sId'] as String?,
       cartItems: (json['cartItems'] as List<dynamic>?)
-          ?.map((e) => e as Map<String, dynamic>)
+          ?.map((e) => CartProductModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       user: json['user'] as String?,
       createdAt: json['createdAt'] as String?,

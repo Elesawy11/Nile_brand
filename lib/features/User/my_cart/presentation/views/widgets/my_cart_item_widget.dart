@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
+import 'package:nile_brand/features/User/my_cart/data/models/cart_product_model.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/cubit/get_my_cart_cubit.dart';
 import '../../../../../../core/utils/assets.dart';
 import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/spacer.dart';
@@ -10,35 +13,40 @@ import 'increase_and_decrease_icon_widget.dart';
 class MyCartItemWidget extends StatelessWidget {
   const MyCartItemWidget({
     super.key,
+    required this.cartProduct,
   });
-
+  final CartProductModel cartProduct;
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width*.9,
+      width: MediaQuery.of(context).size.width * .9,
       height: 144.h,
       clipBehavior: Clip.hardEdge,
       // padding: EdgeInsets.only(right: 5.w),
       decoration: BoxDecoration(
-        color:Colors.white,
-        borderRadius: BorderRadius.circular(15.r),
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(0,0),
-            color: Colors.black.withValues(alpha: .4),
-            blurRadius: 4.r
-          )
-        ]
-
-      ),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15.r),
+          boxShadow: [
+            BoxShadow(
+                offset: const Offset(0, 0),
+                color: Colors.black.withValues(alpha: .4),
+                blurRadius: 4.r)
+          ]),
       child: Row(
         children: [
-          Image.asset(
-            Assets.imagesTestItem,
-            width: 127.w,
-            height: 144.h,
-            fit: BoxFit.cover,
-          ),
+          cartProduct.product?.coverImage == null
+              ? Image.asset(
+                  Assets.imagesNotFoundImage,
+                  width: 127.w,
+                  height: 144.h,
+                  fit: BoxFit.cover,
+                )
+              : Image.network(
+                  cartProduct.product!.coverImage!,
+                  width: 127.w,
+                  height: 144.h,
+                  fit: BoxFit.cover,
+                ),
           horizontalSpace(6),
           SizedBox(
             width: MediaQuery.of(context).size.width - (127.w + 12 * 2.w + 6.w),
@@ -51,14 +59,17 @@ class MyCartItemWidget extends StatelessWidget {
                     SizedBox(
                       width: 187.w,
                       child: Text(
-                        'Graceful Charm Dress',
+                        cartProduct.product?.name ?? '',
                         overflow: TextOverflow.ellipsis,
                         style: Styles.font20W400,
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        context.read<GetMyCartCubit>().deleteProductFromMyCart(
+                            productId: cartProduct.sId ?? '');
+                      },
                       child: Icon(
                         Icons.close,
                         color: const Color.fromARGB(255, 194, 30, 19),
@@ -70,15 +81,14 @@ class MyCartItemWidget extends StatelessWidget {
                 ),
                 verticalSpace(7),
                 Text(
-                  'clothes',
+                  cartProduct.product?.category?.name ?? '',
                   style: Styles.font16W400.copyWith(
                     color: ColorManager.subText,
                   ),
                 ),
                 Expanded(
                   child: Text(
-                    
-                    'Elegant black dress featuring a sleek silhouette, designed with premium',
+                    cartProduct.product?.brand?.name ?? '',
                     style: Styles.font16W400,
                   ),
                 ),
@@ -88,10 +98,13 @@ class MyCartItemWidget extends StatelessWidget {
                     // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
-                        '120.00 LE',
-                        style: Styles.font20W400.copyWith(color: ColorManager.mainColor,fontWeight: FontWeight.w600,fontSize: 18.sp),
+                        '${cartProduct.price} LE',
+                        style: Styles.font20W400.copyWith(
+                            color: ColorManager.mainColor,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18.sp),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Row(
                         children: [
                           IncreaseAndDecreaseIconWidget(
@@ -100,7 +113,7 @@ class MyCartItemWidget extends StatelessWidget {
                           ),
                           horizontalSpace(5),
                           Text(
-                            '1',
+                            cartProduct.quantity.toString(),
                             style: Styles.font14W400,
                           ),
                           horizontalSpace(5),

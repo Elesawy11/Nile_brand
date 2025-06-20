@@ -70,7 +70,9 @@ class MyCartView extends StatelessWidget {
                                   right: 12.w,
                                   bottom: 18.h,
                                 ),
-                                child: const MyCartItemWidget(),
+                                child: MyCartItemWidget(
+                                  cartProduct: state.productsList[index],
+                                ),
                               );
                             },
                             itemCount: state.myCart.cartItems?.length ?? 0,
@@ -102,7 +104,10 @@ class MyCartView extends StatelessWidget {
                         ],
                       )
                     : state is GetMyCartError
-                        ? const EmptyWishlistView()
+                        ? const EmptyWishlistView(
+                            message:
+                                'Start exploring and add your product items to your cart...',
+                          )
                         : const SizedBox();
           },
         ),

@@ -24,12 +24,15 @@ class MyCartRepoImpl {
     }
   }
 
-  //  List<ProductModel> getMyCartProducts(
-  //     {required List<Map<dynamic, dynamic>> data}) {
-  //   List<ProductModel> products = [];
-  //   for (var element in data) {
-  //     products.add(ProductModel.fromJson(element['product']));
-  //   }
-  //   return products;
-  // }
+  Future<ApiResult<MyCartModel>> deleteProductFromMyCart(
+      {required String productId}) async {
+    try {
+      final response = await _source.deleteProductFromMyCart(token, productId);
+      final myCart = MyCartModel.fromJson(response['data']);
+
+      return ApiResult.success(myCart);
+    } catch (e) {
+      return ApiResult.failure(ErrorHandler.handle(e));
+    }
+  }
 }

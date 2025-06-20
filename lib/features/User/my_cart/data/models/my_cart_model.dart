@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:nile_brand/features/User/my_cart/data/models/cart_product_model.dart';
 
 import '../../../category/data/models/product_model.dart';
 part 'my_cart_model.g.dart';
@@ -6,7 +7,7 @@ part 'my_cart_model.g.dart';
 @JsonSerializable()
 class MyCartModel {
   String? sId;
-  List<Map<dynamic,dynamic>>? cartItems;
+  List<CartProductModel>? cartItems;
   String? user;
   String? createdAt;
   String? updatedAt;
@@ -26,14 +27,3 @@ class MyCartModel {
       _$MyCartModelFromJson(json);
 }
 
-// @JsonSerializable()
-// class CartItems {
-//   ProductModel? product;
-//   int? quantity;
-//   double? price;
-//   String? sId;
-
-//   CartItems({this.product, this.quantity, this.price, this.sId});
-//   factory CartItems.fromJson(Map<String, dynamic> json) =>
-//       _$CartItemsFromJson(json);
-// }

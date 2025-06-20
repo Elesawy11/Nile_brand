@@ -59,12 +59,13 @@ class _Initial implements GetMyCartState {
 
 class GetMyCartSuccess implements GetMyCartState {
   const GetMyCartSuccess(
-      {required this.myCart, required final List<ProductModel> productsList})
+      {required this.myCart,
+      required final List<CartProductModel> productsList})
       : _productsList = productsList;
 
   final MyCartModel myCart;
-  final List<ProductModel> _productsList;
-  List<ProductModel> get productsList {
+  final List<CartProductModel> _productsList;
+  List<CartProductModel> get productsList {
     if (_productsList is EqualUnmodifiableListView) return _productsList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_productsList);
@@ -104,7 +105,7 @@ abstract mixin class $GetMyCartSuccessCopyWith<$Res>
           GetMyCartSuccess value, $Res Function(GetMyCartSuccess) _then) =
       _$GetMyCartSuccessCopyWithImpl;
   @useResult
-  $Res call({MyCartModel myCart, List<ProductModel> productsList});
+  $Res call({MyCartModel myCart, List<CartProductModel> productsList});
 }
 
 /// @nodoc
@@ -130,7 +131,7 @@ class _$GetMyCartSuccessCopyWithImpl<$Res>
       productsList: null == productsList
           ? _self._productsList
           : productsList // ignore: cast_nullable_to_non_nullable
-              as List<ProductModel>,
+              as List<CartProductModel>,
     ));
   }
 }

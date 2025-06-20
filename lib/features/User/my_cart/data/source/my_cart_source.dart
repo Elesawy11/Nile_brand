@@ -13,4 +13,10 @@ abstract class MyCartSource {
     @Header('Authorization') String token, {
     @Query('limit') int limit = 50000,
   });
+
+  @DELETE('${ApiConstants.carts}/{id}')
+  Future<dynamic> deleteProductFromMyCart(
+    @Header('Authorization') String token,
+    @Path('id') String id,
+  );
 }
