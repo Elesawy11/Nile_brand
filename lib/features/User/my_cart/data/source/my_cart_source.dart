@@ -19,4 +19,10 @@ abstract class MyCartSource {
     @Header('Authorization') String token,
     @Path('id') String id,
   );
+
+  @POST(ApiConstants.carts)
+  Future<dynamic> addProductToCart(
+    @Header('Authorization') String token,
+    @Body() Map<String,dynamic> body
+  );
 }

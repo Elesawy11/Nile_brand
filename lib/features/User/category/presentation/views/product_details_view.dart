@@ -52,6 +52,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
     List<Widget> productInfo = [
       DescreptionInfo(
         description: widget.product.description,
+        productId: widget.product.id ?? '',
       ),
       ReviewsInfo(
         productId: widget.product.id!,

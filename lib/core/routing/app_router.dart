@@ -16,7 +16,8 @@ import 'package:nile_brand/features/User/category/presentation/cubits/create_rev
 import 'package:nile_brand/features/User/category/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:nile_brand/features/User/chat/presentation/views/user_owner_chat.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
-import 'package:nile_brand/features/User/my_cart/presentation/cubits/cubit/get_my_cart_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/get_wish_list_cubit/get_wish_list_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -31,6 +32,8 @@ import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedbac
 import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_profile_cubit/get_my_profile_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/update_password_cubit/update_password_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/views/edit_password.dart';
+
+import '../../features/User/my_cart/presentation/cubits/add_product_to_cart_cubit/add_product_to_cart_cubit.dart';
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -70,6 +73,9 @@ abstract class AppRouter {
             ),
             BlocProvider(
               create: (context) => getIt.get<CreateReviewCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt.get<AddProductToCartCubit>(),
             ),
           ],
           child: ProductDetailsView(
@@ -297,8 +303,16 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.myCart,
-                builder: (context, state) => BlocProvider(
-                  create: (context) => getIt.get<GetMyCartCubit>(),
+                builder: (context, state) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => getIt.get<GetMyCartCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) =>
+                          getIt.get<DeleteProductFromMyCartCubit>(),
+                    ),
+                  ],
                   child: const MyCartView(),
                 ),
               ),

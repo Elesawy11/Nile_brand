@@ -1,6 +1,5 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nile_brand/features/User/category/data/models/product_model.dart';
 import 'package:nile_brand/features/User/my_cart/data/models/cart_product_model.dart';
 
 import '../../../data/models/my_cart_model.dart';

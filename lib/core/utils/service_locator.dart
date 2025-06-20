@@ -17,7 +17,8 @@ import 'package:nile_brand/features/User/home/presentation/cubits/get_category_c
 import 'package:nile_brand/features/User/chatbot/presentation/cubits/cubit/chatbot_scroll_cubit.dart';
 import 'package:nile_brand/features/User/my_cart/data/repo/my_cart_repo_impl.dart';
 import 'package:nile_brand/features/User/my_cart/data/source/my_cart_source.dart';
-import 'package:nile_brand/features/User/my_cart/presentation/cubits/cubit/get_my_cart_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
 import 'package:nile_brand/features/User/profile/data/api/my_profile_api_source.dart';
 import 'package:nile_brand/features/User/profile/data/repo_impl/my_profile_repo_impl.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedback_cubit/add_feedback_cubit.dart';
@@ -37,6 +38,7 @@ import '../../features/User/category/data/api/sub_category_source.dart';
 import '../../features/User/category/data/repo/sub_category_repo_impl.dart';
 import '../../features/User/category/presentation/cubits/get_sub_categories_cubit/get_sub_categorys_cubit.dart';
 import '../../features/User/home/data/repo/category_repo_impl.dart';
+import '../../features/User/my_cart/presentation/cubits/add_product_to_cart_cubit/add_product_to_cart_cubit.dart';
 import '../../features/User/profile/presentation/cubits/update_password_cubit/update_password_cubit.dart';
 
 final getIt = GetIt.instance;
@@ -69,8 +71,7 @@ Future<void> serviceLocator() async {
   // category Features
   HomeRemoteDataSource categorySource = HomeRemoteDataSource(dio);
   getIt.registerLazySingleton(() => CategoryRepoImpl(categorySource));
-  getIt.registerFactory(
-      () => GetCategoryCubit(getIt.get()));
+  getIt.registerFactory(() => GetCategoryCubit(getIt.get()));
   // sub category Features
   getIt.registerLazySingleton(() => SubCategorySource(dio));
   getIt.registerLazySingleton(() => SubCategoryRepoImpl(getIt.get()));
@@ -105,6 +106,8 @@ Future<void> serviceLocator() async {
   getIt.registerLazySingleton(() => MyCartSource(dio));
   getIt.registerLazySingleton(() => MyCartRepoImpl(getIt.get()));
   getIt.registerFactory(() => GetMyCartCubit(getIt.get()));
+  getIt.registerFactory(() => AddProductToCartCubit(getIt.get()));
+  getIt.registerFactory(() => DeleteProductFromMyCartCubit(getIt.get()));
   // Chatbot Features
   getIt.registerLazySingleton(() => ChatbotScrollCubit());
 }

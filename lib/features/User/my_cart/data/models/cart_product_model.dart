@@ -7,9 +7,10 @@ class CartProductModel {
   ProductModel? product;
   int? quantity;
   double? price;
-  String? sId;
+  @JsonKey(name: '_id')
+  String? id;
 
-  CartProductModel({this.product, this.quantity, this.price, this.sId});
+  CartProductModel({this.product, this.quantity, this.price, this.id});
   factory CartProductModel.fromJson(Map<String, dynamic> json) =>
       _$CartProductModelFromJson(json);
 

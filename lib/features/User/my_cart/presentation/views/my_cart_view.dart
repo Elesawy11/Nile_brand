@@ -6,8 +6,8 @@ import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/spacer.dart';
 import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/core/widgets/app_text_button.dart';
-import 'package:nile_brand/features/User/my_cart/presentation/cubits/cubit/get_my_cart_cubit.dart';
-import 'package:nile_brand/features/User/my_cart/presentation/cubits/cubit/get_my_cart_state.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_state.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/views/widgets/empty_wishlist_view.dart';
 import 'widgets/cart_checkout_widget.dart';
 import 'widgets/my_cart_item_widget.dart';
@@ -97,7 +97,9 @@ class MyCartView extends StatelessWidget {
                                 ),
                               ),
                               child: CartCheckoutWidget(
-                                price: state.myCart.totalPrice.toString(),
+                                price: state.myCart.totalPrice
+                                        ?.toStringAsFixed(2) ??
+                                    '',
                               ),
                             ),
                           ),

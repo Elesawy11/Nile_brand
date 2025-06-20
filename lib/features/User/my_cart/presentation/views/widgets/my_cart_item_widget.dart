@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/features/User/my_cart/data/models/cart_product_model.dart';
-import 'package:nile_brand/features/User/my_cart/presentation/cubits/cubit/get_my_cart_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
 import '../../../../../../core/utils/assets.dart';
 import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/spacer.dart';
@@ -67,12 +70,16 @@ class MyCartItemWidget extends StatelessWidget {
                     const Spacer(),
                     InkWell(
                       onTap: () {
-                        context.read<GetMyCartCubit>().deleteProductFromMyCart(
-                            productId: cartProduct.sId ?? '');
+                        // log('my product id =:::::>>><><><><>< ${cartProduct.id}');
+                        context
+                            .read<DeleteProductFromMyCartCubit>()
+                            .deleteProductFromMyCart(
+                                productId: cartProduct.id ?? '');
+                        context.read<GetMyCartCubit>().getMyCart();
                       },
                       child: Icon(
                         Icons.close,
-                        color: const Color.fromARGB(255, 194, 30, 19),
+                        color: const Color.fromARGB(255, 194, 19, 19),
                         size: 19.r,
                       ),
                     ),
