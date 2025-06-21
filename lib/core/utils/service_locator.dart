@@ -19,6 +19,7 @@ import 'package:nile_brand/features/User/my_cart/data/repo/my_cart_repo_impl.dar
 import 'package:nile_brand/features/User/my_cart/data/source/my_cart_source.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_cubit.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/update_quntity_of_product_cart_cubit/update_quntity_of_product_cart_cubit.dart';
 import 'package:nile_brand/features/User/profile/data/api/my_profile_api_source.dart';
 import 'package:nile_brand/features/User/profile/data/repo_impl/my_profile_repo_impl.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedback_cubit/add_feedback_cubit.dart';
@@ -110,8 +111,9 @@ Future<void> serviceLocator() async {
   getIt.registerLazySingleton(() => MyCartSource(dio));
   getIt.registerLazySingleton(() => MyCartRepoImpl(getIt.get()));
   getIt.registerLazySingleton(() => GetMyCartCubit(getIt.get()));
-  getIt.registerFactory(() => AddProductToCartCubit(getIt.get()));
+  getIt.registerLazySingleton(() => AddProductToCartCubit(getIt.get()));
   getIt.registerLazySingleton(() => DeleteProductFromMyCartCubit(getIt.get()));
+  getIt.registerFactory(() => UpdateQuntityOfProductCartCubit(getIt.get()));
   // Chatbot Features
   getIt.registerLazySingleton(() => ChatbotScrollCubit());
 }

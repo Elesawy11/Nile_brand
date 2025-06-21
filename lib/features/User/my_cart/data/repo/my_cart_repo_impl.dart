@@ -59,4 +59,15 @@ class MyCartRepoImpl {
       return ApiResult.failure(ErrorHandler.handle(e));
     }
   }
+
+  Future<ApiResult> updateQuntityOfProduct(
+      {required String productId, required int quntity}) async {
+    try {
+      final response = await _source.updateQuntityOfProduct(
+          token, {'quantity': quntity}, productId);
+      return ApiResult.success(response);
+    } catch (e) {
+      return ApiResult.failure(ErrorHandler.handle(e));
+    }
+  }
 }

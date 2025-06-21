@@ -28,4 +28,11 @@ abstract class MyCartSource {
   @POST(ApiConstants.carts)
   Future<dynamic> addProductToCart(
       @Header('Authorization') String token, @Body() Map<String, dynamic> body);
+
+  @PUT('${ApiConstants.carts}/{id}')
+  Future<dynamic> updateQuntityOfProduct(
+    @Header('Authorization') String token,
+    @Body() Map<String, dynamic> body,
+    @Path() String id,
+  );
 }
