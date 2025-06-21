@@ -19,7 +19,7 @@ class MyCartView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<GetMyCartCubit>().getMyCart();
+    // context.read<GetMyCartCubit>().getMyCart();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,

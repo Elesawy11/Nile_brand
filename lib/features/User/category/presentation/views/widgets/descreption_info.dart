@@ -47,13 +47,13 @@ class DescreptionInfo extends StatelessWidget {
               children: [
                 BlocConsumer<AddProductToCartCubit, AddProductToCartState>(
                   listener: (context, state) {
-                    if (state is AddProductSuccess) {
+                    if (state is AddProductToCartSuccess) {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text('Prdouct add successfully'),
                       ));
 
-                      context.read<GetMyCartCubit>().getMyCart();
-                    } else if (state is AddProductError) {
+                      getIt.get<GetMyCartCubit>().getMyCart();
+                    } else if (state is AddProductToCartError) {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text('Prdouct not added'),
                         // content: Text(state.error),
@@ -67,7 +67,7 @@ class DescreptionInfo extends StatelessWidget {
                             .read<AddProductToCartCubit>()
                             .addProductToCart(productId: productId);
 
-                        context.read<GetMyCartCubit>().getMyCart();
+                        // context.read<GetMyCartCubit>().getMyCart();
                       },
                       child: Container(
                         width: 56.w,
@@ -77,7 +77,7 @@ class DescreptionInfo extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8.r),
                         ),
                         child: Center(
-                          child: state is AddProductError
+                          child: state is AddProductToCartError
                               ? const CircularProgressIndicator()
                               : Image.asset(
                                   Assets.imagesCartIcon,

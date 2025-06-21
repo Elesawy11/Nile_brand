@@ -25,6 +25,8 @@ import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedbac
 import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_profile_cubit/get_my_profile_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/data/api/wish_list_source.dart';
 import 'package:nile_brand/features/User/wish_list/data/repo_impl/wish_list_repo_impl.dart';
+import 'package:nile_brand/features/User/wish_list/presentation/cubits/add_product_to_wishlist_cubit/add_product_to_wishlist_cubit.dart';
+import 'package:nile_brand/features/User/wish_list/presentation/cubits/delete_from_wishlist_cubit/delete_from_wishlist_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/get_wish_list_cubit/get_wish_list_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/User/auth/data/repo/forgot_pass_repo.dart';
@@ -100,14 +102,16 @@ Future<void> serviceLocator() async {
 
   getIt.registerLazySingleton(() => WishListSource(dio));
   getIt.registerLazySingleton(() => WishListRepoImpl(getIt.get()));
-  getIt.registerLazySingleton(() => GetWishListCubit(getIt.get()));
+  getIt.registerFactory(() => GetWishListCubit(getIt.get()));
+  getIt.registerFactory(() => AddProductToWishlistCubit(getIt.get()));
+  getIt.registerFactory(() => DeleteFromWishlistCubit(getIt.get()));
 
   // MyCart Features
   getIt.registerLazySingleton(() => MyCartSource(dio));
   getIt.registerLazySingleton(() => MyCartRepoImpl(getIt.get()));
   getIt.registerLazySingleton(() => GetMyCartCubit(getIt.get()));
   getIt.registerFactory(() => AddProductToCartCubit(getIt.get()));
-  getIt.registerFactory(() => DeleteProductFromMyCartCubit(getIt.get()));
+  getIt.registerLazySingleton(() => DeleteProductFromMyCartCubit(getIt.get()));
   // Chatbot Features
   getIt.registerLazySingleton(() => ChatbotScrollCubit());
 }

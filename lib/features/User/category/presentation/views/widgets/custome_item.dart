@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/assets.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
@@ -6,16 +7,31 @@ import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/features/User/category/data/models/product_model.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/routing/routes.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/add_product_to_cart_cubit/add_product_to_cart_cubit.dart';
+import 'package:nile_brand/features/User/wish_list/presentation/cubits/add_product_to_wishlist_cubit/add_product_to_wishlist_cubit.dart';
+import 'package:nile_brand/features/User/wish_list/presentation/cubits/delete_from_wishlist_cubit/delete_from_wishlist_cubit.dart';
+import 'package:nile_brand/features/User/wish_list/presentation/cubits/get_wish_list_cubit/get_wish_list_cubit.dart';
 
-class CustomeItem extends StatelessWidget {
+import '../../../../my_cart/presentation/cubits/add_product_to_cart_cubit/add_product_to_cart_state.dart';
+import '../../../../wish_list/presentation/cubits/add_product_to_wishlist_cubit/add_product_to_wishlist_state.dart';
+import '../../../../wish_list/presentation/cubits/delete_from_wishlist_cubit/delete_from_wishlist_state.dart';
+
+class CustomeItem extends StatefulWidget {
   const CustomeItem({super.key, required this.product});
   final ProductModel product;
 
   @override
+  State<CustomeItem> createState() => _CustomeItemState();
+}
+
+class _CustomeItemState extends State<CustomeItem> {
+  final ValueNotifier<bool> _isFavorite = ValueNotifier<bool>(false);
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.push(Routes.productDetails, extra: product);
+        context.push(Routes.productDetails,
+            extra: {'product': widget.product, 'isFavorite': _isFavorite});
       },
       child: Container(
         margin: EdgeInsets.only(top: 5.h, right: 5.w, left: 5.w),
@@ -26,12 +42,12 @@ class CustomeItem extends StatelessWidget {
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Spacer(),
+            const Spacer(),
             isValidUri(
-              product.images?.first ?? '',
+              widget.product.images?.first ?? '',
             )
                 ? Image.network(
-                    product.images!.first,
+                    widget.product.images!.first,
                     fit: BoxFit.fill,
                   )
                 : SizedBox(
@@ -54,16 +70,44 @@ class CustomeItem extends StatelessWidget {
                     width: 86.w,
                     margin: EdgeInsets.only(top: 7.h),
                     child: Text(
-                      product.name ?? 'Not Found',
+                      widget.product.name ?? 'Not Found',
                       style: Styles.font14W400,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     ),
                   ),
-                  Image.asset(
-                    "assets/images/favorite_icon.png",
+                  SizedBox(
                     width: 18.r,
                     height: 18.r,
+                    child: ValueListenableBuilder<bool>(
+                      valueListenable: _isFavorite,
+                      builder: (context, value, child) {
+                        return InkWell(
+                          onTap: () {
+                            _isFavorite.value = !_isFavorite.value;
+                            if (value) {
+                              // context
+                              //     .read<DeleteFromWishlistCubit>()
+                              //     .deleteProductFromMyWishlist(
+                              //       productId: widget.product.id ?? '',
+                              //     );
+                            } else if (!value) {
+                              // context
+                              //     .read<AddProductToWishlistCubit>()
+                              //     .addProductToWishlist(
+                              //       productId: widget.product.id ?? '',
+                              //     );
+                            }
+                          },
+                          child: Icon(
+                            value
+                                ? Icons.favorite
+                                : Icons.favorite_border_rounded,
+                            color: value ? Colors.black : null,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -75,20 +119,14 @@ class CustomeItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '${product.price} L.E',
+                    '${widget.product.price} L.E',
                     style: Styles.font14W500,
                   ),
                   InkWell(
                     onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          backgroundColor: Colors.white,
-                          content: Text(
-                            "Added to cart",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                      );
+                      // context
+                      //     .read<AddProductToCartCubit>()
+                      //     .addProductToCart(productId: widget.product.id ?? '');
                     },
                     child: Image.asset(
                       "assets/images/cartIcon.png",
@@ -113,5 +151,11 @@ class CustomeItem extends StatelessWidget {
     } catch (e) {
       return false;
     }
+  }
+
+  @override
+  void dispose() {
+    _isFavorite.dispose(); // Clean up the ValueNotifier
+    super.dispose();
   }
 }

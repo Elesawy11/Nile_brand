@@ -26,7 +26,7 @@ class HomeView extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 12.w),
-              child: NotificationAndSearchWidget(),
+              child: const NotificationAndSearchWidget(),
             ),
             verticalSpace(16),
             Padding(
@@ -44,7 +44,7 @@ class HomeView extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: SizedBox(
                 height: 5.h,
-                child: Divider(
+                child: const Divider(
                   color: ColorManager.grayCA,
                   thickness: 1,
                 ),
@@ -102,7 +102,7 @@ class HomeView extends StatelessWidget {
                                   ),
                                   itemCount: 20,
                                   itemBuilder: (context, index) {
-                                    return ProductShimmer();
+                                    return const ProductShimmer();
                                   },
                                 ),
                               )

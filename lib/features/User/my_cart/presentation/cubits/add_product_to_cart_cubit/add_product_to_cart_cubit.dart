@@ -9,18 +9,18 @@ class AddProductToCartCubit extends Cubit<AddProductToCartState> {
       : super(const AddProductToCartState.initial());
   final MyCartRepoImpl _repo;
   Future<void> addProductToCart({required String productId}) async {
-    emit(const AddProductToCartState.addProductLoading());
+    emit(const AddProductToCartState.addProductToCartLoading());
 
     final response = await _repo.addProductToCart(productId: productId);
 
     switch (response) {
       case Success():
-        emit(const AddProductToCartState.addProductSuccess());
+        emit(const AddProductToCartState.addProductToCartSuccess());
 
         break;
       case Failure():
         emit(
-          AddProductToCartState.addProductError(
+          AddProductToCartState.addProductToCartError(
             error: response.errorHandler.apiErrorModel.error?.message ??
                 'unkown error',
           ),

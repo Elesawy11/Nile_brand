@@ -4,7 +4,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'add_product_to_cart_state.dart';
+part of 'add_product_to_wishlist_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,11 +14,12 @@ part of 'add_product_to_cart_state.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$AddProductToCartState {
+mixin _$AddProductToWishlistState {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AddProductToCartState);
+        (other.runtimeType == runtimeType &&
+            other is AddProductToWishlistState);
   }
 
   @override
@@ -26,19 +27,19 @@ mixin _$AddProductToCartState {
 
   @override
   String toString() {
-    return 'AddProductToCartState()';
+    return 'AddProductToWishlistState()';
   }
 }
 
 /// @nodoc
-class $AddProductToCartStateCopyWith<$Res> {
-  $AddProductToCartStateCopyWith(
-      AddProductToCartState _, $Res Function(AddProductToCartState) __);
+class $AddProductToWishlistStateCopyWith<$Res> {
+  $AddProductToWishlistStateCopyWith(
+      AddProductToWishlistState _, $Res Function(AddProductToWishlistState) __);
 }
 
 /// @nodoc
 
-class _Initial implements AddProductToCartState {
+class _Initial implements AddProductToWishlistState {
   const _Initial();
 
   @override
@@ -52,19 +53,19 @@ class _Initial implements AddProductToCartState {
 
   @override
   String toString() {
-    return 'AddProductToCartState.initial()';
+    return 'AddProductToWishlistState.initial()';
   }
 }
 
 /// @nodoc
 
-class AddProductToCartLoading implements AddProductToCartState {
-  const AddProductToCartLoading();
+class AddProductLoading implements AddProductToWishlistState {
+  const AddProductLoading();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AddProductToCartLoading);
+        (other.runtimeType == runtimeType && other is AddProductLoading);
   }
 
   @override
@@ -72,19 +73,19 @@ class AddProductToCartLoading implements AddProductToCartState {
 
   @override
   String toString() {
-    return 'AddProductToCartState.addProductToCartLoading()';
+    return 'AddProductToWishlistState.addProductLoading()';
   }
 }
 
 /// @nodoc
 
-class AddProductToCartSuccess implements AddProductToCartState {
-  const AddProductToCartSuccess();
+class AddProductSuccess implements AddProductToWishlistState {
+  const AddProductSuccess();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AddProductToCartSuccess);
+        (other.runtimeType == runtimeType && other is AddProductSuccess);
   }
 
   @override
@@ -92,30 +93,29 @@ class AddProductToCartSuccess implements AddProductToCartState {
 
   @override
   String toString() {
-    return 'AddProductToCartState.addProductToCartSuccess()';
+    return 'AddProductToWishlistState.addProductSuccess()';
   }
 }
 
 /// @nodoc
 
-class AddProductToCartError implements AddProductToCartState {
-  const AddProductToCartError({required this.error});
+class AddProductError implements AddProductToWishlistState {
+  const AddProductError({required this.error});
 
   final String error;
 
-  /// Create a copy of AddProductToCartState
+  /// Create a copy of AddProductToWishlistState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $AddProductToCartErrorCopyWith<AddProductToCartError> get copyWith =>
-      _$AddProductToCartErrorCopyWithImpl<AddProductToCartError>(
-          this, _$identity);
+  $AddProductErrorCopyWith<AddProductError> get copyWith =>
+      _$AddProductErrorCopyWithImpl<AddProductError>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is AddProductToCartError &&
+            other is AddProductError &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -124,35 +124,35 @@ class AddProductToCartError implements AddProductToCartState {
 
   @override
   String toString() {
-    return 'AddProductToCartState.addProductToCartError(error: $error)';
+    return 'AddProductToWishlistState.addProductError(error: $error)';
   }
 }
 
 /// @nodoc
-abstract mixin class $AddProductToCartErrorCopyWith<$Res>
-    implements $AddProductToCartStateCopyWith<$Res> {
-  factory $AddProductToCartErrorCopyWith(AddProductToCartError value,
-          $Res Function(AddProductToCartError) _then) =
-      _$AddProductToCartErrorCopyWithImpl;
+abstract mixin class $AddProductErrorCopyWith<$Res>
+    implements $AddProductToWishlistStateCopyWith<$Res> {
+  factory $AddProductErrorCopyWith(
+          AddProductError value, $Res Function(AddProductError) _then) =
+      _$AddProductErrorCopyWithImpl;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class _$AddProductToCartErrorCopyWithImpl<$Res>
-    implements $AddProductToCartErrorCopyWith<$Res> {
-  _$AddProductToCartErrorCopyWithImpl(this._self, this._then);
+class _$AddProductErrorCopyWithImpl<$Res>
+    implements $AddProductErrorCopyWith<$Res> {
+  _$AddProductErrorCopyWithImpl(this._self, this._then);
 
-  final AddProductToCartError _self;
-  final $Res Function(AddProductToCartError) _then;
+  final AddProductError _self;
+  final $Res Function(AddProductError) _then;
 
-  /// Create a copy of AddProductToCartState
+  /// Create a copy of AddProductToWishlistState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
     Object? error = null,
   }) {
-    return _then(AddProductToCartError(
+    return _then(AddProductError(
       error: null == error
           ? _self.error
           : error // ignore: cast_nullable_to_non_nullable

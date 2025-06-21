@@ -23,6 +23,38 @@ class WishListRepoImpl {
     }
   }
 
+  Future<ApiResult> addProductToWishlist({required String productId}) async {
+    try {
+      final response =
+          await _repo.addProductToWishList(token, {'product': productId});
+
+      return ApiResult.success(response);
+    } catch (e) {
+      return ApiResult.failure(ErrorHandler.handle(e));
+    }
+  }
+
+  Future<ApiResult> deleteProductFromMyCart({required String productId}) async {
+    try {
+      final response =
+          await _repo.deleteProductFromMyWishlist(token, productId);
+      
+
+      return ApiResult.success(response);
+    } catch (e) {
+      return ApiResult.failure(ErrorHandler.handle(e));
+    }
+  }
+
+  Future<ApiResult> deleteMyCart() async {
+    try {
+      final response = await _repo.deleteMywishlist(token);
+      return ApiResult.success(response);
+    } on Exception catch (e) {
+      return ApiResult.failure(ErrorHandler.handle(e));
+    }
+  }
+
   static List<ProductModel> getProductFromWishList(Map<String, dynamic> data) {
     List<ProductModel> wishListProducts = [];
 

@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/helpers/is_valid_uri.dart';
 import '../../../../../../core/utils/assets.dart';
 import '../../../../../../core/utils/color_manager.dart';
+import '../../../../wish_list/presentation/cubits/add_product_to_wishlist_cubit/add_product_to_wishlist_cubit.dart';
+import '../../../../wish_list/presentation/cubits/add_product_to_wishlist_cubit/add_product_to_wishlist_state.dart';
+import '../../../../wish_list/presentation/cubits/delete_from_wishlist_cubit/delete_from_wishlist_cubit.dart';
+import '../../../../wish_list/presentation/cubits/delete_from_wishlist_cubit/delete_from_wishlist_state.dart';
+import '../../../../wish_list/presentation/cubits/get_wish_list_cubit/get_wish_list_cubit.dart';
 
 class ProductImages extends StatefulWidget {
   final ValueNotifier<int> selectedColor;
   final String productImage;
+  final String productId;
+  final ValueNotifier<bool> isFavorite;
   const ProductImages(
-      {super.key, required this.selectedColor, required this.productImage});
+      {super.key,
+      required this.selectedColor,
+      required this.productImage,
+      required this.isFavorite,
+      required this.productId});
 
   @override
   State<ProductImages> createState() => _ProductImagesState();
@@ -36,11 +48,48 @@ class _ProductImagesState extends State<ProductImages> {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Image.asset(
-                Assets.imagesFavoriteIcon,
-              ),
+            ValueListenableBuilder<bool>(
+              valueListenable: widget.isFavorite,
+              builder: (context, value, child) {
+                return BlocListener<DeleteFromWishlistCubit,
+                    DeleteFromWishlistState>(
+                  listener: (context, state) {
+                    context.read<GetWishListCubit>().getWishListProduct();
+                  },
+                  child: BlocListener<AddProductToWishlistCubit,
+                      AddProductToWishlistState>(
+                    listener: (context, state) {
+                      context.read<GetWishListCubit>().getWishListProduct();
+                    },
+                    child: Align(
+                        alignment: Alignment.topLeft,
+                        child: InkWell(
+                          onTap: () {
+                            widget.isFavorite.value = !widget.isFavorite.value;
+                            if (value) {
+                              context
+                                  .read<DeleteFromWishlistCubit>()
+                                  .deleteProductFromMyWishlist(
+                                    productId: widget.productId,
+                                  );
+                            } else if (!value) {
+                              context
+                                  .read<AddProductToWishlistCubit>()
+                                  .addProductToWishlist(
+                                    productId: widget.productId,
+                                  );
+                            }
+                          },
+                          child: Icon(
+                            value
+                                ? Icons.favorite
+                                : Icons.favorite_border_rounded,
+                            color: value ? Colors.black : null,
+                          ),
+                        )),
+                  ),
+                );
+              },
             ),
             isValidUri(
               widget.productImage,

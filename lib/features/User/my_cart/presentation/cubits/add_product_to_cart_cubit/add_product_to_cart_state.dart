@@ -4,7 +4,7 @@ part 'add_product_to_cart_state.freezed.dart';
 @freezed
 class AddProductToCartState with _$AddProductToCartState {
   const factory AddProductToCartState.initial() = _Initial;
-  const factory AddProductToCartState.addProductLoading() = AddProductLoading;
-  const factory AddProductToCartState.addProductSuccess() = AddProductSuccess;
-  const factory AddProductToCartState.addProductError({required String error}) =AddProductError;
+  const factory AddProductToCartState.addProductToCartLoading() = AddProductToCartLoading;
+  const factory AddProductToCartState.addProductToCartSuccess() = AddProductToCartSuccess;
+  const factory AddProductToCartState.addProductToCartError({required String error}) =AddProductToCartError;
 }

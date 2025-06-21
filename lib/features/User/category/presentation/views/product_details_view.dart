@@ -15,8 +15,10 @@ import 'package:nile_brand/features/User/chat/presentation/views/user_owner_chat
 import '../../data/models/product_model.dart';
 
 class ProductDetailsView extends StatefulWidget {
-  const ProductDetailsView({super.key, required this.product});
+  const ProductDetailsView(
+      {super.key, required this.product, required this.isFavorite});
   final ProductModel product;
+  final ValueNotifier<bool> isFavorite;
   @override
   State<ProductDetailsView> createState() => _ProductDetailsViewState();
 }
@@ -105,6 +107,8 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
                     return Column(
                       children: [
                         ProductImages(
+                          productId: widget.product.id ?? '',
+                          isFavorite: widget.isFavorite,
                           selectedColor: selectedColor,
                           productImage:
                               widget.product.images![selectedColor.value],

@@ -4,7 +4,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'add_product_to_cart_state.dart';
+part of 'delete_from_wishlist_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,11 +14,11 @@ part of 'add_product_to_cart_state.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$AddProductToCartState {
+mixin _$DeleteFromWishlistState {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AddProductToCartState);
+        (other.runtimeType == runtimeType && other is DeleteFromWishlistState);
   }
 
   @override
@@ -26,19 +26,19 @@ mixin _$AddProductToCartState {
 
   @override
   String toString() {
-    return 'AddProductToCartState()';
+    return 'DeleteFromWishlistState()';
   }
 }
 
 /// @nodoc
-class $AddProductToCartStateCopyWith<$Res> {
-  $AddProductToCartStateCopyWith(
-      AddProductToCartState _, $Res Function(AddProductToCartState) __);
+class $DeleteFromWishlistStateCopyWith<$Res> {
+  $DeleteFromWishlistStateCopyWith(
+      DeleteFromWishlistState _, $Res Function(DeleteFromWishlistState) __);
 }
 
 /// @nodoc
 
-class _Initial implements AddProductToCartState {
+class _Initial implements DeleteFromWishlistState {
   const _Initial();
 
   @override
@@ -52,19 +52,19 @@ class _Initial implements AddProductToCartState {
 
   @override
   String toString() {
-    return 'AddProductToCartState.initial()';
+    return 'DeleteFromWishlistState.initial()';
   }
 }
 
 /// @nodoc
 
-class AddProductToCartLoading implements AddProductToCartState {
-  const AddProductToCartLoading();
+class DeleteProductLoading implements DeleteFromWishlistState {
+  const DeleteProductLoading();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AddProductToCartLoading);
+        (other.runtimeType == runtimeType && other is DeleteProductLoading);
   }
 
   @override
@@ -72,19 +72,19 @@ class AddProductToCartLoading implements AddProductToCartState {
 
   @override
   String toString() {
-    return 'AddProductToCartState.addProductToCartLoading()';
+    return 'DeleteFromWishlistState.deleteProductLoading()';
   }
 }
 
 /// @nodoc
 
-class AddProductToCartSuccess implements AddProductToCartState {
-  const AddProductToCartSuccess();
+class DeleteProductSuccess implements DeleteFromWishlistState {
+  const DeleteProductSuccess();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AddProductToCartSuccess);
+        (other.runtimeType == runtimeType && other is DeleteProductSuccess);
   }
 
   @override
@@ -92,30 +92,29 @@ class AddProductToCartSuccess implements AddProductToCartState {
 
   @override
   String toString() {
-    return 'AddProductToCartState.addProductToCartSuccess()';
+    return 'DeleteFromWishlistState.deleteProductSuccess()';
   }
 }
 
 /// @nodoc
 
-class AddProductToCartError implements AddProductToCartState {
-  const AddProductToCartError({required this.error});
+class DeleteProductError implements DeleteFromWishlistState {
+  const DeleteProductError({required this.error});
 
   final String error;
 
-  /// Create a copy of AddProductToCartState
+  /// Create a copy of DeleteFromWishlistState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $AddProductToCartErrorCopyWith<AddProductToCartError> get copyWith =>
-      _$AddProductToCartErrorCopyWithImpl<AddProductToCartError>(
-          this, _$identity);
+  $DeleteProductErrorCopyWith<DeleteProductError> get copyWith =>
+      _$DeleteProductErrorCopyWithImpl<DeleteProductError>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is AddProductToCartError &&
+            other is DeleteProductError &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -124,35 +123,35 @@ class AddProductToCartError implements AddProductToCartState {
 
   @override
   String toString() {
-    return 'AddProductToCartState.addProductToCartError(error: $error)';
+    return 'DeleteFromWishlistState.deleteProductError(error: $error)';
   }
 }
 
 /// @nodoc
-abstract mixin class $AddProductToCartErrorCopyWith<$Res>
-    implements $AddProductToCartStateCopyWith<$Res> {
-  factory $AddProductToCartErrorCopyWith(AddProductToCartError value,
-          $Res Function(AddProductToCartError) _then) =
-      _$AddProductToCartErrorCopyWithImpl;
+abstract mixin class $DeleteProductErrorCopyWith<$Res>
+    implements $DeleteFromWishlistStateCopyWith<$Res> {
+  factory $DeleteProductErrorCopyWith(
+          DeleteProductError value, $Res Function(DeleteProductError) _then) =
+      _$DeleteProductErrorCopyWithImpl;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class _$AddProductToCartErrorCopyWithImpl<$Res>
-    implements $AddProductToCartErrorCopyWith<$Res> {
-  _$AddProductToCartErrorCopyWithImpl(this._self, this._then);
+class _$DeleteProductErrorCopyWithImpl<$Res>
+    implements $DeleteProductErrorCopyWith<$Res> {
+  _$DeleteProductErrorCopyWithImpl(this._self, this._then);
 
-  final AddProductToCartError _self;
-  final $Res Function(AddProductToCartError) _then;
+  final DeleteProductError _self;
+  final $Res Function(DeleteProductError) _then;
 
-  /// Create a copy of AddProductToCartState
+  /// Create a copy of DeleteFromWishlistState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
     Object? error = null,
   }) {
-    return _then(AddProductToCartError(
+    return _then(DeleteProductError(
       error: null == error
           ? _self.error
           : error // ignore: cast_nullable_to_non_nullable
