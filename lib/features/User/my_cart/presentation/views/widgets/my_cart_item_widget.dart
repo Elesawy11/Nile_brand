@@ -11,6 +11,7 @@ import '../../../../../../core/utils/assets.dart';
 import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/spacer.dart';
 import '../../../../../../core/utils/styles.dart';
+import '../../cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_state.dart';
 import 'increase_and_decrease_icon_widget.dart';
 
 class MyCartItemWidget extends StatelessWidget {
@@ -68,19 +69,27 @@ class MyCartItemWidget extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    InkWell(
-                      onTap: () {
-                        // log('my product id =:::::>>><><><><>< ${cartProduct.id}');
-                        context
-                            .read<DeleteProductFromMyCartCubit>()
-                            .deleteProductFromMyCart(
-                                productId: cartProduct.id ?? '');
-                        context.read<GetMyCartCubit>().getMyCart();
+                    BlocListener<DeleteProductFromMyCartCubit,
+                        DeleteProductFromMyCartState>(
+                      listener: (context, state) {
+                        if (state is DeleteProductSuccess) {
+                          context.read<GetMyCartCubit>().getMyCart();
+                        }
                       },
-                      child: Icon(
-                        Icons.close,
-                        color: const Color.fromARGB(255, 194, 19, 19),
-                        size: 19.r,
+                      child: InkWell(
+                        onTap: () {
+                          // log('my product id =:::::>>><><><><>< ${cartProduct.id}');
+                          context
+                              .read<DeleteProductFromMyCartCubit>()
+                              .deleteProductFromMyCart(
+                                  productId: cartProduct.id ?? '');
+                         
+                        },
+                        child: Icon(
+                          Icons.close,
+                          color: const Color.fromARGB(255, 194, 19, 19),
+                          size: 19.r,
+                        ),
                       ),
                     ),
                     7.hs
