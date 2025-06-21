@@ -18,6 +18,7 @@ import 'package:nile_brand/features/User/chat/presentation/views/user_owner_chat
 import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_cubit.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/update_quntity_of_product_cart_cubit/update_quntity_of_product_cart_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/add_product_to_wishlist_cubit/add_product_to_wishlist_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/delete_from_wishlist_cubit/delete_from_wishlist_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/get_wish_list_cubit/get_wish_list_cubit.dart';
@@ -78,19 +79,23 @@ abstract class AppRouter {
                 BlocProvider(
                   create: (context) => getIt.get<CreateReviewCubit>(),
                 ),
-                BlocProvider(
-                  create: (context) => getIt.get<AddProductToCartCubit>(),
+                BlocProvider.value(
+                  value: getIt.get<AddProductToCartCubit>(),
                 ),
-                BlocProvider(
-                  create: (context) => getIt.get<AddProductToWishlistCubit>(),
+                BlocProvider.value(
+                  value: getIt.get<AddProductToWishlistCubit>(),
                 ),
-                BlocProvider(
-                  create: (context) => getIt.get<DeleteFromWishlistCubit>(),
+                BlocProvider.value(
+                  value: getIt.get<DeleteFromWishlistCubit>(),
+                ),
+                BlocProvider.value(
+                  value: getIt.get<DeleteProductFromMyCartCubit>(),
                 ),
               ],
               child: ProductDetailsView(
                 product: args['product'] as ProductModel,
                 isFavorite: args['isFavorite'] as ValueNotifier<bool>,
+                isCarted: args['isCarted'] as ValueNotifier<bool>,
               ),
             );
           }),
@@ -318,12 +323,18 @@ abstract class AppRouter {
                 path: Routes.wishList,
                 builder: (context, state) => MultiBlocProvider(
                   providers: [
-                    BlocProvider(
-                      create: (context) =>
-                          getIt.get<GetWishListCubit>()..getWishListProduct(),
+                    BlocProvider.value(
+                      value: getIt.get<GetWishListCubit>()
+                        ..getWishListProduct(),
                     ),
                     BlocProvider(
                       create: (context) => getIt.get<DeleteFromWishlistCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt.get<AddProductToCartCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt.get<GetMyCartCubit>(),
                     ),
                   ],
                   child: const WishListView(),
@@ -343,6 +354,10 @@ abstract class AppRouter {
                     BlocProvider(
                       create: (context) =>
                           getIt.get<DeleteProductFromMyCartCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) =>
+                          getIt.get<UpdateQuntityOfProductCartCubit>(),
                     ),
                   ],
                   child: const MyCartView(),

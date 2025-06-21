@@ -16,9 +16,13 @@ import '../../data/models/product_model.dart';
 
 class ProductDetailsView extends StatefulWidget {
   const ProductDetailsView(
-      {super.key, required this.product, required this.isFavorite});
+      {super.key,
+      required this.product,
+      required this.isFavorite,
+      required this.isCarted});
   final ProductModel product;
   final ValueNotifier<bool> isFavorite;
+  final ValueNotifier<bool> isCarted;
   @override
   State<ProductDetailsView> createState() => _ProductDetailsViewState();
 }
@@ -55,6 +59,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
       DescreptionInfo(
         description: widget.product.description,
         productId: widget.product.id ?? '',
+        isCarted: widget.isCarted,
       ),
       ReviewsInfo(
         productId: widget.product.id!,

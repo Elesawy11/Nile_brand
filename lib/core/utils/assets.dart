@@ -124,6 +124,8 @@ class Assets {
 
   static const String imagesProfileImage = "assets/images/profile_image.png";
 
+  static const String imagesRemoveCart = "assets/images/remove_cart.png";
+
   static const String imagesSearch = "assets/images/search.png";
 
   static const String imagesSelectedStar = "assets/images/selected_star.png";

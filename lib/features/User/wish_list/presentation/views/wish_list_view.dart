@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/styles.dart';
+import 'package:nile_brand/features/User/wish_list/presentation/cubits/delete_from_wishlist_cubit/delete_from_wishlist_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/get_wish_list_cubit/get_wish_list_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/get_wish_list_cubit/get_wish_list_state.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/views/widgets/empty_wishlist_view.dart';
@@ -9,6 +10,7 @@ import 'package:nile_brand/features/User/wish_list/presentation/views/widgets/li
 
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/widgets/app_text_button.dart';
+import '../cubits/delete_from_wishlist_cubit/delete_from_wishlist_state.dart';
 
 class WishListView extends StatelessWidget {
   const WishListView({super.key});
@@ -33,22 +35,36 @@ class WishListView extends StatelessWidget {
                   ? SingleChildScrollView(
                       child: Column(
                         children: [
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: Padding(
-                              padding: EdgeInsets.only(right: 12.w),
-                              child: SizedBox(
-                                width: 100.w,
-                                height: 38.h,
-                                child: AppTextButton(
-                                  text: 'clear all',
-                                  onPressed: () {},
-                                  backgroundColor: ColorManager.mainColor,
-                                  borderRadius: 12.r,
-                                ),
-                              ),
-                            ),
-                          ),
+                          // BlocListener<DeleteFromWishlistCubit,
+                          //     DeleteFromWishlistState>(
+                          //   listener: (context, state) {
+                          //     if (state is DeleteProductSuccess) {
+                          //       context
+                          //           .read<GetWishListCubit>()
+                          //           .getWishListProduct();
+                          //     }
+                          //   },
+                          //   child: Align(
+                          //     alignment: Alignment.centerRight,
+                          //     child: Padding(
+                          //       padding: EdgeInsets.only(right: 12.w),
+                          //       child: SizedBox(
+                          //         width: 100.w,
+                          //         height: 38.h,
+                          //         child: AppTextButton(
+                          //           text: 'clear all',
+                          //           onPressed: () {
+                          //             context
+                          //                 .read<DeleteFromWishlistCubit>()
+                          //                 .deleteMyWishlist();
+                          //           },
+                          //           backgroundColor: ColorManager.mainColor,
+                          //           borderRadius: 12.r,
+                          //         ),
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
                           ListviewOfItemsOfWhishlist(
                             productsList: state.products,
                           ),

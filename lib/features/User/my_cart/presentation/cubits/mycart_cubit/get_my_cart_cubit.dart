@@ -9,6 +9,7 @@ import 'get_my_cart_state.dart';
 class GetMyCartCubit extends Cubit<GetMyCartState> {
   GetMyCartCubit(this._repo) : super(const GetMyCartState.initial());
   final MyCartRepoImpl _repo;
+  List<CartProductModel> cartProducts = [];
   Future<void> getMyCart() async {
     emit(const GetMyCartState.getMyCartLoading());
     final response = await _repo.getMyCart();
@@ -18,6 +19,7 @@ class GetMyCartCubit extends Cubit<GetMyCartState> {
       case Success():
         final List<CartProductModel> productsList =
             response.data.cartItems ?? [];
+        cartProducts.addAll(productsList);
 
         emit(
           GetMyCartState.getMyCartSuccess(
@@ -37,7 +39,6 @@ class GetMyCartCubit extends Cubit<GetMyCartState> {
         );
     }
   }
-
 
   static List<CartProductModel> getMyCartProducts(
       {required List<Map<String, dynamic>> data}) {

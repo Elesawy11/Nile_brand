@@ -103,9 +103,9 @@ Future<void> serviceLocator() async {
 
   getIt.registerLazySingleton(() => WishListSource(dio));
   getIt.registerLazySingleton(() => WishListRepoImpl(getIt.get()));
-  getIt.registerFactory(() => GetWishListCubit(getIt.get()));
-  getIt.registerFactory(() => AddProductToWishlistCubit(getIt.get()));
-  getIt.registerFactory(() => DeleteFromWishlistCubit(getIt.get()));
+  getIt.registerLazySingleton(() => GetWishListCubit(getIt.get()));
+  getIt.registerLazySingleton(() => AddProductToWishlistCubit(getIt.get()));
+  getIt.registerLazySingleton(() => DeleteFromWishlistCubit(getIt.get()));
 
   // MyCart Features
   getIt.registerLazySingleton(() => MyCartSource(dio));

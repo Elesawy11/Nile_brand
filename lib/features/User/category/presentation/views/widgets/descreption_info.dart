@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/add_product_to_cart_cubit/add_product_to_cart_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_cubit.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
 import 'package:readmore/readmore.dart';
 
@@ -13,9 +14,15 @@ import '../../../../../../core/utils/styles.dart';
 import '../../../../my_cart/presentation/cubits/add_product_to_cart_cubit/add_product_to_cart_state.dart';
 
 class DescreptionInfo extends StatelessWidget {
-  const DescreptionInfo({super.key, this.description, required this.productId});
+  const DescreptionInfo(
+      {super.key,
+      this.description,
+      required this.productId,
+      required this.isCarted});
   final String? description;
   final String productId;
+  final ValueNotifier<bool> isCarted;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -61,32 +68,50 @@ class DescreptionInfo extends StatelessWidget {
                     }
                   },
                   builder: (context, state) {
-                    return InkWell(
-                      onTap: () {
-                        context
-                            .read<AddProductToCartCubit>()
-                            .addProductToCart(productId: productId);
+                    return ValueListenableBuilder<bool>(
+                      valueListenable: isCarted,
+                      builder: (context, value, child) {
+                        return InkWell(
+                          onTap: () {
+                            isCarted.value = !isCarted.value;
+                            if (!value) {
+                              context
+                                  .read<AddProductToCartCubit>()
+                                  .addProductToCart(productId: productId);
+                            } else if (value) {
+                              context
+                                  .read<DeleteProductFromMyCartCubit>()
+                                  .deleteProductFromMyCart(
+                                    productId: productId,
+                                  );
+                            }
 
-                        // context.read<GetMyCartCubit>().getMyCart();
+                            // context.read<GetMyCartCubit>().getMyCart();
+                          },
+                          child: Container(
+                            width: 56.w,
+                            height: 43.h,
+                            decoration: BoxDecoration(
+                              color: ColorManager.grayCA,
+                              borderRadius: BorderRadius.circular(8.r),
+                            ),
+                            child: Center(
+                              child: state is AddProductToCartError
+                                  ? const CircularProgressIndicator()
+                                  : Image.asset(
+                                      !value
+                                          ? Assets.imagesCartIcon
+                                          : Assets.imagesRemoveCart,
+                                      color: !value
+                                          ? ColorManager.mainColor
+                                          : null,
+                                      width: 24.w,
+                                      height: 24.h,
+                                    ),
+                            ),
+                          ),
+                        );
                       },
-                      child: Container(
-                        width: 56.w,
-                        height: 43.h,
-                        decoration: BoxDecoration(
-                          color: ColorManager.grayCA,
-                          borderRadius: BorderRadius.circular(8.r),
-                        ),
-                        child: Center(
-                          child: state is AddProductToCartError
-                              ? const CircularProgressIndicator()
-                              : Image.asset(
-                                  Assets.imagesCartIcon,
-                                  color: ColorManager.mainColor,
-                                  width: 24.w,
-                                  height: 24.h,
-                                ),
-                        ),
-                      ),
                     );
                   },
                 ),
