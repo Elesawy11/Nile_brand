@@ -23,7 +23,7 @@ class CreateCuponCubit extends Cubit<CuponState> {
     final response = await _cuponsRepo.createCupon(CuponRequestBody(
         name: cuponName.text,
         expireTime: cuponExpireDate.text,
-        discount: int.parse(discount.text.trim())) , token!);
+        discount: int.tryParse(discount.text.trim()) ) , "Bearer ${token!}");
     switch (response) {
       case Success():
         print(response.data);

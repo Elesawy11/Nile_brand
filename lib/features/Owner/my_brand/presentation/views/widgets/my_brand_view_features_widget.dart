@@ -64,27 +64,8 @@ class _MyBrandViewFeaturesWidgetState extends State<MyBrandViewFeaturesWidget> {
       },
       child: Column(
         children: [
-          InfoTile(
-            leadingIcon: Assets.imagesProfileIcon,
-            title: "Profile",
-            ontap: () {
-              context.push(Routes.brandProfile);
-            },
-            trailling: Icon(
-              Icons.arrow_forward_ios_rounded,
-              size: 17.spMax,
-            ),
-          ),
-          20.vs,
-          InfoTile(
-            leadingIcon: Assets.imagesNotificationInfo,
-            title: "Notifications",
-            trailling: Switch(
-              value: false,
-              onChanged: (value) {},
-            ),
-          ),
-          20.vs,
+          
+ 
           InfoTile(
             ontap: () {
               context.push(Routes.updateBrand);

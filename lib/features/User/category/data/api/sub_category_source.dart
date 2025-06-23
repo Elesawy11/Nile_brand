@@ -22,4 +22,11 @@ abstract class SubCategorySource {
     @Path('id') String id, {
     @Query('limit') int limit = 50000,
   });
+
+  @DELETE("${ApiConstants.products}/{productId}/${ApiConstants.reviews}/{reviewId}")
+  Future<void> deleteReview (
+    @Path("productId") String productId,
+    @Path("reviewId") String reviewId,
+    @Header('Authorization') String? token
+  );
 }

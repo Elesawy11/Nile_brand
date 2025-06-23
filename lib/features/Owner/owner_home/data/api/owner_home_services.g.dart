@@ -24,10 +24,14 @@ class _BrandProductsService implements BrandProductsService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<dynamic> getBrandProducts(String brandId) async {
+  Future<dynamic> getBrandProducts(
+    String brandId,
+    String token,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<dynamic>(Options(
       method: 'GET',
@@ -54,10 +58,12 @@ class _BrandProductsService implements BrandProductsService {
   Future<dynamic> delateBrandProduct(
     String brandId,
     String productId,
+    String token,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<dynamic>(Options(
       method: 'DELETE',

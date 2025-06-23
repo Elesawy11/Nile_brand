@@ -13,28 +13,28 @@ class UpdateCuponCubit extends Cubit<UpdateCuponState> {
   final TextEditingController cuponName = TextEditingController();
   final TextEditingController discount = TextEditingController();
   final TextEditingController userEmai = TextEditingController();
+  final TextEditingController cuponExpireDate = TextEditingController();
 
   Future<void> updateCupon(String id) async {
     String? token = await BrandPrefs.getToken();
     emit(UpdateCuponLoadingState());
-    
 
     final response = await _cuponsRepo.updateCupon(
         id,
         CuponRequestBody(
             name: cuponName.text.trim(),
-            discount: int.parse(discount.text.trim())),
-        token!);
-     
+            expireTime: cuponExpireDate.text.trim(),
+            discount: int.tryParse(discount.text.trim())),
+        "Bearer ${token!}");
+
     switch (response) {
       case Success():
         print(response.data);
-        
+
         emit(UpdateCuponSuccessState());
         break;
       case Failure():
         emit(UpdateCuponFailureState());
     }
-    
   }
 }

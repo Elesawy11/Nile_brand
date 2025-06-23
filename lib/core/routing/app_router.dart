@@ -1,3 +1,5 @@
+// import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -5,6 +7,7 @@ import 'package:nile_brand/core/networking/dio_factory.dart';
 import 'package:nile_brand/core/routing/routes.dart';
 import "package:nile_brand/core/routing/exports.dart";
 import 'package:nile_brand/core/utils/service_locator.dart';
+import 'package:nile_brand/features/Admin/manage_categories/data/repo/manage_catg_repo.dart';
 
 import 'package:nile_brand/features/Owner/create_brand/data/api/create_brand_api_services.dart';
 import 'package:nile_brand/features/Owner/cuopon/data/api/cupons_source.dart';
@@ -15,12 +18,16 @@ import 'package:nile_brand/features/Owner/cuopon/presentation/manager/get_cupons
 import 'package:nile_brand/features/Owner/cuopon/presentation/manager/update_cupon/update_cupon_cubit.dart';
 import 'package:nile_brand/features/Owner/my_brand/data/api/my_brand_services.dart';
 import 'package:nile_brand/features/Owner/my_brand/data/repo/update_brand_repo.dart';
+import 'package:nile_brand/features/Owner/owner_home/data/models/all_products_response_body.dart';
 import 'package:nile_brand/features/User/category/data/models/product_model.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:nile_brand/features/User/chat/presentation/views/user_owner_chat.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
+import 'package:nile_brand/features/User/home/domain/repo/home_repo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../features/Admin/manage_categories/data/api/manage_catg_source.dart';
+import '../../features/Admin/manage_categories/views/manager/manage_catg_cubit.dart';
 import '../../features/Owner/create_brand/data/repo/new_brand_repo.dart';
 import '../../features/Owner/create_brand/presentation/manager/create_brand_cubit/create_brand_cubit.dart';
 import '../../features/Owner/my_brand/presentation/manager/update_brand/update_brand_cubit.dart';
@@ -319,7 +326,7 @@ abstract class AppRouter {
               GoRoute(
                 path: Routes.ownerHome,
                 builder: (context, state) => OwnerHomeView(
-                  brandId: state.extra as String,
+                  brandId: "685691c46b03f8f3085f1915",
                 ),
               ),
             ],
@@ -354,8 +361,9 @@ abstract class AppRouter {
                 path: Routes.cuopon,
                 builder: (context, state) => BlocProvider(
                   create: (context) => GetCuponsCubit(
-                      CuponsRepo(CouponsSource(DioFactory.getDio())))..getAllCupons(),
-                  child: CuoponView(),
+                      CuponsRepo(CouponsSource(DioFactory.getDio())))
+                    ..getAllCupons(),
+                  child: const CuoponView(),
                 ),
               ),
             ],
@@ -396,29 +404,39 @@ abstract class AppRouter {
       ),
 
       GoRoute(
-        path: Routes.brandDetails,
-        builder: (context, state) => const BrandDetailsView(),
-      ),
+          path: Routes.brandDetails,
+          builder: (context, state) {
+            final data = state.extra as String;
+            return BrandDetailsView(productId: data,);
+          }),
       GoRoute(
         path: Routes.brandProfile,
         builder: (context, state) => const BrandProfileView(),
       ),
 
       GoRoute(
-        path: Routes.createCuopon,
-        builder: (context, state) => BlocProvider(
-          create: (context) =>
-              CreateCuponCubit(CuponsRepo(CouponsSource(DioFactory.getDio()))),
-          child: CreateCuoponView(),
-        ),
+  path: Routes.createCuopon,
+  builder: (context, state) => MultiBlocProvider(
+    providers: [
+      BlocProvider(
+        create: (_) =>
+            CreateCuponCubit(CuponsRepo(CouponsSource(DioFactory.getDio()))),
       ),
+      BlocProvider(
+        create: (_) =>
+            GetCuponsCubit(CuponsRepo(CouponsSource(DioFactory.getDio())))
+              ,
+      ),
+    ],
+    child: const CreateCuoponView(),
+  ),
+),
+
       GoRoute(
         path: Routes.updateCuopon,
         builder: (context, state) => BlocProvider(
-          create: (context) => UpdateCuponCubit(
-            CuponsRepo(CouponsSource(DioFactory.getDio()))
-
-          ),
+          create: (context) =>
+              UpdateCuponCubit(CuponsRepo(CouponsSource(DioFactory.getDio()))),
           child: UpdateCuoponView(
             cupon: state.extra as CreateCuoponSuccess,
           ),
@@ -447,7 +465,24 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.manageCategories,
-                builder: (context, state) => const ManageCategoryView(),
+                builder: (context, state) {
+                  return MultiBlocProvider(
+                    providers: [
+                      BlocProvider(
+                        create: (_) => ManageCatgCubit(ManageCatgRepo(
+                            manageCatgSource:
+                                ManageCatgSource(DioFactory.getDio()))),
+                      ),
+                      BlocProvider(
+                        create: (_) => getIt.get<GetCategoryCubit>(),
+                      ),
+                      BlocProvider(
+                        create: (context) => getIt.get<GetSubCategorysCubit>(),
+                      )
+                    ],
+                    child: const ManageCategoryView(),
+                  );
+                },
               ),
             ],
           ),
@@ -478,28 +513,57 @@ abstract class AppRouter {
         ],
       ),
       GoRoute(
-        path: Routes.productReviews,
-        builder: (context, state) => const ProductReviews(),
-      ),
+          path: Routes.productReviews,
+          builder: (context, state) {
+            final product = state.extra as ProductModel;
+            return ProductReviews(product: product);
+          }),
       GoRoute(
-        path: Routes.updateCategory,
-        builder: (context, state) => UpdateCreateCategSetting(
-          title: state.extra as String,
-        ),
-      ),
+          path: Routes.updateCategory,
+          builder: (context, state) {
+            final extra = state.extra as Map<String, dynamic>;
+            final title = extra['title'] as String;
+            final id = extra['id'] as String;
+            return BlocProvider<ManageCatgCubit>(
+                create: (context) => ManageCatgCubit(ManageCatgRepo(
+                    manageCatgSource: ManageCatgSource(DioFactory.getDio()))),
+                child: UpdateCreateCategSetting(
+                  title: title,
+                  id: id,
+                ));
+          }),
       GoRoute(
         path: Routes.updateSubCategory,
-        builder: (context, state) => UpdateCreateSubcatg(
-          title: state.extra as String,
-        ),
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>;
+          final title = extra['title'] as String;
+          final id = extra['id'] as String;
+
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) => ManageCatgCubit(ManageCatgRepo(
+                    manageCatgSource: ManageCatgSource(DioFactory.getDio()))),
+              ),
+              BlocProvider(
+                create: (_) =>
+                    getIt.get<GetCategoryCubit>()..emitGetCategories(),
+              ),
+            ],
+            child: UpdateCreateSubcatg(title: title, id: id),
+          );
+        },
       ),
+
       GoRoute(
         path: Routes.createSytemUser,
         builder: (context, state) => const CreateSystemUser(),
       ),
       GoRoute(
         path: Routes.updateSystemUser,
-        builder: (context, state) => const UpdateUserInfo(),
+        builder: (context, state) => UpdateUserInfo(
+          id: state.extra as String,
+        ),
       )
     ],
   );

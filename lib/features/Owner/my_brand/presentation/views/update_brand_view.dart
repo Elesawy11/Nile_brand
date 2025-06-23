@@ -76,7 +76,7 @@ class _UpdateBrandBodyState extends State<UpdateBrandBody> {
                         child: CircleAvatar(
                           radius: 50,
                           backgroundImage: NetworkImage(
-                              "https://nile-brands-backend.up.railway.app/brands/${cubit.logoPath}"),
+                              "https://nile-brands.up.railway.app/brands/${cubit.logoPath}"),
                         ),
                       ),
                       76.vs,
@@ -113,6 +113,7 @@ class _UpdateBrandBodyState extends State<UpdateBrandBody> {
                               : "Save Changes",
                           onPressed: () {
                             cubit.updateBrand();
+                            
                             // context.pop();
                           },
                         ),

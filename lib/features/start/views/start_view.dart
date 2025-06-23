@@ -47,7 +47,7 @@ class StartView extends StatelessWidget {
                   text: 'Get Start',
                   //TODO : change navigation
 
-                  onPressed: () => context.push(Routes.manageCategories),
+                  onPressed: () => context.push(Routes.orderStatus),
                   backgroundColor: ColorManager.mainColor,
                 ),
                 verticalSpace(37),

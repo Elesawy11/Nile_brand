@@ -58,7 +58,7 @@ class UpdateBrandCubit extends Cubit<UpdateBrandState> {
     });
 
     String? brandId = await BrandPrefs.getbrandId();
-    final result = await repo.updateBrand(brandId!, formData);
+    final result = await repo.updateBrand(brandId ?? "685691c46b03f8f3085f1915", formData);
     print(result);
 
     if (result is Success) {
@@ -80,14 +80,14 @@ class UpdateBrandCubit extends Cubit<UpdateBrandState> {
 
   Future<void> deleteBrand() async {
     String? brandId = await BrandPrefs.getbrandId();
-    if (brandId == null) {
-      emit(UpdateBrandFailure("Brand ID is missing"));
-      return;
-    }
+    // if (brandId == null) {
+    //   emit(UpdateBrandFailure("Brand ID is missing"));
+    //   return;
+    // } 
 
     emit(UpdateBrandLoading());
 
-    final result = await repo.deleteBrand(brandId);
+    final result = await repo.deleteBrand(brandId ?? "685691c46b03f8f3085f1915");
 
     emit(UpdateBrandDeleted(msg: "brand deleted successfully"));
 

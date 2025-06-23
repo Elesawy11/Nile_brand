@@ -20,21 +20,26 @@ class GetCuponsCubit extends Cubit<ManageCuponState> {
   List<CreateCuoponSuccess> myCupons = [];
 
   Future<void> getAllCupons() async {
-    emit(ManageInitialCuponState());
     String? token = await BrandPrefs.getToken();
 
-    final response = await _cuponsRepo.getAllCupons(token!);
+    final response = await _cuponsRepo.getAllCupons("Bearer ${token!}");
 
     String? ownerId = await BrandPrefs.getOwnerId();
+    emit(ManageCuponLoadingState());
+    print(response);
 
     switch (response) {
       case Success():
         print(response.data);
-        for (CreateCuoponSuccess cupon in response.data) {
-          if (cupon.owner == ownerId) {
-            myCupons.add(cupon);
-          }
+        if (myCupons.isNotEmpty) {
+          myCupons.clear();
         }
+        myCupons.addAll(response.data);
+        // for (CreateCuoponSuccess cupon in response.data) {
+        //   if (cupon.owner == ownerId ) {
+        //     myCupons.add(cupon);
+        //   }
+        // }
         emit(GetAllCuponsState(myCupons: myCupons));
         break;
       case Failure():
@@ -44,15 +49,17 @@ class GetCuponsCubit extends Cubit<ManageCuponState> {
 
   Future<void> deleteCupon(String id) async {
     emit(ManageInitialCuponState());
-    String? toeken = await BrandPrefs.getToken();
+    String? token = await BrandPrefs.getToken();
 
-    final response = await _cuponsRepo.deleteCupon(id, toeken!);
+    final response = await _cuponsRepo.deleteCupon(id, "Bearer ${token!}");
 
     switch (response) {
       case Success():
         print(response.data);
 
         emit(DeleteCuponSucess());
+
+        await getAllCupons();
 
         break;
       case Failure():
@@ -62,9 +69,9 @@ class GetCuponsCubit extends Cubit<ManageCuponState> {
 
   Future<void> sendCupon(String id) async {
     emit(ManageCuponLoadingState());
-    String? toeken = await BrandPrefs.getToken();
+    String? token = await BrandPrefs.getToken();
 
-    final response = await _cuponsRepo.sendCupons(id, toeken!);
+    final response = await _cuponsRepo.sendCupons(id, "Bearer ${token!}");
 
     switch (response) {
       case Success():

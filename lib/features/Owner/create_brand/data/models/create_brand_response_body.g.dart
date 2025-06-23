@@ -53,7 +53,7 @@ class BrandDataAdapter extends TypeAdapter<BrandData> {
     return BrandData(
       id: fields[0] as String,
       name: fields[1] as String,
-      logo: fields[2] as String,
+      logo: fields[2] as String?,
       description: fields[3] as String,
       taxID: fields[4] as String,
       owner: fields[5] as String,
@@ -113,7 +113,7 @@ Map<String, dynamic> _$BrandCreateResponseToJson(
 BrandData _$BrandDataFromJson(Map<String, dynamic> json) => BrandData(
       id: json['_id'] as String,
       name: json['name'] as String,
-      logo: json['logo'] as String,
+      logo: json['logo'] as String?,
       description: json['description'] as String,
       taxID: json['taxID'] as String,
       owner: json['owner'] as String,

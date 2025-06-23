@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/features/Owner/cuopon/presentation/manager/create_cupon.dart/create_cupon_cubit.dart';
 import 'package:nile_brand/features/Owner/cuopon/presentation/manager/create_cupon.dart/create_cupon_state.dart';
+import 'package:nile_brand/features/Owner/cuopon/presentation/manager/get_cupons/cupon_cubit.dart';
 
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/styles.dart';
@@ -38,156 +39,121 @@ class _CreateCuoponViewState extends State<CreateCuoponView> {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 22.w),
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              return SingleChildScrollView(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
-                  child: IntrinsicHeight(
-                    child: BlocBuilder<CreateCuponCubit, CuponState>(
-                        builder: (context, state) {
-                      return Column(
-                        children: [
-                          30.vs,
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Create Cuopon',
-                              style: Styles.font35W700,
+          child: BlocConsumer<CreateCuponCubit, CuponState>(
+            listener: (context, state) async {
+              if (state is CreateCuponSucessState) {
+                
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text("Cupon Created Successfully!"),
+                  backgroundColor: Colors.green,
+                ));
+                context.pop();
+              } else if (state is CreateCuponFailureState) {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text("Something went wrong"),
+                  backgroundColor: Colors.red,
+                ));
+              }
+            },
+            builder: (context, state) {
+              final cubit = context.read<CreateCuponCubit>();
+              final isLoading = state is CreateCuponLoadingState;
+
+              return LayoutBuilder(
+                builder: (context, constraints) {
+                  return SingleChildScrollView(
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                      child: IntrinsicHeight(
+                        child: Column(
+                          children: [
+                            30.vs,
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Create Cuopon',
+                                style: Styles.font35W700,
+                              ),
                             ),
-                          ),
-                          33.vs,
-                          SizedBox(
-                            height: 50.h,
-                            child: AppTextFormField(
-                              controller:
-                                  context.read<CreateCuponCubit>().cuponName,
-                              floatingLabelBehavior:
-                                  FloatingLabelBehavior.always,
+                            33.vs,
+                            AppTextFormField(
+                              controller: cubit.cuponName,
+                              floatingLabelBehavior: FloatingLabelBehavior.always,
                               hintText: "SUMMER2024",
                               labelText: "Name",
                               validator: (p0) {},
                             ),
-                          ),
-                          20.vs,
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Expire time",
-                                style: Styles.font14W500.copyWith(
+                            20.vs,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Expire time",
+                                  style: Styles.font14W500.copyWith(
                                     fontSize: 16.sp,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              8.vs,
-                              Row(
-                                children: [
-                                  InkWell(
-                                    onTap: () => _selectDate(context),
-                                    child: Container(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 12.w, vertical: 14.h),
-                                      decoration: BoxDecoration(
-                                        border: Border.all(color: Colors.grey),
-                                        borderRadius:
-                                            BorderRadius.circular(8.r),
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            context
-                                                    .read<CreateCuponCubit>()
-                                                    .cuponExpireDate
-                                                    .text
-                                                    .isEmpty
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                8.vs,
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: InkWell(
+                                        onTap: () => _selectDate(context),
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.grey),
+                                            borderRadius: BorderRadius.circular(8.r),
+                                          ),
+                                          child: Text(
+                                            cubit.cuponExpireDate.text.isEmpty
                                                 ? "YYYY - MM - DD"
-                                                : context
-                                                    .read<CreateCuponCubit>()
-                                                    .cuponExpireDate
-                                                    .text,
+                                                : cubit.cuponExpireDate.text,
                                             style: TextStyle(
                                               fontSize: 16.sp,
-                                              color: context
-                                                      .read<CreateCuponCubit>()
-                                                      .cuponExpireDate
-                                                      .text
-                                                      .isEmpty
+                                              color: cubit.cuponExpireDate.text.isEmpty
                                                   ? Colors.grey
                                                   : Colors.black,
                                             ),
                                           ),
-                                        ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  11.hs,
-                                  Icon(Icons.calendar_today,
-                                      size: 26.sp, color: Colors.grey),
-                                ],
-                              ),
-                            ],
-                          ),
-                          20.vs,
-                          SizedBox(
-                            height: 50.h,
-                            child: AppTextFormField(
-                              floatingLabelBehavior:
-                                  FloatingLabelBehavior.always,
+                                    11.hs,
+                                    Icon(Icons.calendar_today, size: 26.sp, color: Colors.grey),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            20.vs,
+                            AppTextFormField(
+                              controller: cubit.discount,
+                              floatingLabelBehavior: FloatingLabelBehavior.always,
                               hintText: "20.0",
-                              labelText: "discount",
+                              labelText: "Discount",
                               validator: (p0) {},
                             ),
-                          ),
-                          const Spacer(),
-                          Padding(
-                            padding: 70.ph,
-                            child: AppTextButton(
-                              backgroundColor: ColorManager.mainColor,
-                              text: state is CreateCuponLoadingState
-                                  ? "Save...."
-                                  : "Save",
-                              onPressed: () {
-                                context.read<CreateCuponCubit>().createCupon();
-                                if (state is CreateCuponSucessState) {
-                                  context.pop();
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(
-                                        SnackBar(
-                                          closeIconColor: Colors.green,
-                                          content:Text("Cupon Created Successfully !",style: TextStyle(
-                                            fontSize: 20.sp,
-                                            color: Colors.white
-                                          ),)
-                                          )
-                                      );
-                                }
-                                else if(state is CreateCuponFailureState){
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(
-                                        SnackBar(
-                                          closeIconColor: Colors.redAccent,
-                                          content:Text("Something went wrong",style: TextStyle(
-                                            fontSize: 20.sp,
-                                            color: Colors.white
-                                          ),)
-                                          )
-                                      );
-
-
-
-                                }
-                              },
-                              
+                            const Spacer(),
+                            Padding(
+                              padding: 70.ph,
+                              child: AppTextButton(
+                                backgroundColor: ColorManager.mainColor,
+                                text: isLoading ? "Saving..." : "Save",
+                                onPressed: isLoading
+                                    ? null
+                                    : () {
+                                        context.read<CreateCuponCubit>().createCupon();
+                                      },
+                              ),
                             ),
-                          ),
-                          45.vs,
-                        ],
-                      );
-                    }),
-                  ),
-                ),
+                            45.vs,
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
               );
             },
           ),

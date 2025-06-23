@@ -4,6 +4,7 @@ import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/spacer.dart';
 import 'package:shimmer/shimmer.dart';
 
+
 import '../../../../../../core/utils/assets.dart';
 
 class CategoryShimeer extends StatelessWidget {
@@ -17,13 +18,13 @@ class CategoryShimeer extends StatelessWidget {
       child: SizedBox(
         height: 120.h,
         child: ListView.builder(
-          physics: AlwaysScrollableScrollPhysics(),
+          physics: const AlwaysScrollableScrollPhysics(),
           scrollDirection: Axis.horizontal,
           itemCount: 6,
           itemBuilder: (context, index) {
             return SizedBox(
               height: 120.h,
-              child: CategoryItemShimmer(),
+              child: const CategoryItemShimmer(),
             );
           },
         ),

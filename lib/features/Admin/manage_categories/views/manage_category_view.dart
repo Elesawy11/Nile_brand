@@ -11,21 +11,23 @@ class ManageCategoryView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
 
-        body: Padding(
-          padding: 8.ph,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              20.vs,
-
-              const CategorySubCategorySettings(mainTitle: "Category Management",),
-              30.vs,
-              const CategorySubCategorySettings(mainTitle: "Subcategory Management",),
-
-
-
-            ],
-          ),),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: 8.ph,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                20.vs,
+          
+                const CategorySubCategorySettings(mainTitle: "Category Management",),
+                30.vs,
+                const CategorySubCategorySettings(mainTitle: "Subcategory Management",),
+          
+          
+          
+              ],
+            ),),
+        ),
 
     ));
   }

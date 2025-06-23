@@ -53,7 +53,7 @@ class MyBrand extends StatelessWidget {
                     child: CircleAvatar(
                       radius: 50.r,
                       backgroundImage: NetworkImage(
-                          "https://nile-brands-backend.up.railway.app/brands/${brandData.logo}"),
+                          "https://nile-brands.up.railway.app/brands/${brandData.logo}"),
                     ),
                   ),
                  

@@ -14,6 +14,7 @@ import 'package:nile_brand/features/User/category/presentation/views/widgets/pro
 import 'package:nile_brand/features/User/category/presentation/views/widgets/product_images.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/reviews_info.dart';
 import 'package:nile_brand/features/User/chat/presentation/views/user_owner_chat.dart';
+import 'package:nile_brand/features/ar/presentation/views/ar_view.dart';
 // import 'package:readmore/readmore.dart';
 
 import '../../../../../core/utils/assets.dart';
@@ -86,7 +87,17 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
         centerTitle: true,
         actions: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+
+                MaterialPageRoute(
+                  builder: (context) =>const ArScreen(),
+                  )
+
+
+
+              );
+            },
             child: Padding(
               padding: EdgeInsets.only(right: 20.r),
               child: Image.asset(

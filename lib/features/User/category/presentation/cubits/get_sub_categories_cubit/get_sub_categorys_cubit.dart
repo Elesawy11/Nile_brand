@@ -16,6 +16,7 @@ class GetSubCategorysCubit extends Cubit<GetSubCategorysState> {
     switch (result) {
       case Success():
         subCategories.addAll(result.data);
+
         emit(
           GetSubCategorysState.subCategorySuccess(
             subCategories: subCategories,
@@ -50,7 +51,7 @@ class GetSubCategorysCubit extends Cubit<GetSubCategorysState> {
   }
 
   void getAllSubCategories() {
-    emit(GetSubCategorysState.subCategoryLoading());
+    emit(const GetSubCategorysState.subCategoryLoading());
     emit(
       GetSubCategorysState.subCategorySuccess(
         subCategories: subCategories,
