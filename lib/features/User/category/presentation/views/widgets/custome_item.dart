@@ -186,7 +186,8 @@ class _CustomeItemState extends State<CustomeItem> {
                                   context
                                       .read<AddProductToCartCubit>()
                                       .addProductToCart(
-                                          productId: widget.product.id ?? '');
+                                        product: widget.product,
+                                      );
                                 } else if (value) {
                                   context
                                       .read<DeleteProductFromMyCartCubit>()

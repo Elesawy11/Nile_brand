@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:nile_brand/core/networking/api_result.dart';
+import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/features/User/my_cart/data/repo/my_cart_repo_impl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'delete_product_from_my_cart_state.dart';
 
@@ -16,6 +18,7 @@ class DeleteProductFromMyCartCubit extends Cubit<DeleteProductFromMyCartState> {
 
     switch (response) {
       case Success():
+        getIt.get<SharedPreferences>().remove('brand');
         emit(const DeleteProductFromMyCartState.deleteProductSuccess());
 
         break;

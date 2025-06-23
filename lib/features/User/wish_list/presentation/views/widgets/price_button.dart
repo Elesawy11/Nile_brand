@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nile_brand/features/User/category/data/models/product_model.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/add_product_to_cart_cubit/add_product_to_cart_cubit.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
 import '../../../../../../core/utils/color_manager.dart';
@@ -8,9 +9,10 @@ import '../../../../../../core/utils/styles.dart';
 import '../../../../my_cart/presentation/cubits/add_product_to_cart_cubit/add_product_to_cart_state.dart';
 
 class PriceButton extends StatelessWidget {
-  const PriceButton({super.key, required this.price, required this.productId});
+  const PriceButton({super.key, required this.price, required this.product, });
   final String price;
-  final String productId;
+  // final String productId;
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -39,7 +41,7 @@ class PriceButton extends StatelessWidget {
             onTap: () {
               context
                   .read<AddProductToCartCubit>()
-                  .addProductToCart(productId: productId);
+                  .addProductToCart(product: product);
             },
             child: Container(
               width: 90.w,

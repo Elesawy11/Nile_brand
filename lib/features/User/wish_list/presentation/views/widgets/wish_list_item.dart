@@ -114,7 +114,7 @@ class WishListItem extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(bottom: 4.h, right: 2.w),
                     child: PriceButton(
-                      productId: product.id ?? '',
+                      product: product,
                       price: product.price.toString(),
                     ),
                   )

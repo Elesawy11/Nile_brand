@@ -432,8 +432,9 @@ abstract class AppRouter {
                 path: Routes.cuopon,
                 builder: (context, state) => BlocProvider(
                   create: (context) => GetCuponsCubit(
-                      CuponsRepo(CouponsSource(DioFactory.getDio())))..getAllCupons(),
-                  child: CuoponView(),
+                      CuponsRepo(CouponsSource(DioFactory.getDio())))
+                    ..getAllCupons(),
+                  child: const CuoponView(),
                 ),
               ),
             ],
@@ -487,16 +488,14 @@ abstract class AppRouter {
         builder: (context, state) => BlocProvider(
           create: (context) =>
               CreateCuponCubit(CuponsRepo(CouponsSource(DioFactory.getDio()))),
-          child: CreateCuoponView(),
+          child: const CreateCuoponView(),
         ),
       ),
       GoRoute(
         path: Routes.updateCuopon,
         builder: (context, state) => BlocProvider(
-          create: (context) => UpdateCuponCubit(
-            CuponsRepo(CouponsSource(DioFactory.getDio()))
-
-          ),
+          create: (context) =>
+              UpdateCuponCubit(CuponsRepo(CouponsSource(DioFactory.getDio()))),
           child: UpdateCuoponView(
             cupon: state.extra as CreateCuoponSuccess,
           ),

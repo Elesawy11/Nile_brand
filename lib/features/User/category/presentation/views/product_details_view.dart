@@ -60,6 +60,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
         description: widget.product.description,
         productId: widget.product.id ?? '',
         isCarted: widget.isCarted,
+        product: widget.product,
       ),
       ReviewsInfo(
         productId: widget.product.id!,

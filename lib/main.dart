@@ -31,6 +31,7 @@ void main(List<String> args) async {
   await serviceLocator();
   Bloc.observer = SimpleBlocObserver();
   Stripe.publishableKey = ApiKeys.puplishableKey;
+  getIt.get<SharedPreferences>().remove('brand');
   runApp(const NileBrand());
 }
 

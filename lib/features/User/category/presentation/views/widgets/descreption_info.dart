@@ -12,15 +12,18 @@ import '../../../../../../core/utils/assets.dart';
 import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/styles.dart';
 import '../../../../my_cart/presentation/cubits/add_product_to_cart_cubit/add_product_to_cart_state.dart';
+import '../../../data/models/product_model.dart';
 
 class DescreptionInfo extends StatelessWidget {
   const DescreptionInfo(
       {super.key,
       this.description,
       required this.productId,
-      required this.isCarted});
+      required this.isCarted,
+      required this.product});
   final String? description;
   final String productId;
+  final ProductModel product;
   final ValueNotifier<bool> isCarted;
 
   @override
@@ -61,6 +64,13 @@ class DescreptionInfo extends StatelessWidget {
 
                       getIt.get<GetMyCartCubit>().getMyCart();
                     } else if (state is AddProductToCartError) {
+                      if (state.error ==
+                          'the brand name of products must be equal') {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(state.error),
+                          // content: Text(state.error),
+                        ));
+                      }
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text('Prdouct not added'),
                         // content: Text(state.error),
@@ -77,7 +87,7 @@ class DescreptionInfo extends StatelessWidget {
                             if (!value) {
                               context
                                   .read<AddProductToCartCubit>()
-                                  .addProductToCart(productId: productId);
+                                  .addProductToCart(product: product);
                             } else if (value) {
                               context
                                   .read<DeleteProductFromMyCartCubit>()
@@ -96,12 +106,12 @@ class DescreptionInfo extends StatelessWidget {
                               borderRadius: BorderRadius.circular(8.r),
                             ),
                             child: Center(
-                              child: state is AddProductToCartError
+                              child: state is AddProductToCartLoading
                                   ? const CircularProgressIndicator()
                                   : Image.asset(
-                                      !value
-                                          ? Assets.imagesCartIcon
-                                          : Assets.imagesRemoveCart,
+                                      state is AddProductToCartSuccess
+                                          ? Assets.imagesRemoveCart
+                                          : Assets.imagesCartIcon,
                                       color: !value
                                           ? ColorManager.mainColor
                                           : null,
