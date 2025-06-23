@@ -101,7 +101,12 @@ class _CouponsSource implements CouponsSource {
     )
         .compose(
           _dio.options,
+
           'coupons',
+
+          'https://nile-brands.up.railway.app/api/v1/coupons',
+
+>
           queryParameters: queryParameters,
           data: _data,
         )
@@ -167,7 +172,11 @@ class _CouponsSource implements CouponsSource {
     )
         .compose(
           _dio.options,
+
           'coupons/sendCoupon',
+
+          'https://nile-brands.up.railway.app/api/v1/coupons/sendCoupon',
+
           queryParameters: queryParameters,
           data: _data,
         )

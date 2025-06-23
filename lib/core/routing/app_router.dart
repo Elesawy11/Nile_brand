@@ -20,10 +20,20 @@ import 'package:nile_brand/features/Owner/my_brand/data/api/my_brand_services.da
 import 'package:nile_brand/features/Owner/my_brand/data/repo/update_brand_repo.dart';
 import 'package:nile_brand/features/Owner/owner_home/data/models/all_products_response_body.dart';
 import 'package:nile_brand/features/User/category/data/models/product_model.dart';
+import 'package:nile_brand/features/User/category/presentation/cubits/create_review_cubit/create_review_cubit.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:nile_brand/features/User/chat/presentation/views/user_owner_chat.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
+
 import 'package:nile_brand/features/User/home/domain/repo/home_repo.dart';
+
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/update_quntity_of_product_cart_cubit/update_quntity_of_product_cart_cubit.dart';
+import 'package:nile_brand/features/User/wish_list/presentation/cubits/add_product_to_wishlist_cubit/add_product_to_wishlist_cubit.dart';
+import 'package:nile_brand/features/User/wish_list/presentation/cubits/delete_from_wishlist_cubit/delete_from_wishlist_cubit.dart';
+import 'package:nile_brand/features/User/wish_list/presentation/cubits/get_wish_list_cubit/get_wish_list_cubit.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/Admin/manage_categories/data/api/manage_catg_source.dart';
@@ -38,6 +48,8 @@ import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedbac
 import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_profile_cubit/get_my_profile_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/update_password_cubit/update_password_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/views/edit_password.dart';
+
+import '../../features/User/my_cart/presentation/cubits/add_product_to_cart_cubit/add_product_to_cart_cubit.dart';
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -69,14 +81,37 @@ abstract class AppRouter {
         builder: (context, state) => const UserOwnerChat(),
       ),
       GoRoute(
-        path: Routes.productDetails,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt.get<GetReviewsCubit>(),
-          child: ProductDetailsView(
-            product: state.extra as ProductModel,
-          ),
-        ),
-      ),
+          path: Routes.productDetails,
+          builder: (context, state) {
+            final args = state.extra as Map<String, dynamic>;
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => getIt.get<GetReviewsCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt.get<CreateReviewCubit>(),
+                ),
+                BlocProvider.value(
+                  value: getIt.get<AddProductToCartCubit>(),
+                ),
+                BlocProvider.value(
+                  value: getIt.get<AddProductToWishlistCubit>(),
+                ),
+                BlocProvider.value(
+                  value: getIt.get<DeleteFromWishlistCubit>(),
+                ),
+                BlocProvider.value(
+                  value: getIt.get<DeleteProductFromMyCartCubit>(),
+                ),
+              ],
+              child: ProductDetailsView(
+                product: args['product'] as ProductModel,
+                isFavorite: args['isFavorite'] as ValueNotifier<bool>,
+                isCarted: args['isCarted'] as ValueNotifier<bool>,
+              ),
+            );
+          }),
       GoRoute(
         path: Routes.login,
         builder: (ontext, state) => MultiBlocProvider(
@@ -245,6 +280,20 @@ abstract class AppRouter {
                       create: (context) =>
                           getIt.get<GetCategoryCubit>()..emitGetCategories(),
                     ),
+                    BlocProvider(
+                      create: (context) =>
+                          getIt.get<AddProductToWishlistCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt.get<DeleteFromWishlistCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt.get<AddProductToCartCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) =>
+                          getIt.get<DeleteProductFromMyCartCubit>(),
+                    ),
                   ],
                   child: const HomeView(),
                 ),
@@ -268,7 +317,7 @@ abstract class AppRouter {
                       create: (context) => getIt.get<GetProductsCubit>(),
                     ),
                   ],
-                  child: CategoryView(),
+                  child: const CategoryView(),
                 ),
               ),
             ],
@@ -285,7 +334,24 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.wishList,
-                builder: (context, state) => const WishListView(),
+                builder: (context, state) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider.value(
+                      value: getIt.get<GetWishListCubit>()
+                        ..getWishListProduct(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt.get<DeleteFromWishlistCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt.get<AddProductToCartCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt.get<GetMyCartCubit>(),
+                    ),
+                  ],
+                  child: const WishListView(),
+                ),
               ),
             ],
           ),
@@ -293,7 +359,22 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.myCart,
-                builder: (context, state) => const MyCartView(),
+                builder: (context, state) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider.value(
+                      value: getIt.get<GetMyCartCubit>()..getMyCart(),
+                    ),
+                    BlocProvider(
+                      create: (context) =>
+                          getIt.get<DeleteProductFromMyCartCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) =>
+                          getIt.get<UpdateQuntityOfProductCartCubit>(),
+                    ),
+                  ],
+                  child: const MyCartView(),
+                ),
               ),
             ],
           ),
@@ -393,7 +474,7 @@ abstract class AppRouter {
                       create: (context) => UpdateBrandCubit(
                         UpdateBrandRepoImpl(BrandDetailsSource(dio)),
                       ),
-                      child: MyBrand(),
+                      child: const MyBrand(),
                     );
                   },
                 ),

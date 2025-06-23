@@ -1,0 +1,38 @@
+import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
+
+import '../../../../../core/networking/api_constants.dart';
+part 'my_cart_source.g.dart';
+
+@RestApi(baseUrl: ApiConstants.baseUrl)
+abstract class MyCartSource {
+  factory MyCartSource(Dio dio, {String? baseUrl}) = _MyCartSource;
+
+  @GET(ApiConstants.carts)
+  Future<dynamic> getMyCart(
+    @Header('Authorization') String token, {
+    @Query('limit') int limit = 50000,
+  });
+
+  @DELETE('${ApiConstants.carts}/{id}')
+  Future<dynamic> deleteProductFromMyCart(
+    @Header('Authorization') String token,
+    @Path('id') String id,
+  );
+
+  @DELETE(ApiConstants.carts)
+  Future<dynamic> deleteMyCart(
+    @Header('Authorization') String token,
+  );
+
+  @POST(ApiConstants.carts)
+  Future<dynamic> addProductToCart(
+      @Header('Authorization') String token, @Body() Map<String, dynamic> body);
+
+  @PUT('${ApiConstants.carts}/{id}')
+  Future<dynamic> updateQuntityOfProduct(
+    @Header('Authorization') String token,
+    @Body() Map<String, dynamic> body,
+    @Path() String id,
+  );
+}

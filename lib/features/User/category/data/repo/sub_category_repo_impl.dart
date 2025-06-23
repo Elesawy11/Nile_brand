@@ -1,15 +1,19 @@
 import 'package:nile_brand/core/networking/api_result.dart';
+import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/features/User/category/data/api/sub_category_source.dart';
 import 'package:nile_brand/features/User/category/data/models/product_model.dart';
 import 'package:nile_brand/features/User/category/data/models/review_model.dart';
+import 'package:nile_brand/features/User/category/data/models/review_response_model.dart';
 import 'package:nile_brand/features/User/category/data/models/sub_category_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../core/networking/api_error_handler.dart';
 
 class SubCategoryRepoImpl {
   final SubCategorySource _subCategorySource;
 
   SubCategoryRepoImpl(this._subCategorySource);
-
+  final String token =
+      'Bearer ${getIt.get<SharedPreferences>().getString('token')}';
   Future<ApiResult<List<SubCategoryModel>>> getSubCategories() async {
     try {
       final response = await _subCategorySource.getSubCategories();
@@ -44,10 +48,18 @@ class SubCategoryRepoImpl {
     try {
       await _subCategorySource.deleteReview(productId,reviewId ,token);
       return const ApiResult.success("Deleted Successfully!");
+
+  Future<ApiResult<ReviewResponseModel>> createReview(
+      {required String id, required Map<String, dynamic> body}) async {
+    try {
+      final response = await _subCategorySource.createReview(id, body, token);
+      return ApiResult.success(ReviewResponseModel.fromJson(response['data']));
+
     } catch (e) {
       return ApiResult.failure(ErrorHandler.handle(e));
     }
   }
+
 
   static List<SubCategoryModel> getSubCategoryList(Map<String, dynamic> data) {
     List<SubCategoryModel> subCategories = [];

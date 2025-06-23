@@ -24,6 +24,7 @@ class OwnerHomeView extends StatefulWidget {
 class _OwnerHomeViewState extends State<OwnerHomeView> {
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
       create: (context) => BrandProductsCubit(
         BrandProductsRepo(
@@ -57,6 +58,7 @@ class _OwnerHomeViewState extends State<OwnerHomeView> {
                                 physics: const AlwaysScrollableScrollPhysics(),
                                 children: [
                                   SizedBox(height: 100.h),
+
                                   Image.asset(
                                     Assets.imagesNoProductsCreated,
                                     height: 220.h,
@@ -116,6 +118,7 @@ class _OwnerHomeViewState extends State<OwnerHomeView> {
           );
         },
       ),
+
     );
   }
 }

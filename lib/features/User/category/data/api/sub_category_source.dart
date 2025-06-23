@@ -27,6 +27,13 @@ abstract class SubCategorySource {
   Future<void> deleteReview (
     @Path("productId") String productId,
     @Path("reviewId") String reviewId,
-    @Header('Authorization') String? token
+    @Header('Authorization') String? token)
+
+  @POST('${ApiConstants.products}/{id}/${ApiConstants.reviews}')
+  Future<dynamic> createReview(
+    @Path('id') String id,
+    @Body() Map<String, dynamic> body,
+    @Header("Authorization") String token,
+
   );
 }

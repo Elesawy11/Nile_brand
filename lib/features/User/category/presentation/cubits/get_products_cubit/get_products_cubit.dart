@@ -8,11 +8,12 @@ import '../../../data/repo/sub_category_repo_impl.dart';
 import 'get_products_state.dart';
 
 class GetProductsCubit extends Cubit<GetProductsState> {
-  GetProductsCubit(this._subCategoryRepo) : super(GetProductsState.initial());
+  GetProductsCubit(this._subCategoryRepo)
+      : super(const GetProductsState.initial());
   final List<ProductModel> products = [];
   final SubCategoryRepoImpl _subCategoryRepo;
   Future<void> getProducts() async {
-    emit(GetProductsState.getProductLoading());
+    emit(const GetProductsState.getProductLoading());
     final response = await _subCategoryRepo.getProducts();
 
     switch (response) {
@@ -36,7 +37,7 @@ class GetProductsCubit extends Cubit<GetProductsState> {
   }
 
   void getCategoryProducts({required String id}) {
-    emit(GetProductsState.getProductLoading());
+    emit(const GetProductsState.getProductLoading());
     List<ProductModel> myproducts = [];
     for (var product in products) {
       if (product.category!.id == id) {
@@ -52,7 +53,7 @@ class GetProductsCubit extends Cubit<GetProductsState> {
   }
 
   void getSubCategoryProducts(String id) {
-    emit(GetProductsState.getProductLoading());
+    emit(const GetProductsState.getProductLoading());
     List<ProductModel> myproducts = [];
     for (var product in products) {
       if (product.subcategory!.id == id) {
@@ -67,7 +68,7 @@ class GetProductsCubit extends Cubit<GetProductsState> {
   }
 
   void getAllProducts() {
-    emit(GetProductsState.getProductLoading());
+    emit(const GetProductsState.getProductLoading());
     emit(
       GetProductsState.getProductSuccess(
         products: products,
