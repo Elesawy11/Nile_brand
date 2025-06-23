@@ -8,7 +8,8 @@ class AddProductToCartResponseModel {
   Data? data;
 
   AddProductToCartResponseModel({this.length, this.data});
-  factory AddProductToCartResponseModel.fromJson(Map<String, dynamic> json) => _$AddProductToCartResponseModelFromJson(json);
+  factory AddProductToCartResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$AddProductToCartResponseModelFromJson(json);
 }
 
 @JsonSerializable()
@@ -30,7 +31,6 @@ class Data {
       this.iV,
       this.totalPrice});
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
-
 }
 
 @JsonSerializable()
@@ -41,6 +41,6 @@ class CartItems {
   String? sId;
 
   CartItems({this.product, this.quantity, this.price, this.sId});
-  factory CartItems.fromJson(Map<String, dynamic> json) => _$CartItemsFromJson(json);
-
+  factory CartItems.fromJson(Map<String, dynamic> json) =>
+      _$CartItemsFromJson(json);
 }

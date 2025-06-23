@@ -18,12 +18,14 @@ class CreateCuponCubit extends Cubit<CuponState> {
 
   Future<void> createCupon() async {
     emit(CreateCuponLoadingState());
-    String? token =await BrandPrefs.getToken();
+    String? token = await BrandPrefs.getToken();
 
-    final response = await _cuponsRepo.createCupon(CuponRequestBody(
-        name: cuponName.text,
-        expireTime: cuponExpireDate.text,
-        discount: int.parse(discount.text.trim())) , token!);
+    final response = await _cuponsRepo.createCupon(
+        CuponRequestBody(
+            name: cuponName.text,
+            expireTime: cuponExpireDate.text,
+            discount: int.tryParse(discount.text.trim())),
+        "Bearer ${token!}");
     switch (response) {
       case Success():
         print(response.data);
@@ -34,6 +36,4 @@ class CreateCuponCubit extends Cubit<CuponState> {
         emit(CreateCuponFailureState());
     }
   }
-
-  
 }

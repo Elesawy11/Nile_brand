@@ -15,7 +15,6 @@ import '../manager/update_brand/update_brand_state.dart';
 import 'package:nile_brand/features/User/auth/presentation/views/widgets/password_field.dart';
 import 'package:nile_brand/features/User/profile/presentation/views/widgets/profile_image.dart';
 
-
 class UpdateBrandBody extends StatefulWidget {
   const UpdateBrandBody({super.key});
 
@@ -37,11 +36,10 @@ class _UpdateBrandBodyState extends State<UpdateBrandBody> {
       child: Scaffold(
         appBar: AppBar(),
         body: BlocConsumer<UpdateBrandCubit, UpdateBrandState>(
-          listener: (context, state) async{
-            
+          listener: (context, state) async {
             if (state is UpdateBrandSuccess) {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
+                const SnackBar(
                     content: Text("Success"), backgroundColor: Colors.green),
               );
               context.pop();
@@ -76,7 +74,7 @@ class _UpdateBrandBodyState extends State<UpdateBrandBody> {
                         child: CircleAvatar(
                           radius: 50,
                           backgroundImage: NetworkImage(
-                              "https://nile-brands-backend.up.railway.app/brands/${cubit.logoPath}"),
+                              "https://nile-brands.up.railway.app/brands/${cubit.logoPath}"),
                         ),
                       ),
                       76.vs,
@@ -113,6 +111,7 @@ class _UpdateBrandBodyState extends State<UpdateBrandBody> {
                               : "Save Changes",
                           onPressed: () {
                             cubit.updateBrand();
+
                             // context.pop();
                           },
                         ),

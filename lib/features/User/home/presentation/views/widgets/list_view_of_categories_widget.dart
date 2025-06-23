@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/assets.dart';
-import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/categort_shimmer.dart';
 import 'package:nile_brand/features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
 import '../../cubits/get_category_cubit/get_category_state.dart';
+import 'category_item_widget.dart';
 
 class ListViewOfCategoreisWidget extends StatelessWidget {
   const ListViewOfCategoreisWidget({
@@ -25,7 +25,7 @@ class ListViewOfCategoreisWidget extends StatelessWidget {
       builder: (context, state) {
         return state is CategorySuccess
             ? ListView.builder(
-                physics: AlwaysScrollableScrollPhysics(),
+                physics: const AlwaysScrollableScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 itemCount: state.categories.length,
                 itemBuilder: (context, index) {
@@ -42,7 +42,7 @@ class ListViewOfCategoreisWidget extends StatelessWidget {
                 },
               )
             : state is CategoryLoading
-                ? CategoryShimeer()
+                ? const CategoryShimeer()
                 : state is CategoryError
                     ? Center(
                         child: Text(state.error),
@@ -53,57 +53,6 @@ class ListViewOfCategoreisWidget extends StatelessWidget {
                           )
                         : const SizedBox();
       },
-    );
-  }
-}
-
-class CategoryItemWidget extends StatelessWidget {
-  const CategoryItemWidget({
-    super.key,
-    required this.title,
-    required this.imageUrl,
-    required this.isImageUrlTrue,
-  });
-  final String title;
-  final String imageUrl;
-  final bool isImageUrlTrue;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(right: 18.w, bottom: 7.h),
-      child: Column(
-        children: [
-          isImageUrlTrue
-              ? ClipRRect(
-                  borderRadius: BorderRadius.circular(16.r),
-                  child: Image.network(
-                    imageUrl,
-                    height: 87.r,
-                    width: 87.r,
-                    fit: BoxFit.cover,
-                  ),
-                )
-              : ClipRRect(
-                  borderRadius: BorderRadius.circular(16.r),
-                  child: Image.asset(
-                    Assets.imagesNotFoundImage,
-                    height: 87.r,
-                    width: 87.r,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-          SizedBox(
-            width: 87.r,
-            child: Center(
-              child: Text(
-                title,
-                style: Styles.font14W500,
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

@@ -1,11 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:nile_brand/core/utils/color_manager.dart';
-import 'package:nile_brand/features/User/auth/presentation/cubits/verify_code_cubit/verify_code_cubit.dart';
-import 'package:nile_brand/features/User/auth/presentation/cubits/verify_code_cubit/verify_code_state.dart';
-import '../../../../../../core/helpers/setup_error_state.dart';
-import '../../../../../../core/routing/routes.dart';
+import 'package:nile_brand/core/routing/exports.dart';
 
 class VerificationBlocListener extends StatelessWidget {
   const VerificationBlocListener({super.key});

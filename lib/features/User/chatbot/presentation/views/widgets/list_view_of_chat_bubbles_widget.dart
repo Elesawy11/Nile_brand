@@ -25,7 +25,8 @@ class ListViewOfChatBubblesWidget extends StatelessWidget {
 
         return ListView.builder(
           padding: EdgeInsets.zero,
-          itemCount: typingMessage == null ? messages.length : messages.length + 1,
+          itemCount:
+              typingMessage == null ? messages.length : messages.length + 1,
           itemBuilder: (context, index) {
             if (index < messages.length) {
               final message = messages[index];
@@ -51,8 +52,10 @@ class ListViewOfChatBubblesWidget extends StatelessWidget {
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20.r),
             topRight: Radius.circular(20.r),
-            bottomLeft: isUser ? Radius.circular(20.r) : Radius.circular(0),
-            bottomRight: isUser ? Radius.circular(0) : Radius.circular(20.r),
+            bottomLeft:
+                isUser ? Radius.circular(20.r) : const Radius.circular(0),
+            bottomRight:
+                isUser ? const Radius.circular(0) : Radius.circular(20.r),
           ),
         ),
         child: Text(

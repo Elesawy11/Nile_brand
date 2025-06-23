@@ -22,10 +22,11 @@ class EmptyWishlistView extends StatelessWidget {
           20.vs,
           Padding(
             padding: 50.allEdgeInsets,
-            child:  Text(
+            child: Text(
               textAlign: TextAlign.center,
-              message?? "Start exploring and add your favorite items to your Wishlist...",
-              style:const TextStyle(
+              message ??
+                  "Start exploring and add your favorite items to your Wishlist...",
+              style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
                   color: ColorManager.mainColor),

@@ -9,7 +9,7 @@ import 'reset_pass_state.dart';
 
 class ResetPassCubit extends Cubit<ResetPassState> {
   final ResetPassRepo _resetPassRepo;
-  ResetPassCubit(this._resetPassRepo) : super(ResetPassState.initial());
+  ResetPassCubit(this._resetPassRepo) : super(const ResetPassState.initial());
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   final formKey = GlobalKey<FormState>();

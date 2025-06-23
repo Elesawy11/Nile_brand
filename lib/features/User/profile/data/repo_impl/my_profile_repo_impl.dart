@@ -52,6 +52,5 @@ class MyProfileRepoImpl {
     } catch (e) {
       return ApiResult.failure(ErrorHandler.handle(e));
     }
-    
   }
 }

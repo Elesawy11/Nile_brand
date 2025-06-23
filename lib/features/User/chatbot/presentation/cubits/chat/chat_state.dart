@@ -8,7 +8,6 @@ class ChatbotResponseState extends ChatbotState {
   ChatbotResponseState(this.chatHistory);
 }
 
-
 class ChatbotTypingState extends ChatbotState {
   final List<Map<String, String>> chatHistory;
   final String partialAnswer;

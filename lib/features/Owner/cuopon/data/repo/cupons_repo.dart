@@ -23,7 +23,7 @@ class CuponsRepo {
   Future<ApiResult<String>> deleteCupon(String id, String token) async {
     try {
       await _couponsSource.deletCoupon(id, token);
-      return ApiResult.success("Deleted Successfully!");
+      return const ApiResult.success("Deleted Successfully!");
     } catch (e) {
       return ApiResult.failure(ErrorHandler.handle(e));
     }
@@ -32,10 +32,12 @@ class CuponsRepo {
   Future<ApiResult<List<CreateCuoponSuccess>>> getAllCupons(
       String token) async {
     try {
-      final Map<String, dynamic> response =
-          await _couponsSource.getAllCupons(token);
-      final List<CreateCuoponSuccess> data = response["data"]
-          .map((data) => CreateCuoponSuccess.fromJson(data))
+      final response = await _couponsSource.getAllCupons(token);
+
+      final List<dynamic> cupons = response["data"];
+      final List<CreateCuoponSuccess> data = cupons
+          .map<CreateCuoponSuccess>(
+              (data) => CreateCuoponSuccess.fromJson(data))
           .toList();
       ;
       return ApiResult.success(data);
@@ -58,7 +60,7 @@ class CuponsRepo {
     try {
       final response = await _couponsSource.updateCupon(id, newCupon, token);
       print(CreateCuoponSuccess.fromJson(response["data"]));
-      return ApiResult.success("Cupon Updated Successfully");
+      return const ApiResult.success("Cupon Updated Successfully");
     } catch (e) {
       return ApiResult.failure(ErrorHandler.handle(("Please Try again ")));
     }

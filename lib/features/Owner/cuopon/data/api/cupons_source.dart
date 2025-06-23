@@ -10,20 +10,40 @@ part "cupons_source.g.dart";
 abstract class CouponsSource {
   factory CouponsSource(Dio dio) = _CouponsSource;
 
-  @POST('${ApiConstants.baseUrl}/coupons')
+  @POST('coupons')
+
+  Future<dynamic> createCoupon(
+      @Body() CuponRequestBody coupon, @Header('Authorization') String? token);
+
+
   Future<dynamic> createCoupon(@Body() CuponRequestBody coupon,@Header('Authorization') String? token);
 
-  @DELETE("${ApiConstants.baseUrl}/coupons/{id}")
-  Future<void> deletCoupon(@PUT("id") String id,@Header('Authorization') String? token);
 
-  @GET("${ApiConstants.baseUrl}/coupons")
+  @DELETE("coupons/{id}")
+  Future<void> deletCoupon(
+      @Path("id") String id, @Header('Authorization') String? token);
+
+  @GET("coupons")
   Future<dynamic> getAllCupons(@Header('Authorization') String? token);
 
-  @PUT("${ApiConstants.baseUrl}/coupons/{id}")
-  Future<dynamic> updateCupon(@PUT("id") String id ,@Body() CuponRequestBody newCupon ,@Header('Authorization') String? token);
+  @PUT("coupons/{id}")
+
+  Future<dynamic> updateCupon(
+      @Path("id") String id,
+      @Body() CuponRequestBody newCupon,
+      @Header('Authorization') String? token);
+
+  @POST("coupons/sendCoupon")
+  Future<dynamic> sendCupon(
+      @Body() String email, @Header('Authorization') String? token);
+
+
+  Future<dynamic> updateCupon(@Path("id") String id ,@Body() CuponRequestBody newCupon ,@Header('Authorization') String? token);
    
 
-  @POST("${ApiConstants.baseUrl}/coupons/sendCoupon")
+  @POST("coupons/sendCoupon")
+
   Future<dynamic> sendCupon(@Body() String email,@Header('Authorization') String? token);
+
 
 }

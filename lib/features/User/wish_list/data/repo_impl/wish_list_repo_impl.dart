@@ -38,7 +38,6 @@ class WishListRepoImpl {
     try {
       final response =
           await _repo.deleteProductFromMyWishlist(token, productId);
-      
 
       return ApiResult.success(response);
     } catch (e) {

@@ -1,11 +1,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:label="nile_brand"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.snap.camerakit.app.id"
+            android:value="4de09049-8e02-4c75-a181-63b0993c0773" />
+        <meta-data
+            android:name="com.snap.camerakit.api.token"
+            android:value="eyJhbGciOiJIUzI1NiIsImtpZCI6IkNhbnZhc1MyU0hNQUNQcm9kIiwidHlwIjoiSldUIn0.eyJhdWQiOiJjYW52YXMtY2FudmFzYXBpIiwiaXNzIjoiY2FudmFzLXMyc3Rva2VuIiwibmJmIjoxNzUwNzIxMTk4LCJzdWIiOiI0ZGUwOTA0OS04ZTAyLTRjNzUtYTE4MS02M2IwOTkzYzA3NzN-U1RBR0lOR344ZGMwN2QzYy05MDJmLTQzNTAtYTQ3MS00MmViMDkwZjAyMTMifQ.8bYTuCGsoVzPAK9ZknhUC2apDiJtDQzgJKp2ZtWjeOk" />
+
         <activity
+            
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
@@ -18,7 +31,9 @@
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
                  to determine the Window background behind the Flutter UI. -->
-            <meta-data
+            
+
+             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />

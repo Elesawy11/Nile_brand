@@ -17,3 +17,13 @@ class CreateProductError extends CreateProductState {
   final String message;
   CreateProductError(this.message);
 }
+
+class UpdateCoverImage extends CreateProductState {}
+
+class UpdateAdditionalImage extends CreateProductState {}
+
+class UpdateProductLoadingState extends CreateProductState {}
+
+class UpdateProductSuccessState extends CreateProductState {}
+
+class UpdateProductFailureState extends CreateProductState {}

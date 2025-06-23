@@ -4,10 +4,10 @@ import '../../../data/repo/sub_category_repo_impl.dart';
 import 'get_reviews_state.dart';
 
 class GetReviewsCubit extends Cubit<GetReviewsState> {
-  GetReviewsCubit(this._repo) : super(GetReviewsState.initial());
+  GetReviewsCubit(this._repo) : super(const GetReviewsState.initial());
   final SubCategoryRepoImpl _repo;
   Future<void> getReviews(String subCategoryId) async {
-    emit(GetReviewsState.getReviewsLoading());
+    emit(const GetReviewsState.getReviewsLoading());
 
     final response = await _repo.getReviews(id: subCategoryId);
 

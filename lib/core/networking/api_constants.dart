@@ -1,9 +1,7 @@
 class ApiConstants {
   ApiConstants._();
 
-
-  static const String baseUrl =
-      'https://nile-brands.up.railway.app/api/v1/';
+  static const String baseUrl = 'https://nile-brands.up.railway.app/api/v1/';
 
   // static const String baseUrl = 'https://nile-brands.up.railway.app/api/v1/';
   static const String signup = 'auth/signup';
@@ -25,6 +23,7 @@ class ApiConstants {
   static const String reviews = 'reviews';
   static const String wishlist = 'wishlist';
   static const String carts = 'carts';
+  static const String orders = 'orders';
 }
 
 class ApiErrors {

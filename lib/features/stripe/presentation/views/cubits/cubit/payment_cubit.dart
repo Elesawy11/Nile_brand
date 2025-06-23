@@ -7,8 +7,8 @@ import '../../../../data/repo/checkout_repo_impl.dart';
 import 'payment_state.dart';
 
 class PaymentCubit extends Cubit<PaymentState> {
-  PaymentCubit() : super(const PaymentState.initial());
-  final CheckoutRepoImpl _repo = CheckoutRepoImpl();
+  PaymentCubit(this._repo) : super(const PaymentState.initial());
+  final CheckoutRepoImpl _repo ;
   Future makePayment(
       {required PaymentIntentInputModel paymentIntentInputModel,
       required String orderId}) async {

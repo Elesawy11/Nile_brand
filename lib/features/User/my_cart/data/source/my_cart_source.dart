@@ -35,4 +35,10 @@ abstract class MyCartSource {
     @Body() Map<String, dynamic> body,
     @Path() String id,
   );
+
+  @POST(ApiConstants.orders)
+  Future<dynamic> createOrder(
+    @Header('Authorization') String token,
+    @Body() Map<String, dynamic> body,
+  );
 }

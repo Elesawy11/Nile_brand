@@ -1,24 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nile_brand/core/utils/sizes_padding.dart';
-import '../../../../../../core/utils/color_manager.dart';
-import '../../../../../../core/utils/styles.dart';
-import '../../../../../../core/widgets/app_text_form_field.dart';
-import '../../cubits/signup_cubit/sign_up_cubit.dart';
-import 'password_field.dart';
-import 'rule_selector.dart';
+import 'package:nile_brand/core/routing/exports.dart';
 
-class SignupForm extends StatelessWidget {
+class SignupForm extends StatefulWidget {
   const SignupForm({
     super.key,
-    required this.viewPass,
-    required this.viewRestPass,
   });
 
-  final ValueNotifier<bool> viewPass;
-  final ValueNotifier<bool> viewRestPass;
+  @override
+  State<SignupForm> createState() => _SignupFormState();
+}
 
+class _SignupFormState extends State<SignupForm> {
+  final ValueNotifier<bool> viewPass = ValueNotifier<bool>(true);
+  final ValueNotifier<bool> viewRestPass = ValueNotifier<bool>(true);
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<SignUpCubit>();

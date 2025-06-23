@@ -13,10 +13,6 @@ import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/assets.dart';
 import 'package:nile_brand/features/Owner/create_brand/presentation/views/widgets/dialogs.dart';
 
-
-
-
-
 class CreateBrandBody extends StatefulWidget {
   const CreateBrandBody({super.key});
 
@@ -137,12 +133,8 @@ class _CreateBrandBodyState extends State<CreateBrandBody> {
                         : () async {
                             if (_formKey.currentState!.validate()) {
                               if (cubit.logoPng.path.isEmpty) {
-                                showAlertDialog(
-                                    context,
-                                    "Please select a logo",
-                                    "Missing Logo",
-                                    Colors.orange,
-                                    () {});
+                                showAlertDialog(context, "Please select a logo",
+                                    "Missing Logo", Colors.orange, () {});
                                 return;
                               }
                               await cubit.createBrand();
@@ -162,7 +154,4 @@ class _CreateBrandBodyState extends State<CreateBrandBody> {
       },
     );
   }
-
-
-
 }

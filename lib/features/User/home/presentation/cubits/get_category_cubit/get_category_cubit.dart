@@ -17,17 +17,19 @@ class GetCategoryCubit extends Cubit<GetCategoryState> {
   List<CategoryModel> categoryList = [];
 
   Future<void> emitGetCategories({bool isLoadMore = false}) async {
-    // if hasMore is false and isLoadMore is true then return
     if (!hasMore && isLoadMore) return;
-    // first request or if you have to make refresh button
+
     if (!isLoadMore) {
       page = 1;
       hasMore = true;
       categoryList.clear();
       emit(const GetCategoryState.categoryLoading());
+
     } else {
       emit(const GetCategoryState.categoryPaginationLoading());
+
     }
+
     final response = await _repo.getCategories(limit: limit, page: page);
     switch (response) {
       case Success():
@@ -39,27 +41,40 @@ class GetCategoryCubit extends Cubit<GetCategoryState> {
           hasMore = true;
         }
 
+
         categoryList.addAll(list);
-        emit(GetCategoryState.categorySuccess(categories: categoryList));
-        getIt.get<SharedPreferences>().setInt('category', categoryList.length);
-        log('my category leght from cubit${categoryList.length}');
-        break;
-      case Failure():
-        if (isLoadMore) {
-          emit(
-            GetCategoryState.categoryPaginationError(
-              error: response.errorHandler.apiErrorModel.error?.message ??
-                  "Unknown error",
-            ),
-          );
-        } else {
-          emit(
-            GetCategoryState.categoryError(
-              error: response.errorHandler.apiErrorModel.error?.message ??
-                  "Unknown error",
-            ),
-          );
+
+
+        if (categoryList.isNotEmpty) {
+          categoryList.clear();
+          categoryList.addAll(list);
         }
+        else{
+         categoryList.addAll(list);
+        }
+
+        print(categoryList);
+
+        if (!isClosed) {
+          emit(GetCategoryState.categorySuccess(categories: categoryList));
+        }
+
+        getIt.get<SharedPreferences>().setInt('category', categoryList.length);
+        log('my category length from cubit: ${categoryList.length}');
+        break;
+
+      case Failure():
+        final errorMsg = response.errorHandler.apiErrorModel.error?.message ??
+            "Unknown error";
+
+        if (!isClosed) {
+          if (isLoadMore) {
+            emit(GetCategoryState.categoryPaginationError(error: errorMsg));
+          } else {
+            emit(GetCategoryState.categoryError(error: errorMsg));
+          }
+        }
+        break;
     }
   }
 }

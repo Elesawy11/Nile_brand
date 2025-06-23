@@ -17,13 +17,13 @@ class CategoryShimeer extends StatelessWidget {
       child: SizedBox(
         height: 120.h,
         child: ListView.builder(
-          physics: AlwaysScrollableScrollPhysics(),
+          physics: const AlwaysScrollableScrollPhysics(),
           scrollDirection: Axis.horizontal,
           itemCount: 6,
           itemBuilder: (context, index) {
             return SizedBox(
               height: 120.h,
-              child: CategoryItemShimmer(),
+              child: const CategoryItemShimmer(),
             );
           },
         ),

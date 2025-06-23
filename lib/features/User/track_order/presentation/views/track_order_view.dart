@@ -1,78 +1,63 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nile_brand/core/utils/color_manager.dart';
-import 'package:nile_brand/core/utils/styles.dart';
-import 'package:nile_brand/core/widgets/app_text_button.dart';
+import 'package:nile_brand/core/routing/exports.dart';
 import 'package:nile_brand/features/User/track_order/presentation/views/constatns.dart';
-import 'widgets/custom_time_line_tile_widget.dart';
+import '../../../../stripe/presentation/views/cubits/cubit/payment_cubit.dart';
+import '../../data/models/order_model.dart';
+import 'widgets/payment_method_bloc_listener.dart';
 
-class TrackOrderView extends StatelessWidget {
-  const TrackOrderView({super.key});
+class OrdersListView extends StatelessWidget {
+  const OrdersListView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: Column(
-            children: [
-              Text(
-                'Track order',
-                style: Styles.font24W500,
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.7,
-                child: ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return itemBuilder(context, index);
-                  },
+    return BlocProvider(
+      create: (context) => getIt.get<PaymentCubit>(),
+      child: Scaffold(
+        appBar: AppBar(title: const Text('Orders')),
+        body: ListView.builder(
+          padding: const EdgeInsets.all(16),
+          itemCount: Constatns.orders.length,
+          itemBuilder: (context, index) {
+            Order order = Constatns.orders[index];
+            return InkWell(
+              onTap: () {
+                // Optional: navigate or show details
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Tapped ${order.orderNumber}')),
+                );
+              },
+              child: Card(
+                margin: const EdgeInsets.symmetric(vertical: 8),
+                elevation: 4,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Order: ${order.orderNumber}',
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Total: \$${order.totalPrice?.toStringAsFixed(2)}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      const SizedBox(height: 12),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: PaymentMethodBlocListener(order: order),
+                      )
+                    ],
+                  ),
                 ),
               ),
-              SizedBox(
-                height: 50.h,
-                width: 120.w,
-                child: AppTextButton(
-                  text: 'Done',
-                  onPressed: () {},
-                  backgroundColor: ColorManager.mainColor,
-                ),
-              ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );
   }
-}
-
-Widget itemBuilder(BuildContext context, int index) {
-  return index == 0
-      ? CustomTimeLineTileWidget(
-          image: Constatns.trackOrderList[index].image,
-          title: Constatns.trackOrderList[index].title,
-          description: Constatns.trackOrderList[index].description,
-          index: index,
-          isFirst: true,
-          isLast: false,
-        )
-      : index == 2
-          ? CustomTimeLineTileWidget(
-              image: Constatns.trackOrderList[index].image,
-              title: Constatns.trackOrderList[index].title,
-              description: Constatns.trackOrderList[index].description,
-              index: index,
-              isFirst: false,
-              isLast: true,
-            )
-          : CustomTimeLineTileWidget(
-              image: Constatns.trackOrderList[index].image,
-              title: Constatns.trackOrderList[index].title,
-              description: Constatns.trackOrderList[index].description,
-              index: index,
-              isFirst: false,
-              isLast: false,
-            );
 }

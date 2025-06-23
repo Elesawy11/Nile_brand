@@ -8,7 +8,8 @@ import '../../../data/models/frogot_pass_request.dart';
 import 'forgot_pass_state.dart';
 
 class ForgotPassCubit extends Cubit<ForgotPassState> {
-  ForgotPassCubit(this._forgotPassRepo) : super(ForgotPassState.initial());
+  ForgotPassCubit(this._forgotPassRepo)
+      : super(const ForgotPassState.initial());
 
   final ForgotPassRepo _forgotPassRepo;
   final TextEditingController emailController = TextEditingController();

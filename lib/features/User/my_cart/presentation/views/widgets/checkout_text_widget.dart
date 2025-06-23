@@ -28,7 +28,8 @@ class CheckoutTextWidget extends StatelessWidget {
           ),
           Text(
             total,
-            style: Styles.font20W400.copyWith(color: ColorManager.mainColor,fontWeight: FontWeight.w600),
+            style: Styles.font20W400.copyWith(
+                color: ColorManager.mainColor, fontWeight: FontWeight.w600),
           ),
         ],
       ),

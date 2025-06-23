@@ -18,7 +18,6 @@ class UpdateBrandDeleted extends UpdateBrandState {
   final String msg;
 
   UpdateBrandDeleted({required this.msg});
-  
 }
 
-class LoadedOldInfo extends UpdateBrandState{}
+class LoadedOldInfo extends UpdateBrandState {}

@@ -26,14 +26,14 @@ class CustomSystemFeedback extends StatelessWidget {
             alignment: Alignment.topLeft,
             child: CircleAvatar(
               radius: 24.r,
-              backgroundImage:  feed.user == null? AssetImage(Assets.imagesProfileImage) : NetworkImage(feed.user!.userImage),
-
+              backgroundImage: feed.user == null
+                  ? AssetImage(Assets.imagesProfileImage)
+                  : NetworkImage(feed.user!.userImage),
             ),
           ),
           7.hs,
           Expanded(
             child: Column(
-
               children: [
                 9.vs,
                 SizedBox(
@@ -58,11 +58,7 @@ class CustomSystemFeedback extends StatelessWidget {
                 7.vs,
                 Flexible(
                     child: Text(
-                        style: Styles.font12W300,
-                        maxLines: 3,
-                        feed.comment!
-                       
-                       ) )
+                        style: Styles.font12W300, maxLines: 3, feed.comment!))
               ],
             ),
           ),

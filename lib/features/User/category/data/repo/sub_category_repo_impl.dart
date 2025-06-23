@@ -44,6 +44,17 @@ class SubCategoryRepoImpl {
     }
   }
 
+
+  // Future<ApiResult<String>> deleteProductReview(String productId,String reviewId, String token) async {
+  //   try {
+  //     await _subCategorySource.deleteReview(productId,reviewId ,token);
+  //     return const ApiResult.success("Deleted Successfully!");
+  //   }catch(e){
+
+  //     return const ApiResult.failure(ErrorHandler.handle("error"));
+  //   }
+
+
   Future<ApiResult<ReviewResponseModel>> createReview(
       {required String id, required Map<String, dynamic> body}) async {
     try {
@@ -54,15 +65,14 @@ class SubCategoryRepoImpl {
     }
   }
 
+
 // static methods
+
 
   static List<SubCategoryModel> getSubCategoryList(Map<String, dynamic> data) {
     List<SubCategoryModel> subCategories = [];
-    for (var categoryMap in data['data']) {
       subCategories.add(SubCategoryModel.fromJson(categoryMap));
     }
-    return subCategories;
-  }
 
   static List<ProductModel> getProductsList(Map<String, dynamic> data) {
     List<ProductModel> products = [];

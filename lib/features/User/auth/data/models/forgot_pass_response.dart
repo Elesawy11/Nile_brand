@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'forgot_pass_response.g.dart';
+
 @JsonSerializable()
 class ForgotPassResponse {
   String? message;

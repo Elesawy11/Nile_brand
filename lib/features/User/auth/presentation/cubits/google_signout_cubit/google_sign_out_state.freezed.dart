@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,153 +9,586 @@ part of 'google_sign_out_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$GoogleSignOutState {
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is GoogleSignOutState);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'GoogleSignOutState()';
-  }
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() signoutLoading,
+    required TResult Function() signoutSuccess,
+    required TResult Function(String error) signoutError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? signoutLoading,
+    TResult? Function()? signoutSuccess,
+    TResult? Function(String error)? signoutError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? signoutLoading,
+    TResult Function()? signoutSuccess,
+    TResult Function(String error)? signoutError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(SignoutLoading value) signoutLoading,
+    required TResult Function(SignoutSuccess value) signoutSuccess,
+    required TResult Function(SignoutError value) signoutError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(SignoutLoading value)? signoutLoading,
+    TResult? Function(SignoutSuccess value)? signoutSuccess,
+    TResult? Function(SignoutError value)? signoutError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(SignoutLoading value)? signoutLoading,
+    TResult Function(SignoutSuccess value)? signoutSuccess,
+    TResult Function(SignoutError value)? signoutError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class $GoogleSignOutStateCopyWith<$Res> {
-  $GoogleSignOutStateCopyWith(
-      GoogleSignOutState _, $Res Function(GoogleSignOutState) __);
+abstract class $GoogleSignOutStateCopyWith<$Res> {
+  factory $GoogleSignOutStateCopyWith(
+          GoogleSignOutState value, $Res Function(GoogleSignOutState) then) =
+      _$GoogleSignOutStateCopyWithImpl<$Res, GoogleSignOutState>;
+}
+
+/// @nodoc
+class _$GoogleSignOutStateCopyWithImpl<$Res, $Val extends GoogleSignOutState>
+    implements $GoogleSignOutStateCopyWith<$Res> {
+  _$GoogleSignOutStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of GoogleSignOutState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$GoogleSignOutStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of GoogleSignOutState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _Initial implements GoogleSignOutState {
-  const _Initial();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
     return 'GoogleSignOutState.initial()';
   }
-}
-
-/// @nodoc
-
-class SignoutLoading implements GoogleSignOutState {
-  const SignoutLoading();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is SignoutLoading);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() signoutLoading,
+    required TResult Function() signoutSuccess,
+    required TResult Function(String error) signoutError,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? signoutLoading,
+    TResult? Function()? signoutSuccess,
+    TResult? Function(String error)? signoutError,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? signoutLoading,
+    TResult Function()? signoutSuccess,
+    TResult Function(String error)? signoutError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(SignoutLoading value) signoutLoading,
+    required TResult Function(SignoutSuccess value) signoutSuccess,
+    required TResult Function(SignoutError value) signoutError,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(SignoutLoading value)? signoutLoading,
+    TResult? Function(SignoutSuccess value)? signoutSuccess,
+    TResult? Function(SignoutError value)? signoutError,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(SignoutLoading value)? signoutLoading,
+    TResult Function(SignoutSuccess value)? signoutSuccess,
+    TResult Function(SignoutError value)? signoutError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Initial implements GoogleSignOutState {
+  const factory _Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$SignoutLoadingImplCopyWith<$Res> {
+  factory _$$SignoutLoadingImplCopyWith(_$SignoutLoadingImpl value,
+          $Res Function(_$SignoutLoadingImpl) then) =
+      __$$SignoutLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SignoutLoadingImplCopyWithImpl<$Res>
+    extends _$GoogleSignOutStateCopyWithImpl<$Res, _$SignoutLoadingImpl>
+    implements _$$SignoutLoadingImplCopyWith<$Res> {
+  __$$SignoutLoadingImplCopyWithImpl(
+      _$SignoutLoadingImpl _value, $Res Function(_$SignoutLoadingImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of GoogleSignOutState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$SignoutLoadingImpl implements SignoutLoading {
+  const _$SignoutLoadingImpl();
 
   @override
   String toString() {
     return 'GoogleSignOutState.signoutLoading()';
   }
-}
-
-/// @nodoc
-
-class SignoutSuccess implements GoogleSignOutState {
-  const SignoutSuccess();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is SignoutSuccess);
+        (other.runtimeType == runtimeType && other is _$SignoutLoadingImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  String toString() {
-    return 'GoogleSignOutState.signoutSuccess()';
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() signoutLoading,
+    required TResult Function() signoutSuccess,
+    required TResult Function(String error) signoutError,
+  }) {
+    return signoutLoading();
   }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? signoutLoading,
+    TResult? Function()? signoutSuccess,
+    TResult? Function(String error)? signoutError,
+  }) {
+    return signoutLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? signoutLoading,
+    TResult Function()? signoutSuccess,
+    TResult Function(String error)? signoutError,
+    required TResult orElse(),
+  }) {
+    if (signoutLoading != null) {
+      return signoutLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(SignoutLoading value) signoutLoading,
+    required TResult Function(SignoutSuccess value) signoutSuccess,
+    required TResult Function(SignoutError value) signoutError,
+  }) {
+    return signoutLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(SignoutLoading value)? signoutLoading,
+    TResult? Function(SignoutSuccess value)? signoutSuccess,
+    TResult? Function(SignoutError value)? signoutError,
+  }) {
+    return signoutLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(SignoutLoading value)? signoutLoading,
+    TResult Function(SignoutSuccess value)? signoutSuccess,
+    TResult Function(SignoutError value)? signoutError,
+    required TResult orElse(),
+  }) {
+    if (signoutLoading != null) {
+      return signoutLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SignoutLoading implements GoogleSignOutState {
+  const factory SignoutLoading() = _$SignoutLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$SignoutSuccessImplCopyWith<$Res> {
+  factory _$$SignoutSuccessImplCopyWith(_$SignoutSuccessImpl value,
+          $Res Function(_$SignoutSuccessImpl) then) =
+      __$$SignoutSuccessImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SignoutSuccessImplCopyWithImpl<$Res>
+    extends _$GoogleSignOutStateCopyWithImpl<$Res, _$SignoutSuccessImpl>
+    implements _$$SignoutSuccessImplCopyWith<$Res> {
+  __$$SignoutSuccessImplCopyWithImpl(
+      _$SignoutSuccessImpl _value, $Res Function(_$SignoutSuccessImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of GoogleSignOutState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class SignoutError implements GoogleSignOutState {
-  const SignoutError({required this.error});
+class _$SignoutSuccessImpl implements SignoutSuccess {
+  const _$SignoutSuccessImpl();
 
-  final String error;
-
-  /// Create a copy of GoogleSignOutState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $SignoutErrorCopyWith<SignoutError> get copyWith =>
-      _$SignoutErrorCopyWithImpl<SignoutError>(this, _$identity);
+  @override
+  String toString() {
+    return 'GoogleSignOutState.signoutSuccess()';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is SignoutError &&
-            (identical(other.error, error) || other.error == error));
+        (other.runtimeType == runtimeType && other is _$SignoutSuccessImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error);
+  int get hashCode => runtimeType.hashCode;
 
   @override
-  String toString() {
-    return 'GoogleSignOutState.signoutError(error: $error)';
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() signoutLoading,
+    required TResult Function() signoutSuccess,
+    required TResult Function(String error) signoutError,
+  }) {
+    return signoutSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? signoutLoading,
+    TResult? Function()? signoutSuccess,
+    TResult? Function(String error)? signoutError,
+  }) {
+    return signoutSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? signoutLoading,
+    TResult Function()? signoutSuccess,
+    TResult Function(String error)? signoutError,
+    required TResult orElse(),
+  }) {
+    if (signoutSuccess != null) {
+      return signoutSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(SignoutLoading value) signoutLoading,
+    required TResult Function(SignoutSuccess value) signoutSuccess,
+    required TResult Function(SignoutError value) signoutError,
+  }) {
+    return signoutSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(SignoutLoading value)? signoutLoading,
+    TResult? Function(SignoutSuccess value)? signoutSuccess,
+    TResult? Function(SignoutError value)? signoutError,
+  }) {
+    return signoutSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(SignoutLoading value)? signoutLoading,
+    TResult Function(SignoutSuccess value)? signoutSuccess,
+    TResult Function(SignoutError value)? signoutError,
+    required TResult orElse(),
+  }) {
+    if (signoutSuccess != null) {
+      return signoutSuccess(this);
+    }
+    return orElse();
   }
 }
 
+abstract class SignoutSuccess implements GoogleSignOutState {
+  const factory SignoutSuccess() = _$SignoutSuccessImpl;
+}
+
 /// @nodoc
-abstract mixin class $SignoutErrorCopyWith<$Res>
-    implements $GoogleSignOutStateCopyWith<$Res> {
-  factory $SignoutErrorCopyWith(
-          SignoutError value, $Res Function(SignoutError) _then) =
-      _$SignoutErrorCopyWithImpl;
+abstract class _$$SignoutErrorImplCopyWith<$Res> {
+  factory _$$SignoutErrorImplCopyWith(
+          _$SignoutErrorImpl value, $Res Function(_$SignoutErrorImpl) then) =
+      __$$SignoutErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class _$SignoutErrorCopyWithImpl<$Res> implements $SignoutErrorCopyWith<$Res> {
-  _$SignoutErrorCopyWithImpl(this._self, this._then);
-
-  final SignoutError _self;
-  final $Res Function(SignoutError) _then;
+class __$$SignoutErrorImplCopyWithImpl<$Res>
+    extends _$GoogleSignOutStateCopyWithImpl<$Res, _$SignoutErrorImpl>
+    implements _$$SignoutErrorImplCopyWith<$Res> {
+  __$$SignoutErrorImplCopyWithImpl(
+      _$SignoutErrorImpl _value, $Res Function(_$SignoutErrorImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of GoogleSignOutState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? error = null,
   }) {
-    return _then(SignoutError(
+    return _then(_$SignoutErrorImpl(
       error: null == error
-          ? _self.error
+          ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
-// dart format on
+/// @nodoc
+
+class _$SignoutErrorImpl implements SignoutError {
+  const _$SignoutErrorImpl({required this.error});
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'GoogleSignOutState.signoutError(error: $error)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SignoutErrorImpl &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  /// Create a copy of GoogleSignOutState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SignoutErrorImplCopyWith<_$SignoutErrorImpl> get copyWith =>
+      __$$SignoutErrorImplCopyWithImpl<_$SignoutErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() signoutLoading,
+    required TResult Function() signoutSuccess,
+    required TResult Function(String error) signoutError,
+  }) {
+    return signoutError(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? signoutLoading,
+    TResult? Function()? signoutSuccess,
+    TResult? Function(String error)? signoutError,
+  }) {
+    return signoutError?.call(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? signoutLoading,
+    TResult Function()? signoutSuccess,
+    TResult Function(String error)? signoutError,
+    required TResult orElse(),
+  }) {
+    if (signoutError != null) {
+      return signoutError(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(SignoutLoading value) signoutLoading,
+    required TResult Function(SignoutSuccess value) signoutSuccess,
+    required TResult Function(SignoutError value) signoutError,
+  }) {
+    return signoutError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(SignoutLoading value)? signoutLoading,
+    TResult? Function(SignoutSuccess value)? signoutSuccess,
+    TResult? Function(SignoutError value)? signoutError,
+  }) {
+    return signoutError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(SignoutLoading value)? signoutLoading,
+    TResult Function(SignoutSuccess value)? signoutSuccess,
+    TResult Function(SignoutError value)? signoutError,
+    required TResult orElse(),
+  }) {
+    if (signoutError != null) {
+      return signoutError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SignoutError implements GoogleSignOutState {
+  const factory SignoutError({required final String error}) =
+      _$SignoutErrorImpl;
+
+  String get error;
+
+  /// Create a copy of GoogleSignOutState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SignoutErrorImplCopyWith<_$SignoutErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

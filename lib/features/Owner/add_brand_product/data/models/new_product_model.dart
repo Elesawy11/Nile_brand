@@ -46,7 +46,6 @@ class NewProductModel {
 
   Map<String, dynamic> toJson() => _$NewProductModelToJson(this);
 
-
   static List<File> _imagesFromJson(List<dynamic> paths) =>
       paths.map((path) => File(path as String)).toList();
 

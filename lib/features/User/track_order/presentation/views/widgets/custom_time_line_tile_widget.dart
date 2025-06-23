@@ -98,4 +98,3 @@ class CustomTimeLineTileWidget extends StatelessWidget {
     );
   }
 }
-

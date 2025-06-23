@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:nile_brand/features/User/category/presentation/cubits/get_Category_products_Cubit/get_category_products_cubit.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_cubit.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_sub_categories_cubit/get_sub_categorys_cubit.dart';
 import 'package:nile_brand/features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
@@ -18,7 +17,7 @@ class CustomTabBar extends StatelessWidget {
     final productCubit = context.read<GetProductsCubit>();
     List<String> categoryList = ['All'];
     categoryList.addAll(categoryCubit.categoryList.map((e) => e.name ?? ''));
-    // log('my category list ===>>>> ${cubit.categoryList[0].name}');
+
     return TabBar(
       isScrollable: true,
       controller: tabController,

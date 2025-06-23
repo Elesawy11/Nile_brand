@@ -26,7 +26,6 @@ class UpdatedBrandData {
   final String mongoId;
 
   final String name;
-  
 
   final String logo;
 
@@ -52,27 +51,21 @@ class UpdatedBrandData {
       _$UpdatedBrandDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$UpdatedBrandDataToJson(this);
-
-
 }
 
 @JsonSerializable()
 class Owner {
-
-
   @JsonKey(name: '_id')
   final String Id;
 
   final String name;
 
   Owner({
-  
     required this.Id,
     required this.name,
   });
 
-  factory Owner.fromJson(Map<String, dynamic> json) =>
-      _$OwnerFromJson(json);
+  factory Owner.fromJson(Map<String, dynamic> json) => _$OwnerFromJson(json);
 
   Map<String, dynamic> toJson() => _$OwnerToJson(this);
 }

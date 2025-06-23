@@ -8,7 +8,7 @@ part 'create_brand_request_body.g.dart';
 class BrandCreateRequest {
   final String name;
   final String description;
-  
+
   @JsonKey(fromJson: _fromJson, toJson: _toJson)
   final File logo;
 

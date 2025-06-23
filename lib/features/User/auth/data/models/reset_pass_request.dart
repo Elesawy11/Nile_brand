@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'reset_pass_request.g.dart';
+
 @JsonSerializable()
 class ResetPassRequest {
   final String? password;
@@ -9,5 +10,5 @@ class ResetPassRequest {
     this.confirmPassword,
   });
 
-  Map<String, dynamic> toJson () => _$ResetPassRequestToJson(this);
+  Map<String, dynamic> toJson() => _$ResetPassRequestToJson(this);
 }

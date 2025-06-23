@@ -8,12 +8,7 @@ class CuponRequestBody {
   String? expireTime;
   int? discount;
 
-  CuponRequestBody({
-    this.name,
-    this.expireTime,
-    this.discount
-
-  });
+  CuponRequestBody({this.name, this.expireTime, this.discount});
 
   Map<String, dynamic> toJson() => _$CuponRequestBodyToJson(this);
 }

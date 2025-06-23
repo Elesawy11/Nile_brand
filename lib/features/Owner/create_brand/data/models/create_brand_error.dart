@@ -21,7 +21,6 @@ class FieldError {
   final String path;
   final String location;
 
-
   final dynamic value;
 
   FieldError({

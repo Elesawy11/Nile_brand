@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nile_brand/core/networking/api_constants.dart';
 import 'package:nile_brand/core/networking/dio_factory.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
-import 'package:nile_brand/features/Owner/owner_helpers.dart';
+import 'package:nile_brand/features/User/category/presentation/views/widgets/product_shimmer.dart';
 import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/color_manager.dart';
-import '../../../create_brand/data/models/create_brand_response_body.dart';
 import '../../data/api/owner_home_services.dart';
 import '../../data/repo/owner_home_repo.dart';
 import '../manager/display_products/display_products_cubit.dart';

@@ -1,16 +1,5 @@
-import 'dart:async';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nile_brand/core/utils/color_manager.dart';
-import 'package:nile_brand/core/utils/sizes_padding.dart';
-import 'package:nile_brand/features/User/auth/presentation/cubits/forgot_pass/forgot_pass_cubit.dart';
-import 'package:nile_brand/features/User/auth/presentation/cubits/verify_code_cubit/verify_code_cubit.dart';
-import 'package:nile_brand/features/User/auth/presentation/views/widgets/verification_bloc_listener.dart';
-import 'package:nile_brand/features/User/auth/presentation/views/widgets/verification_code_input.dart';
-import '../../../../../core/utils/styles.dart';
-import '../../../../../core/widgets/app_text_button.dart';
+import '../../../../../core/routing/exports.dart';
+import 'widgets/custom_verify_button_widget.dart';
 
 class VerificationScreen extends StatefulWidget {
   const VerificationScreen({super.key, required this.email});
@@ -62,11 +51,12 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ForgotPassCubit>();
     return SafeArea(
         child: Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        physics: ClampingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -99,9 +89,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 ? TextButton(
                     onPressed: () {
                       resendCode();
-                      context.read<ForgotPassCubit>().emailController.text =
-                          widget.email;
-                      context.read<ForgotPassCubit>().emitforgotPassState();
+                      cubit.emailController.text = widget.email;
+                      cubit.emitforgotPassState();
                     },
                     child: Text(
                       "Resend Code",
@@ -111,28 +100,11 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     ),
                   )
                 : 30.vs,
-            SizedBox(
-              height: 50.h,
-              width: 370.w,
-              child: Padding(
-                padding: 50.ph,
-                child: AppTextButton(
-                  text: 'Verify',
-                  onPressed: () => validateThenDoVerify(context),
-                  backgroundColor: ColorManager.mainColor,
-                ),
-              ),
-            ),
-            VerificationBlocListener(),
+            const CustomVerifyButton(),
+            const VerificationBlocListener(),
           ],
         ),
       ),
     ));
-  }
-
-  void validateThenDoVerify(BuildContext context) {
-    if (context.read<VerifyCodeCubit>().formKey.currentState!.validate()) {
-      context.read<VerifyCodeCubit>().emitVerifyCodeState();
-    }
   }
 }

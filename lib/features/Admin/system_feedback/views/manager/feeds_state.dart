@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:nile_brand/features/Admin/system_feedback/data/model/system_feedback_model.dart';
 
-
 abstract class SystemFeedbackState extends Equatable {
   const SystemFeedbackState();
 

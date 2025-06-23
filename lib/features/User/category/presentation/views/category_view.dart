@@ -1,13 +1,6 @@
-import 'dart:developer';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/category_details.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/custom_appbar.dart';
-import 'package:nile_brand/features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../../../core/routing/exports.dart';
 
 class CategoryView extends StatefulWidget {
@@ -23,12 +16,12 @@ class _CategoryViewState extends State<CategoryView>
     with SingleTickerProviderStateMixin {
   TabController? tabController;
   final cubit = getIt.get<GetCategoryCubit>();
-  // final categoryLenght = getIt.get<SharedPreferences>().getInt('category');
 
   @override
   void initState() {
-    tabController = TabController(length:  cubit.categoryList.length + 1, vsync: this);
-    // log('Category List Length: ==++++>>>>>${categoryLenght ?? 0}');
+    tabController =
+        TabController(length: cubit.categoryList.length + 1, vsync: this);
+
     super.initState();
   }
 

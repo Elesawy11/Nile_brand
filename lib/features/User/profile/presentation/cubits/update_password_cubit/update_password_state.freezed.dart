@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,132 +9,356 @@ part of 'update_password_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$UpdatePasswordState {
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is UpdatePasswordState);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'UpdatePasswordState()';
-  }
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() updatePasswordLoading,
+    required TResult Function(LoginResponse response) updatePasswordSuccess,
+    required TResult Function(String error) updatePasswordError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? updatePasswordLoading,
+    TResult? Function(LoginResponse response)? updatePasswordSuccess,
+    TResult? Function(String error)? updatePasswordError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? updatePasswordLoading,
+    TResult Function(LoginResponse response)? updatePasswordSuccess,
+    TResult Function(String error)? updatePasswordError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(UpdatePasswordLoading value)
+        updatePasswordLoading,
+    required TResult Function(UpdatePasswordSuccess value)
+        updatePasswordSuccess,
+    required TResult Function(UpdatePasswordError value) updatePasswordError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(UpdatePasswordLoading value)? updatePasswordLoading,
+    TResult? Function(UpdatePasswordSuccess value)? updatePasswordSuccess,
+    TResult? Function(UpdatePasswordError value)? updatePasswordError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(UpdatePasswordLoading value)? updatePasswordLoading,
+    TResult Function(UpdatePasswordSuccess value)? updatePasswordSuccess,
+    TResult Function(UpdatePasswordError value)? updatePasswordError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class $UpdatePasswordStateCopyWith<$Res> {
-  $UpdatePasswordStateCopyWith(
-      UpdatePasswordState _, $Res Function(UpdatePasswordState) __);
+abstract class $UpdatePasswordStateCopyWith<$Res> {
+  factory $UpdatePasswordStateCopyWith(
+          UpdatePasswordState value, $Res Function(UpdatePasswordState) then) =
+      _$UpdatePasswordStateCopyWithImpl<$Res, UpdatePasswordState>;
+}
+
+/// @nodoc
+class _$UpdatePasswordStateCopyWithImpl<$Res, $Val extends UpdatePasswordState>
+    implements $UpdatePasswordStateCopyWith<$Res> {
+  _$UpdatePasswordStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of UpdatePasswordState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$UpdatePasswordStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UpdatePasswordState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _Initial implements UpdatePasswordState {
-  const _Initial();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
     return 'UpdatePasswordState.initial()';
   }
-}
-
-/// @nodoc
-
-class UpdatePasswordLoading implements UpdatePasswordState {
-  const UpdatePasswordLoading();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is UpdatePasswordLoading);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  String toString() {
-    return 'UpdatePasswordState.updatePasswordLoading()';
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() updatePasswordLoading,
+    required TResult Function(LoginResponse response) updatePasswordSuccess,
+    required TResult Function(String error) updatePasswordError,
+  }) {
+    return initial();
   }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? updatePasswordLoading,
+    TResult? Function(LoginResponse response)? updatePasswordSuccess,
+    TResult? Function(String error)? updatePasswordError,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? updatePasswordLoading,
+    TResult Function(LoginResponse response)? updatePasswordSuccess,
+    TResult Function(String error)? updatePasswordError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(UpdatePasswordLoading value)
+        updatePasswordLoading,
+    required TResult Function(UpdatePasswordSuccess value)
+        updatePasswordSuccess,
+    required TResult Function(UpdatePasswordError value) updatePasswordError,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(UpdatePasswordLoading value)? updatePasswordLoading,
+    TResult? Function(UpdatePasswordSuccess value)? updatePasswordSuccess,
+    TResult? Function(UpdatePasswordError value)? updatePasswordError,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(UpdatePasswordLoading value)? updatePasswordLoading,
+    TResult Function(UpdatePasswordSuccess value)? updatePasswordSuccess,
+    TResult Function(UpdatePasswordError value)? updatePasswordError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Initial implements UpdatePasswordState {
+  const factory _Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdatePasswordLoadingImplCopyWith<$Res> {
+  factory _$$UpdatePasswordLoadingImplCopyWith(
+          _$UpdatePasswordLoadingImpl value,
+          $Res Function(_$UpdatePasswordLoadingImpl) then) =
+      __$$UpdatePasswordLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdatePasswordLoadingImplCopyWithImpl<$Res>
+    extends _$UpdatePasswordStateCopyWithImpl<$Res, _$UpdatePasswordLoadingImpl>
+    implements _$$UpdatePasswordLoadingImplCopyWith<$Res> {
+  __$$UpdatePasswordLoadingImplCopyWithImpl(_$UpdatePasswordLoadingImpl _value,
+      $Res Function(_$UpdatePasswordLoadingImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UpdatePasswordState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class UpdatePasswordSuccess implements UpdatePasswordState {
-  const UpdatePasswordSuccess({required this.response});
+class _$UpdatePasswordLoadingImpl implements UpdatePasswordLoading {
+  const _$UpdatePasswordLoadingImpl();
 
-  final LoginResponse response;
-
-  /// Create a copy of UpdatePasswordState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $UpdatePasswordSuccessCopyWith<UpdatePasswordSuccess> get copyWith =>
-      _$UpdatePasswordSuccessCopyWithImpl<UpdatePasswordSuccess>(
-          this, _$identity);
+  @override
+  String toString() {
+    return 'UpdatePasswordState.updatePasswordLoading()';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is UpdatePasswordSuccess &&
-            (identical(other.response, response) ||
-                other.response == response));
+            other is _$UpdatePasswordLoadingImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, response);
+  int get hashCode => runtimeType.hashCode;
 
   @override
-  String toString() {
-    return 'UpdatePasswordState.updatePasswordSuccess(response: $response)';
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() updatePasswordLoading,
+    required TResult Function(LoginResponse response) updatePasswordSuccess,
+    required TResult Function(String error) updatePasswordError,
+  }) {
+    return updatePasswordLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? updatePasswordLoading,
+    TResult? Function(LoginResponse response)? updatePasswordSuccess,
+    TResult? Function(String error)? updatePasswordError,
+  }) {
+    return updatePasswordLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? updatePasswordLoading,
+    TResult Function(LoginResponse response)? updatePasswordSuccess,
+    TResult Function(String error)? updatePasswordError,
+    required TResult orElse(),
+  }) {
+    if (updatePasswordLoading != null) {
+      return updatePasswordLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(UpdatePasswordLoading value)
+        updatePasswordLoading,
+    required TResult Function(UpdatePasswordSuccess value)
+        updatePasswordSuccess,
+    required TResult Function(UpdatePasswordError value) updatePasswordError,
+  }) {
+    return updatePasswordLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(UpdatePasswordLoading value)? updatePasswordLoading,
+    TResult? Function(UpdatePasswordSuccess value)? updatePasswordSuccess,
+    TResult? Function(UpdatePasswordError value)? updatePasswordError,
+  }) {
+    return updatePasswordLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(UpdatePasswordLoading value)? updatePasswordLoading,
+    TResult Function(UpdatePasswordSuccess value)? updatePasswordSuccess,
+    TResult Function(UpdatePasswordError value)? updatePasswordError,
+    required TResult orElse(),
+  }) {
+    if (updatePasswordLoading != null) {
+      return updatePasswordLoading(this);
+    }
+    return orElse();
   }
 }
 
+abstract class UpdatePasswordLoading implements UpdatePasswordState {
+  const factory UpdatePasswordLoading() = _$UpdatePasswordLoadingImpl;
+}
+
 /// @nodoc
-abstract mixin class $UpdatePasswordSuccessCopyWith<$Res>
-    implements $UpdatePasswordStateCopyWith<$Res> {
-  factory $UpdatePasswordSuccessCopyWith(UpdatePasswordSuccess value,
-          $Res Function(UpdatePasswordSuccess) _then) =
-      _$UpdatePasswordSuccessCopyWithImpl;
+abstract class _$$UpdatePasswordSuccessImplCopyWith<$Res> {
+  factory _$$UpdatePasswordSuccessImplCopyWith(
+          _$UpdatePasswordSuccessImpl value,
+          $Res Function(_$UpdatePasswordSuccessImpl) then) =
+      __$$UpdatePasswordSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({LoginResponse response});
 }
 
 /// @nodoc
-class _$UpdatePasswordSuccessCopyWithImpl<$Res>
-    implements $UpdatePasswordSuccessCopyWith<$Res> {
-  _$UpdatePasswordSuccessCopyWithImpl(this._self, this._then);
-
-  final UpdatePasswordSuccess _self;
-  final $Res Function(UpdatePasswordSuccess) _then;
+class __$$UpdatePasswordSuccessImplCopyWithImpl<$Res>
+    extends _$UpdatePasswordStateCopyWithImpl<$Res, _$UpdatePasswordSuccessImpl>
+    implements _$$UpdatePasswordSuccessImplCopyWith<$Res> {
+  __$$UpdatePasswordSuccessImplCopyWithImpl(_$UpdatePasswordSuccessImpl _value,
+      $Res Function(_$UpdatePasswordSuccessImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of UpdatePasswordState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? response = null,
   }) {
-    return _then(UpdatePasswordSuccess(
+    return _then(_$UpdatePasswordSuccessImpl(
       response: null == response
-          ? _self.response
+          ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
               as LoginResponse,
     ));
@@ -144,66 +367,280 @@ class _$UpdatePasswordSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class UpdatePasswordError implements UpdatePasswordState {
-  const UpdatePasswordError({required this.error});
+class _$UpdatePasswordSuccessImpl implements UpdatePasswordSuccess {
+  const _$UpdatePasswordSuccessImpl({required this.response});
 
-  final String error;
+  @override
+  final LoginResponse response;
 
-  /// Create a copy of UpdatePasswordState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $UpdatePasswordErrorCopyWith<UpdatePasswordError> get copyWith =>
-      _$UpdatePasswordErrorCopyWithImpl<UpdatePasswordError>(this, _$identity);
+  @override
+  String toString() {
+    return 'UpdatePasswordState.updatePasswordSuccess(response: $response)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is UpdatePasswordError &&
-            (identical(other.error, error) || other.error == error));
+            other is _$UpdatePasswordSuccessImpl &&
+            (identical(other.response, response) ||
+                other.response == response));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error);
+  int get hashCode => Object.hash(runtimeType, response);
+
+  /// Create a copy of UpdatePasswordState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdatePasswordSuccessImplCopyWith<_$UpdatePasswordSuccessImpl>
+      get copyWith => __$$UpdatePasswordSuccessImplCopyWithImpl<
+          _$UpdatePasswordSuccessImpl>(this, _$identity);
 
   @override
-  String toString() {
-    return 'UpdatePasswordState.updatePasswordError(error: $error)';
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() updatePasswordLoading,
+    required TResult Function(LoginResponse response) updatePasswordSuccess,
+    required TResult Function(String error) updatePasswordError,
+  }) {
+    return updatePasswordSuccess(response);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? updatePasswordLoading,
+    TResult? Function(LoginResponse response)? updatePasswordSuccess,
+    TResult? Function(String error)? updatePasswordError,
+  }) {
+    return updatePasswordSuccess?.call(response);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? updatePasswordLoading,
+    TResult Function(LoginResponse response)? updatePasswordSuccess,
+    TResult Function(String error)? updatePasswordError,
+    required TResult orElse(),
+  }) {
+    if (updatePasswordSuccess != null) {
+      return updatePasswordSuccess(response);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(UpdatePasswordLoading value)
+        updatePasswordLoading,
+    required TResult Function(UpdatePasswordSuccess value)
+        updatePasswordSuccess,
+    required TResult Function(UpdatePasswordError value) updatePasswordError,
+  }) {
+    return updatePasswordSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(UpdatePasswordLoading value)? updatePasswordLoading,
+    TResult? Function(UpdatePasswordSuccess value)? updatePasswordSuccess,
+    TResult? Function(UpdatePasswordError value)? updatePasswordError,
+  }) {
+    return updatePasswordSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(UpdatePasswordLoading value)? updatePasswordLoading,
+    TResult Function(UpdatePasswordSuccess value)? updatePasswordSuccess,
+    TResult Function(UpdatePasswordError value)? updatePasswordError,
+    required TResult orElse(),
+  }) {
+    if (updatePasswordSuccess != null) {
+      return updatePasswordSuccess(this);
+    }
+    return orElse();
   }
 }
 
+abstract class UpdatePasswordSuccess implements UpdatePasswordState {
+  const factory UpdatePasswordSuccess({required final LoginResponse response}) =
+      _$UpdatePasswordSuccessImpl;
+
+  LoginResponse get response;
+
+  /// Create a copy of UpdatePasswordState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdatePasswordSuccessImplCopyWith<_$UpdatePasswordSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 /// @nodoc
-abstract mixin class $UpdatePasswordErrorCopyWith<$Res>
-    implements $UpdatePasswordStateCopyWith<$Res> {
-  factory $UpdatePasswordErrorCopyWith(
-          UpdatePasswordError value, $Res Function(UpdatePasswordError) _then) =
-      _$UpdatePasswordErrorCopyWithImpl;
+abstract class _$$UpdatePasswordErrorImplCopyWith<$Res> {
+  factory _$$UpdatePasswordErrorImplCopyWith(_$UpdatePasswordErrorImpl value,
+          $Res Function(_$UpdatePasswordErrorImpl) then) =
+      __$$UpdatePasswordErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class _$UpdatePasswordErrorCopyWithImpl<$Res>
-    implements $UpdatePasswordErrorCopyWith<$Res> {
-  _$UpdatePasswordErrorCopyWithImpl(this._self, this._then);
-
-  final UpdatePasswordError _self;
-  final $Res Function(UpdatePasswordError) _then;
+class __$$UpdatePasswordErrorImplCopyWithImpl<$Res>
+    extends _$UpdatePasswordStateCopyWithImpl<$Res, _$UpdatePasswordErrorImpl>
+    implements _$$UpdatePasswordErrorImplCopyWith<$Res> {
+  __$$UpdatePasswordErrorImplCopyWithImpl(_$UpdatePasswordErrorImpl _value,
+      $Res Function(_$UpdatePasswordErrorImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of UpdatePasswordState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? error = null,
   }) {
-    return _then(UpdatePasswordError(
+    return _then(_$UpdatePasswordErrorImpl(
       error: null == error
-          ? _self.error
+          ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
-// dart format on
+/// @nodoc
+
+class _$UpdatePasswordErrorImpl implements UpdatePasswordError {
+  const _$UpdatePasswordErrorImpl({required this.error});
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'UpdatePasswordState.updatePasswordError(error: $error)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdatePasswordErrorImpl &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  /// Create a copy of UpdatePasswordState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdatePasswordErrorImplCopyWith<_$UpdatePasswordErrorImpl> get copyWith =>
+      __$$UpdatePasswordErrorImplCopyWithImpl<_$UpdatePasswordErrorImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() updatePasswordLoading,
+    required TResult Function(LoginResponse response) updatePasswordSuccess,
+    required TResult Function(String error) updatePasswordError,
+  }) {
+    return updatePasswordError(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? updatePasswordLoading,
+    TResult? Function(LoginResponse response)? updatePasswordSuccess,
+    TResult? Function(String error)? updatePasswordError,
+  }) {
+    return updatePasswordError?.call(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? updatePasswordLoading,
+    TResult Function(LoginResponse response)? updatePasswordSuccess,
+    TResult Function(String error)? updatePasswordError,
+    required TResult orElse(),
+  }) {
+    if (updatePasswordError != null) {
+      return updatePasswordError(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(UpdatePasswordLoading value)
+        updatePasswordLoading,
+    required TResult Function(UpdatePasswordSuccess value)
+        updatePasswordSuccess,
+    required TResult Function(UpdatePasswordError value) updatePasswordError,
+  }) {
+    return updatePasswordError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(UpdatePasswordLoading value)? updatePasswordLoading,
+    TResult? Function(UpdatePasswordSuccess value)? updatePasswordSuccess,
+    TResult? Function(UpdatePasswordError value)? updatePasswordError,
+  }) {
+    return updatePasswordError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(UpdatePasswordLoading value)? updatePasswordLoading,
+    TResult Function(UpdatePasswordSuccess value)? updatePasswordSuccess,
+    TResult Function(UpdatePasswordError value)? updatePasswordError,
+    required TResult orElse(),
+  }) {
+    if (updatePasswordError != null) {
+      return updatePasswordError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdatePasswordError implements UpdatePasswordState {
+  const factory UpdatePasswordError({required final String error}) =
+      _$UpdatePasswordErrorImpl;
+
+  String get error;
+
+  /// Create a copy of UpdatePasswordState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdatePasswordErrorImplCopyWith<_$UpdatePasswordErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

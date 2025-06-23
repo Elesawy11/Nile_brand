@@ -1,4 +1,3 @@
-
 // نموذج رسالة
 import 'package:flutter/material.dart';
 
@@ -14,7 +13,8 @@ class MessageBubble extends StatelessWidget {
   final String message;
   final bool isSender;
 
-  const MessageBubble({super.key, required this.message, required this.isSender});
+  const MessageBubble(
+      {super.key, required this.message, required this.isSender});
 
   @override
   Widget build(BuildContext context) {

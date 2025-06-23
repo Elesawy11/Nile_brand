@@ -7,7 +7,7 @@ import 'package:nile_brand/core/utils/sizes_padding.dart';
 import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/utils/assets.dart';
 
-import '../../../../../User/profile/presentation/views/widgets/infoTile.dart';
+import '../../../../../User/profile/presentation/views/widgets/info_tile.dart';
 
 // import '../../../../../User/profile/presentation/widgets/infotile.dart';
 
@@ -17,7 +17,6 @@ import '../../../../create_brand/data/models/create_brand_response_body.dart';
 import '../../../../owner_helpers.dart';
 import '../../manager/update_brand/update_brand_cubit.dart';
 import '../../manager/update_brand/update_brand_state.dart';
-
 
 class MyBrandViewFeaturesWidget extends StatefulWidget {
   const MyBrandViewFeaturesWidget({super.key});
@@ -65,27 +64,6 @@ class _MyBrandViewFeaturesWidgetState extends State<MyBrandViewFeaturesWidget> {
       child: Column(
         children: [
           InfoTile(
-            leadingIcon: Assets.imagesProfileIcon,
-            title: "Profile",
-            ontap: () {
-              context.push(Routes.brandProfile);
-            },
-            trailling: Icon(
-              Icons.arrow_forward_ios_rounded,
-              size: 17.spMax,
-            ),
-          ),
-          20.vs,
-          InfoTile(
-            leadingIcon: Assets.imagesNotificationInfo,
-            title: "Notifications",
-            trailling: Switch(
-              value: false,
-              onChanged: (value) {},
-            ),
-          ),
-          20.vs,
-          InfoTile(
             ontap: () {
               context.push(Routes.updateBrand);
             },
@@ -131,7 +109,7 @@ class _MyBrandViewFeaturesWidgetState extends State<MyBrandViewFeaturesWidget> {
           ),
           20.vs,
           InfoTile(
-            ontap: () async{
+            ontap: () async {
               await BrandPrefs.clearToken();
               context.go(Routes.start);
             },

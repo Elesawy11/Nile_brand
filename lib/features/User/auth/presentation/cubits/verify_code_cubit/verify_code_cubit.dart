@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nile_brand/core/networking/api_result.dart';
@@ -7,16 +6,13 @@ import 'package:nile_brand/features/User/auth/data/repo/verify_code_repo.dart';
 import 'verify_code_state.dart';
 
 class VerifyCodeCubit extends Cubit<VerifyCodeState> {
-  VerifyCodeCubit(this._verifyCodeRepo) : super(VerifyCodeState.initial());
+  VerifyCodeCubit(this._verifyCodeRepo)
+      : super(const VerifyCodeState.initial());
   final VerifyCodeRepo _verifyCodeRepo;
-  final List<TextEditingController> controllers = [
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-  ];
+  final List<TextEditingController> controllers = List.generate(
+    6,
+    (index) => TextEditingController(),
+  );
   final formKey = GlobalKey<FormState>();
   String getCode() {
     String code = '';
@@ -27,7 +23,7 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
   }
 
   void emitVerifyCodeState() async {
-    emit(VerifyCodeState.verifyLoading());
+    emit(const VerifyCodeState.verifyLoading());
     final response = await _verifyCodeRepo
         .verifyCode(body: {'resetCode': getCode()}, token: Token.token ?? '');
 

@@ -30,4 +30,4 @@ class CreateBrandFailure extends CreateBrandState {
   List<Object?> get props => [errorMessage];
 }
 
-class ChangeBrandImage extends CreateBrandState{}
+class ChangeBrandImage extends CreateBrandState {}

@@ -1,13 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:nile_brand/core/utils/color_manager.dart';
-import 'package:nile_brand/features/User/profile/presentation/cubits/update_password_cubit/update_password_cubit.dart';
-// import 'package:nile_brand/features/User/auth/presentation/cubits/login_cubit/login_cubit.dart';
-// import 'package:nile_brand/features/User/auth/presentation/cubits/login_cubit/login_state.dart';
-import '../../../../../../core/helpers/setup_error_state.dart';
+import 'package:nile_brand/core/routing/exports.dart';
 import '../../../../../../core/helpers/show_succes_dialog.dart';
-import '../../../../../../core/routing/routes.dart';
+import '../../cubits/update_password_cubit/update_password_cubit.dart';
 import '../../cubits/update_password_cubit/update_password_state.dart';
 
 class UpdatePassBlocListener extends StatelessWidget {
@@ -35,8 +28,10 @@ class UpdatePassBlocListener extends StatelessWidget {
             break;
           case UpdatePasswordSuccess():
             context.pop();
-            showSuccessDialog(title: 'Update Successful',message: 'update successfully!', context,
-                onPressed: () {
+            showSuccessDialog(
+                title: 'Update Successful',
+                message: 'update successfully!',
+                context, onPressed: () {
               context.go(Routes.editProfile);
             });
             break;

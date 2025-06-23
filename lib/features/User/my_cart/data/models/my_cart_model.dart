@@ -26,4 +26,3 @@ class MyCartModel {
   factory MyCartModel.fromJson(Map<String, dynamic> json) =>
       _$MyCartModelFromJson(json);
 }
-

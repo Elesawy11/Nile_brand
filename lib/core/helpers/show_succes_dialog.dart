@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 void showSuccessDialog(BuildContext context,
-    {void Function()? onPressed, required String message,required String title}) {
+    {void Function()? onPressed,
+    required String message,
+    required String title}) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title:  Text(title),
+        title: Text(title),
         content: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[

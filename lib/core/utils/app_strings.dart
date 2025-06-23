@@ -27,44 +27,20 @@ abstract class AppStrings {
       "Indoor Furniture",
       "Home Decor",
       "Outdoor Furniture"
-    ]
-
-
-    ,"Fashion":[
-      
+    ],
+    "Fashion": [
       "Clothing",
       "Accessories",
       "Footwear",
     ],
-
-
-    "Handcrafts":[
+    "Handcrafts": [
       "Souvenirs",
       "Decor Pieces",
       "Artwork",
     ],
-
-    "Electronics":[
-             "Gadgets",
-"Appliances",
-"Accessories"
-    ],
-
-
-    "Furniture":[
-      "Indoor Furniture",
-      "Outdoor Furniture"
-    ],
-
-    "Beauty":[
-      "Skincare",
-      "Makeup",
-      "Haircare"
-    ],
-
-    "Sports":[
-      "Equipment",
-      "Sportswear"
-    ]
+    "Electronics": ["Gadgets", "Appliances", "Accessories"],
+    "Furniture": ["Indoor Furniture", "Outdoor Furniture"],
+    "Beauty": ["Skincare", "Makeup", "Haircare"],
+    "Sports": ["Equipment", "Sportswear"]
   };
 }

@@ -34,7 +34,7 @@ class ForgotPassBlocListener extends StatelessWidget {
           case ForgotSuccess():
             context.pop();
             showSuccessDialog(
-              title: 'Reset Code Successful',
+                title: 'Reset Code Successful',
                 message: 'Check your email for the verification code.',
                 context, onPressed: () {
               context.push(Routes.verificationScreen, extra: state.email);

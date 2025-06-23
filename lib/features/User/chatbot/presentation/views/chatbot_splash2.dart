@@ -28,7 +28,7 @@ class _ChatbotSplash2State extends State<ChatbotSplash2> {
     _startTypingText();
 
     Future.delayed(const Duration(seconds: 5), () {
-      context.go(Routes.chatbot); 
+      context.go(Routes.chatbot);
     });
   }
 

@@ -11,7 +11,9 @@ class SystemFeedbackList extends StatelessWidget {
     return ListView.builder(
       itemCount: feeds.length,
       itemBuilder: (context, index) {
-        return  CustomSystemFeedback(feed: feeds[index],);
+        return CustomSystemFeedback(
+          feed: feeds[index],
+        );
       },
     );
   }

@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import '../../../../../../core/widgets/app_text_form_field.dart';
 import '../../cubits/login_cubit/login_cubit.dart';
 import 'password_field.dart';
 
-class CustomLoginForm extends StatelessWidget {
+class CustomLoginForm extends StatefulWidget {
   const CustomLoginForm({
     super.key,
-    required this.viewPass,
   });
 
-  final ValueNotifier<bool> viewPass;
+  @override
+  State<CustomLoginForm> createState() => _CustomLoginFormState();
+}
+
+class _CustomLoginFormState extends State<CustomLoginForm> {
+  final ValueNotifier<bool> viewPass = ValueNotifier<bool>(true);
 
   @override
   Widget build(BuildContext context) {

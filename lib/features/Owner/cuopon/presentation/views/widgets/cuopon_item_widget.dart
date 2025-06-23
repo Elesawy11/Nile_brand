@@ -12,76 +12,24 @@ import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/styles.dart';
 import '../../manager/get_cupons/cupon_state.dart';
 
-class CuoponItemWidget extends StatelessWidget {
+class CuoponItemWidget extends StatefulWidget {
   final CreateCuoponSuccess cupon;
-  const CuoponItemWidget(
-      {super.key, required this.cupon,
-});
+  final GetCuponsCubit cubit;
+  const CuoponItemWidget({
+    super.key,
+    required this.cupon,
+    required this.cubit,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    void _showSendDialog() {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            backgroundColor: Colors.white,
-            title: Text("Send Coupon"),
-            content: TextFormField(
-              controller: context.read<GetCuponsCubit>().userEmai,
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                labelText: "Email",
-                hintText: "example@example.com",
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: ColorManager.blue33)),
-              ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: Text(
-                  "Cancel",
-                  style: TextStyle(color: Colors.black),
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  if (context.read<GetCuponsCubit>().userEmai.text.isNotEmpty) {
-                    context.read<GetCuponsCubit>().sendCupon(cupon.id!);
-                    if (context.read<GetCuponsCubit>().state
-                        is SendCuponSucessState) {
-                      Navigator.of(context).pop();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                            content: Text(
-                                "Coupon sent to ${context.read<GetCuponsCubit>().userEmai.text}")),
-                      );
-                    } else if (context.read<GetCuponsCubit>().state
-                        is ManageCuponFailureState) {
-                      Navigator.of(context).pop();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                            content: Text("Try again or , use other email!")),
-                      );
-                    }
-                  }
-                },
-                child: Text(
-                    context.read<GetCuponsCubit>().state
-                            is ManageCuponLoadingState
-                        ? "Sending"
-                        : "Send",
-                    style: TextStyle(color: Colors.black)),
-              ),
-            ],
-          );
-        },
-      );
-    }
+  State<CuoponItemWidget> createState() => _CuoponItemWidgetState();
+}
 
+class _CuoponItemWidgetState extends State<CuoponItemWidget> {
+  @override
+  Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.push(Routes.updateCuopon,extra:cupon ),
+      onTap: () => context.push(Routes.updateCuopon, extra: widget.cupon),
       child: Container(
         decoration: BoxDecoration(
           color: ColorManager.grayD9,
@@ -97,7 +45,7 @@ class CuoponItemWidget extends StatelessWidget {
               children: [
                 Text(
                   // "Cupon Name",
-                  cupon.name!,
+                  widget.cupon.name!,
                   style: Styles.font20W400.copyWith(
                     color: ColorManager.subText,
                     fontSize: 18.sp,
@@ -106,7 +54,7 @@ class CuoponItemWidget extends StatelessWidget {
                 ),
                 Text(
                   // "ED : 24 - 3 - 2025",
-                  'ED : ${cupon.expireTime!}',
+                  'ED : ${widget.cupon.expireTime!}',
                   style: Styles.font20W400.copyWith(
                     color: ColorManager.subText,
                     fontSize: 15.sp,
@@ -114,7 +62,7 @@ class CuoponItemWidget extends StatelessWidget {
                 ),
                 Text(
                   // "Discount Amount : 20",
-                  "Discount Amount : ${cupon.discount!}",
+                  "Discount Amount : ${widget.cupon.discount!}",
                   style: Styles.font20W400.copyWith(
                     fontSize: 15.sp,
                     color: ColorManager.subText,
@@ -126,7 +74,7 @@ class CuoponItemWidget extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    context.read<GetCuponsCubit>().deleteCupon(cupon.id!);
+                    widget.cubit.deleteCupon(widget.cupon.id!);
                   },
                   child: Image.asset(
                     Assets.imagesDeleteIcon,
@@ -135,15 +83,15 @@ class CuoponItemWidget extends StatelessWidget {
                     color: const Color.fromARGB(255, 189, 114, 114),
                   ),
                 ),
-                8.hs,
-                InkWell(
-                  onTap: _showSendDialog,
-                  child: Icon(
-                    Icons.send,
-                    size: 24.w,
-                    color: Colors.blueGrey,
-                  ),
-                ),
+                // 8.hs,
+                // InkWell(
+                //   onTap:()=> _showSendDialog(context),
+                //   child: Icon(
+                //     Icons.send,
+                //     size: 24.w,
+                //     color: Colors.blueGrey,
+                //   ),
+                // ),
               ],
             ),
           ],

@@ -97,4 +97,3 @@ class Subcategory {
       _$SubcategoryFromJson(json);
   Map<String, dynamic> toJson() => _$SubcategoryToJson(this);
 }
-

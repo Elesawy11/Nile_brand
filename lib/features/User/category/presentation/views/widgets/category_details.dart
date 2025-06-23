@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:nile_brand/features/User/category/presentation/cubits/get_Category_products_Cubit/get_category_products_cubit.dart';
-// import 'package:nile_brand/features/User/category/presentation/cubits/get_Category_products_Cubit/get_category_products_state.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_cubit.dart';
 import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_state.dart';
 import 'package:nile_brand/features/User/category/presentation/views/widgets/custome_item.dart';
@@ -19,7 +17,7 @@ class CategoryDetails extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Row(
         children: [
-          SubcategoriyBar(),
+          const SubcategoriyBar(),
           Expanded(
             flex: 3,
             child: BlocBuilder<GetProductsCubit, GetProductsState>(

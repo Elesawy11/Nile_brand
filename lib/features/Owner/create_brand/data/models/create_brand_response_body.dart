@@ -3,7 +3,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'create_brand_response_body.g.dart';
 
-
 @HiveType(typeId: 0)
 @JsonSerializable()
 class BrandCreateResponse {
@@ -29,7 +28,7 @@ class BrandData {
   final String name;
 
   @HiveField(2)
-  final String logo;
+  final String? logo;
 
   @HiveField(3)
   final String description;
@@ -61,6 +60,4 @@ class BrandData {
       _$BrandDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$BrandDataToJson(this);
-
-
 }

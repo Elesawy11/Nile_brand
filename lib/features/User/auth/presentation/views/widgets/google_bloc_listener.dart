@@ -34,7 +34,7 @@ class GoogleBlocListener extends StatelessWidget {
           case GoogleSuccess():
             context.pop();
             showSuccessDialog(
-              title: 'Signin Successful',
+                title: 'Signin Successful',
                 message: 'Congratulations, you have logged in successfully!',
                 context, onPressed: () {
               context.go(Routes.home);

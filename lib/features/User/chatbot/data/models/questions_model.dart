@@ -7,9 +7,8 @@ class FAQ {
   factory FAQ.fromJson(Map<String, dynamic> json) {
     return FAQ(
       category: json['category'],
-      questions: (json['questions'] as List)
-          .map((q) => FAQItem.fromJson(q))
-          .toList(),
+      questions:
+          (json['questions'] as List).map((q) => FAQItem.fromJson(q)).toList(),
     );
   }
 }

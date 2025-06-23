@@ -7,7 +7,6 @@ import '../../../../../../core/utils/assets.dart';
 import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/styles.dart';
 
-
 class ChatBarWidget extends StatefulWidget {
   const ChatBarWidget({super.key});
 
@@ -21,7 +20,7 @@ class _ChatBarWidgetState extends State<ChatBarWidget> {
   void _sendMessage() {
     final text = _controller.text.trim();
     if (text.isNotEmpty) {
-      context.read<ChatbotCubit>().askQuestion(text); 
+      context.read<ChatbotCubit>().askQuestion(text);
       _controller.clear();
     }
   }
@@ -44,7 +43,7 @@ class _ChatBarWidgetState extends State<ChatBarWidget> {
       ),
       child: TextFormField(
         controller: _controller,
-        onFieldSubmitted: (_) => _sendMessage(), 
+        onFieldSubmitted: (_) => _sendMessage(),
         decoration: InputDecoration(
           suffixIconConstraints: BoxConstraints(
             maxWidth: 40.w,
@@ -68,13 +67,13 @@ class _ChatBarWidgetState extends State<ChatBarWidget> {
           hintStyle: Styles.font13W700.copyWith(
             color: ColorManager.blue33,
           ),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent),
           ),
-          enabledBorder: OutlineInputBorder(
+          enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent),
           ),
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent),
           ),
         ),

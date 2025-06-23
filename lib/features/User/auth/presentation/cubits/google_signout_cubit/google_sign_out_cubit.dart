@@ -4,14 +4,14 @@ import 'google_sign_out_state.dart';
 
 class GoogleSignOutCubit extends Cubit<GoogleSignOutState> {
   GoogleSignOutCubit(this._googleAuthRepo)
-      : super(GoogleSignOutState.initial());
+      : super(const GoogleSignOutState.initial());
 
   final GoogleAuthRepo _googleAuthRepo;
   Future<void> emitSignOut() async {
-    emit(GoogleSignOutState.signoutLoading());
+    emit(const GoogleSignOutState.signoutLoading());
     try {
       await _googleAuthRepo.signOut();
-      emit(GoogleSignOutState.signoutSuccess());
+      emit(const GoogleSignOutState.signoutSuccess());
     } catch (e) {
       emit(GoogleSignOutState.signoutError(error: e.toString()));
     }

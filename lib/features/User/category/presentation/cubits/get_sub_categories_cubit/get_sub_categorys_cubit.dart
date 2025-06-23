@@ -7,15 +7,24 @@ import 'get_sub_categorys_state.dart';
 
 class GetSubCategorysCubit extends Cubit<GetSubCategorysState> {
   GetSubCategorysCubit(this._subCategoryRepo)
-      : super(GetSubCategorysState.initial());
+      : super(const GetSubCategorysState.initial());
   final SubCategoryRepoImpl _subCategoryRepo;
   List<SubCategoryModel> subCategories = [];
   Future<void> getSubCategories() async {
-    emit(GetSubCategorysState.subCategoryLoading());
+    emit(const GetSubCategorysState.subCategoryLoading());
     final result = await _subCategoryRepo.getSubCategories();
     switch (result) {
       case Success():
-        subCategories.addAll(result.data);
+        if (subCategories.isNotEmpty) {
+          subCategories.clear();
+          subCategories.addAll(result.data);
+
+        }
+        else{
+
+         subCategories.addAll(result.data);
+        }
+
         emit(
           GetSubCategorysState.subCategorySuccess(
             subCategories: subCategories,
@@ -34,7 +43,7 @@ class GetSubCategorysCubit extends Cubit<GetSubCategorysState> {
   }
 
   void getCategorySubCategories({required String id}) {
-    emit(GetSubCategorysState.subCategoryLoading());
+    emit(const GetSubCategorysState.subCategoryLoading());
     List<SubCategoryModel> mySubCategories = [];
     for (var subCategory in subCategories) {
       if (subCategory.category!.id == id) {
@@ -50,7 +59,7 @@ class GetSubCategorysCubit extends Cubit<GetSubCategorysState> {
   }
 
   void getAllSubCategories() {
-    emit(GetSubCategorysState.subCategoryLoading());
+    emit(const GetSubCategorysState.subCategoryLoading());
     emit(
       GetSubCategorysState.subCategorySuccess(
         subCategories: subCategories,

@@ -1,8 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
 part 'review_response_model.g.dart';
-@JsonSerializable()
 
+@JsonSerializable()
 class ReviewResponseModel {
   String? comment;
   int? rating;
@@ -23,9 +23,9 @@ class ReviewResponseModel {
       this.updatedAt,
       this.iV});
 
- factory ReviewResponseModel.fromJson(Map<String,dynamic>json) => _$ReviewResponseModelFromJson(json);
+  factory ReviewResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$ReviewResponseModelFromJson(json);
 
   /// Connect the generated [_$PersonToJson] function to the `toJson` method.
   Map<String, dynamic> toJson() => _$ReviewResponseModelToJson(this);
-  
 }

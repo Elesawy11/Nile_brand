@@ -6,8 +6,6 @@ import 'package:nile_brand/core/utils/service_locator.dart';
 import 'package:nile_brand/features/User/my_cart/data/models/cart_product_model.dart';
 import 'package:nile_brand/features/User/my_cart/data/repo/my_cart_repo_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../../../category/data/models/product_model.dart';
 import 'get_my_cart_state.dart';
 
 class GetMyCartCubit extends Cubit<GetMyCartState> {
@@ -37,7 +35,6 @@ class GetMyCartCubit extends Cubit<GetMyCartState> {
         break;
 
       case Failure():
-        // log('lenght of cart list ==::: ${response.cartItems!.length}');
         log('lenght of cart list ==::: ${cartProducts.length}');
 
         emit(

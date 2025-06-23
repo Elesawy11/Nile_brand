@@ -15,7 +15,6 @@ class ChatbotView extends StatelessWidget {
       create: (_) => ChatbotCubit(),
       child: SafeArea(
         child: Scaffold(
-          // TODO : edit this
           bottomNavigationBar: Padding(
             padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 10.h),
             child: const ChatBarWidget(),

@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../cubits/verify_code_cubit/verify_code_cubit.dart';
+import 'package:nile_brand/core/routing/exports.dart';
 
 class VerificationCodeInput extends StatelessWidget {
   const VerificationCodeInput({super.key});
@@ -51,7 +47,6 @@ class VerificationCodeInput extends StatelessWidget {
                     if (value == null || value.isEmpty) {
                       return 'Please enter a digit';
                     }
-                    
                   },
                 ),
               ),

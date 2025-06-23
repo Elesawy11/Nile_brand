@@ -5,14 +5,14 @@ import 'package:nile_brand/features/User/profile/data/repo_impl/my_profile_repo_
 import 'update_password_state.dart';
 
 class UpdatePasswordCubit extends Cubit<UpdatePasswordState> {
-  UpdatePasswordCubit(this._repo) : super(UpdatePasswordState.initial());
+  UpdatePasswordCubit(this._repo) : super(const UpdatePasswordState.initial());
   final MyProfileRepoImpl _repo;
   final formKey = GlobalKey<FormState>();
   final TextEditingController currentPassController = TextEditingController();
   final TextEditingController newPassController = TextEditingController();
   final TextEditingController confirmPassController = TextEditingController();
   Future<void> updatePassword() async {
-    emit(UpdatePasswordState.updatePasswordLoading());
+    emit(const UpdatePasswordState.updatePasswordLoading());
     final response = await _repo.updatePassword(
       currentPassController.text.trim(),
       newPassController.text.trim(),

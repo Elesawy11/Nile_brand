@@ -26,6 +26,5 @@ class AdminConstants {
       imageIcon: Assets.imagesUnactiveFeedbackAdmin,
       activeImageIcon: Assets.imagesActiveSystemfeedbackAdmin,
     ),
-    
   ];
 }

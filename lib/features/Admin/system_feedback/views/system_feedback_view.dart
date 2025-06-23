@@ -10,8 +10,6 @@ import 'package:nile_brand/features/Admin/system_feedback/views/manager/feeds_cu
 import 'package:nile_brand/features/Admin/system_feedback/views/manager/feeds_state.dart';
 import 'package:nile_brand/features/Admin/system_feedback/views/widgets/system_feedback_list.dart';
 
-
-
 class SystemFeedbackView extends StatelessWidget {
   const SystemFeedbackView({super.key});
 
@@ -23,7 +21,6 @@ class SystemFeedbackView extends StatelessWidget {
           feedbackSource: SystemFeedbackSource(DioFactory.dio!),
         ),
       )..fetchSystemFeedbacks(),
-
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(

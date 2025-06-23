@@ -12,11 +12,11 @@ class CustomTileList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
         onTap: onTap,
-        
         style: ListTileStyle.list,
         title: Text(
           title,
-          style: Styles.font24W500.copyWith(fontSize: 20.sp,fontWeight: FontWeight.w700),
+          style: Styles.font24W500
+              .copyWith(fontSize: 20.sp, fontWeight: FontWeight.w700),
         ),
         trailing: Icon(
           Icons.arrow_forward_ios_rounded,

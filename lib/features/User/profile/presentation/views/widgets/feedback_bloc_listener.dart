@@ -1,12 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:nile_brand/core/utils/color_manager.dart';
-import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedback_cubit/add_feedback_cubit.dart';
-import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedback_cubit/add_feedback_state.dart';
-import '../../../../../../core/helpers/setup_error_state.dart';
+import 'package:nile_brand/core/routing/exports.dart';
 import '../../../../../../core/helpers/show_succes_dialog.dart';
-import '../../../../../../core/routing/routes.dart';
+import '../../cubits/add_feedback_cubit/add_feedback_cubit.dart';
+import '../../cubits/add_feedback_cubit/add_feedback_state.dart';
 
 class FeedbackBlocListener extends StatelessWidget {
   const FeedbackBlocListener({super.key});

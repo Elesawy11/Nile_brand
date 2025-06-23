@@ -11,27 +11,27 @@ class SystemFeedbackCubit extends Cubit<SystemFeedbackState> {
   SystemFeedbackCubit(this._feedbackRepo) : super(SystemFeedbackInitial());
 
   Future<void> fetchSystemFeedbacks() async {
-    String? token =await BrandPrefs.getToken();
+    String? token = await BrandPrefs.getToken();
     emit(SystemFeedbackLoading());
 
     final result = await _feedbackRepo.getAllSystemFeeds(token!);
     print(result);
     switch (result) {
       case Success():
-      emit(SystemFeedbackSuccess(result.data));
-       
+        emit(SystemFeedbackSuccess(result.data));
+
         break;
       case Failure():
-         emit(SystemFeedbackFailure(result.errorHandler.apiErrorModel.error!.message!));
-       
+        emit(SystemFeedbackFailure(
+            result.errorHandler.apiErrorModel.error!.message!));
     }
 
     // result.when(
     //   success: (feedbacks) {
-        
+
     //   },
     //   failure: (error) {
-        
+
     //   },
     // );
   }

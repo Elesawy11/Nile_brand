@@ -12,4 +12,3 @@ class DeleteFromWishlistState with _$DeleteFromWishlistState {
   const factory DeleteFromWishlistState.deleteProductError(
       {required String error}) = DeleteProductError;
 }
-

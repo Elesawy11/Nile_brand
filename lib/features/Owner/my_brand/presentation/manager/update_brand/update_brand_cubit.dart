@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:nile_brand/core/networking/api_error_handler.dart';
 
-
 import 'package:nile_brand/features/Owner/my_brand/data/repo/update_brand_repo.dart';
 import 'package:nile_brand/features/Owner/owner_helpers.dart';
 
@@ -31,10 +30,11 @@ class UpdateBrandCubit extends Cubit<UpdateBrandState> {
 
   void setImage(File file) {
     selectedLogo = file;
+    emit(UpdateImage());
   }
 
   Future<void> fillControllers() async {
-    final BrandData data = await BrandStorage.getBrandData() ;
+    final BrandData data = await BrandStorage.getBrandData();
     nameController = TextEditingController(text: data.name);
     descriptionController = TextEditingController(text: data.description);
     taxIdController = TextEditingController(text: data.taxID);
@@ -58,7 +58,8 @@ class UpdateBrandCubit extends Cubit<UpdateBrandState> {
     });
 
     String? brandId = await BrandPrefs.getbrandId();
-    final result = await repo.updateBrand(brandId!, formData);
+    final result =
+        await repo.updateBrand(brandId ?? "685691c46b03f8f3085f1915", formData);
     print(result);
 
     if (result is Success) {
@@ -66,28 +67,33 @@ class UpdateBrandCubit extends Cubit<UpdateBrandState> {
       print("✅ Brand updated: ${data.name}");
       await BrandStorage.clearBrandData();
       await BrandStorage.saveBrandData(BrandData(
-        id: data.id, name: data.name, logo: data.logo, 
-        description: data.description,
-         taxID: data.taxID, owner: 
-         data.owner.Id, createdAt: data.createdAt, updatedAt: data.updatedAt));
+          id: data.id,
+          name: data.name,
+          logo: data.logo,
+          description: data.description,
+          taxID: data.taxID,
+          owner: data.owner.Id,
+          createdAt: data.createdAt,
+          updatedAt: data.updatedAt));
       emit(UpdateBrandSuccess(DateTime.now().toString()));
     } else if (result is Failure) {
       final error = (result as Failure<ErrorHandler>).errorHandler;
-      
-      emit(UpdateBrandFailure(error.apiErrorModel.error!.message?? "Error"));
+
+      emit(UpdateBrandFailure(error.apiErrorModel.error!.message ?? "Error"));
     }
   }
 
   Future<void> deleteBrand() async {
     String? brandId = await BrandPrefs.getbrandId();
-    if (brandId == null) {
-      emit(UpdateBrandFailure("Brand ID is missing"));
-      return;
-    }
+    // if (brandId == null) {
+    //   emit(UpdateBrandFailure("Brand ID is missing"));
+    //   return;
+    // }
 
     emit(UpdateBrandLoading());
 
-    final result = await repo.deleteBrand(brandId);
+    final result =
+        await repo.deleteBrand(brandId ?? "685691c46b03f8f3085f1915");
 
     emit(UpdateBrandDeleted(msg: "brand deleted successfully"));
 

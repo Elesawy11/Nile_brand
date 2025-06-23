@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,155 +9,595 @@ part of 'delete_product_from_my_cart_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DeleteProductFromMyCartState {
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is DeleteProductFromMyCartState);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'DeleteProductFromMyCartState()';
-  }
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() deleteProductLoading,
+    required TResult Function() deleteProductSuccess,
+    required TResult Function(String error) deleteProductError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? deleteProductLoading,
+    TResult? Function()? deleteProductSuccess,
+    TResult? Function(String error)? deleteProductError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? deleteProductLoading,
+    TResult Function()? deleteProductSuccess,
+    TResult Function(String error)? deleteProductError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(DeleteProductLoading value) deleteProductLoading,
+    required TResult Function(DeleteProductSuccess value) deleteProductSuccess,
+    required TResult Function(DeleteProductError value) deleteProductError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(DeleteProductLoading value)? deleteProductLoading,
+    TResult? Function(DeleteProductSuccess value)? deleteProductSuccess,
+    TResult? Function(DeleteProductError value)? deleteProductError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(DeleteProductLoading value)? deleteProductLoading,
+    TResult Function(DeleteProductSuccess value)? deleteProductSuccess,
+    TResult Function(DeleteProductError value)? deleteProductError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class $DeleteProductFromMyCartStateCopyWith<$Res> {
-  $DeleteProductFromMyCartStateCopyWith(DeleteProductFromMyCartState _,
-      $Res Function(DeleteProductFromMyCartState) __);
+abstract class $DeleteProductFromMyCartStateCopyWith<$Res> {
+  factory $DeleteProductFromMyCartStateCopyWith(
+          DeleteProductFromMyCartState value,
+          $Res Function(DeleteProductFromMyCartState) then) =
+      _$DeleteProductFromMyCartStateCopyWithImpl<$Res,
+          DeleteProductFromMyCartState>;
+}
+
+/// @nodoc
+class _$DeleteProductFromMyCartStateCopyWithImpl<$Res,
+        $Val extends DeleteProductFromMyCartState>
+    implements $DeleteProductFromMyCartStateCopyWith<$Res> {
+  _$DeleteProductFromMyCartStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of DeleteProductFromMyCartState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$DeleteProductFromMyCartStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DeleteProductFromMyCartState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _Initial implements DeleteProductFromMyCartState {
-  const _Initial();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
     return 'DeleteProductFromMyCartState.initial()';
   }
-}
-
-/// @nodoc
-
-class DeleteProductLoading implements DeleteProductFromMyCartState {
-  const DeleteProductLoading();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is DeleteProductLoading);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() deleteProductLoading,
+    required TResult Function() deleteProductSuccess,
+    required TResult Function(String error) deleteProductError,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? deleteProductLoading,
+    TResult? Function()? deleteProductSuccess,
+    TResult? Function(String error)? deleteProductError,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? deleteProductLoading,
+    TResult Function()? deleteProductSuccess,
+    TResult Function(String error)? deleteProductError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(DeleteProductLoading value) deleteProductLoading,
+    required TResult Function(DeleteProductSuccess value) deleteProductSuccess,
+    required TResult Function(DeleteProductError value) deleteProductError,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(DeleteProductLoading value)? deleteProductLoading,
+    TResult? Function(DeleteProductSuccess value)? deleteProductSuccess,
+    TResult? Function(DeleteProductError value)? deleteProductError,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(DeleteProductLoading value)? deleteProductLoading,
+    TResult Function(DeleteProductSuccess value)? deleteProductSuccess,
+    TResult Function(DeleteProductError value)? deleteProductError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Initial implements DeleteProductFromMyCartState {
+  const factory _Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteProductLoadingImplCopyWith<$Res> {
+  factory _$$DeleteProductLoadingImplCopyWith(_$DeleteProductLoadingImpl value,
+          $Res Function(_$DeleteProductLoadingImpl) then) =
+      __$$DeleteProductLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteProductLoadingImplCopyWithImpl<$Res>
+    extends _$DeleteProductFromMyCartStateCopyWithImpl<$Res,
+        _$DeleteProductLoadingImpl>
+    implements _$$DeleteProductLoadingImplCopyWith<$Res> {
+  __$$DeleteProductLoadingImplCopyWithImpl(_$DeleteProductLoadingImpl _value,
+      $Res Function(_$DeleteProductLoadingImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DeleteProductFromMyCartState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$DeleteProductLoadingImpl implements DeleteProductLoading {
+  const _$DeleteProductLoadingImpl();
 
   @override
   String toString() {
     return 'DeleteProductFromMyCartState.deleteProductLoading()';
   }
-}
-
-/// @nodoc
-
-class DeleteProductSuccess implements DeleteProductFromMyCartState {
-  const DeleteProductSuccess();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is DeleteProductSuccess);
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteProductLoadingImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  String toString() {
-    return 'DeleteProductFromMyCartState.deleteProductSuccess()';
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() deleteProductLoading,
+    required TResult Function() deleteProductSuccess,
+    required TResult Function(String error) deleteProductError,
+  }) {
+    return deleteProductLoading();
   }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? deleteProductLoading,
+    TResult? Function()? deleteProductSuccess,
+    TResult? Function(String error)? deleteProductError,
+  }) {
+    return deleteProductLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? deleteProductLoading,
+    TResult Function()? deleteProductSuccess,
+    TResult Function(String error)? deleteProductError,
+    required TResult orElse(),
+  }) {
+    if (deleteProductLoading != null) {
+      return deleteProductLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(DeleteProductLoading value) deleteProductLoading,
+    required TResult Function(DeleteProductSuccess value) deleteProductSuccess,
+    required TResult Function(DeleteProductError value) deleteProductError,
+  }) {
+    return deleteProductLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(DeleteProductLoading value)? deleteProductLoading,
+    TResult? Function(DeleteProductSuccess value)? deleteProductSuccess,
+    TResult? Function(DeleteProductError value)? deleteProductError,
+  }) {
+    return deleteProductLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(DeleteProductLoading value)? deleteProductLoading,
+    TResult Function(DeleteProductSuccess value)? deleteProductSuccess,
+    TResult Function(DeleteProductError value)? deleteProductError,
+    required TResult orElse(),
+  }) {
+    if (deleteProductLoading != null) {
+      return deleteProductLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteProductLoading implements DeleteProductFromMyCartState {
+  const factory DeleteProductLoading() = _$DeleteProductLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteProductSuccessImplCopyWith<$Res> {
+  factory _$$DeleteProductSuccessImplCopyWith(_$DeleteProductSuccessImpl value,
+          $Res Function(_$DeleteProductSuccessImpl) then) =
+      __$$DeleteProductSuccessImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteProductSuccessImplCopyWithImpl<$Res>
+    extends _$DeleteProductFromMyCartStateCopyWithImpl<$Res,
+        _$DeleteProductSuccessImpl>
+    implements _$$DeleteProductSuccessImplCopyWith<$Res> {
+  __$$DeleteProductSuccessImplCopyWithImpl(_$DeleteProductSuccessImpl _value,
+      $Res Function(_$DeleteProductSuccessImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DeleteProductFromMyCartState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class DeleteProductError implements DeleteProductFromMyCartState {
-  const DeleteProductError({required this.error});
+class _$DeleteProductSuccessImpl implements DeleteProductSuccess {
+  const _$DeleteProductSuccessImpl();
 
-  final String error;
-
-  /// Create a copy of DeleteProductFromMyCartState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $DeleteProductErrorCopyWith<DeleteProductError> get copyWith =>
-      _$DeleteProductErrorCopyWithImpl<DeleteProductError>(this, _$identity);
+  @override
+  String toString() {
+    return 'DeleteProductFromMyCartState.deleteProductSuccess()';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DeleteProductError &&
-            (identical(other.error, error) || other.error == error));
+            other is _$DeleteProductSuccessImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error);
+  int get hashCode => runtimeType.hashCode;
 
   @override
-  String toString() {
-    return 'DeleteProductFromMyCartState.deleteProductError(error: $error)';
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() deleteProductLoading,
+    required TResult Function() deleteProductSuccess,
+    required TResult Function(String error) deleteProductError,
+  }) {
+    return deleteProductSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? deleteProductLoading,
+    TResult? Function()? deleteProductSuccess,
+    TResult? Function(String error)? deleteProductError,
+  }) {
+    return deleteProductSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? deleteProductLoading,
+    TResult Function()? deleteProductSuccess,
+    TResult Function(String error)? deleteProductError,
+    required TResult orElse(),
+  }) {
+    if (deleteProductSuccess != null) {
+      return deleteProductSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(DeleteProductLoading value) deleteProductLoading,
+    required TResult Function(DeleteProductSuccess value) deleteProductSuccess,
+    required TResult Function(DeleteProductError value) deleteProductError,
+  }) {
+    return deleteProductSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(DeleteProductLoading value)? deleteProductLoading,
+    TResult? Function(DeleteProductSuccess value)? deleteProductSuccess,
+    TResult? Function(DeleteProductError value)? deleteProductError,
+  }) {
+    return deleteProductSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(DeleteProductLoading value)? deleteProductLoading,
+    TResult Function(DeleteProductSuccess value)? deleteProductSuccess,
+    TResult Function(DeleteProductError value)? deleteProductError,
+    required TResult orElse(),
+  }) {
+    if (deleteProductSuccess != null) {
+      return deleteProductSuccess(this);
+    }
+    return orElse();
   }
 }
 
+abstract class DeleteProductSuccess implements DeleteProductFromMyCartState {
+  const factory DeleteProductSuccess() = _$DeleteProductSuccessImpl;
+}
+
 /// @nodoc
-abstract mixin class $DeleteProductErrorCopyWith<$Res>
-    implements $DeleteProductFromMyCartStateCopyWith<$Res> {
-  factory $DeleteProductErrorCopyWith(
-          DeleteProductError value, $Res Function(DeleteProductError) _then) =
-      _$DeleteProductErrorCopyWithImpl;
+abstract class _$$DeleteProductErrorImplCopyWith<$Res> {
+  factory _$$DeleteProductErrorImplCopyWith(_$DeleteProductErrorImpl value,
+          $Res Function(_$DeleteProductErrorImpl) then) =
+      __$$DeleteProductErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class _$DeleteProductErrorCopyWithImpl<$Res>
-    implements $DeleteProductErrorCopyWith<$Res> {
-  _$DeleteProductErrorCopyWithImpl(this._self, this._then);
-
-  final DeleteProductError _self;
-  final $Res Function(DeleteProductError) _then;
+class __$$DeleteProductErrorImplCopyWithImpl<$Res>
+    extends _$DeleteProductFromMyCartStateCopyWithImpl<$Res,
+        _$DeleteProductErrorImpl>
+    implements _$$DeleteProductErrorImplCopyWith<$Res> {
+  __$$DeleteProductErrorImplCopyWithImpl(_$DeleteProductErrorImpl _value,
+      $Res Function(_$DeleteProductErrorImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DeleteProductFromMyCartState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? error = null,
   }) {
-    return _then(DeleteProductError(
+    return _then(_$DeleteProductErrorImpl(
       error: null == error
-          ? _self.error
+          ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
-// dart format on
+/// @nodoc
+
+class _$DeleteProductErrorImpl implements DeleteProductError {
+  const _$DeleteProductErrorImpl({required this.error});
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'DeleteProductFromMyCartState.deleteProductError(error: $error)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteProductErrorImpl &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  /// Create a copy of DeleteProductFromMyCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteProductErrorImplCopyWith<_$DeleteProductErrorImpl> get copyWith =>
+      __$$DeleteProductErrorImplCopyWithImpl<_$DeleteProductErrorImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() deleteProductLoading,
+    required TResult Function() deleteProductSuccess,
+    required TResult Function(String error) deleteProductError,
+  }) {
+    return deleteProductError(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? deleteProductLoading,
+    TResult? Function()? deleteProductSuccess,
+    TResult? Function(String error)? deleteProductError,
+  }) {
+    return deleteProductError?.call(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? deleteProductLoading,
+    TResult Function()? deleteProductSuccess,
+    TResult Function(String error)? deleteProductError,
+    required TResult orElse(),
+  }) {
+    if (deleteProductError != null) {
+      return deleteProductError(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(DeleteProductLoading value) deleteProductLoading,
+    required TResult Function(DeleteProductSuccess value) deleteProductSuccess,
+    required TResult Function(DeleteProductError value) deleteProductError,
+  }) {
+    return deleteProductError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(DeleteProductLoading value)? deleteProductLoading,
+    TResult? Function(DeleteProductSuccess value)? deleteProductSuccess,
+    TResult? Function(DeleteProductError value)? deleteProductError,
+  }) {
+    return deleteProductError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(DeleteProductLoading value)? deleteProductLoading,
+    TResult Function(DeleteProductSuccess value)? deleteProductSuccess,
+    TResult Function(DeleteProductError value)? deleteProductError,
+    required TResult orElse(),
+  }) {
+    if (deleteProductError != null) {
+      return deleteProductError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteProductError implements DeleteProductFromMyCartState {
+  const factory DeleteProductError({required final String error}) =
+      _$DeleteProductErrorImpl;
+
+  String get error;
+
+  /// Create a copy of DeleteProductFromMyCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DeleteProductErrorImplCopyWith<_$DeleteProductErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

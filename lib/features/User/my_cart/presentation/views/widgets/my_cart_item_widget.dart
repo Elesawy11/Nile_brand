@@ -1,18 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/features/User/my_cart/data/models/cart_product_model.dart';
-import 'package:nile_brand/features/User/my_cart/presentation/cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_cubit.dart';
-import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/views/widgets/mycart_product_details_widget.dart';
 import '../../../../../../core/utils/assets.dart';
-import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/spacer.dart';
-import '../../../../../../core/utils/styles.dart';
-import '../../cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_state.dart';
-import 'increase_and_decrease_icon_widget.dart';
 
 class MyCartItemWidget extends StatelessWidget {
   const MyCartItemWidget({
@@ -26,7 +17,6 @@ class MyCartItemWidget extends StatelessWidget {
       width: MediaQuery.of(context).size.width * .9,
       height: 144.h,
       clipBehavior: Clip.hardEdge,
-      // padding: EdgeInsets.only(right: 5.w),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15.r),
@@ -53,99 +43,9 @@ class MyCartItemWidget extends StatelessWidget {
                 ),
           horizontalSpace(6),
           SizedBox(
-            width: MediaQuery.of(context).size.width - (127.w + 12 * 2.w + 6.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      width: 187.w,
-                      child: Text(
-                        cartProduct.product?.name ?? '',
-                        overflow: TextOverflow.ellipsis,
-                        style: Styles.font20W400,
-                      ),
-                    ),
-                    const Spacer(),
-                    BlocListener<DeleteProductFromMyCartCubit,
-                        DeleteProductFromMyCartState>(
-                      listener: (context, state) {
-                        if (state is DeleteProductSuccess) {
-                          context.read<GetMyCartCubit>().getMyCart();
-                        }
-                      },
-                      child: InkWell(
-                        onTap: () {
-                          // log('my product id =:::::>>><><><><>< ${cartProduct.id}');
-                          context
-                              .read<DeleteProductFromMyCartCubit>()
-                              .deleteProductFromMyCart(
-                                  productId: cartProduct.id ?? '');
-                         
-                        },
-                        child: Icon(
-                          Icons.close,
-                          color: const Color.fromARGB(255, 194, 19, 19),
-                          size: 19.r,
-                        ),
-                      ),
-                    ),
-                    7.hs
-                  ],
-                ),
-                verticalSpace(7),
-                Text(
-                  cartProduct.product?.category?.name ?? '',
-                  style: Styles.font16W400.copyWith(
-                    color: ColorManager.subText,
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                    cartProduct.product?.brand?.name ?? '',
-                    style: Styles.font16W400,
-                  ),
-                ),
-                // const Spacer(),
-                SizedBox(
-                  child: Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        '${cartProduct.price} LE',
-                        style: Styles.font20W400.copyWith(
-                            color: ColorManager.mainColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18.sp),
-                      ),
-                      const Spacer(),
-                      Row(
-                        children: [
-                          IncreaseAndDecreaseIconWidget(
-                            onTap: () {},
-                            icon: Icons.add,
-                          ),
-                          horizontalSpace(5),
-                          Text(
-                            cartProduct.quantity.toString(),
-                            style: Styles.font14W400,
-                          ),
-                          horizontalSpace(5),
-                          IncreaseAndDecreaseIconWidget(
-                            onTap: () {},
-                            icon: Icons.remove,
-                          ),
-                        ],
-                      ),
-                      7.hs,
-                    ],
-                  ),
-                )
-              ],
-            ),
-          )
+              width:
+                  MediaQuery.of(context).size.width - (127.w + 12 * 2.w + 6.w),
+              child: MyCartProductDetailsWidget(cartProduct: cartProduct))
         ],
       ),
     );

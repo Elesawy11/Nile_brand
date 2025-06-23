@@ -1,19 +1,7 @@
-import 'dart:developer';
-
 import 'package:custom_rating_bar/custom_rating_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-import 'package:nile_brand/core/utils/assets.dart';
-import 'package:nile_brand/core/utils/color_manager.dart';
-import 'package:nile_brand/core/utils/sizes_padding.dart';
-import 'package:nile_brand/core/utils/styles.dart';
-import 'package:nile_brand/core/widgets/app_text_button.dart';
-import 'package:nile_brand/core/widgets/app_text_form_field.dart';
-import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedback_cubit/add_feedback_cubit.dart';
-import 'package:nile_brand/features/User/profile/presentation/views/widgets/feedback_bloc_listener.dart';
-import 'package:nile_brand/features/User/profile/presentation/views/widgets/profile_image.dart';
+import 'package:nile_brand/core/routing/exports.dart';
+import '../cubits/add_feedback_cubit/add_feedback_cubit.dart';
+import 'widgets/feedback_bloc_listener.dart';
 
 class FeedbackView extends StatelessWidget {
   const FeedbackView({super.key});
@@ -55,7 +43,6 @@ class FeedbackView extends StatelessWidget {
                 filledIcon: Icons.star,
                 emptyIcon: Icons.star_border,
                 onRatingChanged: (value) {
-                  log(value.toString());
                   cubit.reatingController?.text = value.toString();
                 },
                 initialRating: 0,
@@ -92,7 +79,7 @@ class FeedbackView extends StatelessWidget {
                   },
                 ),
               ),
-              FeedbackBlocListener(),
+              const FeedbackBlocListener(),
             ],
           ),
         ),

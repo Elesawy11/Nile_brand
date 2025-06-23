@@ -26,10 +26,7 @@ class CategoriesAndFilterWidget extends StatelessWidget {
                 return Padding(
                   padding: EdgeInsets.only(right: 24.w),
                   child: InkWell(
-                    onTap: () {
-                      //TODO: navigate to categories branch
-                      // context.push(Routes.categoreis);
-                    },
+                    onTap: () {},
                     child: Text(
                       AppStrings.mainCategories[index],
                       style: Styles.font17W400,

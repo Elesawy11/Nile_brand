@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nile_brand/core/routing/exports.dart';
 
-import '../../../../../../core/utils/color_manager.dart';
-import '../../../../../../core/utils/spacer.dart';
-import '../../../../../../core/widgets/app_text_button.dart';
-import 'checkout_text_widget.dart';
+import '../../cubits/create_order_cubit/create_order_cubit.dart';
+import '../../cubits/create_order_cubit/create_order_state.dart';
+import 'my_cart_details_widgt.dart';
 
 class CartCheckoutWidget extends StatelessWidget {
   const CartCheckoutWidget({
@@ -14,35 +12,42 @@ class CartCheckoutWidget extends StatelessWidget {
   final String price;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        verticalSpace(22),
-        CheckoutTextWidget(
-          subtotal: 'Subtotal',
-          total: '$price LE',
-          subColor: ColorManager.gray8C,
-        ),
-        verticalSpace(18),
-        Divider(
-          color: ColorManager.gray8C,
-          thickness: 1,
-          endIndent: 26.w,
-          indent: 26.w,
-        ),
-        CheckoutTextWidget(
-          subtotal: 'Total',
-          total: '$price LE',
-        ),
-        verticalSpace(32),
-        SizedBox(
-          width: 218.w,
-          child: AppTextButton(
-            backgroundColor: ColorManager.mainColor,
-            text: 'Checkout',
-            onPressed: () {},
-          ),
-        )
-      ],
+    return BlocProvider(
+      create: (context) => getIt.get<CreateOrderCubit>(),
+      child: BlocConsumer<CreateOrderCubit, CreateOrderState>(
+        listener: (context, state) {
+          if (state is OrderSuccess) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Order created successfully!'),
+                backgroundColor: ColorManager.mainColor,
+              ),
+            );
+            context.read<CreateOrderCubit>().address.clear();
+            context.read<GetMyCartCubit>().getMyCart();
+          } else if (state is OrderError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.error),
+                backgroundColor: Colors.red,
+              ),
+            );
+          } else if (state is OrderLoading) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Creating order...'),
+                backgroundColor: ColorManager.mainColor,
+              ),
+            );
+          }
+        },
+        builder: (context, state) {
+          return Form(
+            key: context.read<CreateOrderCubit>().formKey,
+            child: MyCartDetailsWidget(price: price),
+          );
+        },
+      ),
     );
   }
 }

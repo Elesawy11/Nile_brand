@@ -8,7 +8,7 @@ import '../../features/Owner/create_brand/data/models/create_brand_response_body
 class BrandPrefs {
   static const String _ownerIdKey = 'ownerId';
   static const String _brandIdKey = 'brandId';
-  
+
   static String? brandOwner;
   static String? brandId;
 
@@ -31,12 +31,10 @@ class BrandPrefs {
     await prefs.setString(_brandIdKey, brandId!);
   }
 
-
   static Future<String?> getbrandId() async {
     final prefs = await SharedPreferences.getInstance();
-    
+
     return prefs.getString(_brandIdKey);
-    
   }
 
   /// Retrieve brandId from SharedPreferences
@@ -100,6 +98,5 @@ class BrandStorage {
   static Future<List<CreateCuoponSuccess>> getCoupons() async {
     final box = await Hive.openBox<CreateCuoponSuccess>(_cuponBoxName);
     return box.values.toList();
-
   }
 }

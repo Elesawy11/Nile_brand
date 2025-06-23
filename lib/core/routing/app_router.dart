@@ -1,11 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/networking/dio_factory.dart';
-import 'package:nile_brand/core/routing/routes.dart';
-import "package:nile_brand/core/routing/exports.dart";
-import 'package:nile_brand/core/utils/service_locator.dart';
-
+import "package:nile_brand/core/routing/exports.dart" hide ProductModel;
+import 'package:nile_brand/features/Admin/manage_categories/data/repo/manage_catg_repo.dart';
 import 'package:nile_brand/features/Owner/create_brand/data/api/create_brand_api_services.dart';
 import 'package:nile_brand/features/Owner/cuopon/data/api/cupons_source.dart';
 import 'package:nile_brand/features/Owner/cuopon/data/model/create_cuopin_success.dart';
@@ -15,10 +10,6 @@ import 'package:nile_brand/features/Owner/cuopon/presentation/manager/get_cupons
 import 'package:nile_brand/features/Owner/cuopon/presentation/manager/update_cupon/update_cupon_cubit.dart';
 import 'package:nile_brand/features/Owner/my_brand/data/api/my_brand_services.dart';
 import 'package:nile_brand/features/Owner/my_brand/data/repo/update_brand_repo.dart';
-import 'package:nile_brand/features/User/category/data/models/product_model.dart';
-import 'package:nile_brand/features/User/category/presentation/cubits/create_review_cubit/create_review_cubit.dart';
-import 'package:nile_brand/features/User/category/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
-import 'package:nile_brand/features/User/chat/presentation/views/user_owner_chat.dart';
 import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_cubit.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
@@ -27,19 +18,18 @@ import 'package:nile_brand/features/User/wish_list/presentation/cubits/add_produ
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/delete_from_wishlist_cubit/delete_from_wishlist_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/get_wish_list_cubit/get_wish_list_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import '../../features/Admin/manage_categories/data/api/manage_catg_source.dart';
+import '../../features/Admin/manage_categories/views/manager/manage_catg_cubit.dart';
 import '../../features/Owner/create_brand/data/repo/new_brand_repo.dart';
 import '../../features/Owner/create_brand/presentation/manager/create_brand_cubit/create_brand_cubit.dart';
 import '../../features/Owner/my_brand/presentation/manager/update_brand/update_brand_cubit.dart';
 import '../../features/Owner/owner_helpers.dart';
-
-import 'package:nile_brand/features/User/category/presentation/cubits/get_products_cubit/get_products_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedback_cubit/add_feedback_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_profile_cubit/get_my_profile_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/update_password_cubit/update_password_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/views/edit_password.dart';
 
-import '../../features/User/my_cart/presentation/cubits/add_product_to_cart_cubit/add_product_to_cart_cubit.dart';
+import '../../features/User/category/data/models/product_model.dart';
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -316,7 +306,7 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.trackOrder,
-                builder: (context, state) => const TrackOrderView(),
+                builder: (context, state) => OrdersListView(),
               ),
             ],
           ),
@@ -396,8 +386,8 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.ownerHome,
-                builder: (context, state) => OwnerHomeView(
-                  brandId: state.extra as String,
+                builder: (context, state) => const OwnerHomeView(
+                  brandId: "685691c46b03f8f3085f1915",
                 ),
               ),
             ],
@@ -475,9 +465,11 @@ abstract class AppRouter {
       ),
 
       GoRoute(
-        path: Routes.brandDetails,
-        builder: (context, state) => const BrandDetailsView(),
-      ),
+          path: Routes.brandDetails,
+          builder: (context, state) {
+            final data = state.extra as String;
+            return BrandDetailsView(productId: data,);
+          }),
       GoRoute(
         path: Routes.brandProfile,
         builder: (context, state) => const BrandProfileView(),
@@ -491,6 +483,16 @@ abstract class AppRouter {
           child: const CreateCuoponView(),
         ),
       ),
+      BlocProvider(
+        create: (_) =>
+            GetCuponsCubit(CuponsRepo(CouponsSource(DioFactory.getDio())))
+              ,
+      ),
+    ],
+    child: const CreateCuoponView(),
+  ),
+),
+
       GoRoute(
         path: Routes.updateCuopon,
         builder: (context, state) => BlocProvider(
@@ -524,7 +526,24 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.manageCategories,
-                builder: (context, state) => const ManageCategoryView(),
+                builder: (context, state) {
+                  return MultiBlocProvider(
+                    providers: [
+                      BlocProvider(
+                        create: (_) => ManageCatgCubit(ManageCatgRepo(
+                            manageCatgSource:
+                                ManageCatgSource(DioFactory.getDio()))),
+                      ),
+                      BlocProvider(
+                        create: (_) => getIt.get<GetCategoryCubit>(),
+                      ),
+                      BlocProvider(
+                        create: (context) => getIt.get<GetSubCategorysCubit>(),
+                      )
+                    ],
+                    child: const ManageCategoryView(),
+                  );
+                },
               ),
             ],
           ),
@@ -555,28 +574,57 @@ abstract class AppRouter {
         ],
       ),
       GoRoute(
-        path: Routes.productReviews,
-        builder: (context, state) => const ProductReviews(),
-      ),
+          path: Routes.productReviews,
+          builder: (context, state) {
+            final product = state.extra as ProductModel;
+            return ProductReviews(product: product);
+          }),
       GoRoute(
-        path: Routes.updateCategory,
-        builder: (context, state) => UpdateCreateCategSetting(
-          title: state.extra as String,
-        ),
-      ),
+          path: Routes.updateCategory,
+          builder: (context, state) {
+            final extra = state.extra as Map<String, dynamic>;
+            final title = extra['title'] as String;
+            final id = extra['id'] as String;
+            return BlocProvider<ManageCatgCubit>(
+                create: (context) => ManageCatgCubit(ManageCatgRepo(
+                    manageCatgSource: ManageCatgSource(DioFactory.getDio()))),
+                child: UpdateCreateCategSetting(
+                  title: title,
+                  id: id,
+                ));
+          }),
       GoRoute(
         path: Routes.updateSubCategory,
-        builder: (context, state) => UpdateCreateSubcatg(
-          title: state.extra as String,
-        ),
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>;
+          final title = extra['title'] as String;
+          final id = extra['id'] as String;
+
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) => ManageCatgCubit(ManageCatgRepo(
+                    manageCatgSource: ManageCatgSource(DioFactory.getDio()))),
+              ),
+              BlocProvider(
+                create: (_) =>
+                    getIt.get<GetCategoryCubit>()..emitGetCategories(),
+              ),
+            ],
+            child: UpdateCreateSubcatg(title: title, id: id),
+          );
+        },
       ),
+
       GoRoute(
         path: Routes.createSytemUser,
         builder: (context, state) => const CreateSystemUser(),
       ),
       GoRoute(
         path: Routes.updateSystemUser,
-        builder: (context, state) => const UpdateUserInfo(),
+        builder: (context, state) => UpdateUserInfo(
+          id: state.extra as String,
+        ),
       )
     ],
   );

@@ -12,7 +12,6 @@ import 'package:nile_brand/core/utils/styles.dart';
 import 'package:nile_brand/features/User/profile/presentation/views/widgets/profile_image.dart';
 import 'widgets/my_brand_view_features_widget.dart';
 
-
 class MyBrand extends StatelessWidget {
   const MyBrand({super.key});
 
@@ -53,10 +52,9 @@ class MyBrand extends StatelessWidget {
                     child: CircleAvatar(
                       radius: 50.r,
                       backgroundImage: NetworkImage(
-                          "https://nile-brands-backend.up.railway.app/brands/${brandData.logo}"),
+                          "https://nile-brands.up.railway.app/brands/${brandData.logo}"),
                     ),
                   ),
-                 
                   Text(
                     brandData.name,
                     style: Styles.font20W400.copyWith(

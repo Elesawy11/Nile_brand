@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'my_profile_model.g.dart';
+
 @JsonSerializable()
 class MyProfileModel {
   String? sId;

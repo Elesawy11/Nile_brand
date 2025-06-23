@@ -10,7 +10,7 @@ class UpdateBrandRequestBody {
   final String name;
   final String description;
   final String taxID;
-  
+
   @JsonKey(fromJson: _fromJson, toJson: _toJson)
   final File logo;
 

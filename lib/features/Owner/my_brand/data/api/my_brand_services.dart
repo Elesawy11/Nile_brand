@@ -15,6 +15,4 @@ class BrandDetailsSource {
   Future<void> deleteBrand(String brandId) async {
     await _dio.delete("${ApiConstants.baseUrl}brands/$brandId");
   }
-
-  
 }

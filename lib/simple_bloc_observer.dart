@@ -20,17 +20,15 @@ class SimpleBlocObserver implements BlocObserver {
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
     debugPrint('error = ${error.toString()}');
-    
   }
 
   @override
   void onEvent(Bloc bloc, Object? event) {
     debugPrint('event = ${event.toString()}');
-   
   }
 
   @override
   void onTransition(Bloc bloc, Transition transition) {
-      debugPrint('current state = ${transition.currentState}');
+    debugPrint('current state = ${transition.currentState}');
   }
 }

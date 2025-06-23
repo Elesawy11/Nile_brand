@@ -1,15 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nile_brand/core/utils/sizes_padding.dart';
-import 'package:nile_brand/features/User/category/data/models/product_model.dart';
-import 'package:nile_brand/features/User/wish_list/presentation/cubits/delete_from_wishlist_cubit/delete_from_wishlist_cubit.dart';
-import 'package:nile_brand/features/User/wish_list/presentation/cubits/get_wish_list_cubit/get_wish_list_cubit.dart';
-import 'package:nile_brand/features/User/wish_list/presentation/views/widgets/price_button.dart';
-import '../../../../../../core/utils/assets.dart';
-import '../../../../../../core/utils/color_manager.dart';
-import '../../../../../../core/utils/styles.dart';
-import '../../cubits/delete_from_wishlist_cubit/delete_from_wishlist_state.dart';
+import 'package:nile_brand/core/routing/exports.dart' hide ProductModel;
+import '../../../../category/data/models/product_model.dart';
+import 'delete_product_from_wish_list_bloc_listener.dart';
+import 'price_button.dart';
 
 class WishListItem extends StatelessWidget {
   const WishListItem({super.key, required this.product});
@@ -22,7 +14,6 @@ class WishListItem extends StatelessWidget {
         width: MediaQuery.of(context).size.width * .9,
         height: 144.h,
         clipBehavior: Clip.hardEdge,
-        // padding: EdgeInsets.only(right: 5.w),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(15.r),
@@ -45,9 +36,7 @@ class WishListItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // product name
                   Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
                         width: 187.w,
@@ -58,31 +47,7 @@ class WishListItem extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      BlocListener<DeleteFromWishlistCubit,
-                          DeleteFromWishlistState>(
-                        listener: (context, state) {
-                          if (state is DeleteProductSuccess) {
-                            
-                            context
-                                .read<GetWishListCubit>()
-                                .getWishListProduct();
-                          }
-                        },
-                        child: InkWell(
-                          onTap: () {
-                            context
-                                .read<DeleteFromWishlistCubit>()
-                                .deleteProductFromMyWishlist(
-                                  productId: product.id ?? '',
-                                );
-                          },
-                          child: Icon(
-                            Icons.close,
-                            color: const Color.fromARGB(255, 194, 30, 19),
-                            size: 19.r,
-                          ),
-                        ),
-                      ),
+                      DeleteProductFromWishListBlocListener(product: product),
                       7.hs
                     ],
                   ),
@@ -94,11 +59,8 @@ class WishListItem extends StatelessWidget {
                     ),
                   ),
 
-                  // product subcategory
-
                   Expanded(
                     child: SizedBox(
-                      // width: 210.w,
                       height: 80.h,
                       child: Text(
                         product.description ?? 'not found',

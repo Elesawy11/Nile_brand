@@ -1,15 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-import 'package:nile_brand/core/utils/color_manager.dart';
-import 'package:nile_brand/core/utils/sizes_padding.dart';
-import 'package:nile_brand/core/utils/styles.dart';
-import 'package:nile_brand/core/widgets/app_text_button.dart';
-import 'package:nile_brand/features/User/auth/presentation/views/widgets/password_field.dart';
-import 'package:nile_brand/features/User/profile/presentation/views/widgets/edit_pass_bloc_listener.dart';
-
+import 'package:nile_brand/core/routing/exports.dart';
 import '../cubits/update_password_cubit/update_password_cubit.dart';
+import 'widgets/edit_pass_bloc_listener.dart';
 
 class EditPassword extends StatefulWidget {
   const EditPassword({super.key});
@@ -75,7 +66,7 @@ class _EditPasswordState extends State<EditPassword> {
                     ),
                   ),
                   const Spacer(flex: 1),
-                  UpdatePassBlocListener(),
+                  const UpdatePassBlocListener(),
                 ],
               ),
             ),

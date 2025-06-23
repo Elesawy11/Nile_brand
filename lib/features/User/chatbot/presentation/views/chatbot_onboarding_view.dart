@@ -24,14 +24,14 @@ class _ChatbotOnboardingViewState extends State<ChatbotOnboardingView>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
-    )..repeat(reverse: true); 
+    )..repeat(reverse: true);
 
     _animation = Tween<double>(begin: 0, end: -40.h).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
 
     Future.delayed(const Duration(seconds: 3), () {
-      context.go(Routes.chatBotSplash2); 
+      context.go(Routes.chatBotSplash2);
     });
   }
 

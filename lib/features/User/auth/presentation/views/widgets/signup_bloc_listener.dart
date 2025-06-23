@@ -1,12 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:nile_brand/core/utils/color_manager.dart';
-import '../../../../../../core/helpers/setup_error_state.dart';
-import '../../../../../../core/helpers/show_succes_dialog.dart';
-import '../../../../../../core/routing/routes.dart';
-import '../../cubits/signup_cubit/sign_up_cubit.dart';
-import '../../cubits/signup_cubit/sign_up_state.dart';
+import 'package:nile_brand/core/helpers/show_succes_dialog.dart';
+
+import 'package:nile_brand/core/routing/exports.dart';
 
 class SignupBlocListener extends StatelessWidget {
   const SignupBlocListener({super.key});
@@ -34,20 +28,16 @@ class SignupBlocListener extends StatelessWidget {
           case SignUpSuccess():
             context.pop();
             showSuccessDialog(
-              title: 'Sign Up Successful',
+                title: 'Sign Up Successful',
                 message: 'Congratulations, you have signed up successfully!',
                 context, onPressed: () {
               // context.go(Routes.login);
-              if(context.read<SignUpCubit>().ruleController.text == "owner"){
+              if (context.read<SignUpCubit>().ruleController.text == "owner") {
                 context.go(Routes.createBrand);
-
-              }
-              else if(context.read<SignUpCubit>().ruleController.text == "user"){
-
+              } else if (context.read<SignUpCubit>().ruleController.text ==
+                  "user") {
                 context.go(Routes.home);
-
-              }
-              else{
+              } else {
                 context.go(Routes.allbrands);
               }
             });

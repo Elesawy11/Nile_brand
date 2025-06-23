@@ -11,6 +11,7 @@ class AppTextFormField extends StatelessWidget {
   final TextStyle? inputTextStyle;
   final TextStyle? hintStyle;
   final String hintText;
+  final void Function(String)? onChange;
   final bool? isObscureText;
   final Widget? suffixIcon;
   final Color? backgroundColor;
@@ -47,7 +48,9 @@ class AppTextFormField extends StatelessWidget {
     this.raduis,
     this.isLabled = true,
     this.cursorHeight,
-    this.floatingLabelBehavior, this.keyboardType,
+    this.floatingLabelBehavior,
+    this.keyboardType,
+    this.onChange,
   });
 
   @override
@@ -57,6 +60,7 @@ class AppTextFormField extends StatelessWidget {
       onTapOutside: onTapOutside,
       onTap: onTap,
       controller: controller,
+      onChanged: onChange,
       autofocus: false,
       // focusNode: FocusNode().,
 

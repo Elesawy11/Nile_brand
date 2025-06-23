@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'feedback_model.g.dart';
+
 @JsonSerializable()
 class FeedbackModel {
   String? comment;
@@ -9,7 +10,6 @@ class FeedbackModel {
   String? createdAt;
   String? updatedAt;
   int? iV;
- 
 
   FeedbackModel(
       {this.comment,
@@ -20,9 +20,6 @@ class FeedbackModel {
       this.updatedAt,
       this.iV});
 
- 
   factory FeedbackModel.fromJson(Map<String, dynamic> json) =>
       _$FeedbackModelFromJson(json);
-
-  
 }

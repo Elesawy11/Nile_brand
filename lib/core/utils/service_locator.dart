@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nile_brand/core/networking/api_service.dart';
 import 'package:nile_brand/core/networking/dio_factory.dart';
+import 'package:nile_brand/core/utils/stripe_service.dart';
 import 'package:nile_brand/features/User/auth/data/repo/google_auth_repo.dart';
 import 'package:nile_brand/features/User/auth/data/repo/signup_repo.dart';
 import 'package:nile_brand/features/User/auth/presentation/cubits/forgot_pass/forgot_pass_cubit.dart';
@@ -17,6 +18,7 @@ import 'package:nile_brand/features/User/home/presentation/cubits/get_category_c
 import 'package:nile_brand/features/User/chatbot/presentation/cubits/cubit/chatbot_scroll_cubit.dart';
 import 'package:nile_brand/features/User/my_cart/data/repo/my_cart_repo_impl.dart';
 import 'package:nile_brand/features/User/my_cart/data/source/my_cart_source.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/create_order_cubit/create_order_cubit.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_cubit.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/update_quntity_of_product_cart_cubit/update_quntity_of_product_cart_cubit.dart';
@@ -24,11 +26,16 @@ import 'package:nile_brand/features/User/profile/data/api/my_profile_api_source.
 import 'package:nile_brand/features/User/profile/data/repo_impl/my_profile_repo_impl.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/add_feedback_cubit/add_feedback_cubit.dart';
 import 'package:nile_brand/features/User/profile/presentation/cubits/get_my_profile_cubit/get_my_profile_cubit.dart';
+import 'package:nile_brand/features/User/track_order/data/repo/get_order_repo_impl.dart';
+import 'package:nile_brand/features/User/track_order/data/source/order_source.dart';
+import 'package:nile_brand/features/User/track_order/presentation/cubits/cubit/get_orders_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/data/api/wish_list_source.dart';
 import 'package:nile_brand/features/User/wish_list/data/repo_impl/wish_list_repo_impl.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/add_product_to_wishlist_cubit/add_product_to_wishlist_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/delete_from_wishlist_cubit/delete_from_wishlist_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/get_wish_list_cubit/get_wish_list_cubit.dart';
+import 'package:nile_brand/features/stripe/data/repo/checkout_repo_impl.dart';
+import 'package:nile_brand/features/stripe/presentation/views/cubits/cubit/payment_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/User/auth/data/repo/forgot_pass_repo.dart';
 import '../../features/User/auth/data/repo/login_repo.dart';
@@ -114,6 +121,17 @@ Future<void> serviceLocator() async {
   getIt.registerLazySingleton(() => AddProductToCartCubit(getIt.get()));
   getIt.registerLazySingleton(() => DeleteProductFromMyCartCubit(getIt.get()));
   getIt.registerFactory(() => UpdateQuntityOfProductCartCubit(getIt.get()));
+
+  getIt.registerFactory(() => CreateOrderCubit(getIt.get()));
+  getIt.registerLazySingleton(() => GetOrderSource(dio));
+  getIt.registerLazySingleton(() => GetOrderRepoImpl(getIt.get()));
+  getIt.registerFactory(() => GetOrdersCubit(getIt.get()));
+  getIt.registerLazySingleton(() => StripeService());
+  // getIt.registerLazySingleton(() => CheckoutRepoImpl(service: getIt.get()));
+  getIt.registerLazySingleton(() => CheckoutRepoImpl(service: getIt.get()));
+  getIt.registerLazySingleton(() => PaymentCubit( getIt.get()));
+
+
   // Chatbot Features
   getIt.registerLazySingleton(() => ChatbotScrollCubit());
 }

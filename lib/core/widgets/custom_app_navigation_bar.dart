@@ -23,7 +23,6 @@ class CustomAppNavigationBar extends StatelessWidget {
               isExtended: true,
               onPressed: () {
                 context.go(Routes.chatbotOnboarding);
-              
               },
               backgroundColor: Colors.white.withValues(alpha: 0),
               elevation: 0,

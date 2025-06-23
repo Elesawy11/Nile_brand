@@ -4,18 +4,19 @@ import 'google_signin_state.dart';
 
 class GoogleSigninCubit extends Cubit<GoogleSigninState> {
   GoogleSigninCubit(this._firebaseAuthServices)
-      : super(GoogleSigninState.initial());
+      : super(const GoogleSigninState.initial());
 
   final GoogleAuthRepo _firebaseAuthServices;
 
   Future<void> emitSignInWithGoogle() async {
-    emit(GoogleSigninState.googleLoading());
+    emit(const GoogleSigninState.googleLoading());
     try {
       final response = await _firebaseAuthServices.signInWithGoogle();
       if (response != null) {
-        emit(GoogleSigninState.googleSuccess(user: response));  
+        emit(GoogleSigninState.googleSuccess(user: response));
       } else {
-        emit(GoogleSigninState.googleError(error: "Google sign-in failed"));
+        emit(const GoogleSigninState.googleError(
+            error: "Google sign-in failed"));
       }
     } catch (e) {
       emit(GoogleSigninState.googleError(error: e.toString()));

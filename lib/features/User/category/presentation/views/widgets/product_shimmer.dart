@@ -1,12 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nile_brand/core/utils/color_manager.dart';
-import 'package:nile_brand/core/utils/sizes_padding.dart';
-import 'package:nile_brand/core/utils/spacer.dart';
+import 'package:nile_brand/core/routing/exports.dart';
 import 'package:shimmer/shimmer.dart';
-
-import '../../../../../../core/utils/assets.dart';
-import '../../../../../../core/utils/styles.dart';
 
 class ProductShimmer extends StatelessWidget {
   const ProductShimmer({
@@ -28,7 +21,7 @@ class ProductShimmer extends StatelessWidget {
           ),
           itemCount: 20,
           itemBuilder: (context, index) {
-            return CustomItemShimmer();
+            return const CustomItemShimmer();
           },
         ),
       ),

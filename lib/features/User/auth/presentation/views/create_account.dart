@@ -1,39 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-import 'package:nile_brand/core/routing/app_router.dart';
-import 'package:nile_brand/core/utils/color_manager.dart';
-import 'package:nile_brand/core/utils/sizes_padding.dart';
-import 'package:nile_brand/core/utils/styles.dart';
-import 'package:nile_brand/core/widgets/app_text_button.dart';
-import 'package:nile_brand/features/User/auth/presentation/views/widgets/divider_and_text.dart';
-import 'package:nile_brand/features/User/auth/presentation/views/widgets/google_signin_widget.dart';
-import 'package:nile_brand/features/User/auth/presentation/views/widgets/signup_form.dart';
-
-import '../../../../../core/routing/routes.dart';
-import '../cubits/signup_cubit/sign_up_cubit.dart';
+import '../../../../../core/routing/exports.dart';
 import 'widgets/signup_bloc_listener.dart';
 
-class CreateAccountView extends StatefulWidget {
+class CreateAccountView extends StatelessWidget {
   const CreateAccountView({super.key});
 
   @override
-  State<CreateAccountView> createState() => _CreateAccountViewState();
-}
-
-class _CreateAccountViewState extends State<CreateAccountView> {
-  final ValueNotifier<bool> viewPass = ValueNotifier<bool>(true);
-  final ValueNotifier<bool> viewRestPass = ValueNotifier<bool>(true);
-
-  @override
   Widget build(BuildContext context) {
-    // final cubit = context.read<SignUpCubit>();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
-          physics: ClampingScrollPhysics(),
+          physics: const ClampingScrollPhysics(),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
             child: SingleChildScrollView(
@@ -46,10 +23,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                     style: Styles.font35W700,
                   ),
                   30.vs,
-                  SignupForm(
-                    viewPass: viewPass,
-                    viewRestPass: viewRestPass,
-                  ),
+                  const SignupForm(),
                   30.vs,
                   Center(
                     child: SizedBox(
@@ -58,10 +32,6 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                         text: 'Sign Up',
                         onPressed: () {
                           validateThenDoSignup(context);
-                          // if (context.read<SignUpCubit>().ruleController.text ==
-                          //     "Owner") {
-                          //   context.pushReplacement(Routes.createBrand);
-                          // }
                         },
                         backgroundColor: ColorManager.mainColor,
                       ),
@@ -79,7 +49,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                       ),
                     ),
                   ),
-                  SignupBlocListener(),
+                  const SignupBlocListener(),
                 ],
               ),
             ),

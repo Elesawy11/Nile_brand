@@ -6,16 +6,17 @@ import 'package:nile_brand/core/networking/api_result.dart';
 import '../api/my_brand_services.dart';
 import '../models/update_brand_response_body.dart';
 
-
 class UpdateBrandRepoImpl {
   final BrandDetailsSource _brandDetailsSource;
 
   UpdateBrandRepoImpl(this._brandDetailsSource);
 
-  Future<ApiResult<UpdatedBrandData>> updateBrand(String brandId, FormData request) async {
+  Future<ApiResult<UpdatedBrandData>> updateBrand(
+      String brandId, FormData request) async {
     try {
       final response = await _brandDetailsSource.updateBrand(request, brandId);
-      final UpdatedBrandData newbrand = UpdatedBrandData.fromJson(response["data"]);
+      final UpdatedBrandData newbrand =
+          UpdatedBrandData.fromJson(response["data"]);
       return ApiResult.success(newbrand);
     } catch (e) {
       return ApiResult.failure(ErrorHandler.handle(e));
@@ -24,8 +25,8 @@ class UpdateBrandRepoImpl {
 
   Future<ApiResult<String>> deleteBrand(String brandId) async {
     try {
-        await _brandDetailsSource.deleteBrand(brandId);
-      
+      await _brandDetailsSource.deleteBrand(brandId);
+
       return const ApiResult.success("deleted");
     } catch (e) {
       return ApiResult.failure(ErrorHandler.handle(e));
