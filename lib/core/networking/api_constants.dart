@@ -13,6 +13,8 @@ class ApiConstants {
   static const String resetPassword = 'auth/resetPassword';
   static const String categories = 'categories';
   static const String brands = "brands";
+  static const String payments = "payments";
+  static const String confirmPayment = "payments/confirmPayment";
 
   static const String subcategories = 'subcategories';
   static const String products = 'products';

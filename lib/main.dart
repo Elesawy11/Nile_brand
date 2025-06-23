@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:nile_brand/core/utils/service_locator.dart';
@@ -12,6 +13,7 @@ import 'package:nile_brand/nile_brand.dart';
 import 'package:nile_brand/simple_bloc_observer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'core/utils/api_keys.dart';
 import 'features/Owner/create_brand/data/models/create_brand_response_body.dart';
 import 'features/Owner/owner_helpers.dart';
 
@@ -28,6 +30,7 @@ void main(List<String> args) async {
   );
   await serviceLocator();
   Bloc.observer = SimpleBlocObserver();
+  Stripe.publishableKey = ApiKeys.puplishableKey;
   runApp(const NileBrand());
 }
 
@@ -36,7 +39,6 @@ class NileBrand extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
     return const NileBrandBody();
   }
 }

@@ -10,6 +10,9 @@ import 'package:nile_brand/features/User/my_cart/presentation/cubits/delete_prod
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_state.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/views/widgets/empty_wishlist_view.dart';
+import 'package:nile_brand/features/stripe/data/models/payment_intent_input_model.dart';
+import 'package:nile_brand/features/stripe/presentation/views/cubits/cubit/payment_cubit.dart';
+import '../../../../stripe/presentation/views/cubits/cubit/payment_state.dart';
 import '../cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_state.dart';
 import 'widgets/cart_checkout_widget.dart';
 import 'widgets/my_cart_item_widget.dart';
@@ -121,9 +124,39 @@ class MyCartView extends StatelessWidget {
                         ],
                       )
                     : state is GetMyCartError
-                        ? const EmptyWishlistView(
-                            message:
-                                'Start exploring and add your product items to your cart...',
+                        ? BlocProvider(
+                            create: (context) => PaymentCubit(),
+                            child: BlocConsumer<PaymentCubit, PaymentState>(
+                              listener: (context, state) {
+                                if (state is PaymentSuccess) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text('done successfully')));
+                                } else if (state is PaymentError) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text(state.error)));
+                                }
+                              },
+                              builder: (context, state) {
+                                return InkWell(
+                                  onTap: () {
+                                    context.read<PaymentCubit>().makePayment(
+                                          paymentIntentInputModel:
+                                              PaymentIntentInputModel(
+                                            amount: '100',
+                                            currency: 'USD',
+                                          ),
+                                          orderId: '',
+                                        );
+                                  },
+                                  child: EmptyWishlistView(
+                                    message: state is PaymentLoading
+                                        ? 'loading....'
+                                        : 'Start exploring and add your product items to your cart...',
+                                  ),
+                                );
+                              },
+                            ),
                           )
                         : const SizedBox();
           },

@@ -33,7 +33,7 @@ class _LoginViewState extends State<LoginView> {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
-          physics: ClampingScrollPhysics(),
+          physics: const ClampingScrollPhysics(),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Column(
@@ -91,15 +91,15 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 verticalSpace(54),
                 const HaveAcountText(),
-                LoginBlocListener(),
-                GoogleBlocListener(),
+                const LoginBlocListener(),
+                const GoogleBlocListener(),
               ],
             ),
           ),
         ),
       ),
     );
-  } 
+  }
 
   void validateThenDoLogin(BuildContext context) {
     if (context.read<LoginCubit>().formKey.currentState!.validate()) {
