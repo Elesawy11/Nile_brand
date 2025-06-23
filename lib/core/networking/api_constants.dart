@@ -1,8 +1,11 @@
 class ApiConstants {
   ApiConstants._();
 
+
   static const String baseUrl =
       'https://nile-brands.up.railway.app/api/v1/';
+
+  // static const String baseUrl = 'https://nile-brands.up.railway.app/api/v1/';
   static const String signup = 'auth/signup';
   static const String login = 'auth/login';
   static const String forgotPassword = 'auth/forgetPassword';

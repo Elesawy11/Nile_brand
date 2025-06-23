@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -20,10 +22,10 @@ class NewProductModel {
   final List<String> colors;
 
   @JsonKey(fromJson: _imagesFromJson, toJson: _imagesToJson)
-  final List<XFile> images;
+  final List<File> images;
 
   @JsonKey(fromJson: _coverFromJson, toJson: _coverToJson)
-  final XFile coverImage;
+  final File coverImage;
 
   NewProductModel({
     required this.name,
@@ -44,14 +46,14 @@ class NewProductModel {
 
   Map<String, dynamic> toJson() => _$NewProductModelToJson(this);
 
-  // Handling List<XFile>
-  static List<XFile> _imagesFromJson(List<dynamic> paths) =>
-      paths.map((path) => XFile(path as String)).toList();
 
-  static List<String> _imagesToJson(List<XFile> files) =>
+  static List<File> _imagesFromJson(List<dynamic> paths) =>
+      paths.map((path) => File(path as String)).toList();
+
+  static List<String> _imagesToJson(List<File> files) =>
       files.map((file) => file.path).toList();
 
   // Handling single XFile (cover image)
-  static XFile _coverFromJson(String path) => XFile(path);
-  static String _coverToJson(XFile file) => file.path;
+  static File _coverFromJson(String path) => File(path);
+  static String _coverToJson(File file) => file.path;
 }

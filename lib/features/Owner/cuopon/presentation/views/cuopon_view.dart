@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nile_brand/core/routing/routes.dart';
@@ -6,6 +7,8 @@ import 'package:nile_brand/core/utils/assets.dart';
 
 import 'package:nile_brand/core/utils/sizes_padding.dart';
 import 'package:nile_brand/core/utils/styles.dart';
+import 'package:nile_brand/features/Owner/cuopon/presentation/manager/get_cupons/cupon_cubit.dart';
+import 'package:nile_brand/features/Owner/cuopon/presentation/manager/get_cupons/cupon_state.dart';
 
 import 'widgets/cuopon_item_widget.dart';
 
@@ -15,12 +18,12 @@ class CuoponView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(  
+      child: Scaffold(
         appBar: AppBar(
           title: Text(
-                  'Manage Coupons',
-                  style: Styles.font35W700.copyWith(fontSize:30.sp),
-                ),
+            'Manage Coupons',
+            style: Styles.font35W700.copyWith(fontSize: 30.sp),
+          ),
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 18.w),
@@ -39,7 +42,8 @@ class CuoponView extends StatelessWidget {
                     15.hs,
                     Text(
                       'Create Coupon',
-                      style: Styles.font24W500.copyWith(fontWeight: FontWeight.w600),
+                      style: Styles.font24W500
+                          .copyWith(fontWeight: FontWeight.w600),
                     ),
                     const Spacer(),
                     const Icon(Icons.arrow_forward_ios_rounded)
@@ -47,39 +51,50 @@ class CuoponView extends StatelessWidget {
                 ),
               ),
               12.vs,
-              ExpansionTile(
-                  tilePadding: EdgeInsets.zero,
-                  collapsedShape: Border.all(color: Colors.white),
-                  shape: ShapeBorder.lerp(Border.all(color: Colors.white),
-                      Border.all(color: Colors.white), 0.5),
-                  title: Row(
-                    children: [
-                      Image.asset(
-                        Assets.imagesDarkModeIcon,
-                        height: 24.r,
-                        width: 24.r,
+              BlocBuilder<GetCuponsCubit, ManageCuponState>(
+                builder: (context, state) {
+                  return ExpansionTile(
+                      tilePadding: EdgeInsets.zero,
+                      collapsedShape: Border.all(color: Colors.white),
+                      shape: ShapeBorder.lerp(Border.all(color: Colors.white),
+                          Border.all(color: Colors.white), 0.5),
+                      title: Row(
+                        children: [
+                          Image.asset(
+                            Assets.imagesDarkModeIcon,
+                            height: 24.r,
+                            width: 24.r,
+                          ),
+                          15.hs,
+                          Text(
+                            'View All Coupons',
+                            style: Styles.font24W500
+                                .copyWith(fontWeight: FontWeight.w600),
+                          ),
+                        ],
                       ),
-                      15.hs,
-                      Text(
-                        'View All Coupons',
-                        style: Styles.font24W500.copyWith(fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                  children: [
-                    SizedBox(
-                      height: context.screenHeight * 0.6,
-                      child: ListView.builder(
-                        itemCount: 10,
-                        shrinkWrap: true,
-
-                        itemBuilder: (context, index) =>
-                            const CuoponItemWidget(),
-                      ),
-                    )
-                  ]
-
-                  ),
+                      children: [
+                        SizedBox(
+                          height: context.screenHeight * 0.6,
+                          child: ListView.builder(
+                              itemCount: 
+                              context
+                                  .read<GetCuponsCubit>()
+                                  .myCupons
+                                  .length,
+                              shrinkWrap: true,
+                              itemBuilder: (cxt, index) {
+                                return CuoponItemWidget(
+                                  
+                                  cupon: context
+                                  .read<GetCuponsCubit>()
+                                  .myCupons[index],
+                                );
+                              }),
+                        )
+                      ]);
+                },
+              ),
             ],
           ),
         ),

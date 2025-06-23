@@ -24,10 +24,15 @@ class _CouponsSource implements CouponsSource {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<dynamic> createCoupon(CuponRequestBody coupon) async {
+  Future<dynamic> createCoupon(
+    CuponRequestBody coupon,
+    String? token,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(coupon.toJson());
     final _options = _setStreamType<dynamic>(Options(
@@ -52,10 +57,15 @@ class _CouponsSource implements CouponsSource {
   }
 
   @override
-  Future<void> deletCoupon(String id) async {
+  Future<void> deletCoupon(
+    String id,
+    String? token,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<void>(Options(
       method: 'DELETE',
@@ -77,10 +87,12 @@ class _CouponsSource implements CouponsSource {
   }
 
   @override
-  Future<dynamic> getAllCupons() async {
+  Future<dynamic> getAllCupons(String? token) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<dynamic>(Options(
       method: 'GET',
@@ -90,6 +102,74 @@ class _CouponsSource implements CouponsSource {
         .compose(
           _dio.options,
           'https://nile-brands.up.railway.app/api/v1//coupons',
+
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch(_options);
+    final _value = _result.data;
+    return _value;
+  }
+
+  @override
+  Future<dynamic> updateCupon(
+    String id,
+    CuponRequestBody newCupon,
+    String? token,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    _data.addAll(newCupon.toJson());
+    final _options = _setStreamType<dynamic>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'https://nile-brands.up.railway.app/api/v1//coupons/{id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch(_options);
+    final _value = _result.data;
+    return _value;
+  }
+
+  @override
+  Future<dynamic> sendCupon(
+    String email,
+    String? token,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = email;
+    final _options = _setStreamType<dynamic>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'https://nile-brands.up.railway.app/api/v1//coupons/sendCoupon',
+
           queryParameters: queryParameters,
           data: _data,
         )

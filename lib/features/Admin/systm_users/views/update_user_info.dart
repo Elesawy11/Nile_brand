@@ -41,8 +41,8 @@ class UpdateUserInfo extends StatelessWidget {
                  height: 52.h,
                 width: 340.w,
                   child: AppTextFormField(
-                    labelText: "Status",
-                    hintText: "status",
+                    labelText: "Role",
+                    hintText: "role",
                     validator: (p0) {},
                   ),
                 ),

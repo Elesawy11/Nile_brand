@@ -27,6 +27,7 @@ class ChatbotCubit extends Cubit<ChatbotState> {
     Timer.periodic(const Duration(milliseconds: 50), (timer) {
       if (index >= answer.length) {
         timer.cancel(); 
+        
         _chatHistory.add({"role": "bot", "message": answer});
         emit(ChatbotResponseState(List.from(_chatHistory)));
       } else {
