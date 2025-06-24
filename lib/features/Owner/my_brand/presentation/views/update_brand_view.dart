@@ -41,7 +41,7 @@ class _UpdateBrandBodyState extends State<UpdateBrandBody> {
             
             if (state is UpdateBrandSuccess) {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
+                const SnackBar(
                     content: Text("Success"), backgroundColor: Colors.green),
               );
               context.pop();
@@ -111,8 +111,8 @@ class _UpdateBrandBodyState extends State<UpdateBrandBody> {
                           text: state is UpdateBrandLoading
                               ? "Saving..."
                               : "Save Changes",
-                          onPressed: () {
-                            cubit.updateBrand();
+                          onPressed: () async{
+                            await cubit.updateBrand();
                             
                             // context.pop();
                           },

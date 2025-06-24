@@ -15,7 +15,15 @@ class GetSubCategorysCubit extends Cubit<GetSubCategorysState> {
     final result = await _subCategoryRepo.getSubCategories();
     switch (result) {
       case Success():
-        subCategories.addAll(result.data);
+        if (subCategories.isNotEmpty) {
+          subCategories.clear();
+          subCategories.addAll(result.data);
+
+        }
+        else{
+
+         subCategories.addAll(result.data);
+        }
 
         emit(
           GetSubCategorysState.subCategorySuccess(

@@ -23,11 +23,7 @@ abstract class SubCategorySource {
     @Query('limit') int limit = 50000,
   });
 
-  @DELETE("${ApiConstants.products}/{productId}/${ApiConstants.reviews}/{reviewId}")
-  Future<void> deleteReview (
-    @Path("productId") String productId,
-    @Path("reviewId") String reviewId,
-    @Header('Authorization') String? token)
+
 
   @POST('${ApiConstants.products}/{id}/${ApiConstants.reviews}')
   Future<dynamic> createReview(

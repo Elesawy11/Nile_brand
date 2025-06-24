@@ -11,18 +11,19 @@ import '../../manager/create_product/create_product_cubit.dart';
 
 class AddBrandProductTextFieldsWidgets extends StatefulWidget {
   final List<CategoryModel> category;
-  
+
   final List<SubCategoryModel> subcategory;
 
-  const AddBrandProductTextFieldsWidgets({
-    super.key, required this.category, required this.subcategory
-  });
+  const AddBrandProductTextFieldsWidgets(
+      {super.key, required this.category, required this.subcategory});
 
   @override
-  State<AddBrandProductTextFieldsWidgets> createState() => _AddBrandProductTextFieldsWidgetsState();
+  State<AddBrandProductTextFieldsWidgets> createState() =>
+      _AddBrandProductTextFieldsWidgetsState();
 }
 
-class _AddBrandProductTextFieldsWidgetsState extends State<AddBrandProductTextFieldsWidgets> {
+class _AddBrandProductTextFieldsWidgetsState
+    extends State<AddBrandProductTextFieldsWidgets> {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<CreateProductCubit>();
@@ -31,7 +32,7 @@ class _AddBrandProductTextFieldsWidgetsState extends State<AddBrandProductTextFi
         SizedBox(
           // height: 50.h,
           child: AppTextFormField(
-            controller : cubit.nameController,
+            controller: cubit.nameController,
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: "Handmade Leather Bag",
             labelText: "Name",
@@ -54,7 +55,6 @@ class _AddBrandProductTextFieldsWidgetsState extends State<AddBrandProductTextFi
         SizedBox(
           // height: 50.h,
           child: AppTextFormField(
-            
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: 'ex : large , small ..etc',
             labelText: "Sizes (optional)",
@@ -78,11 +78,10 @@ class _AddBrandProductTextFieldsWidgetsState extends State<AddBrandProductTextFi
         SizedBox(
           // height: 50.h,
           child: AppTextFormField(
-
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: "ex : red , brown ..etc",
             labelText: "Color (optional)",
-             onChange: (value) {
+            onChange: (value) {
               final colors = value
                   .split(',')
                   .map((e) => e.trim())
@@ -105,7 +104,7 @@ class _AddBrandProductTextFieldsWidgetsState extends State<AddBrandProductTextFi
             hintText: "120.50",
             labelText: "Price",
             keyboardType: TextInputType.number,
-            validator:  (p0) {
+            validator: (p0) {
               if (p0 == null || p0.isEmpty) return 'Price required';
               return null;
             },
@@ -119,7 +118,7 @@ class _AddBrandProductTextFieldsWidgetsState extends State<AddBrandProductTextFi
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: "50",
             labelText: "quantity",
-             keyboardType: TextInputType.number,
+            keyboardType: TextInputType.number,
             validator: (p0) {
               if (p0 == null || p0.isEmpty) return 'Quantity required';
               return null;
@@ -137,18 +136,17 @@ class _AddBrandProductTextFieldsWidgetsState extends State<AddBrandProductTextFi
             // print(context.read<GetCategoryCubit>().categoryList);
           },
           child: ExpansionTile(
-              title: Text("Select Category: Category  ${cubit.selectedCategoryId ?? ''}"),
-              children:
-                  widget.category.map((category) {
-                return ListTile(
-
-                  title: Text(category.name!),
-                  onTap: () {
-                    cubit.setCategory(category.id!);
-                  },
-                );
-              }).toList(),
-              ),
+            title: Text(
+                "Select Category: Category  ${cubit.selectedCategoryId ?? ''}  "),
+            children: widget.category.map((category) {
+              return ListTile(
+                title: Text(category.name!),
+                onTap: () {
+                  cubit.setCategory(category.id!);
+                },
+              );
+            }).toList(),
+          ),
         ),
         16.vs,
 
@@ -159,7 +157,7 @@ class _AddBrandProductTextFieldsWidgetsState extends State<AddBrandProductTextFi
           },
           child: ExpansionTile(
             title: Text(
-                "Select SubCategory: ${cubit.selectedSubCategoryId} ?? '' "),
+                "Select SubCategory: ${cubit.selectedSubCategoryId ?? ''}  "),
             children: widget.subcategory.map((subcategory) {
               return ListTile(
                 title: Text(subcategory.name!),

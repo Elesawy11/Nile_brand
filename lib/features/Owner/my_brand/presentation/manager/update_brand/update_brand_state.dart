@@ -19,6 +19,9 @@ class UpdateBrandDeleted extends UpdateBrandState {
 
   UpdateBrandDeleted({required this.msg});
   
+
+
 }
 
+class UpdateImage extends UpdateBrandState{}
 class LoadedOldInfo extends UpdateBrandState{}

@@ -56,56 +56,58 @@ class UpdateCreateCategSetting extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return Padding(
-            padding: 12.allEdgeInsets,
-            child: Column(
-              children: [
-                60.vs,
-                GestureDetector(
-                  onTap: () => _pickImage(context, cubit),
-                  child: CircleAvatar(
-                    radius: 50,
-                    backgroundImage: cubit.catgImage != null
-                        ? FileImage(cubit.catgImage!)
-                        : const AssetImage('assets/images/profile.png')
-                            as ImageProvider,
+          return SingleChildScrollView(
+            child: Padding(
+              padding: 12.allEdgeInsets,
+              child: Column(
+                children: [
+                  60.vs,
+                  GestureDetector(
+                    onTap: () => _pickImage(context, cubit),
+                    child: CircleAvatar(
+                      radius: 50,
+                      backgroundImage: cubit.catgImage != null
+                          ? FileImage(cubit.catgImage!)
+                          : const AssetImage('assets/images/profile.png')
+                              as ImageProvider,
+                    ),
                   ),
-                ),
-                10.vs,
-                Text('Tap to select Image', style: Styles.font16W400),
-                SizedBox(
-                  height: 50.h,
-                  child: AppTextFormField(
-                    controller: cubit.nameController,
-                    labelText: "Name",
-                    hintText: "Name",
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return "Name is required";
-                      }
-                      return null;
-                    },
+                  10.vs,
+                  Text('Tap to select Image', style: Styles.font16W400),
+                  SizedBox(
+                    height: 50.h,
+                    child: AppTextFormField(
+                      controller: cubit.nameController,
+                      labelText: "Name",
+                      hintText: "Name",
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return "Name is required";
+                        }
+                        return null;
+                      },
+                    ),
                   ),
-                ),
-                350.vs,
-                SizedBox(
-                  width: 150.w,
-                  child: state is ManageCatgLoading
-                      ? const Center(child: CircularProgressIndicator())
-                      : AppTextButton(
-                          backgroundColor: ColorManager.mainColor,
-                          text: title == "Create" ? "Save" : "Save Changes",
-                          onPressed: () async {
-                            if (title == "Create") {
-                              await cubit.createCategory();
-                            } else {
-                              
-                              await cubit.updateCategory(id);
-                            }
-                          },
-                        ),
-                )
-              ],
+                  350.vs,
+                  SizedBox(
+                    width: 150.w,
+                    child: state is ManageCatgLoading
+                        ? const Center(child: CircularProgressIndicator())
+                        : AppTextButton(
+                            backgroundColor: ColorManager.mainColor,
+                            text: title == "Create" ? "Save" : "Save Changes",
+                            onPressed: () async {
+                              if (title == "Create") {
+                                await cubit.createCategory();
+                              } else {
+                                
+                                await cubit.updateCategory(id);
+                              }
+                            },
+                          ),
+                  )
+                ],
+              ),
             ),
           );
         },

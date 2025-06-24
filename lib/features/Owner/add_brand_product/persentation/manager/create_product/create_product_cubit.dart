@@ -92,8 +92,8 @@ class CreateProductCubit extends Cubit<CreateProductState> {
       "category": selectedCategoryId!,
       "subcategory": selectedSubCategoryId!,
       "brand": selectedBrandId ?? "685691c46b03f8f3085f1915",
-      "sizes": selectedSizes,
-      "colors": selectedColors,
+      "sizes": [selectedSizes],
+      "colors": [selectedColors],
       'coverImage': cover,
       "images": imageFiles,
     });
@@ -107,7 +107,7 @@ class CreateProductCubit extends Cubit<CreateProductState> {
     switch (result) {
       case Success():
         emit(CreateProductSuccess(result.data));
-        close();
+
         break;
       case Failure():
         emit(CreateProductError(
@@ -148,8 +148,8 @@ class CreateProductCubit extends Cubit<CreateProductState> {
       "category": selectedCategoryId,
       "subcategory": selectedSubCategoryId,
       "brand": selectedBrandId ?? "685691c46b03f8f3085f1915",
-      "sizes": selectedSizes,
-      "colors": selectedColors,
+      "sizes": [selectedSizes],
+      "colors": [selectedColors],
       "images": imageFiles,
       'coverImage': cover,
     });
@@ -164,7 +164,7 @@ class CreateProductCubit extends Cubit<CreateProductState> {
     switch (result) {
       case Success():
         emit(UpdateProductSuccessState());
-        await close();
+
         break;
       case Failure():
         emit(UpdateProductFailureState());

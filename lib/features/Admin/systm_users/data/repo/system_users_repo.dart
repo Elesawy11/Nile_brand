@@ -14,7 +14,7 @@ class SystemUsersRepo {
   Future<ApiResult<List<UserModel>>> getSystemUsers(String token) async {
     try {
       final response = await _systemUsersSource.getSystemUsers(token);
-      print(response);
+
       final List<dynamic> data = response["data"];
 
       final List<UserModel> users =

@@ -29,9 +29,6 @@ class GetCategoryCubit extends Cubit<GetCategoryState> {
       if (!isClosed) emit(GetCategoryState.categoryPaginationLoading());
 
       emit(const GetCategoryState.categoryLoading());
-    } else {
-      emit(const GetCategoryState.categoryPaginationLoading());
-
     }
 
     final response = await _repo.getCategories(limit: limit, page: page);
@@ -44,8 +41,15 @@ class GetCategoryCubit extends Cubit<GetCategoryState> {
           page += 1;
           hasMore = true;
         }
-       
-        categoryList.addAll(list);
+
+        if (categoryList.isNotEmpty) {
+          categoryList.clear();
+          categoryList.addAll(list);
+        }
+        else{
+         categoryList.addAll(list);
+        }
+
         print(categoryList);
         if (!isClosed) {
           emit(GetCategoryState.categorySuccess(categories: categoryList));

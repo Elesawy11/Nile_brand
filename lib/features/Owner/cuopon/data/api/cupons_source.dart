@@ -11,6 +11,7 @@ abstract class CouponsSource {
   factory CouponsSource(Dio dio) = _CouponsSource;
 
   @POST('coupons')
+
   Future<dynamic> createCoupon(@Body() CuponRequestBody coupon,@Header('Authorization') String? token);
 
   @DELETE("coupons/{id}")
@@ -20,10 +21,12 @@ abstract class CouponsSource {
   Future<dynamic> getAllCupons(@Header('Authorization') String? token);
 
   @PUT("coupons/{id}")
+
   Future<dynamic> updateCupon(@Path("id") String id ,@Body() CuponRequestBody newCupon ,@Header('Authorization') String? token);
    
 
   @POST("coupons/sendCoupon")
+
   Future<dynamic> sendCupon(@Body() String email,@Header('Authorization') String? token);
 
 }

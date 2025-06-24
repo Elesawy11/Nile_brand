@@ -61,112 +61,114 @@ class _UpdateCreateSubcatgState extends State<UpdateCreateSubcatg> {
             }
           },
           builder: (context, state) {
-            return Padding(
-              padding: 12.allEdgeInsets,
-              child: Column(
-                children: [
-                  60.vs,
-                  SizedBox(
-                    height: 50.h,
-                    child: AppTextFormField(
-                      controller: manageCubit.nameController,
-                      labelText: "Name",
-                      hintText: "Name",
-                      validator: (p0) {
-                        if (p0 == null || p0.trim().isEmpty) {
-                          return "Name is required";
+            return SingleChildScrollView(
+              child: Padding(
+                padding: 12.allEdgeInsets,
+                child: Column(
+                  children: [
+                    60.vs,
+                    SizedBox(
+                      height: 50.h,
+                      child: AppTextFormField(
+                        controller: manageCubit.nameController,
+                        labelText: "Name",
+                        hintText: "Name",
+                        validator: (p0) {
+                          if (p0 == null || p0.trim().isEmpty) {
+                            return "Name is required";
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    20.vs,
+                    BlocBuilder<GetCategoryCubit, GetCategoryState>(
+                      builder: (context, catgState) {
+                        if (catgState is CategoryLoading) {
+                          return const CircularProgressIndicator();
+                        } else if (catgState is CategorySuccess) {
+                          final categories =
+                              context.read<GetCategoryCubit>().categoryList;
+                          // Validate selected ID
+                          if (selectedCategoryId != null &&
+                              !categories
+                                  .any((cat) => cat.id == selectedCategoryId)) {
+                            selectedCategoryId = null;
+                          }
+              
+                          final selectedId = manageCubit.selectedCategoryId;
+              
+                          return widget.title == "Create"
+                              ? Card(
+                                  elevation: 2,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: ExpansionTile(
+                                    title: Text(
+                                      selectedId == null
+                                          ? "Select Category"
+                                          : "Category: ${categories.firstWhere((cat) => cat.id == selectedId).name}",
+                                    ),
+                                    children: categories.map((category) {
+                                      return ListTile(
+                                        title: Text(category.name ?? ""),
+                                        onTap: () {
+                                          // print();
+                                          context
+                                              .read<ManageCatgCubit>()
+                                              .selectCategory(category.id ?? "");
+                                        },
+                                      );
+                                    }).toList(),
+                                  ),
+                                )
+                              : const SizedBox();
+                        } else if (catgState is CategoryError) {
+                          return Text(
+                              "Failed to load categories: ${catgState.error}");
                         }
-                        return null;
+                        return const SizedBox();
                       },
                     ),
-                  ),
-                  20.vs,
-                  BlocBuilder<GetCategoryCubit, GetCategoryState>(
-                    builder: (context, catgState) {
-                      if (catgState is CategoryLoading) {
-                        return const CircularProgressIndicator();
-                      } else if (catgState is CategorySuccess) {
-                        final categories =
-                            context.read<GetCategoryCubit>().categoryList;
-                        // Validate selected ID
-                        if (selectedCategoryId != null &&
-                            !categories
-                                .any((cat) => cat.id == selectedCategoryId)) {
-                          selectedCategoryId = null;
-                        }
-
-                        final selectedId = manageCubit.selectedCategoryId;
-
-                        return widget.title == "Create"
-                            ? Card(
-                                elevation: 2,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: ExpansionTile(
-                                  title: Text(
-                                    selectedId == null
-                                        ? "Select Category"
-                                        : "Category: ${categories.firstWhere((cat) => cat.id == selectedId).name}",
-                                  ),
-                                  children: categories.map((category) {
-                                    return ListTile(
-                                      title: Text(category.name ?? ""),
-                                      onTap: () {
-                                        // print();
-                                        context
-                                            .read<ManageCatgCubit>()
-                                            .selectCategory(category.id ?? "");
-                                      },
-                                    );
-                                  }).toList(),
-                                ),
-                              )
-                            : const SizedBox();
-                      } else if (catgState is CategoryError) {
-                        return Text(
-                            "Failed to load categories: ${catgState.error}");
-                      }
-                      return const SizedBox();
-                    },
-                  ),
-                  const Spacer(),
-                  SizedBox(
-                    width: 150.w,
-                    child: state is ManageCatgLoading
-                        ? const Center(child: CircularProgressIndicator())
-                        : AppTextButton(
-                            backgroundColor: ColorManager.mainColor,
-                            text: widget.title == "Create"
-                                ? "Save"
-                                : "Save Changes",
-                            onPressed: () async {
-                              // final name =
-                              // manageCubit.nameController.text.trim();
-
-                              if ( widget.title == "Create" && manageCubit.selectedCategoryId == null ||
-                                  manageCubit.nameController.text
-                                          .trim()
-                                          .isEmpty 
-                                     ) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text(
-                                          "Please enter name and choose category")),
-                                );
-                                return;
-                              }
-
-                              if (widget.title == "Create") {
-                                // print(selectedCategoryId)
-                                await manageCubit.createSubCategory(
-                                    manageCubit.selectedCategoryId!);
-                              } else {
-                                manageCubit.updateSubCatory(widget.id!);
-                              }
-                            },
-                          ),
-                  ),
-                ],
+                    const Spacer(),
+                    SizedBox(
+                      width: 150.w,
+                      child: state is ManageCatgLoading
+                          ? const Center(child: CircularProgressIndicator())
+                          : AppTextButton(
+                              backgroundColor: ColorManager.mainColor,
+                              text: widget.title == "Create"
+                                  ? "Save"
+                                  : "Save Changes",
+                              onPressed: () async {
+                                // final name =
+                                // manageCubit.nameController.text.trim();
+              
+                                if ( widget.title == "Create" && manageCubit.selectedCategoryId == null ||
+                                    manageCubit.nameController.text
+                                            .trim()
+                                            .isEmpty 
+                                       ) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text(
+                                            "Please enter name and choose category")),
+                                  );
+                                  return;
+                                }
+              
+                                if (widget.title == "Create") {
+                                  // print(selectedCategoryId)
+                                  await manageCubit.createSubCategory(
+                                      manageCubit.selectedCategoryId!);
+                                } else {
+                                  manageCubit.updateSubCatory(widget.id!);
+                                }
+                              },
+                            ),
+                    ),
+                  ],
+                ),
               ),
             );
           },

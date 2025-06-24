@@ -108,22 +108,6 @@ class _SubCategorySource implements SubCategorySource {
   }
 
   @override
-
-  Future<void> deleteReview(
-    String productId,
-    String reviewId,
-    String? token,
-  ) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{r'Authorization': token};
-    _headers.removeWhere((k, v) => v == null);
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<void>(Options(
-      method: 'DELETE',
-    ));
-
   Future<dynamic> createReview(
     String id,
     Map<String, dynamic> body,
@@ -137,17 +121,12 @@ class _SubCategorySource implements SubCategorySource {
     _data.addAll(body);
     final _options = _setStreamType<dynamic>(Options(
       method: 'POST',
-
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-
-          'products/${productId}/reviews/${reviewId}',
-
           'products/${id}/reviews',
-
           queryParameters: queryParameters,
           data: _data,
         )
@@ -156,13 +135,9 @@ class _SubCategorySource implements SubCategorySource {
           _dio.options.baseUrl,
           baseUrl,
         )));
-
-    await _dio.fetch<void>(_options);
-
     final _result = await _dio.fetch(_options);
     final _value = _result.data;
     return _value;
-
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
@@ -194,5 +169,4 @@ class _SubCategorySource implements SubCategorySource {
 
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
-}
 }

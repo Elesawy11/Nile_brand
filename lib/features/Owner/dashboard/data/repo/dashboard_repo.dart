@@ -13,10 +13,9 @@ class DashboardRepo {
   Future<ApiResult<DashboardModel>> getDashboardData(String? token) async {
     try {
       final response = await _dashboardSource.getDashboardSummary(token!);
-      print(response);
 
       final DashboardModel dashboardData = DashboardModel.fromJson(response);
-      print(dashboardData);
+
 
       return ApiResult.success(dashboardData);
     } catch (error) {
@@ -27,7 +26,7 @@ class DashboardRepo {
   Future<ApiResult<TopSellingProductsResponse>> getTopSelling(String? token) async {
   try {
     final response = await _dashboardSource.getTopSellingProducts(token!);
-    print(response);
+
 
     final TopSellingProductsResponse tops = TopSellingProductsResponse.fromJson(response);
     return ApiResult.success(tops);

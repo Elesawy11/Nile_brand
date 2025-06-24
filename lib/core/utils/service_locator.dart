@@ -79,8 +79,8 @@ Future<void> serviceLocator() async {
   HomeRemoteDataSource categorySource = HomeRemoteDataSource(dio);
 
   getIt.registerLazySingleton<HomeRepo>(() => CategoryRepoImpl(categorySource));
-  getIt.registerLazySingleton(
-      () => GetCategoryCubit(getIt.get<HomeRepo>()));
+  // getIt.registerLazySingleton(
+  //     () => GetCategoryCubit(getIt.get<HomeRepo>()));
 
   getIt.registerLazySingleton(() => CategoryRepoImpl(categorySource));
   getIt.registerFactory(() => GetCategoryCubit(getIt.get()));

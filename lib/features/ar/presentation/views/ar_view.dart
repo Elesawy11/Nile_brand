@@ -26,27 +26,27 @@ class _ArScreenState extends State<ArScreen>
     });
     
   }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar :AppBar(),
       
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          
-          ElevatedButton(
-            onPressed: () {
-              _cameraKitFlutterImpl.openCameraKit(
-                groupIds: ['d91ba3cf-2ee5-48f5-9894-127702c7419a'],
-                isHideCloseButton: false,
-              );
-            },
-            child: Text('View Product' ,style :TextStyle()),
-          ),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            
+            ElevatedButton(
+              onPressed: () {
+                _cameraKitFlutterImpl.openCameraKit(
+                  groupIds: ['d91ba3cf-2ee5-48f5-9894-127702c7419a'],
+                  isHideCloseButton: false,
+                );
+              },
+              child: Text('View Product' ,style :TextStyle()),
+            ),
+          ],
+        ),
       ),
     );
   }

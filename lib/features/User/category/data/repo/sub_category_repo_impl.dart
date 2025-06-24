@@ -44,22 +44,24 @@ class SubCategoryRepoImpl {
     }
   }
 
-  Future<ApiResult<String>> deleteProductReview(String productId,String reviewId, String token) async {
-    try {
-      await _subCategorySource.deleteReview(productId,reviewId ,token);
-      return const ApiResult.success("Deleted Successfully!");
+  // Future<ApiResult<String>> deleteProductReview(String productId,String reviewId, String token) async {
+  //   try {
+  //     await _subCategorySource.deleteReview(productId,reviewId ,token);
+  //     return const ApiResult.success("Deleted Successfully!");
+  //   }catch(e){
+
+  //     return const ApiResult.failure(ErrorHandler.handle("error"));
+  //   }
 
   Future<ApiResult<ReviewResponseModel>> createReview(
       {required String id, required Map<String, dynamic> body}) async {
     try {
       final response = await _subCategorySource.createReview(id, body, token);
       return ApiResult.success(ReviewResponseModel.fromJson(response['data']));
-
     } catch (e) {
       return ApiResult.failure(ErrorHandler.handle(e));
     }
   }
-
 
   static List<SubCategoryModel> getSubCategoryList(Map<String, dynamic> data) {
     List<SubCategoryModel> subCategories = [];
