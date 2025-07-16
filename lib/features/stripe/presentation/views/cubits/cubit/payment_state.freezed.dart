@@ -117,17 +117,17 @@ class _$InitialImpl implements _Initial {
   String toString() {
     return 'PaymentState.initial()';
   }
+<<<<<<< HEAD
+=======
+}
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
+/// @nodoc
+class PaymentLoading implements PaymentState {
+  const PaymentLoading();
   int get hashCode => runtimeType.hashCode;
 
   @override
+<<<<<<< HEAD
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -234,17 +234,33 @@ class _$PaymentLoadingImpl implements PaymentLoading {
   String toString() {
     return 'PaymentState.paymentLoading()';
   }
+=======
+  String toString() {
+    return 'PaymentState.paymentLoading()';
+  }
+}
+
+/// @nodoc
+
+class PaymentSuccess implements PaymentState {
+  const PaymentSuccess();
+>>>>>>> 17a68a0 (stripe methods)
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
+<<<<<<< HEAD
         (other.runtimeType == runtimeType && other is _$PaymentLoadingImpl);
+=======
+        (other.runtimeType == runtimeType && other is PaymentSuccess);
+>>>>>>> 17a68a0 (stripe methods)
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
+<<<<<<< HEAD
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -485,18 +501,43 @@ class _$PaymentErrorImpl implements PaymentError {
   String toString() {
     return 'PaymentState.paymentError(error: $error)';
   }
+=======
+  String toString() {
+    return 'PaymentState.paymentSuccess()';
+  }
+}
+
+/// @nodoc
+
+class PaymentError implements PaymentState {
+  const PaymentError({required this.error});
+
+  final String error;
+
+  /// Create a copy of PaymentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $PaymentErrorCopyWith<PaymentError> get copyWith =>
+      _$PaymentErrorCopyWithImpl<PaymentError>(this, _$identity);
+>>>>>>> 17a68a0 (stripe methods)
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
+<<<<<<< HEAD
             other is _$PaymentErrorImpl &&
+=======
+            other is PaymentError &&
+>>>>>>> 17a68a0 (stripe methods)
             (identical(other.error, error) || other.error == error));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
+<<<<<<< HEAD
   /// Create a copy of PaymentState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -592,3 +633,44 @@ abstract class PaymentError implements PaymentState {
   _$$PaymentErrorImplCopyWith<_$PaymentErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+=======
+  @override
+  String toString() {
+    return 'PaymentState.paymentError(error: $error)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $PaymentErrorCopyWith<$Res>
+    implements $PaymentStateCopyWith<$Res> {
+  factory $PaymentErrorCopyWith(
+          PaymentError value, $Res Function(PaymentError) _then) =
+      _$PaymentErrorCopyWithImpl;
+  @useResult
+  $Res call({String error});
+}
+
+/// @nodoc
+class _$PaymentErrorCopyWithImpl<$Res> implements $PaymentErrorCopyWith<$Res> {
+  _$PaymentErrorCopyWithImpl(this._self, this._then);
+
+  final PaymentError _self;
+  final $Res Function(PaymentError) _then;
+
+  /// Create a copy of PaymentState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(PaymentError(
+      error: null == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+// dart format on
+>>>>>>> 17a68a0 (stripe methods)

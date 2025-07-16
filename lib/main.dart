@@ -28,7 +28,14 @@ void main(List<String> args) async {
   await serviceLocator();
   Bloc.observer = SimpleBlocObserver();
   Stripe.publishableKey = ApiKeys.puplishableKey;
+<<<<<<< HEAD
+<<<<<<< HEAD
   getIt.get<SharedPreferences>().remove('brand');
+=======
+>>>>>>> 17a68a0 (stripe methods)
+=======
+  getIt.get<SharedPreferences>().remove('brand');
+>>>>>>> 258cf62 (filter on cart list)
   runApp(const NileBrand());
 }
 

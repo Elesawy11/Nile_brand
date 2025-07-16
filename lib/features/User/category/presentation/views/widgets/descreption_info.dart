@@ -1,6 +1,24 @@
+<<<<<<< HEAD
 import 'package:nile_brand/core/routing/exports.dart' hide ProductModel;
 import '../../../data/models/product_model.dart';
 import 'add_product_to_cart_bloc_consumer.dart';
+=======
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nile_brand/core/utils/service_locator.dart';
+import 'package:nile_brand/core/utils/sizes_padding.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/add_product_to_cart_cubit/add_product_to_cart_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_cubit.dart';
+import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
+import 'package:readmore/readmore.dart';
+
+import '../../../../../../core/utils/assets.dart';
+import '../../../../../../core/utils/color_manager.dart';
+import '../../../../../../core/utils/styles.dart';
+import '../../../../my_cart/presentation/cubits/add_product_to_cart_cubit/add_product_to_cart_state.dart';
+import '../../../data/models/product_model.dart';
+>>>>>>> 258cf62 (filter on cart list)
 
 class DescreptionInfo extends StatelessWidget {
   const DescreptionInfo(
@@ -41,8 +59,102 @@ class DescreptionInfo extends StatelessWidget {
           27.vs,
           Padding(
             padding: EdgeInsets.only(left: 28.w, right: 28.w),
+<<<<<<< HEAD
             child: AddPRroductToCartBlocConsumer(
                 isCarted: isCarted, product: product, productId: productId),
+=======
+            child: Row(
+              children: [
+                BlocConsumer<AddProductToCartCubit, AddProductToCartState>(
+                  listener: (context, state) {
+                    if (state is AddProductToCartSuccess) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('Prdouct add successfully'),
+                      ));
+
+                      getIt.get<GetMyCartCubit>().getMyCart();
+                    } else if (state is AddProductToCartError) {
+                      if (state.error ==
+                          'the brand name of products must be equal') {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(state.error),
+                          // content: Text(state.error),
+                        ));
+                      }
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('Prdouct not added'),
+                        // content: Text(state.error),
+                      ));
+                    }
+                  },
+                  builder: (context, state) {
+                    return ValueListenableBuilder<bool>(
+                      valueListenable: isCarted,
+                      builder: (context, value, child) {
+                        return InkWell(
+                          onTap: () {
+                            isCarted.value = !isCarted.value;
+                            if (!value) {
+                              context
+                                  .read<AddProductToCartCubit>()
+                                  .addProductToCart(product: product);
+                            } else if (value) {
+                              context
+                                  .read<DeleteProductFromMyCartCubit>()
+                                  .deleteProductFromMyCart(
+                                    productId: productId,
+                                  );
+                            }
+
+                            // context.read<GetMyCartCubit>().getMyCart();
+                          },
+                          child: Container(
+                            width: 56.w,
+                            height: 43.h,
+                            decoration: BoxDecoration(
+                              color: ColorManager.grayCA,
+                              borderRadius: BorderRadius.circular(8.r),
+                            ),
+                            child: Center(
+                              child: state is AddProductToCartLoading
+                                  ? const CircularProgressIndicator()
+                                  : Image.asset(
+                                      state is AddProductToCartSuccess
+                                          ? Assets.imagesRemoveCart
+                                          : Assets.imagesCartIcon,
+                                      color: !value
+                                          ? ColorManager.mainColor
+                                          : null,
+                                      width: 24.w,
+                                      height: 24.h,
+                                    ),
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+                20.hs,
+                InkWell(
+                  child: Container(
+                    width: 219.w,
+                    height: 43.h,
+                    decoration: BoxDecoration(
+                        color: ColorManager.mainColor,
+                        borderRadius: BorderRadius.all(Radius.circular(8.r))),
+                    child: Center(
+                      child: Text(
+                        "Buy Now",
+                        style: Styles.font20W700
+                            .copyWith(fontSize: 21, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+>>>>>>> 258cf62 (filter on cart list)
           )
         ],
       ),

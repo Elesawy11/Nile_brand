@@ -30,6 +30,7 @@ import 'package:nile_brand/features/User/profile/presentation/cubits/update_pass
 import 'package:nile_brand/features/User/profile/presentation/views/edit_password.dart';
 
 import '../../features/User/category/data/models/product_model.dart';
+import '../../features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
 
 abstract class AppRouter {
   static final rootNavigatotKey = GlobalKey<NavigatorState>();
@@ -477,9 +478,23 @@ abstract class AppRouter {
 
       GoRoute(
         path: Routes.createCuopon,
+
         builder: (context, state) => BlocProvider(
           create: (context) =>
               CreateCuponCubit(CuponsRepo(CouponsSource(DioFactory.getDio()))),
+
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (_) => CreateCuponCubit(
+                  CuponsRepo(CouponsSource(DioFactory.getDio()))),
+            ),
+            BlocProvider(
+              create: (_) => GetCuponsCubit(
+                  CuponsRepo(CouponsSource(DioFactory.getDio()))),
+            ),
+          ],
+
           child: const CreateCuoponView(),
         ),
       ),

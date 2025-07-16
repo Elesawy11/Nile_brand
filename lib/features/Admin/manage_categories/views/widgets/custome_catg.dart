@@ -1,17 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-import 'package:nile_brand/core/routing/exports.dart';
-import 'package:nile_brand/core/utils/sizes_padding.dart';
+import 'package:nile_brand/core/routing/exports.dart' hide CategoryModel;
 import 'package:nile_brand/features/Admin/manage_categories/views/manager/manage_catg_cubit.dart';
 import 'package:nile_brand/features/User/category/data/models/sub_category_model.dart';
 import 'package:nile_brand/features/User/home/data/models/category_model.dart';
 
-import '../../../../../core/routing/routes.dart';
-import '../../../../../core/utils/assets.dart';
-import '../../../../../core/utils/color_manager.dart';
-import '../../../../../core/utils/styles.dart';
+import '../../../../User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
 
 class CustomeCatg extends StatefulWidget {
   final String mainTitle;

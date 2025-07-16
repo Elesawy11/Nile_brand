@@ -52,7 +52,7 @@ export '../../features/User/auth/presentation/cubits/reset_pass_cubit/reset_pass
 export '../../features/User/auth/presentation/cubits/forgot_pass/forgot_pass_cubit.dart';
 export '../../features/User/auth/presentation/cubits/login_cubit/login_cubit.dart';
 export '../../features/User/auth/presentation/cubits/verify_code_cubit/verify_code_cubit.dart';
-export '../../features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
+// export '../../features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
 export 'package:flutter/material.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
