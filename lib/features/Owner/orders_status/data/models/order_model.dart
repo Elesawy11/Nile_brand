@@ -29,8 +29,10 @@ class OrderModel {
     this.paidAt,
   });
 
+
   factory OrderModel.fromJson(Map<String, dynamic> json) =>
       _$OrderModelFromJson(json);
+
   Map<String, dynamic> toJson() => _$OrderModelToJson(this);
 }
 
@@ -49,8 +51,10 @@ class CartItemModel {
     required this.price,
   });
 
+
   factory CartItemModel.fromJson(Map<String, dynamic> json) =>
       _$CartItemModelFromJson(json);
+
   Map<String, dynamic> toJson() => _$CartItemModelToJson(this);
 }
 
@@ -71,8 +75,10 @@ class ProductModel {
     required this.subcategory,
   });
 
+
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
       _$ProductModelFromJson(json);
+
   Map<String, dynamic> toJson() => _$ProductModelToJson(this);
 }
 
@@ -89,8 +95,10 @@ class BrandModel {
     required this.owner,
   });
 
+
   factory BrandModel.fromJson(Map<String, dynamic> json) =>
       _$BrandModelFromJson(json);
+
   Map<String, dynamic> toJson() => _$BrandModelToJson(this);
 }
 
@@ -105,8 +113,10 @@ class OwnerModel {
     required this.name,
   });
 
+
   factory OwnerModel.fromJson(Map<String, dynamic> json) =>
       _$OwnerModelFromJson(json);
+
   Map<String, dynamic> toJson() => _$OwnerModelToJson(this);
 }
 
@@ -121,8 +131,10 @@ class CategoryModel {
     required this.name,
   });
 
+
   factory CategoryModel.fromJson(Map<String, dynamic> json) =>
       _$CategoryModelFromJson(json);
+
   Map<String, dynamic> toJson() => _$CategoryModelToJson(this);
 }
 
@@ -139,8 +151,10 @@ class SubcategoryModel {
     required this.category,
   });
 
+
   factory SubcategoryModel.fromJson(Map<String, dynamic> json) =>
       _$SubcategoryModelFromJson(json);
+
   Map<String, dynamic> toJson() => _$SubcategoryModelToJson(this);
 }
 
@@ -159,7 +173,9 @@ class UserModel {
     required this.userImage,
   });
 
+
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
+
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
 }

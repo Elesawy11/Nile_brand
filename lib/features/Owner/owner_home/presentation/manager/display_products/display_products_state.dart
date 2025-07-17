@@ -23,6 +23,8 @@ class DeleteBrandProduct extends BrandProductsState {}
 
 class DeleteBrandProductLoading extends BrandProductsState {}
 
+class DeleteBrandProductLoading extends BrandProductsState{}
+
 class BrandProductsFailure extends BrandProductsState {
   final String error;
 

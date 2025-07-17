@@ -17,6 +17,7 @@ class SystemUsersSource {
         }),
       );
       return response.data;
+
     } catch (e) {
       rethrow;
     }
@@ -30,17 +31,20 @@ class SystemUsersSource {
         data: data,
         options: Options(headers: {
           "Authorization": token,
+
           "Content-Type": "multipart/form-data",
         }),
       );
       return response.data;
     } catch (e) {
       rethrow;
+
     }
   }
 
   Future<dynamic> updateSystemUser(
       String newName, String id, String? token) async {
+
     try {
       final response = await _dio.put(
         "${ApiConstants.baseUrl}users/$id",
@@ -52,8 +56,10 @@ class SystemUsersSource {
       return response.data;
     } catch (e) {
       rethrow;
+
     }
   }
+
 
   /// Delete system user by ID
   Future<void> deleteSystemUser(String id, String? token) async {
@@ -61,6 +67,7 @@ class SystemUsersSource {
       await _dio.delete(
         "${ApiConstants.baseUrl}users/$id",
         options: Options(headers: {
+
           "Authorization": token,
         }),
       );

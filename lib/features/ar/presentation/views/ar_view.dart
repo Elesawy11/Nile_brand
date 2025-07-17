@@ -1,3 +1,4 @@
+
 import 'package:camerakit_flutter/lens_model.dart';
 import 'package:flutter/material.dart';
 import 'package:camerakit_flutter/camerakit_flutter.dart';
@@ -9,8 +10,10 @@ class ArScreen extends StatefulWidget {
   _ArScreenState createState() => _ArScreenState();
 }
 
+
 class _ArScreenState extends State<ArScreen> implements CameraKitFlutterEvents {
   late final CameraKitFlutterImpl _cameraKitFlutterImpl;
+
 
   @override
   void initState() {
@@ -19,6 +22,7 @@ class _ArScreenState extends State<ArScreen> implements CameraKitFlutterEvents {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _cameraKitFlutterImpl =
           CameraKitFlutterImpl(cameraKitFlutterEvents: this);
+
     });
   }
 
@@ -43,6 +47,7 @@ class _ArScreenState extends State<ArScreen> implements CameraKitFlutterEvents {
     );
   }
 
+
   @override
   void onCameraKitResult(Map result) {
     // TODO: implement onCameraKitResult
@@ -52,6 +57,7 @@ class _ArScreenState extends State<ArScreen> implements CameraKitFlutterEvents {
   void receivedLenses(List<Lens> lensList) {
     // TODO: implement receivedLenses
   }
+
 }
 
 // class Constants {

@@ -18,6 +18,7 @@ class CreateProductError extends CreateProductState {
   CreateProductError(this.message);
 }
 
+
 class UpdateCoverImage extends CreateProductState {}
 
 class UpdateAdditionalImage extends CreateProductState {}
@@ -27,3 +28,4 @@ class UpdateProductLoadingState extends CreateProductState {}
 class UpdateProductSuccessState extends CreateProductState {}
 
 class UpdateProductFailureState extends CreateProductState {}
+

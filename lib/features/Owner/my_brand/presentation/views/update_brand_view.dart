@@ -109,8 +109,10 @@ class _UpdateBrandBodyState extends State<UpdateBrandBody> {
                           text: state is UpdateBrandLoading
                               ? "Saving..."
                               : "Save Changes",
+
                           onPressed: () {
                             cubit.updateBrand();
+
 
                             // context.pop();
                           },

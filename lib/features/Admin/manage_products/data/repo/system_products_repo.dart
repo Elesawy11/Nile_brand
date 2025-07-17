@@ -7,8 +7,10 @@ import '../../../../../core/networking/api_result.dart';
 class SystemProductsRepo {
   final SystemProductsSource _allProductsSource;
 
+
   SystemProductsRepo({required SystemProductsSource allProductsSource})
       : _allProductsSource = allProductsSource;
+
 
   Future<ApiResult<List<ProductModel>>> getAllSystemProducts(
       String token) async {
@@ -18,7 +20,9 @@ class SystemProductsRepo {
       final List<dynamic> dataList = response['data'];
 
       final List<ProductModel> products = dataList
+
           .map<ProductModel>((json) => ProductModel.fromJson(json))
+
           .toList();
 
       return ApiResult.success(products);

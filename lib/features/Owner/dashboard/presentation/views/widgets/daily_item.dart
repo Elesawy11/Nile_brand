@@ -6,6 +6,7 @@ class CutomeDailyItem extends StatelessWidget {
   final String date;
   final String day;
   final String revenue;
+
   final String sales;
   final double progress;
   const CutomeDailyItem(
@@ -16,10 +17,13 @@ class CutomeDailyItem extends StatelessWidget {
       required this.sales,
       required this.progress});
 
+
   @override
   Widget build(BuildContext context) {
     return Padding(
+
       padding: EdgeInsets.only(bottom: 14.0.h),
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -43,8 +47,10 @@ class CutomeDailyItem extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+
               Text(revenue,
                   style: const TextStyle(fontWeight: FontWeight.bold)),
+
               Text(sales, style: const TextStyle(color: Colors.grey))
             ],
           ),
@@ -52,4 +58,6 @@ class CutomeDailyItem extends StatelessWidget {
       ),
     );
   }
+
 }
+

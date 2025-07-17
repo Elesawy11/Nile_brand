@@ -42,6 +42,7 @@ class _CreateCuoponViewState extends State<CreateCuoponView> {
           child: BlocConsumer<CreateCuponCubit, CuponState>(
             listener: (context, state) async {
               if (state is CreateCuponSucessState) {
+
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text("Cupon Created Successfully!"),
                   backgroundColor: Colors.green,
@@ -62,8 +63,10 @@ class _CreateCuoponViewState extends State<CreateCuoponView> {
                 builder: (context, constraints) {
                   return SingleChildScrollView(
                     child: ConstrainedBox(
+
                       constraints:
                           BoxConstraints(minHeight: constraints.maxHeight),
+
                       child: IntrinsicHeight(
                         child: Column(
                           children: [
@@ -78,8 +81,10 @@ class _CreateCuoponViewState extends State<CreateCuoponView> {
                             33.vs,
                             AppTextFormField(
                               controller: cubit.cuponName,
+
                               floatingLabelBehavior:
                                   FloatingLabelBehavior.always,
+
                               hintText: "SUMMER2024",
                               labelText: "Name",
                               validator: (p0) {},
@@ -109,6 +114,7 @@ class _CreateCuoponViewState extends State<CreateCuoponView> {
                                                 Border.all(color: Colors.grey),
                                             borderRadius:
                                                 BorderRadius.circular(8.r),
+
                                           ),
                                           child: Text(
                                             cubit.cuponExpireDate.text.isEmpty
@@ -116,8 +122,10 @@ class _CreateCuoponViewState extends State<CreateCuoponView> {
                                                 : cubit.cuponExpireDate.text,
                                             style: TextStyle(
                                               fontSize: 16.sp,
+
                                               color: cubit.cuponExpireDate.text
                                                       .isEmpty
+
                                                   ? Colors.grey
                                                   : Colors.black,
                                             ),
@@ -126,8 +134,10 @@ class _CreateCuoponViewState extends State<CreateCuoponView> {
                                       ),
                                     ),
                                     11.hs,
+
                                     Icon(Icons.calendar_today,
                                         size: 26.sp, color: Colors.grey),
+
                                   ],
                                 ),
                               ],
@@ -135,8 +145,10 @@ class _CreateCuoponViewState extends State<CreateCuoponView> {
                             20.vs,
                             AppTextFormField(
                               controller: cubit.discount,
+
                               floatingLabelBehavior:
                                   FloatingLabelBehavior.always,
+
                               hintText: "20.0",
                               labelText: "Discount",
                               validator: (p0) {},
@@ -150,9 +162,11 @@ class _CreateCuoponViewState extends State<CreateCuoponView> {
                                 onPressed: isLoading
                                     ? null
                                     : () {
+
                                         context
                                             .read<CreateCuponCubit>()
                                             .createCupon();
+
                                       },
                               ),
                             ),

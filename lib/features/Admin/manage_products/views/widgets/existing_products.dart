@@ -28,6 +28,7 @@ class ExistingProducts extends StatelessWidget {
         // mainAxisAlignment: MainAxisAlignment.center,
         children: [
           InkWell(
+
               onTap: () => context.push(Routes.productReviews, extra: product),
               child: product.coverImage == null
                   ? SizedBox(
@@ -44,6 +45,7 @@ class ExistingProducts extends StatelessWidget {
                         )
                       : Image.network(
                           "https://nile-brands.up.railway.app/products/${product.coverImage!}")),
+
           Padding(
             padding: EdgeInsets.only(top: 5.h, left: 5.w),
             child: Align(
@@ -51,7 +53,9 @@ class ExistingProducts extends StatelessWidget {
               child: Text(
                 product.name!,
                 style: Styles.font12W300.copyWith(
+
                     fontSize: 15.sp, fontWeight: FontWeight.w600, height: 0.h),
+
               ),
             ),
           ),
@@ -60,12 +64,15 @@ class ExistingProducts extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
+
                 product.brand == null ? "" : product.brand!.name!,
+
                 style: Styles.font12W300
                     .copyWith(fontSize: 15.sp, fontWeight: FontWeight.w600),
               ),
             ),
           ),
+
           SizedBox(
             width: 140.r,
             child: Row(

@@ -14,6 +14,7 @@ class CreateProductRepo {
     required FormData data,
   }) async {
     try {
+
       await _productApiService.createProduct(brandId, token, data);
       return const ApiResult.success("Product created successfully");
     } catch (error) {
@@ -28,9 +29,29 @@ class CreateProductRepo {
       required FormData data}) async {
     try {
       await _productApiService.updateProduct(brandId, productId, token, data);
+
       return const ApiResult.success("Product created successfully");
     } catch (error) {
       return ApiResult.failure(ErrorHandler.handle(error));
     }
+  }
+
+  Future<ApiResult<String>> updateProduct({
+    required String brandId,
+    required String productId,
+    required String token,
+    required FormData data}
+  )async{
+
+    try {
+      await _productApiService.updateProduct(brandId ,productId,token,data);
+      return const ApiResult.success("Product created successfully");
+    } catch (error) {
+      return ApiResult.failure(ErrorHandler.handle(error));
+    }
+
+
+
+
   }
 }

@@ -48,15 +48,19 @@ class ManageBrandsView extends StatelessWidget {
                 ),
               ),
               body: RefreshIndicator(
+
                 onRefresh: () async {
                   await context.read<SystemBrandsCubit>().getAllBrands();
+
                 },
                 child: Padding(
                   padding: 17.ph,
                   child: state is SystemBrandsLoading
                       ? GridView.builder(
+
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
+
                             crossAxisCount: 2,
                             crossAxisSpacing: 20.w,
                             mainAxisSpacing: 10.w,
@@ -80,7 +84,9 @@ class ManageBrandsView extends StatelessWidget {
                               itemBuilder: (context, index) {
                                 final brand = state.brands[index];
                                 return CustomeBrandItem(
+
                                   brand: brand,
+
                                 );
                               },
                             )

@@ -42,10 +42,12 @@ class CustomeSystemUserInfo extends StatelessWidget {
                       : user.userImage!.contains("https")
                           ? Image.network(user.userImage!)
                           : ClipRect(
+
                               // : 20.r,
                               child: Image.network(
                                   "https://nile-brands.up.railway.app/users/${user.userImage!}"),
                             ),
+
                 ),
                 13.hs,
                 Column(

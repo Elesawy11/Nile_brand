@@ -63,6 +63,7 @@ class _MyBrandViewFeaturesWidgetState extends State<MyBrandViewFeaturesWidget> {
       },
       child: Column(
         children: [
+
           InfoTile(
             ontap: () {
               context.push(Routes.updateBrand);

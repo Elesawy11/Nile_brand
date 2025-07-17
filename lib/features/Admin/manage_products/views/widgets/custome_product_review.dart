@@ -42,10 +42,12 @@ class CustomeProductReview extends StatelessWidget {
                 height: 19.h,
                 width: 19.w,
                 child: InkWell(
+
                     onTap: () async {
                       //  await  context
                       //       .read<GetReviewsCubit>()
                       //       .deleteProductReview(review.product!, review.sId!);
+
                     },
                     child: Image.asset(Assets.imagesDeleteIcon)),
               ),

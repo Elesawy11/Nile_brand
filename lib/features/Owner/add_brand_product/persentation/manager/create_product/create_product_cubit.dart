@@ -111,8 +111,10 @@ class CreateProductCubit extends Cubit<CreateProductState> {
         break;
       case Failure():
         emit(CreateProductError(
+
             result.errorHandler.apiErrorModel.error?.message ??
                 "Unknown Error"));
+
         break;
     }
   }

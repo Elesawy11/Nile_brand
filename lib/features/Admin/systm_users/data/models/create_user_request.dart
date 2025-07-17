@@ -22,6 +22,7 @@ class CreateUserRequest {
     this.userImage,
     this.confirmPassword, {
     required this.name,
+
   });
 
   factory CreateUserRequest.fromJson(Map<String, dynamic> json) =>

@@ -36,6 +36,7 @@ class BrandProductsCubit extends Cubit<BrandProductsState> {
     final result = await repo.delateBrandProduct(
         brandId ?? "685691c46b03f8f3085f1915", productId, "Bearer ${token!}");
 
+
     switch (result) {
       case Success():
         emit(DeleteBrandProduct());
@@ -44,5 +45,6 @@ class BrandProductsCubit extends Cubit<BrandProductsState> {
         emit(BrandProductsFailure(
             result.errorHandler.apiErrorModel.error!.message!.toString()));
     }
+
   }
 }

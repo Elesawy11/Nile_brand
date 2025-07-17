@@ -1,9 +1,13 @@
+
 import 'package:nile_brand/core/routing/exports.dart' hide CategoryModel;
+
 import 'package:nile_brand/features/Admin/manage_categories/views/manager/manage_catg_cubit.dart';
 import 'package:nile_brand/features/User/category/data/models/sub_category_model.dart';
 import 'package:nile_brand/features/User/home/data/models/category_model.dart';
 
+
 import '../../../../User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
+
 
 class CustomeCatg extends StatefulWidget {
   final String mainTitle;
@@ -28,9 +32,11 @@ class _CustomeCatgState extends State<CustomeCatg> {
           if (widget.mainTitle.toLowerCase().contains("subcategory")) {
             context.push(Routes.updateSubCategory,
                 extra: {"title": "Update", "id": widget.subCategoryInfo!.id});
+
           } else {
             context.push(Routes.updateCategory,
                 extra: {"title": "Update", "id": widget.categoryInfo!.id});
+
           }
         },
         child: Container(
@@ -86,6 +92,7 @@ class _CustomeCatgState extends State<CustomeCatg> {
               InkWell(
                 onTap: () async {
                   if (widget.mainTitle.toLowerCase().contains("subcategory")) {
+
                     await context
                         .read<ManageCatgCubit>()
                         .deleteSubCategory(widget.subCategoryInfo!.id!);
@@ -93,14 +100,17 @@ class _CustomeCatgState extends State<CustomeCatg> {
                     await context
                         .read<GetSubCategorysCubit>()
                         .getSubCategories();
+
                   } else {
                     await context
                         .read<ManageCatgCubit>()
                         .deleteCategory(widget.categoryInfo!.id!);
 
+
                     await context
                         .read<GetCategoryCubit>()
                         .emitGetCategories(isLoadMore: true);
+
                   }
                 },
                 child: SizedBox(

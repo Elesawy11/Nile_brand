@@ -62,7 +62,9 @@ class _UpdateCuoponViewState extends State<UpdateCuoponView> {
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
+
                       content: Text("Update failed"),
+
                       backgroundColor: Colors.red,
                     ),
                   );

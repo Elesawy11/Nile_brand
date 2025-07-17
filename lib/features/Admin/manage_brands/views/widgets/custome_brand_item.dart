@@ -29,6 +29,7 @@ class CustomeBrandItem extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.topCenter,
+
             child: brand.logo == null
                 ? const Icon(Icons.image_not_supported_outlined)
                 : Image.network(
@@ -38,6 +39,7 @@ class CustomeBrandItem extends StatelessWidget {
                     height: 125.r,
                     fit: BoxFit.fill,
                   ),
+
           ),
           Padding(
             padding: EdgeInsets.only(top: 5.w, left: 5.w),

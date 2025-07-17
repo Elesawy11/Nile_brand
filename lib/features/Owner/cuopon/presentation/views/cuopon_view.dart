@@ -27,6 +27,7 @@ class CuoponView extends StatelessWidget {
         ),
         body: RefreshIndicator(
           onRefresh: () async {
+
             await context.read<GetCuponsCubit>().getAllCupons();
           },
           child: Padding(

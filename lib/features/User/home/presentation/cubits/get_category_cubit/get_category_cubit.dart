@@ -42,18 +42,16 @@ class GetCategoryCubit extends Cubit<GetCategoryState> {
         }
 
 
+
         categoryList.addAll(list);
 
 
         if (categoryList.isNotEmpty) {
           categoryList.clear();
-          categoryList.addAll(list);
         }
         else{
          categoryList.addAll(list);
         }
-
-        print(categoryList);
 
         if (!isClosed) {
           emit(GetCategoryState.categorySuccess(categories: categoryList));

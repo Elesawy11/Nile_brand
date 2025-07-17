@@ -13,4 +13,5 @@ abstract class DashboardSource {
 
   @GET("analytics/dashboard")
   Future<dynamic> getDashboardSummary(@Header('Authorization') String? token);
+
 }

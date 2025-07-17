@@ -14,6 +14,7 @@ import '../../../../../../core/utils/styles.dart';
 class BrandProductWidget extends StatelessWidget {
   final BrandProductModel productModel;
 
+
   const BrandProductWidget({
     super.key,
     required this.productModel,
@@ -41,9 +42,11 @@ class BrandProductWidget extends StatelessWidget {
                     context.push(Routes.brandDetails, extra: productModel.id),
                 child: productModel.coverImage != ""
                     ? Image.network(
+
                         productModel.coverImage!.contains("https")
                             ? "${productModel.coverImage}"
                             : "https://nile-brands.up.railway.app/products/${productModel.coverImage}",
+
                         width: 120.r,
                         height: 113.r,
                       )

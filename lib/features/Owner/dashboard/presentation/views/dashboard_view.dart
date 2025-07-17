@@ -45,8 +45,10 @@ class _DashboardContent extends StatelessWidget {
 
               if (state is DashboardLoading || state is TopSellingLoading) {
                 return const Center(child: CircularProgressIndicator());
+
               } else if (state is DashboardLoaded ||
                   state is TopSellingLoaded) {
+
                 final data = cubit.dashboard;
 
                 return Column(
@@ -55,9 +57,11 @@ class _DashboardContent extends StatelessWidget {
                     CustomeStateCard(
                       icon: Icons.people,
                       title: "Total Customers",
+
                       value: data == null
                           ? ""
                           : "${data.data.customerStats.totalCustomers}",
+
                       change: "0%",
                       changeColor: Colors.green,
                     ),
@@ -65,7 +69,9 @@ class _DashboardContent extends StatelessWidget {
                     CustomeStateCard(
                       icon: Icons.shopping_bag,
                       title: "Total Sales",
+
                       value: data == null ? "0" : "${data.data.totalSales}",
+
                       change: "0%",
                       changeColor: Colors.green,
                     ),
@@ -73,9 +79,11 @@ class _DashboardContent extends StatelessWidget {
                     CustomeStateCard(
                       icon: Icons.attach_money,
                       title: "Total Revenue",
+
                       value: data == null
                           ? "0"
                           : "\$${data.data.totalRevenue.toStringAsFixed(2)}",
+
                       change: "0%",
                       changeColor: Colors.green,
                     ),
@@ -83,17 +91,21 @@ class _DashboardContent extends StatelessWidget {
                     CustomeStateCard(
                       icon: Icons.autorenew,
                       title: "Returning Customers",
+
                       value: data == null
                           ? "0"
                           : "${data.data.customerStats.returningCustomers}",
+
                       change: "0%",
                       changeColor: Colors.red,
                     ),
                     SizedBox(height: 30.sp),
                     TopSellingProducts(topSellings: cubit.tops),
                     SizedBox(height: 30.sp),
+
                     DailyStatistics(
                         dailyStat: data == null ? [] : data.data.dailyStats),
+
                   ],
                 );
               } else if (state is DashboardError) {

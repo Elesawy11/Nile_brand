@@ -15,21 +15,26 @@ import '../../manager/get_cupons/cupon_state.dart';
 class CuoponItemWidget extends StatefulWidget {
   final CreateCuoponSuccess cupon;
   final GetCuponsCubit cubit;
+
   const CuoponItemWidget({
     super.key,
     required this.cupon,
     required this.cubit,
   });
 
+
   @override
   State<CuoponItemWidget> createState() => _CuoponItemWidgetState();
 }
+
 
 class _CuoponItemWidgetState extends State<CuoponItemWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+
       onTap: () => context.push(Routes.updateCuopon, extra: widget.cupon),
+
       child: Container(
         decoration: BoxDecoration(
           color: ColorManager.grayD9,

@@ -13,6 +13,7 @@ import '../../../../core/utils/styles.dart';
 import '../../../User/category/data/repo/sub_category_repo_impl.dart';
 import '../../../User/category/presentation/cubits/get_reviews_cubit/get_reviews_state.dart';
 
+
 class ProductReviews extends StatelessWidget {
   final ProductModel product;
 
@@ -21,9 +22,11 @@ class ProductReviews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
+
       create: (context) => GetReviewsCubit(
           SubCategoryRepoImpl(SubCategorySource(DioFactory.getDio())))
         ..getReviews(product.id!),
+
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -38,10 +41,12 @@ class ProductReviews extends StatelessWidget {
             listener: (context, state) {
               if (state is GetReviewsError) {
                 ScaffoldMessenger.of(context).showSnackBar(
+
                   SnackBar(
                       content: Text(state.error.contains("No documents")
                           ? "No reviews found."
                           : state.error)),
+
                 );
               }
             },
@@ -50,8 +55,10 @@ class ProductReviews extends StatelessWidget {
                 return const Center(child: CircularProgressIndicator());
               } else if (state is GetReviewsSuccess) {
                 return ProductReviewList(reviews: state.reviews);
+
               } else if (state is GetReviewsError &&
                   state.error != "No documents found with the provided query") {
+
                 return Center(child: Text(state.error));
               } else {
                 return const Center(child: Text("No reviews found."));

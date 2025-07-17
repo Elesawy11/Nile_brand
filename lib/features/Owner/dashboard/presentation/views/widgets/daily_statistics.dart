@@ -19,6 +19,7 @@ class DailyStatistics extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+
         children: [
           Text("Daily Statistics",
               style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold)),
@@ -35,6 +36,7 @@ class DailyStatistics extends StatelessWidget {
                   progress: .16);
             },
           )
+
         ],
       ),
     );

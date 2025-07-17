@@ -11,3 +11,5 @@ class GetReviewsState with _$GetReviewsState {
   const factory GetReviewsState.getReviewsError({required String error}) =
       GetReviewsError;
 }
+
+

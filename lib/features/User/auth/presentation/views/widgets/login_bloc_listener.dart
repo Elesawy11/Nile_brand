@@ -37,7 +37,9 @@ class LoginBlocListener extends StatelessWidget {
                 title: 'Login Successful',
                 message: 'Congratulations, you have logged in successfully!',
                 context, onPressed: () {
+
               context.go(Routes.ownerHome, extra: "685691c46b03f8f3085f1915");
+
             });
             break;
           case LoginError():

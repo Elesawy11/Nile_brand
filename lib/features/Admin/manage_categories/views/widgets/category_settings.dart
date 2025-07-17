@@ -63,6 +63,7 @@ class CategorySubCategorySettings extends StatelessWidget {
                   onExpansionChanged: (isExpanded) {
                     if (isExpanded) {
                       if (mainTitle.contains("Subcategory")) {
+
                         context.read<GetSubCategorysCubit>().getSubCategories();
                       } else {
                         context
@@ -71,6 +72,7 @@ class CategorySubCategorySettings extends StatelessWidget {
                       }
                     }
                   },
+
                   showTrailingIcon: true,
                   collapsedShape: Border.all(color: Colors.white),
                   shape: Border.all(color: Colors.white),
@@ -82,6 +84,7 @@ class CategorySubCategorySettings extends StatelessWidget {
                     ),
                   ),
                   children: [
+
                     if (mainTitle.contains("Subcategory")) ...[
                       if (subCategoryState is SubCategoryLoading)
                         const CircularProgressIndicator(),

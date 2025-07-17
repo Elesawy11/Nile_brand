@@ -137,7 +137,9 @@ class _AddBrandProductTextFieldsWidgetsState
           },
           child: ExpansionTile(
             title: Text(
+
                 "Select Category: Category  ${cubit.selectedCategoryId ?? ''}"),
+
             children: widget.category.map((category) {
               return ListTile(
                 title: Text(category.name!),

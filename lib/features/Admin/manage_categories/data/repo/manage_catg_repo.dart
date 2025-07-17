@@ -54,6 +54,7 @@ class ManageCatgRepo {
           await _manageCatgSource.createSubCategory(name, categry, token);
       final SubCategoryResponse newUser =
           SubCategoryResponse.fromJson(response["data"]);
+
       print(newUser.name);
       return ApiResult.success(newUser);
     } catch (e) {

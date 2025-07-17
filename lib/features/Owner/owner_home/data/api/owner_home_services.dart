@@ -11,6 +11,7 @@ abstract class BrandProductsService {
 
   @GET("brands/{brandId}/products")
   Future<dynamic> getBrandProducts(
+
       @Path("brandId") String brandId, @Header("Authorization") String token);
 
   @DELETE("brands/{brandId}/products/{productId}")
@@ -18,4 +19,5 @@ abstract class BrandProductsService {
       @Path("brandId") String brandId,
       @Path("productId") String productId,
       @Header("Authorization") String token);
+
 }

@@ -9,8 +9,10 @@ class DashboardModel {
 
   DashboardModel({required this.success, required this.data});
 
+
   factory DashboardModel.fromJson(Map<String, dynamic> json) =>
       _$DashboardModelFromJson(json);
+
   Map<String, dynamic> toJson() => _$DashboardModelToJson(this);
 }
 
@@ -40,8 +42,10 @@ class DashboardData {
     required this.brandStats,
   });
 
+
   factory DashboardData.fromJson(Map<String, dynamic> json) =>
       _$DashboardDataFromJson(json);
+
   Map<String, dynamic> toJson() => _$DashboardDataToJson(this);
 }
 
@@ -74,8 +78,10 @@ class CustomerStats {
     required this.newCustomers,
   });
 
+
   factory CustomerStats.fromJson(Map<String, dynamic> json) =>
       _$CustomerStatsFromJson(json);
+
   Map<String, dynamic> toJson() => _$CustomerStatsToJson(this);
 }
 
@@ -94,8 +100,10 @@ class DailyStat {
     required this.revenue,
   });
 
+
   factory DailyStat.fromJson(Map<String, dynamic> json) =>
       _$DailyStatFromJson(json);
+
   Map<String, dynamic> toJson() => _$DailyStatToJson(this);
 }
 
@@ -114,8 +122,10 @@ class PopularProduct {
     required this.revenue,
   });
 
+
   factory PopularProduct.fromJson(Map<String, dynamic> json) =>
       _$PopularProductFromJson(json);
+
   Map<String, dynamic> toJson() => _$PopularProductToJson(this);
 }
 
@@ -138,7 +148,9 @@ class BrandStat {
     required this.totalRevenue,
   });
 
+
   factory BrandStat.fromJson(Map<String, dynamic> json) =>
       _$BrandStatFromJson(json);
+
   Map<String, dynamic> toJson() => _$BrandStatToJson(this);
 }

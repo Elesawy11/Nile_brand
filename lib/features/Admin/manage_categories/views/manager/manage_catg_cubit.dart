@@ -9,6 +9,7 @@ import 'package:nile_brand/features/Admin/manage_categories/views/manager/manage
 import 'package:dio/dio.dart';
 import 'package:nile_brand/features/Owner/owner_helpers.dart';
 
+
 class ManageCatgCubit extends Cubit<ManageCatgState> {
   final ManageCatgRepo _repo;
 
@@ -16,13 +17,16 @@ class ManageCatgCubit extends Cubit<ManageCatgState> {
   final nameController = TextEditingController();
   final categoryController = TextEditingController();
 
+
   File? catgImage;
+
 
   Future<void> createCategory() async {
     final String? token = await BrandPrefs.getToken();
     emit(ManageCatgLoading());
     final formData = FormData.fromMap({
       'name': nameController.text.trim(),
+
       'categoryImage': await MultipartFile.fromFile(catgImage!.path,
           contentType: MediaType("image", "png"),
           filename: catgImage!.path.split('/').last),
@@ -64,10 +68,12 @@ class ManageCatgCubit extends Cubit<ManageCatgState> {
   }
 
   Future<void> updateCategory(
+
     String id,
   ) async {
     final formData = FormData.fromMap({
       'name': nameController.text.trim(),
+
       'userImage': await MultipartFile.fromFile(catgImage!.path,
           contentType: MediaType("image", "png"),
           filename: catgImage!.path.split('/').last),
@@ -75,7 +81,9 @@ class ManageCatgCubit extends Cubit<ManageCatgState> {
     final String? token = await BrandPrefs.getToken();
     emit(ManageCatgLoading());
 
+
     final result = await _repo.updateCategory(formData, id, "Bearer ${token!}");
+
     switch (result) {
       case Success():
         emit(CategoryUpdateSuccess(result.data));
@@ -86,11 +94,13 @@ class ManageCatgCubit extends Cubit<ManageCatgState> {
     }
   }
 
+
   Future<void> createSubCategory(String category) async {
     final String? token = await BrandPrefs.getToken();
 
     final result = await _repo.createSubCategory(
         nameController.text, category, "Bearer ${token!}");
+
     print(result);
     switch (result) {
       case Success():
@@ -101,6 +111,7 @@ class ManageCatgCubit extends Cubit<ManageCatgState> {
             result.errorHandler.apiErrorModel.error!.message ?? "try again"));
     }
   }
+
 
   Future<void> deleteSubCategory(
     String id,
@@ -121,13 +132,17 @@ class ManageCatgCubit extends Cubit<ManageCatgState> {
   }
 
   Future<void> updateSubCatory(
+
     String id,
   ) async {
+
     final String? token = await BrandPrefs.getToken();
     emit(ManageCatgLoading());
 
     final result = await _repo.updateSubCategory(
+
         nameController.text, id, "Bearer ${token!}");
+
     switch (result) {
       case Success():
         emit(SubCategoryUpdateSuccess(result.data));
@@ -138,6 +153,7 @@ class ManageCatgCubit extends Cubit<ManageCatgState> {
     }
   }
 
+
   String? selectedCategoryId;
 
   void selectCategory(String id) {
@@ -145,4 +161,5 @@ class ManageCatgCubit extends Cubit<ManageCatgState> {
     categoryController.text = id;
     emit(ManageCatgCategorySelected(id));
   }
+
 }

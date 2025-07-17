@@ -41,6 +41,7 @@ class UpdateUserInfo extends StatelessWidget {
                       height: 52.h,
                       width: 340.w,
                       child: Builder(
+
                         builder: (context) {
                           return SizedBox(
                             height: 52.h,
@@ -56,6 +57,7 @@ class UpdateUserInfo extends StatelessWidget {
                           );
                         },
                       ),
+
                     ),
                     // 30.vs,
                     // SizedBox(
@@ -70,6 +72,7 @@ class UpdateUserInfo extends StatelessWidget {
                     320.vs,
                     SizedBox(
                         width: 150.w,
+
                         child: Builder(builder: (context) {
                           return AppTextButton(
                               backgroundColor: ColorManager.mainColor,
@@ -81,6 +84,7 @@ class UpdateUserInfo extends StatelessWidget {
                                 context.pop();
                               });
                         }))
+
                   ],
                 ),
               ),

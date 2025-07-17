@@ -20,12 +20,14 @@ class CreateCuponCubit extends Cubit<CuponState> {
     emit(CreateCuponLoadingState());
     String? token = await BrandPrefs.getToken();
 
+
     final response = await _cuponsRepo.createCupon(
         CuponRequestBody(
             name: cuponName.text,
             expireTime: cuponExpireDate.text,
             discount: int.tryParse(discount.text.trim())),
         "Bearer ${token!}");
+
     switch (response) {
       case Success():
         print(response.data);

@@ -8,6 +8,7 @@ class ManageCategoryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+
         child: Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -27,6 +28,7 @@ class ManageCategoryView extends StatelessWidget {
           ),
         ),
       ),
+
     ));
   }
 }

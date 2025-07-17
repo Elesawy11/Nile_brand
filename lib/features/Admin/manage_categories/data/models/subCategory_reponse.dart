@@ -22,7 +22,9 @@ class SubCategoryResponse {
     this.updatedAt,
   });
 
+
   factory SubCategoryResponse.fromJson(Map<String, dynamic> json) =>
+
       _$SubCategoryResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$SubCategoryResponseToJson(this);

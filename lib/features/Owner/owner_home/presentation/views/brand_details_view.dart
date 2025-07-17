@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:nile_brand/core/networking/dio_factory.dart';
 import 'package:nile_brand/core/routing/exports.dart'hide CategoryModel;
@@ -11,6 +12,7 @@ import 'package:nile_brand/features/User/category/data/api/sub_category_source.d
 import 'package:nile_brand/features/User/category/data/repo/sub_category_repo_impl.dart';
 import 'package:nile_brand/features/User/home/data/data_source/category_remote_data_source.dart';
 import 'package:nile_brand/features/User/home/data/repo/category_repo_impl.dart';
+
 import 'package:nile_brand/features/User/home/presentation/cubits/get_category_cubit/get_category_cubit.dart';
 
 import '../../../add_brand_product/data/repo/create_product_repo.dart';
@@ -78,7 +80,9 @@ class _BrandDetailsContent extends StatelessWidget {
                 const SnackBar(content: Text("Product updated successfully")),
               );
 
+
               context.read<BrandProductsCubit>().getProducts();
+
 
               context.pop();
             } else if (state is UpdateProductFailureState) {

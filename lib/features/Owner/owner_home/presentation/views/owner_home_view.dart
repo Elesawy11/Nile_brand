@@ -24,114 +24,101 @@ class OwnerHomeView extends StatefulWidget {
 class _OwnerHomeViewState extends State<OwnerHomeView> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: Future.wait([
-        BrandPrefs.getToken(),
-        BrandStorage.getBrandData(),
-      ]),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return const Center(child: CircularProgressIndicator());
-        }
 
-        final token = snapshot.data![0] as String;
-        final brandData = snapshot.data![1] as BrandData;
-
-        return BlocProvider(
-          create: (context) => BrandProductsCubit(
-            BrandProductsRepo(
-              BrandProductsService(
-                DioFactory.getDio()
-                  ..options.headers = {
-                    "Content-Type": "multipart/form-data",
-                    "Authorization": "Bearer $token",
-                    "X-Requested-With": "XMLHttpRequest"
-                  },
-                baseUrl: ApiConstants.baseUrl,
-              ),
-            ),
-          )..getProducts(widget.brandId),
-          child: Scaffold(
+    return BlocProvider(
+      create: (context) => BrandProductsCubit(
+        BrandProductsRepo(
+          BrandProductsService(DioFactory.getDio()),
+        ),
+      )..getProducts(),
+      child: Builder(
+        builder: (context) {
+          return Scaffold(
             body: SafeArea(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.w),
-                child: Column(
-                  children: [
-                    21.vs,
-                    OwnerSearchWidgetWithLogo(
-                      brandLogo: brandData.logo,
-                    ),
-                    53.vs,
-                    Expanded(
-                      child:
-                          BlocBuilder<BrandProductsCubit, BrandProductsState>(
-                        builder: (context, state) {
-                          if (state is BrandProductsLoading) {
-                            return const Center(
-                                child: CircularProgressIndicator());
-                          } else if (state is BrandProductsFailure) {
-                            return Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                    await context.read<BrandProductsCubit>().getProducts();
+                  },
+                  child: Column(
+                    children: [
+                      21.vs,
+                      const OwnerSearchWidgetWithLogo(
+                        brandLogo: null,
+                      ),
+                      53.vs,
+                      Expanded(
+                        child: BlocBuilder<BrandProductsCubit, BrandProductsState>(
+                          builder: (context, state) {
+                            if (state is BrandProductsLoading) {
+                              return const Center(child: ProductShimmer());
+                            } else if (state is BrandProductsFailure) {
+                              return ListView(
+                                physics: const AlwaysScrollableScrollPhysics(),
                                 children: [
+                                  SizedBox(height: 100.h),
+
                                   Image.asset(
                                     Assets.imagesNoProductsCreated,
                                     height: 220.h,
                                     width: 220.w,
                                   ),
                                   15.vs,
-                                  Text(
-                                    "No Products Added yet!",
-                                    style: TextStyle(
-                                      fontSize: 24.sp,
-                                      fontWeight: FontWeight.w600,
-                                      color: ColorManager.mainColor,
+                                  Center(
+                                    child: Text(
+                                      "No Products Added yet!",
+                                      style: TextStyle(
+                                        fontSize: 24.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: ColorManager.mainColor,
+                                      ),
                                     ),
                                   ),
                                 ],
-                              ),
-                            );
-                          } else if (state is BrandProductsSuccess) {
-                            final products = state.products;
-                            if (products.isEmpty) {
-                              return const Center(
-                                  child: Text("Nothing to display"));
+                              );
+                            } else if (state is BrandProductsSuccess) {
+                              final products = state.products;
+                              if (products.isEmpty) {
+                                return ListView(
+                                  physics: const AlwaysScrollableScrollPhysics(),
+                                  children: const [
+                                    SizedBox(height: 100),
+                                    Center(child: Text("Nothing to display")),
+                                  ],
+                                );
+                              }
+
+                              return GridView.builder(
+                                physics: const AlwaysScrollableScrollPhysics(),
+                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 20.w,
+                                  mainAxisExtent: 250.h,
+                                  mainAxisSpacing: 10.w,
+                                ),
+                                itemCount: products.length,
+                                itemBuilder: (context, index) {
+                                  return BrandProductWidget(
+                                    productModel: products[index],
+                                  );
+                                },
+                              );
                             }
 
-                            return GridView.builder(
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 20.w,
-                                mainAxisExtent: 250.h,
-                                mainAxisSpacing: 10.w,
-                              ),
-                              itemCount: products.length,
-                              itemBuilder: (context, index) {
-                                final product = products[index];
-                                return BrandProductWidget(
-                                  productId: product.id,
-                                  brandId: product.brand.id,
-                                  name: product.name,
-                                  sold: product.sold,
-                                  price: product.price,
-                                  image: product.coverImage ?? "",
-                                );
-                              },
-                            );
-                          }
-
-                          return const SizedBox.shrink();
-                        },
+                            return const SizedBox.shrink();
+                          },
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
+
     );
   }
 }

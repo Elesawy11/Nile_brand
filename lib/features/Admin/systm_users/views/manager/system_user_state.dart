@@ -24,7 +24,9 @@ class SystemUserDeleteSuccess extends SystemUsersState {
   SystemUserDeleteSuccess(this.message);
 }
 
+
 class ChangeUserImage extends SystemUsersState {}
+
 
 class SystemUserUpdateSuccess extends SystemUsersState {
   final String message;

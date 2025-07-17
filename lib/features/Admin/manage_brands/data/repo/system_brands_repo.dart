@@ -7,17 +7,21 @@ import '../../../../../core/networking/api_result.dart';
 class SystemBrandsRepo {
   final AllBrandsSource _allBrandsSource;
 
+
   SystemBrandsRepo({required AllBrandsSource allBrandsSource})
       : _allBrandsSource = allBrandsSource;
 
   Future<ApiResult<List<SystemBrand>>> getAllSystemBrands(String token) async {
+
     try {
       final response = await _allBrandsSource.getSystemBrands(token);
       print(response);
       final List<dynamic> dataList = response['data'];
 
       final List<SystemBrand> brands = dataList
+
           .map<SystemBrand>((json) => SystemBrand.fromJson(json))
+
           .toList();
 
       return ApiResult.success(brands);

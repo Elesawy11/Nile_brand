@@ -101,11 +101,9 @@ class _CouponsSource implements CouponsSource {
     )
         .compose(
           _dio.options,
-<<<<<<< HEAD
+
           'coupons',
-=======
-          'https://nile-brands.up.railway.app/api/v1//coupons',
->>>>>>> 17a68a0 (stripe methods)
+
           queryParameters: queryParameters,
           data: _data,
         )
@@ -171,11 +169,9 @@ class _CouponsSource implements CouponsSource {
     )
         .compose(
           _dio.options,
-<<<<<<< HEAD
+
           'coupons/sendCoupon',
-=======
-          'https://nile-brands.up.railway.app/api/v1//coupons/sendCoupon',
->>>>>>> 17a68a0 (stripe methods)
+
           queryParameters: queryParameters,
           data: _data,
         )

@@ -30,7 +30,9 @@ class CategoryDeleteSuccess extends ManageCatgState {
 
 // SUBCATEGORY STATES
 class SubCategoryCreateSuccess extends ManageCatgState {
+
   final SubCategoryResponse subCategory;
+
 
   SubCategoryCreateSuccess(this.subCategory);
 }
@@ -47,7 +49,9 @@ class SubCategoryDeleteSuccess extends ManageCatgState {
   SubCategoryDeleteSuccess(this.message);
 }
 
+
 class ChangeCtgImage extends ManageCatgState {}
+
 
 class ManageCatgCategorySelected extends ManageCatgState {
   final String categoryId;

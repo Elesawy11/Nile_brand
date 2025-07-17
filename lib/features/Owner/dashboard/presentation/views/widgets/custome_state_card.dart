@@ -7,6 +7,7 @@ class CustomeStateCard extends StatelessWidget {
   final String value;
   final String change;
   final Color changeColor;
+
   const CustomeStateCard(
       {super.key,
       required this.icon,
@@ -15,6 +16,7 @@ class CustomeStateCard extends StatelessWidget {
       required this.change,
       required this.changeColor});
 
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +24,9 @@ class CustomeStateCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12.r),
+
         boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 6.r)],
+
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,6 +35,7 @@ class CustomeStateCard extends StatelessWidget {
             children: [
               Icon(icon, size: 20.w),
               SizedBox(width: 6.w),
+
               Text(title,
                   style: TextStyle(fontSize: 14.sp, color: Colors.grey)),
             ],
@@ -50,6 +55,7 @@ class CustomeStateCard extends StatelessWidget {
               SizedBox(width: 4.w),
               Text('$change vs last month',
                   style: TextStyle(fontSize: 12.sp, color: changeColor))
+
             ],
           )
         ],

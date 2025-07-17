@@ -28,7 +28,9 @@ class BrandData {
   final String name;
 
   @HiveField(2)
+
   final String? logo;
+
 
   @HiveField(3)
   final String description;

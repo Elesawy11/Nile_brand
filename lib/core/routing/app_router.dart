@@ -1,6 +1,8 @@
+
 import 'package:nile_brand/core/networking/dio_factory.dart';
 import "package:nile_brand/core/routing/exports.dart" hide ProductModel;
 import 'package:nile_brand/features/Admin/manage_categories/data/repo/manage_catg_repo.dart';
+
 import 'package:nile_brand/features/Owner/create_brand/data/api/create_brand_api_services.dart';
 import 'package:nile_brand/features/Owner/cuopon/data/api/cupons_source.dart';
 import 'package:nile_brand/features/Owner/cuopon/data/model/create_cuopin_success.dart';
@@ -10,14 +12,21 @@ import 'package:nile_brand/features/Owner/cuopon/presentation/manager/get_cupons
 import 'package:nile_brand/features/Owner/cuopon/presentation/manager/update_cupon/update_cupon_cubit.dart';
 import 'package:nile_brand/features/Owner/my_brand/data/api/my_brand_services.dart';
 import 'package:nile_brand/features/Owner/my_brand/data/repo/update_brand_repo.dart';
+
+
 import 'package:nile_brand/features/User/chatbot/presentation/views/chatbot_splash2.dart';
+
+import 'package:nile_brand/features/User/home/domain/repo/home_repo.dart';
+
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/delete_product_from_my_cart_cubit/delete_product_from_my_cart_cubit.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/mycart_cubit/get_my_cart_cubit.dart';
 import 'package:nile_brand/features/User/my_cart/presentation/cubits/update_quntity_of_product_cart_cubit/update_quntity_of_product_cart_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/add_product_to_wishlist_cubit/add_product_to_wishlist_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/delete_from_wishlist_cubit/delete_from_wishlist_cubit.dart';
 import 'package:nile_brand/features/User/wish_list/presentation/cubits/get_wish_list_cubit/get_wish_list_cubit.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../features/Admin/manage_categories/data/api/manage_catg_source.dart';
 import '../../features/Admin/manage_categories/views/manager/manage_catg_cubit.dart';
 import '../../features/Owner/create_brand/data/repo/new_brand_repo.dart';
@@ -387,7 +396,9 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.ownerHome,
+
                 builder: (context, state) => const OwnerHomeView(
+
                   brandId: "685691c46b03f8f3085f1915",
                 ),
               ),
@@ -477,6 +488,7 @@ abstract class AppRouter {
       ),
 
       GoRoute(
+
         path: Routes.createCuopon,
 
         builder: (context, state) => BlocProvider(
@@ -497,6 +509,7 @@ abstract class AppRouter {
 
           child: const CreateCuoponView(),
         ),
+
       ),
       BlocProvider(
         create: (_) =>

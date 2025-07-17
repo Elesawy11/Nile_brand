@@ -28,6 +28,7 @@ class _CustomeOrderState extends State<CustomeOrder> {
     currentStatus = widget.order.status;
   }
 
+
   Color _getStatusColor(String status) {
     switch (status) {
       case 'pending':
@@ -40,6 +41,7 @@ class _CustomeOrderState extends State<CustomeOrder> {
         return Colors.grey;
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -106,14 +108,3 @@ class _CustomeOrderState extends State<CustomeOrder> {
                         ),
                       ),
                     )
-                  ],
-                ),
-              ),
-              10.vs,
-            ],
-          ),
-        )
-      ],
-    );
-  }
-}

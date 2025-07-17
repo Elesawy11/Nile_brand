@@ -30,13 +30,16 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
   Future<void> pickImage(SystemUsersCubit cubit) async {
     final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (picked != null) {
+
       final savedImage = await saveImagePermanently(picked.path);
+
       cubit.setImage(savedImage);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -46,8 +49,10 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
           ),
         ),
         body: BlocProvider<SystemUsersCubit>(
+
           create: (context) => SystemUsersCubit(SystemUsersRepo(
               systemUsersSource: SystemUsersSource(DioFactory.getDio()))),
+
           child: Padding(
             padding: 12.allEdgeInsets,
             child: BlocConsumer<SystemUsersCubit, SystemUsersState>(
@@ -70,6 +75,7 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
                     children: [
                       20.vs,
                       GestureDetector(
+
                         onTap: () =>
                             pickImage(context.read<SystemUsersCubit>()),
                         child: CircleAvatar(
@@ -82,6 +88,7 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
                                       .selectedImage!)
                                   : const AssetImage(Assets.imagesProfileImage)
                                       as ImageProvider,
+
                         ),
                       ),
                       10.vs,
@@ -91,8 +98,10 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
                         height: 52.h,
                         width: 340.w,
                         child: AppTextFormField(
+
                           controller:
                               context.read<SystemUsersCubit>().nameController,
+
                           labelText: "Name",
                           hintText: "user name",
                           validator: (p0) {},
@@ -103,8 +112,10 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
                         height: 52.h,
                         width: 340.w,
                         child: AppTextFormField(
+
                           controller:
                               context.read<SystemUsersCubit>().emailController,
+
                           labelText: "Email",
                           hintText: "example@gmail.com",
                           validator: (p0) {},
@@ -115,8 +126,10 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
                         height: 52.h,
                         width: 340.w,
                         child: AppTextFormField(
+
                           controller:
                               context.read<SystemUsersCubit>().roleController,
+
                           labelText: "Role",
                           hintText: "admin , owner , customer",
                           validator: (p0) {},
@@ -128,9 +141,11 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
                         width: 340.w,
                         child: PasswordField(
                           viewPass: viewPass,
+
                           controller: context
                               .read<SystemUsersCubit>()
                               .passwordController,
+
                           labelText: "Password",
                           hintText: "password",
                         ),
@@ -141,9 +156,11 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
                         width: 340.w,
                         child: PasswordField(
                           viewPass: conmfPass,
+
                           controller: context
                               .read<SystemUsersCubit>()
                               .confirmPasswordController,
+
                           labelText: "Confirm Password",
                           hintText: "confirm Password",
                         ),
@@ -157,10 +174,12 @@ class _CreateSystemUserState extends State<CreateSystemUser> {
                           child: AppTextButton(
                             backgroundColor: ColorManager.mainColor,
                             text: "Save",
+
                             onPressed: () async {
                               await context
                                   .read<SystemUsersCubit>()
                                   .createSystemUser();
+
                             },
                           ),
                         )

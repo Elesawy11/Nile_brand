@@ -40,18 +40,23 @@ class SystemUsersView extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                         content: Text('User Created: ${state.newUser.name}')),
+
                   );
                 } else if (state is SystemUserDeleteSuccess) {
                   context.read<SystemUsersCubit>().getSystemUsers();
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text(state.message)),
                   );
+
                 } else if (state is SystemUserUpdateSuccess) {
+
                   context.read<SystemUsersCubit>().getSystemUsers();
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text(state.message)),
                   );
+
                 } else if (state is SystemUsersFailure) {
+
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text("Error: ${state.error}")),
                   );
@@ -66,7 +71,9 @@ class SystemUsersView extends StatelessWidget {
                     14.vs,
                     if (state is SystemUsersLoading)
                       const CircularProgressIndicator()
+
                     else if (state is SystemUsersLoadSuccess)
+
                       AllUserTile(users: state.users)
                     else if (state is SystemUsersFailure)
                       Text("Error: ${state.error}",

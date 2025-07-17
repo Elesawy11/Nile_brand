@@ -32,6 +32,7 @@ class TopSellingProducts extends StatelessWidget {
             ],
           ),
           SizedBox(height: 16.h),
+
           ...List.generate(
             topSellings.length,
             (index) {
@@ -42,6 +43,7 @@ class TopSellingProducts extends StatelessWidget {
                   sales: "${topSellings[index].salesCount} sales");
             },
           )
+
         ],
       ),
     );

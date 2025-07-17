@@ -48,7 +48,11 @@ import '../../features/User/category/data/api/sub_category_source.dart';
 import '../../features/User/category/data/repo/sub_category_repo_impl.dart';
 import '../../features/User/category/presentation/cubits/get_sub_categories_cubit/get_sub_categorys_cubit.dart';
 import '../../features/User/home/data/repo/category_repo_impl.dart';
+
+import '../../features/User/home/domain/repo/home_repo.dart';
+
 import '../../features/User/my_cart/presentation/cubits/add_product_to_cart_cubit/add_product_to_cart_cubit.dart';
+
 import '../../features/User/profile/presentation/cubits/update_password_cubit/update_password_cubit.dart';
 
 final getIt = GetIt.instance;
@@ -80,8 +84,14 @@ Future<void> serviceLocator() async {
   getIt.registerFactory(() => GoogleSigninCubit(getIt.get()));
   // category Features
   HomeRemoteDataSource categorySource = HomeRemoteDataSource(dio);
+
+  getIt.registerLazySingleton<HomeRepo>(() => CategoryRepoImpl(categorySource));
+  // getIt.registerLazySingleton(
+  //     () => GetCategoryCubit(getIt.get<HomeRepo>()));
+
   getIt.registerLazySingleton(() => CategoryRepoImpl(categorySource));
   getIt.registerFactory(() => GetCategoryCubit(getIt.get()));
+
   // sub category Features
   getIt.registerLazySingleton(() => SubCategorySource(dio));
   getIt.registerLazySingleton(() => SubCategoryRepoImpl(getIt.get()));

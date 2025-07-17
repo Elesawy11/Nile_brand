@@ -8,12 +8,22 @@ part 'all_brands_source.g.dart';
 
 @RestApi(baseUrl: ApiConstants.baseUrl)
 abstract class AllBrandsSource {
+
   factory AllBrandsSource(Dio dio, {String baseUrl}) = _AllBrandsSource;
+
+  factory AllBrandsSource(Dio dio, {String baseUrl}) =
+      _AllBrandsSource;
+
 
   @GET("brands")
   Future<dynamic> getSystemBrands(@Header('Authorization') String? token);
 
   @DELETE("brands/{id}")
+
   Future<void> deletBrand(
       @Path("id") String id, @Header('Authorization') String? token);
+
+  Future<void> deletBrand(@Path("id") String id,@Header('Authorization') String? token);
+
+
 }

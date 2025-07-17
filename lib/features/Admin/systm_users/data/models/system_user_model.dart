@@ -13,13 +13,16 @@ class UserModel {
   final String role;
   final bool active;
 
+
   UserModel({
     required this.id,
     required this.name,
     required this.email,
+
     this.userImage,
     required this.role,
     required this.active,
+
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

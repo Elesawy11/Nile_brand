@@ -75,9 +75,11 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
         actions: [
           InkWell(
             onTap: () {
+
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const ArScreen(),
               ));
+
             },
             child: Padding(
               padding: EdgeInsets.only(right: 20.r),
@@ -86,16 +88,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView>
                 height: 24.h,
                 width: 24.w,
               ),
-            ),
-          )
-        ],
+          ))
+        ],))
       ),
-      body: ProductDetailsViewBody(
-          selectedColor: selectedColor,
-          widget: widget,
-          selectedSize: selectedSize,
-          tabController: _tabController,
-          productInfo: productInfo),
-    ));
   }
-}

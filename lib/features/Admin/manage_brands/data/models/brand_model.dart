@@ -8,12 +8,14 @@ class SystemBrand {
   final String description;
   final String taxID;
   final Owner owner;
+
   final String? logo;
 
   final String id;
 
   SystemBrand(
     this.logo, {
+
     required this.name,
     required this.description,
     required this.taxID,

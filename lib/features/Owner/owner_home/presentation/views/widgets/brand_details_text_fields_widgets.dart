@@ -9,12 +9,15 @@ class BrandDetailsTextFieldsWidgets extends StatelessWidget {
   final List<CategoryModel> category;
   final List<SubCategoryModel> subCategory;
 
+
   const BrandDetailsTextFieldsWidgets(
       {super.key, required this.category, required this.subCategory});
+
 
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<CreateProductCubit>();
+
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -165,12 +168,7 @@ class BrandDetailsTextFieldsWidgets extends StatelessWidget {
                 "Select SubCategory: ${cubit.selectedSubCategoryId ?? ''}"),
             children: subCategory.map((subcategory) {
               return ListTile(
-                title: Text(subcategory.name!),
                 onTap: () {
-                  // print(context.read<GetSubCategorysCubit>().subCategories);
-                  cubit.setSubCategory(subcategory.id!);
-                },
-              );
             }).toList(),
           ),
         ),

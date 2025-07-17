@@ -1,3 +1,4 @@
+
 import 'dart:io';
 
 import 'package:dotted_border/dotted_border.dart';
@@ -25,6 +26,7 @@ import '../../data/repo/create_product_repo.dart';
 import '../manager/create_product/create_product_cubit.dart';
 import 'widgets/add_brand_product_textfields_widget.dart';
 
+
 class AddBrandProductView extends StatefulWidget {
   const AddBrandProductView({super.key});
 
@@ -47,9 +49,8 @@ class _AddBrandProductViewState extends State<AddBrandProductView> {
       CategoryRepoImpl(HomeRemoteDataSource(DioFactory.getDio())),
     )..emitGetCategories();
 
-    getSubCategorysCubit = GetSubCategorysCubit(
-        SubCategoryRepoImpl(SubCategorySource(DioFactory.getDio())))
-      ..getSubCategories();
+   
+
   }
 
   @override
@@ -108,11 +109,13 @@ class _AddBrandProductViewState extends State<AddBrandProductView> {
                       10.vs,
                       _buildAdditionalImages(cubit),
                       20.vs,
+
                       AddBrandProductTextFieldsWidgets(
                         category: context.read<GetCategoryCubit>().categoryList,
                         subcategory:
                             context.read<GetSubCategorysCubit>().subCategories,
                       ),
+
                       22.vs,
                       SizedBox(
                         width: 192.w,
@@ -153,7 +156,9 @@ class _AddBrandProductViewState extends State<AddBrandProductView> {
         child: Container(
           width: 70.w,
           height: 97.h,
+
           decoration: const BoxDecoration(),
+
           clipBehavior: Clip.hardEdge,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -162,14 +167,17 @@ class _AddBrandProductViewState extends State<AddBrandProductView> {
                   ? Image.file(
                       File(cubit.coverImage!.path),
                       width: 70.w,
+
                       height: 97.h,
                       fit: BoxFit.cover,
                     )
                   : const Icon(Icons.image,
                       size: 27, color: ColorManager.mainColor),
+
               Visibility(
                   visible: cubit.coverImage == null,
                   child: Text("Pick cover Image")),
+
             ],
           ),
         ),
@@ -208,12 +216,14 @@ class _AddBrandProductViewState extends State<AddBrandProductView> {
                   width: 50.w,
                   height: 55.h,
                   decoration: BoxDecoration(),
-                  clipBehavior: Clip.hardEdge,
+  clipBehavior: Clip.hardEdge,
+
                   child: cubit.productImages.length - 1 > index
                       ? Image.file(
                           File(cubit.productImages[index].path),
                           width: 50.r,
                           height: 55.r,
+
                           fit: BoxFit.cover,
                         )
                       : const Icon(Icons.image,

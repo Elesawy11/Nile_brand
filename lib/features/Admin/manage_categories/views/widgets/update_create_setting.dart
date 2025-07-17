@@ -17,8 +17,10 @@ class UpdateCreateCategSetting extends StatelessWidget {
   final String title;
   final String id;
 
+
   const UpdateCreateCategSetting(
       {super.key, required this.title, required this.id});
+
 
   Future<void> _pickImage(BuildContext context, ManageCatgCubit cubit) async {
     final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -89,6 +91,7 @@ class UpdateCreateCategSetting extends StatelessWidget {
                       },
                     ),
                   ),
+
                 ),
                 350.vs,
                 SizedBox(
@@ -108,6 +111,7 @@ class UpdateCreateCategSetting extends StatelessWidget {
                         ),
                 )
               ],
+
             ),
           );
         },

@@ -4,6 +4,7 @@ import 'package:nile_brand/core/utils/color_manager.dart';
 import 'package:nile_brand/core/utils/spacer.dart';
 import 'package:shimmer/shimmer.dart';
 
+
 import '../../../../../../core/utils/assets.dart';
 
 class CategoryShimeer extends StatelessWidget {

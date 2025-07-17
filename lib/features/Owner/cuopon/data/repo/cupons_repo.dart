@@ -36,8 +36,10 @@ class CuponsRepo {
 
       final List<dynamic> cupons = response["data"];
       final List<CreateCuoponSuccess> data = cupons
+
           .map<CreateCuoponSuccess>(
               (data) => CreateCuoponSuccess.fromJson(data))
+
           .toList();
       ;
       return ApiResult.success(data);

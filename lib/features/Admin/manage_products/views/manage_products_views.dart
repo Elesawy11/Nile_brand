@@ -9,18 +9,23 @@ import 'package:nile_brand/features/Admin/manage_products/data/api/system_produc
 import 'package:nile_brand/features/Admin/manage_products/data/repo/system_products_repo.dart';
 import 'package:nile_brand/features/Admin/manage_products/views/widgets/existing_products.dart';
 
+
 import 'manager/manage_products_cubit.dart';
 import 'manager/manage_products_state.dart';
 
 class ManageProductsViews extends StatelessWidget {
+ 
+
   const ManageProductsViews({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
+
       create: (context) => SystemProductsCubit(SystemProductsRepo(
           allProductsSource: SystemProductsSource(DioFactory.getDio())))
         ..getAllProducts(),
+
       child: BlocConsumer<SystemProductsCubit, SystemProductsState>(
         listener: (context, state) {
           if (state is SystemProductsError) {
@@ -37,15 +42,19 @@ class ManageProductsViews extends StatelessWidget {
         builder: (context, state) {
           return SafeArea(
             child: RefreshIndicator(
+
               onRefresh: () async {
                 await context.read<SystemProductsCubit>().getAllProducts();
+
               },
               child: Scaffold(
                 appBar: AppBar(
                   title: Text(
                     'Products Management',
+
                     style: Styles.font30W700
                         .copyWith(fontWeight: FontWeight.bold, fontSize: 25.sp),
+
                   ),
                 ),
                 body: Padding(
@@ -55,8 +64,10 @@ class ManageProductsViews extends StatelessWidget {
                       SliverToBoxAdapter(child: SizedBox(height: 14.h)),
                       if (state is SystemProductsLoading)
                         SliverGrid(
+
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
+
                             crossAxisCount: 2,
                             crossAxisSpacing: 20.w,
                             mainAxisSpacing: 10.w,
@@ -69,8 +80,10 @@ class ManageProductsViews extends StatelessWidget {
                         )
                       else if (state is SystemProductsLoaded)
                         SliverGrid(
+
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
+
                             crossAxisCount: 2,
                             crossAxisSpacing: 20.w,
                             mainAxisSpacing: 10.w,
